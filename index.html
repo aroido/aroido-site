@@ -7,18 +7,19 @@
     <meta
       id="metaDescription"
       name="description"
-      content="Aroido designs and ships bold products with Vibesmith as the current flagship."
+      content="Aroido designs and ships bold products with VibeSmith as the current flagship."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="site-shell">
       <header class="topbar reveal" data-reveal>
-        <p class="brand">AROIDO</p>
+        <a class="brand brand-link" href="/">AROIDO</a>
         <nav class="main-nav" aria-label="Main">
-          <a href="#projects" data-i18n="nav_projects"></a>
-          <a href="#capabilities" data-i18n="nav_capabilities"></a>
-          <a href="#contact" data-i18n="nav_contact"></a>
+          <a href="/" aria-current="page" data-i18n="nav_home">Home</a>
+          <a href="/projects/" data-i18n="nav_projects">Projects</a>
+          <a href="/team/" data-i18n="nav_team">Team</a>
+          <a href="#contact" data-i18n="nav_contact">Contact</a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Language switch">
           <button class="lang-btn" data-lang="en" type="button">EN</button>
@@ -27,97 +28,58 @@
       </header>
 
       <section class="hero reveal" data-reveal>
-        <p class="kicker" data-i18n="hero_kicker"></p>
-        <h1 data-i18n="hero_title"></h1>
-        <p class="hero-description" data-i18n="hero_description"></p>
+        <p class="kicker" data-i18n="hero_kicker">Aroido Studio - Seoul</p>
+        <h1 data-i18n="hero_title">We build loud ideas into shippable products.</h1>
+        <p class="hero-description" data-i18n="hero_description">
+          Aroido turns rapid experiments into production-ready digital products. VibeSmith is our current front line.
+        </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#featured" data-i18n="cta_primary"></a>
-          <a class="btn btn-ghost" href="#projects" data-i18n="cta_secondary"></a>
+          <a class="btn btn-primary" href="/projects/vibesmith/" data-i18n="cta_primary">See Vibesmith Focus</a>
+          <a class="btn btn-ghost" href="/projects/" data-i18n="cta_secondary">Browse Selected Work</a>
         </div>
       </section>
 
       <section id="featured" class="panel featured reveal" data-reveal>
-        <p class="panel-label" data-i18n="featured_label"></p>
-        <h2 data-i18n="featured_title"></h2>
-        <p class="panel-copy" data-i18n="featured_description"></p>
+        <p class="panel-label" data-i18n="featured_label">Featured Now</p>
+        <h2 data-i18n="featured_title">VibeSmith is our flagship momentum.</h2>
+        <p class="panel-copy" data-i18n="featured_description">
+          We are refining a workflow where creative vibe coding meets measurable release quality.
+        </p>
         <ul class="featured-meta" aria-label="Featured details">
-          <li data-i18n="featured_meta_1"></li>
-          <li data-i18n="featured_meta_2"></li>
-          <li data-i18n="featured_meta_3"></li>
+          <li data-i18n="featured_meta_1">Spec-driven workflow with explicit verification gates</li>
+          <li data-i18n="featured_meta_2">Fast iteration loops with stable release discipline</li>
+          <li data-i18n="featured_meta_3">Built for creators and compact product teams</li>
         </ul>
-      </section>
-
-      <section id="projects" class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">PROJECTS</p>
-          <h2 data-i18n="projects_title"></h2>
-          <p data-i18n="projects_description"></p>
-        </div>
-        <div class="project-grid">
-          <article class="project-card">
-            <p class="project-index">01</p>
-            <h3 data-i18n="project_1_title"></h3>
-            <p data-i18n="project_1_description"></p>
-          </article>
-          <article class="project-card">
-            <p class="project-index">02</p>
-            <h3 data-i18n="project_2_title"></h3>
-            <p data-i18n="project_2_description"></p>
-          </article>
-          <article class="project-card">
-            <p class="project-index">03</p>
-            <h3 data-i18n="project_3_title"></h3>
-            <p data-i18n="project_3_description"></p>
-          </article>
-        </div>
-      </section>
-
-      <section id="capabilities" class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">CAPABILITIES</p>
-          <h2 data-i18n="capabilities_title"></h2>
-        </div>
-        <div class="capability-grid">
-          <article class="capability-card">
-            <h3 data-i18n="capability_1_title"></h3>
-            <p data-i18n="capability_1_description"></p>
-          </article>
-          <article class="capability-card">
-            <h3 data-i18n="capability_2_title"></h3>
-            <p data-i18n="capability_2_description"></p>
-          </article>
-          <article class="capability-card">
-            <h3 data-i18n="capability_3_title"></h3>
-            <p data-i18n="capability_3_description"></p>
-          </article>
-        </div>
+        <a class="inline-link" href="/projects/vibesmith/" data-i18n="featured_cta">Read the VibeSmith story</a>
       </section>
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow">STUDIO SIGNAL</p>
-          <h2 data-i18n="signal_title"></h2>
+          <p class="section-eyebrow">ROUTES</p>
+          <h2 data-i18n="routes_title">Live information architecture</h2>
         </div>
-        <ul class="signal-list" aria-label="Studio signal updates">
-          <li>
-            <span data-i18n="signal_item_1_date"></span>
-            <p data-i18n="signal_item_1_text"></p>
-          </li>
-          <li>
-            <span data-i18n="signal_item_2_date"></span>
-            <p data-i18n="signal_item_2_text"></p>
-          </li>
-          <li>
-            <span data-i18n="signal_item_3_date"></span>
-            <p data-i18n="signal_item_3_text"></p>
-          </li>
-        </ul>
+        <div class="route-grid">
+          <a class="route-card" href="/projects/">
+            <h3 data-i18n="route_projects_title">Projects</h3>
+            <p data-i18n="route_projects_desc">Browse active, lab, and archive projects.</p>
+          </a>
+          <a class="route-card" href="/projects/vibesmith/">
+            <h3 data-i18n="route_vibesmith_title">VibeSmith</h3>
+            <p data-i18n="route_vibesmith_desc">Problem, approach, and outcome in one page.</p>
+          </a>
+          <a class="route-card" href="/team/">
+            <h3 data-i18n="route_team_title">Team</h3>
+            <p data-i18n="route_team_desc">Studio manifesto, members, and collaboration model.</p>
+          </a>
+        </div>
       </section>
 
       <section id="contact" class="contact-panel reveal" data-reveal>
-        <h2 data-i18n="contact_title"></h2>
-        <p data-i18n="contact_description"></p>
-        <button id="helloBtn" class="btn btn-primary" type="button" data-i18n="cta_contact"></button>
+        <h2 data-i18n="contact_title">Build something sharp together.</h2>
+        <p data-i18n="contact_description">
+          If your team wants speed without chaos, we can design and ship with you.
+        </p>
+        <button id="helloBtn" class="btn btn-primary" type="button" data-i18n="cta_contact">Run readiness check</button>
       </section>
     </main>
     <script src="./script.js"></script>
