@@ -1,0 +1,192 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$ROOT_DIR"
+
+ISSUE=""
+COMMIT_MSG=""
+TARGET_BRANCH="main"
+AUTO_MERGE="false"
+DRY_RUN="false"
+
+usage() {
+  cat <<USAGE
+Usage: ./scripts/ai-finish-task [options]
+
+Options:
+  --issue <number>          GitLab issue IID
+  --commit-msg <message>    Commit message (first line used as MR title)
+  --target <branch>         Target branch (default: main)
+  --auto-merge              Enable GitLab auto-merge
+  --dry-run                 Print commands without executing
+  -h, --help                Show this help
+USAGE
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --issue)
+      ISSUE="${2:-}"
+      shift 2
+      ;;
+    --commit-msg)
+      COMMIT_MSG="${2:-}"
+      shift 2
+      ;;
+    --target)
+      TARGET_BRANCH="${2:-}"
+      shift 2
+      ;;
+    --auto-merge)
+      AUTO_MERGE="true"
+      shift
+      ;;
+    --dry-run)
+      DRY_RUN="true"
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      usage
+      exit 1
+      ;;
+  esac
+done
+
+if [[ -z "$ISSUE" ]]; then
+  echo "--issue is required" >&2
+  exit 1
+fi
+
+if [[ ! "$ISSUE" =~ ^[0-9]+$ ]]; then
+  echo "--issue must be numeric" >&2
+  exit 1
+fi
+
+if [[ -z "$COMMIT_MSG" ]]; then
+  echo "--commit-msg is required" >&2
+  exit 1
+fi
+
+run_cmd() {
+  if [[ "$DRY_RUN" == "true" ]]; then
+    echo "+ $*"
+  else
+    "$@"
+  fi
+}
+
+run_shell() {
+  if [[ "$DRY_RUN" == "true" ]]; then
+    echo "+ $*"
+  else
+    bash -lc "$*"
+  fi
+}
+
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "This command must run inside a git repository." >&2
+  exit 1
+fi
+
+if ! command -v glab >/dev/null 2>&1; then
+  echo "glab is required" >&2
+  exit 1
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+  echo "jq is required" >&2
+  exit 1
+fi
+
+if [[ "$DRY_RUN" == "false" ]]; then
+  glab auth status >/dev/null
+fi
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+if [[ "$branch" == "main" || "$branch" == "master" ]]; then
+  echo "Refusing to finish from protected branch '$branch'. Use a task branch/worktree." >&2
+  exit 1
+fi
+
+if [[ "$branch" == "$TARGET_BRANCH" ]]; then
+  echo "Refusing to finish from target branch '$TARGET_BRANCH'. Use a task branch." >&2
+  exit 1
+fi
+
+echo "[1/6] Running full verification..."
+run_shell "./scripts/ai-verify --mode full"
+
+echo "[2/6] Staging changes..."
+run_cmd git add -A
+
+has_staged_changes="false"
+if [[ "$DRY_RUN" == "true" ]]; then
+  has_staged_changes="true"
+else
+  if ! git diff --cached --quiet; then
+    has_staged_changes="true"
+  fi
+fi
+
+if [[ "$has_staged_changes" == "true" ]]; then
+  echo "[3/6] Creating commit..."
+  if [[ "$COMMIT_MSG" == *"#$ISSUE"* ]]; then
+    run_cmd git commit -m "$COMMIT_MSG"
+  else
+    run_cmd git commit -m "$COMMIT_MSG" -m "Closes #$ISSUE"
+  fi
+else
+  echo "[3/6] No staged changes to commit; continuing with existing branch state."
+fi
+
+echo "[4/6] Pushing branch..."
+run_cmd git push -u origin "$branch"
+
+echo "[5/6] Ensuring merge request exists..."
+mr_iid=""
+if [[ "$DRY_RUN" == "false" ]]; then
+  mr_iid="$(glab mr list --source-branch "$branch" --target-branch "$TARGET_BRANCH" --output json | jq -r '.[0].iid // empty')"
+fi
+
+if [[ -z "$mr_iid" ]]; then
+  title="${COMMIT_MSG%%$'\n'*}"
+  description="Automated by scripts/ai-finish-task\n\nCloses #$ISSUE"
+  run_cmd glab mr create \
+    --source-branch "$branch" \
+    --target-branch "$TARGET_BRANCH" \
+    --title "$title" \
+    --description "$description" \
+    --remove-source-branch=true \
+    --squash-before-merge=true \
+    --yes
+
+  if [[ "$DRY_RUN" == "false" ]]; then
+    mr_iid="$(glab mr list --source-branch "$branch" --target-branch "$TARGET_BRANCH" --output json | jq -r '.[0].iid // empty')"
+  fi
+else
+  echo "Existing MR found: !${mr_iid}"
+fi
+
+if [[ "$AUTO_MERGE" == "true" ]]; then
+  echo "[6/6] Enabling auto-merge..."
+  if [[ "$DRY_RUN" == "true" ]]; then
+    echo "+ glab mr merge <iid> --auto-merge --squash --remove-source-branch --yes"
+  else
+    if [[ -z "$mr_iid" ]]; then
+      echo "Unable to resolve MR IID for auto-merge" >&2
+      exit 1
+    fi
+    glab mr merge "$mr_iid" --auto-merge --squash --remove-source-branch --yes
+  fi
+else
+  echo "[6/6] Auto-merge not requested."
+fi
+
+echo "Done. branch=$branch issue=$ISSUE target=$TARGET_BRANCH auto_merge=$AUTO_MERGE dry_run=$DRY_RUN"

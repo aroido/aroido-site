@@ -1,0 +1,170 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$ROOT_DIR"
+
+MODE="fast"
+CHANGED_ONLY="false"
+JSON_OUTPUT="false"
+
+usage() {
+  cat <<USAGE
+Usage: ./scripts/ai-verify [options]
+
+Options:
+  --mode <fast|full>     Verification profile (default: fast)
+  --changed-only         Run checks only for changed files
+  --json                 Output summary as JSON
+  -h, --help             Show this help
+USAGE
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --mode)
+      MODE="${2:-}"
+      shift 2
+      ;;
+    --changed-only)
+      CHANGED_ONLY="true"
+      shift
+      ;;
+    --json)
+      JSON_OUTPUT="true"
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      usage
+      exit 1
+      ;;
+  esac
+done
+
+if [[ "$MODE" != "fast" && "$MODE" != "full" ]]; then
+  echo "--mode must be fast or full" >&2
+  exit 1
+fi
+
+if [[ "$CHANGED_ONLY" == "true" ]]; then
+  changed_files="$( (git diff --name-only HEAD; git ls-files --others --exclude-standard) | sort -u )"
+  if [[ -z "$changed_files" ]]; then
+    if [[ "$JSON_OUTPUT" == "true" ]]; then
+      printf '{"mode":"%s","changed_only":true,"checks":[],"passed":0,"failed":0,"success":true}\n' "$MODE"
+    else
+      echo "No changed files detected; nothing to verify."
+    fi
+    exit 0
+  fi
+fi
+
+declare -a CHECK_LABELS
+DECLARE_CMDS_FILE="$(mktemp)"
+RESULTS_FILE="$(mktemp)"
+trap 'rm -f "$DECLARE_CMDS_FILE" "$RESULTS_FILE"' EXIT
+
+add_check() {
+  local label="$1"
+  local cmd="$2"
+  CHECK_LABELS+=("$label")
+  printf '%s\t%s\n' "$label" "$cmd" >> "$DECLARE_CMDS_FILE"
+}
+
+has_npm_script() {
+  local script_name="$1"
+  [[ -f package.json ]] || return 1
+  node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));process.exit((p.scripts&&p.scripts['$script_name'])?0:1)" >/dev/null 2>&1
+}
+
+# baseline static-site checks
+if [[ -f script.js ]]; then
+  add_check "static:js-syntax" "node --check script.js"
+fi
+add_check "static:required-files" "test -f index.html && test -f styles.css"
+
+if [[ "$MODE" == "full" ]]; then
+  add_check "static:smoke-content" "grep -q '<!doctype html' index.html || grep -qi '<html' index.html"
+fi
+
+# optional npm checks if project evolves
+if has_npm_script lint; then
+  add_check "npm:lint" "npm run lint"
+fi
+
+if has_npm_script type-check; then
+  add_check "npm:typecheck" "npm run type-check"
+fi
+
+if [[ "$MODE" == "full" ]]; then
+  if has_npm_script test; then
+    add_check "npm:test" "npm run test"
+  fi
+  if has_npm_script build; then
+    add_check "npm:build" "npm run build"
+  fi
+fi
+
+if [[ ! -s "$DECLARE_CMDS_FILE" ]]; then
+  if [[ "$JSON_OUTPUT" == "true" ]]; then
+    printf '{"mode":"%s","changed_only":%s,"checks":[],"passed":0,"failed":0,"success":true}\n' "$MODE" "$CHANGED_ONLY"
+  else
+    echo "No checks selected for mode=$MODE changed_only=$CHANGED_ONLY"
+  fi
+  exit 0
+fi
+
+passed=0
+failed=0
+
+while IFS=$'\t' read -r label cmd; do
+  start_ts="$(date +%s)"
+
+  if [[ "$JSON_OUTPUT" != "true" ]]; then
+    echo "==> [$label]"
+    echo "    $cmd"
+  fi
+
+  if bash -lc "$cmd"; then
+    status="pass"
+    passed=$((passed + 1))
+  else
+    status="fail"
+    failed=$((failed + 1))
+  fi
+
+  end_ts="$(date +%s)"
+  duration="$((end_ts - start_ts))"
+  printf '%s\t%s\t%s\t%s\n' "$label" "$status" "$duration" "$cmd" >> "$RESULTS_FILE"
+done < "$DECLARE_CMDS_FILE"
+
+if [[ "$JSON_OUTPUT" == "true" && $(command -v jq >/dev/null 2>&1; echo $?) -eq 0 ]]; then
+  jq -Rn \
+    --arg mode "$MODE" \
+    --argjson changed_only "$([ "$CHANGED_ONLY" == "true" ] && echo true || echo false)" \
+    --argjson passed "$passed" \
+    --argjson failed "$failed" \
+    '
+      [inputs | split("\t") | {label: .[0], status: .[1], duration_sec: (.[2] | tonumber), command: .[3]}] as $checks
+      | {
+          mode: $mode,
+          changed_only: $changed_only,
+          checks: $checks,
+          passed: $passed,
+          failed: $failed,
+          success: ($failed == 0)
+        }
+    ' < "$RESULTS_FILE"
+else
+  echo
+  echo "Verification summary: mode=$MODE changed_only=$CHANGED_ONLY passed=$passed failed=$failed"
+fi
+
+if [[ "$failed" -gt 0 ]]; then
+  exit 1
+fi
