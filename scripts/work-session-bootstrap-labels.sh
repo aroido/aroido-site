@@ -76,11 +76,11 @@ ensure_label() {
   echo "[create] $name"
 }
 
-ensure_label "Ready" "1D76DB" "Work Session ready queue"
-ensure_label "In progress" "0E8A16" "Work Session in progress"
-ensure_label "In review" "FBCA04" "Waiting for review/merge checks"
-ensure_label "Done" "5319E7" "Completed and merged"
-ensure_label "blocked" "B60205" "Blocked by external dependency"
-ensure_label "failed" "D93F0B" "Failed in current work session"
+ensure_label "Ready" "#1D76DB" "Work Session ready queue"
+ensure_label "In progress" "#0E8A16" "Work Session in progress"
+ensure_label "In review" "#FBCA04" "Waiting for review/merge checks"
+ensure_label "Done" "#5319E7" "Completed and merged"
+ensure_label "blocked" "#B60205" "Blocked by external dependency"
+ensure_label "failed" "#D93F0B" "Failed in current work session"
 
 echo "done"

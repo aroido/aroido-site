@@ -198,7 +198,11 @@ if [[ "$TOOLS_GLAB" == "true" && "$TOOLS_JQ" == "true" && "$AUTH_OK" == "true" ]
 fi
 
 required_labels_json="$(to_json_array "${required_labels[@]}")"
-missing_labels_json="$(to_json_array "${missing_labels[@]}")"
+if [[ "${#missing_labels[@]}" -gt 0 ]]; then
+  missing_labels_json="$(to_json_array "${missing_labels[@]}")"
+else
+  missing_labels_json="[]"
+fi
 
 jq -n \
   --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
