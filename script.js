@@ -7,94 +7,11 @@ const fallbackTranslations = {
     page_title: "Aroido | Hip Product Studio",
     meta_description:
       "Aroido designs and ships bold products with Vibesmith as the current flagship.",
-    nav_projects: "Projects",
-    nav_capabilities: "Capabilities",
-    nav_contact: "Contact",
-    hero_kicker: "Aroido Studio - Seoul",
-    hero_title: "We build loud ideas into shippable products.",
-    hero_description:
-      "Aroido turns rapid experiments into production-ready digital products. Vibesmith is our current front line.",
-    cta_primary: "See Vibesmith Focus",
-    cta_secondary: "Browse Selected Work",
-    featured_label: "Featured Now",
-    featured_title: "Vibesmith is our flagship momentum.",
-    featured_description:
-      "We are refining a workflow where creative vibe coding meets measurable release quality.",
-    featured_meta_1: "Spec-driven workflow with explicit verification gates",
-    featured_meta_2: "Fast iteration loops with stable release discipline",
-    featured_meta_3: "Built for creators and compact product teams",
-    projects_title: "Selected Projects",
-    projects_description:
-      "Current mix of shipping products, internal systems, and reusable studio infrastructure.",
-    project_1_title: "Vibesmith",
-    project_1_description: "Flagship creative product for focused creation and rapid shipping.",
-    project_2_title: "Session Ops Toolkit",
-    project_2_description: "Workflow scripts that keep issue-to-merge execution predictable.",
-    project_3_title: "Spec-driven Site System",
-    project_3_description: "Reusable information architecture and component contracts for growth.",
-    capabilities_title: "What We Do",
-    capability_1_title: "Product Direction",
-    capability_1_description: "Shape product scope, priorities, and release rhythm.",
-    capability_2_title: "Design Engineering",
-    capability_2_description: "Build expressive interfaces with practical performance constraints.",
-    capability_3_title: "Delivery Ops",
-    capability_3_description: "Run spec-first execution with clear verification gates.",
-    signal_title: "Studio signal from this week",
-    signal_item_1_date: "Now",
-    signal_item_1_text: "Home structure is locked around Vibesmith-first storytelling.",
-    signal_item_2_date: "Q2 2026",
-    signal_item_2_text: "Project pages split by reusable templates and measurable outcomes.",
-    signal_item_3_date: "Always",
-    signal_item_3_text: "Fast cycle, hard quality gate, no silent regressions.",
-    contact_title: "Build something sharp together.",
-    contact_description:
-      "If your team wants speed without chaos, we can design and ship with you.",
-    cta_contact: "Run readiness check",
     hello_alert: "Aroido readiness check is complete.",
   },
   ko: {
     page_title: "Aroido | 힙한 프로덕트 스튜디오",
-    meta_description: "Aroido는 대담한 제품을 설계/출시하며, 현재 Vibesmith를 대표 프로젝트로 운영합니다.",
-    nav_projects: "프로젝트",
-    nav_capabilities: "역량",
-    nav_contact: "문의",
-    hero_kicker: "Aroido Studio - Seoul",
-    hero_title: "우리는 큰 아이디어를 실제 출시 가능한 제품으로 만든다.",
-    hero_description:
-      "Aroido는 빠른 실험을 프로덕션 수준 결과물로 연결합니다. 지금의 최전선은 Vibesmith입니다.",
-    cta_primary: "Vibesmith 보기",
-    cta_secondary: "선별 프로젝트 보기",
-    featured_label: "현재 포커스",
-    featured_title: "Vibesmith가 지금의 핵심 모멘텀입니다.",
-    featured_description: "크리에이티브 바이브 코딩과 측정 가능한 릴리즈 품질을 하나의 흐름으로 다듬고 있습니다.",
-    featured_meta_1: "검증 게이트가 명시된 스펙 기반 워크플로우",
-    featured_meta_2: "빠른 반복과 안정적인 릴리즈 규율",
-    featured_meta_3: "크리에이터와 소규모 제품 팀을 위한 설계",
-    projects_title: "Selected Projects",
-    projects_description: "출시형 제품, 내부 시스템, 재사용 인프라를 함께 운영합니다.",
-    project_1_title: "Vibesmith",
-    project_1_description: "집중 제작과 빠른 출시에 맞춘 플래그십 크리에이티브 제품입니다.",
-    project_2_title: "Session Ops Toolkit",
-    project_2_description: "이슈에서 머지까지 실행 흐름을 안정화하는 워크플로우 스크립트입니다.",
-    project_3_title: "Spec-driven Site System",
-    project_3_description: "확장 가능한 IA와 컴포넌트 계약을 중심으로 사이트를 구성합니다.",
-    capabilities_title: "What We Do",
-    capability_1_title: "Product Direction",
-    capability_1_description: "제품 범위, 우선순위, 릴리즈 리듬을 설계합니다.",
-    capability_2_title: "Design Engineering",
-    capability_2_description: "표현력 있는 인터페이스를 실용적인 성능 기준 안에서 구현합니다.",
-    capability_3_title: "Delivery Ops",
-    capability_3_description: "명확한 검증 게이트를 포함한 스펙 기반 실행을 운영합니다.",
-    signal_title: "이번 주 스튜디오 시그널",
-    signal_item_1_date: "지금",
-    signal_item_1_text: "홈 구조를 Vibesmith 중심 스토리텔링으로 고정했습니다.",
-    signal_item_2_date: "2026년 2분기",
-    signal_item_2_text: "프로젝트 페이지를 재사용 템플릿 + 성과 지표 중심으로 분리합니다.",
-    signal_item_3_date: "항상",
-    signal_item_3_text: "빠른 사이클, 강한 품질 게이트, 조용한 회귀 없음.",
-    contact_title: "더 날카로운 제품을 같이 만듭니다.",
-    contact_description: "속도는 빠르게, 품질은 단단하게 가야 하는 팀이라면 함께 설계하고 출시할 수 있습니다.",
-    cta_contact: "준비 상태 점검 실행",
+    meta_description: "Aroido는 VibeSmith를 중심으로 빠르게 제품을 설계하고 출시합니다.",
     hello_alert: "Aroido 준비 상태 점검이 완료되었습니다.",
   },
 };
@@ -134,23 +51,42 @@ function setStoredLanguage(language) {
 }
 
 function translate(language, key) {
-  const languageTable = translations[language] || translations[DEFAULT_LANGUAGE];
-  return languageTable[key] || translations[DEFAULT_LANGUAGE][key] || key;
+  const languageTable = translations[language] || {};
+  const defaultTable = translations[DEFAULT_LANGUAGE] || {};
+
+  if (Object.prototype.hasOwnProperty.call(languageTable, key)) {
+    return languageTable[key];
+  }
+
+  if (Object.prototype.hasOwnProperty.call(defaultTable, key)) {
+    return defaultTable[key];
+  }
+
+  return undefined;
 }
 
 function applyLanguage(language) {
   const nextLanguage = normalizeLanguage(language);
 
   document.documentElement.lang = nextLanguage;
-  document.title = translate(nextLanguage, "page_title");
 
-  if (metaDescription) {
-    metaDescription.setAttribute("content", translate(nextLanguage, "meta_description"));
+  const pageTitle = translate(nextLanguage, "page_title");
+  if (pageTitle) {
+    document.title = pageTitle;
+  }
+
+  const metaCopy = translate(nextLanguage, "meta_description");
+  if (metaDescription && metaCopy) {
+    metaDescription.setAttribute("content", metaCopy);
   }
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.getAttribute("data-i18n");
-    node.textContent = translate(nextLanguage, key);
+    const value = translate(nextLanguage, key);
+
+    if (typeof value === "string" && value.length > 0) {
+      node.textContent = value;
+    }
   });
 
   langButtons.forEach((button) => {
@@ -189,8 +125,8 @@ function initializeRevealMotion() {
       });
     },
     {
-      threshold: 0.16,
-      rootMargin: "0px 0px -8% 0px",
+      threshold: 0.14,
+      rootMargin: "0px 0px -10% 0px",
     }
   );
 
@@ -199,7 +135,7 @@ function initializeRevealMotion() {
 
 async function loadTranslations() {
   try {
-    const response = await fetch("./i18n/messages.json", { cache: "no-store" });
+    const response = await fetch("/i18n/messages.json", { cache: "no-store" });
     if (!response.ok) {
       return;
     }
@@ -222,7 +158,7 @@ langButtons.forEach((button) => {
 
 if (helloBtn) {
   helloBtn.addEventListener("click", () => {
-    alert(translate(currentLanguage, "hello_alert"));
+    alert(translate(currentLanguage, "hello_alert") || fallbackTranslations.en.hello_alert);
   });
 }
 

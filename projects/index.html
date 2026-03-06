@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aroido | Projects</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="Aroido project index with now, labs, and archive tracks."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main class="site-shell">
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link" href="/">AROIDO</a>
+        <nav class="main-nav" aria-label="Main">
+          <a href="/" data-i18n="nav_home">Home</a>
+          <a href="/projects/" aria-current="page" data-i18n="nav_projects">Projects</a>
+          <a href="/team/" data-i18n="nav_team">Team</a>
+          <a href="#contact" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+          <button class="lang-btn" data-lang="ko" type="button">KO</button>
+        </div>
+      </header>
+
+      <section class="page-hero reveal" data-reveal>
+        <p class="kicker" data-i18n="projects_kicker">Projects</p>
+        <h1 data-i18n="projects_page_title">Shipping now, building next.</h1>
+        <p data-i18n="projects_page_description">
+          We keep current products visible while tracking labs and archive tracks with one operational system.
+        </p>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="pill-row" role="tablist" aria-label="Project filters">
+          <button class="pill is-active" type="button" data-i18n="filter_now">Now</button>
+          <button class="pill" type="button" data-i18n="filter_labs">Labs</button>
+          <button class="pill" type="button" data-i18n="filter_archive">Archive</button>
+        </div>
+
+        <div class="route-grid">
+          <article class="route-card highlight">
+            <h3 data-i18n="projects_card_vibesmith_title">Vibesmith</h3>
+            <p data-i18n="projects_card_vibesmith_desc">AI Agent Components Manager for Cursor and Claude Code with unified management and dependency graph.</p>
+            <a class="inline-link" href="/projects/vibesmith/" data-i18n="projects_card_vibesmith_cta">Open project page</a>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="projects_card_ops_title">Session Ops Toolkit</h3>
+            <p data-i18n="projects_card_ops_desc">Automation routines for issue routing, verification gates, and merge completion.</p>
+            <span class="mini-label" data-i18n="projects_card_ops_cta">Internal system</span>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="projects_card_system_title">Spec-driven Site System</h3>
+            <p data-i18n="projects_card_system_desc">Bilingual IA, reusable components, and documentation contracts for scale.</p>
+            <span class="mini-label" data-i18n="projects_card_system_cta">Infrastructure</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-panel reveal" data-reveal>
+        <h2 data-i18n="contact_title">Build something sharp together.</h2>
+        <p data-i18n="contact_description">
+          If your team wants speed without chaos, we can design and ship with you.
+        </p>
+        <button id="helloBtn" class="btn btn-primary" type="button" data-i18n="cta_contact">Run readiness check</button>
+      </section>
+    </main>
+    <script src="../script.js"></script>
+  </body>
+</html>
