@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "glab": {
+      "type": "stdio",
+      "command": "glab",
+      "args": ["mcp", "serve"]
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    },
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com"
+    },
+    "flyctl": {
+      "type": "http",
+      "url": "http://127.0.0.1:8080"
+    }
+  }
+}

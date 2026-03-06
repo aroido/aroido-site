@@ -17,3 +17,10 @@ build/
 # Env files
 .env
 .env.*
+
+# Work Session artifacts
+.codex/.last-session.json
+.codex/.work-session-preflight.json
+.codex/.work-session-kpi.json
+.codex/.pending-moshi-notifications.jsonl
+.work-session-summary.md

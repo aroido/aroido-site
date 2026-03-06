@@ -1,7 +1,10 @@
 :root {
-  --bg: #f6f7fb;
+  --bg: radial-gradient(circle at 20% 20%, #eff6ff 0%, #f4f7fc 40%, #eef2f9 100%);
   --text: #1f2430;
-  --primary: #1b76ff;
+  --primary: #0066d9;
+  --primary-dark: #004ca8;
+  --muted: #6a7280;
+  --border: #d9e0eb;
 }
 
 * {
@@ -10,25 +13,107 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "IBM Plex Sans", "Noto Sans KR", "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
 }
 
 .container {
-  max-width: 760px;
+  max-width: 860px;
   margin: 80px auto;
-  padding: 24px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 40px rgba(6, 24, 44, 0.08);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.badge {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.lead {
+  color: var(--muted);
+  margin: 8px 0 24px;
+  line-height: 1.6;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card p {
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+.lang-switch {
+  display: inline-flex;
+  background: #f2f6fc;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.lang-btn {
+  min-width: 52px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lang-btn[aria-pressed="true"] {
+  background: #ffffff;
+  color: var(--primary-dark);
+  box-shadow: 0 2px 8px rgba(0, 60, 130, 0.12);
 }
 
 button {
-  padding: 10px 14px;
+  padding: 11px 16px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--primary);
   color: #fff;
   cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+@media (max-width: 720px) {
+  .container {
+    margin: 32px 14px;
+    padding: 20px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }

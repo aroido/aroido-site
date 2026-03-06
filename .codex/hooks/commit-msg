@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+msg_file="${1:-}"
+if [[ -z "$msg_file" || ! -f "$msg_file" ]]; then
+  echo "[commit-msg] commit message file is missing"
+  exit 1
+fi
+
+first_line="$(head -n1 "$msg_file")"
+pattern='^(feat|fix|docs|style|refactor|test|chore|ci|build|perf)(\([a-z0-9._/-]+\))?!?: .+'
+
+if [[ ! "$first_line" =~ $pattern ]]; then
+  cat <<'EOM'
+[commit-msg] invalid format.
+Expected: <type>(optional-scope): <subject>
+Allowed types: feat, fix, docs, style, refactor, test, chore, ci, build, perf
+EOM
+  exit 1
+fi

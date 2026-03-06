@@ -1,16 +1,34 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>aroido-web</title>
+    <title>Aroido | Team and Projects</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="Aroido builds focused products and ships Vibesmith as a flagship project."
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="container">
-      <h1>Aroido</h1>
-      <p>웹페이지 기본 프로젝트가 준비되었습니다.</p>
-      <button id="helloBtn">클릭 테스트</button>
+      <header class="topbar">
+        <p class="badge">AROIDO</p>
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+          <button class="lang-btn" data-lang="ko" type="button">KO</button>
+        </div>
+      </header>
+
+      <h1 data-i18n="hero_title"></h1>
+      <p class="lead" data-i18n="hero_description"></p>
+
+      <section class="card">
+        <h2 data-i18n="focus_title"></h2>
+        <p data-i18n="focus_description"></p>
+        <button id="helloBtn" type="button" data-i18n="cta_primary"></button>
+      </section>
     </main>
     <script src="./script.js"></script>
   </body>
