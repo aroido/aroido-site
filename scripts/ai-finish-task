@@ -105,8 +105,12 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
+glab_user() {
+  env -u GITLAB_TOKEN -u GITLAB_ACCESS_TOKEN -u OAUTH_TOKEN glab "$@"
+}
+
 if [[ "$DRY_RUN" == "false" ]]; then
-  glab auth status >/dev/null
+  glab_user auth status >/dev/null
 fi
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
@@ -152,13 +156,13 @@ run_cmd git push -u origin "$branch"
 echo "[5/6] Ensuring merge request exists..."
 mr_iid=""
 if [[ "$DRY_RUN" == "false" ]]; then
-  mr_iid="$(glab mr list --source-branch "$branch" --target-branch "$TARGET_BRANCH" --output json | jq -r '.[0].iid // empty')"
+  mr_iid="$(glab_user mr list --source-branch "$branch" --target-branch "$TARGET_BRANCH" --output json | jq -r '.[0].iid // empty')"
 fi
 
 if [[ -z "$mr_iid" ]]; then
   title="${COMMIT_MSG%%$'\n'*}"
   description="Automated by scripts/ai-finish-task\n\nCloses #$ISSUE"
-  run_cmd glab mr create \
+  run_cmd env -u GITLAB_TOKEN -u GITLAB_ACCESS_TOKEN -u OAUTH_TOKEN glab mr create \
     --source-branch "$branch" \
     --target-branch "$TARGET_BRANCH" \
     --title "$title" \
@@ -168,7 +172,7 @@ if [[ -z "$mr_iid" ]]; then
     --yes
 
   if [[ "$DRY_RUN" == "false" ]]; then
-    mr_iid="$(glab mr list --source-branch "$branch" --target-branch "$TARGET_BRANCH" --output json | jq -r '.[0].iid // empty')"
+    mr_iid="$(glab_user mr list --source-branch "$branch" --target-branch "$TARGET_BRANCH" --output json | jq -r '.[0].iid // empty')"
   fi
 else
   echo "Existing MR found: !${mr_iid}"
@@ -183,7 +187,7 @@ if [[ "$AUTO_MERGE" == "true" ]]; then
       echo "Unable to resolve MR IID for auto-merge" >&2
       exit 1
     fi
-    glab mr merge "$mr_iid" --auto-merge --squash --remove-source-branch --yes
+    glab_user mr merge "$mr_iid" --auto-merge --squash --remove-source-branch --yes
   fi
 else
   echo "[6/6] Auto-merge not requested."
