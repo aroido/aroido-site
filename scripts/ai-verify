@@ -87,6 +87,9 @@ if [[ -f script.js ]]; then
   add_check "static:js-syntax" "node --check script.js"
 fi
 add_check "static:required-files" "test -f index.html && test -f styles.css"
+if [[ -f i18n/messages.json && -f scripts/i18n-audit.sh ]]; then
+  add_check "i18n:key-parity" "./scripts/i18n-audit.sh"
+fi
 
 if [[ "$MODE" == "full" ]]; then
   add_check "static:smoke-content" "grep -q '<!doctype html' index.html || grep -qi '<html' index.html"
