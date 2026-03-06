@@ -3,31 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aroido | Team and Projects</title>
+    <title>Aroido | Hip Product Studio</title>
     <meta
       id="metaDescription"
       name="description"
-      content="Aroido builds focused products and ships Vibesmith as a flagship project."
+      content="Aroido designs and ships bold products with Vibesmith as the current flagship."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="container">
-      <header class="topbar">
-        <p class="badge">AROIDO</p>
+    <main class="site-shell">
+      <header class="topbar reveal" data-reveal>
+        <p class="brand">AROIDO</p>
+        <nav class="main-nav" aria-label="Main">
+          <a href="#projects" data-i18n="nav_projects"></a>
+          <a href="#capabilities" data-i18n="nav_capabilities"></a>
+          <a href="#contact" data-i18n="nav_contact"></a>
+        </nav>
         <div class="lang-switch" role="group" aria-label="Language switch">
           <button class="lang-btn" data-lang="en" type="button">EN</button>
           <button class="lang-btn" data-lang="ko" type="button">KO</button>
         </div>
       </header>
 
-      <h1 data-i18n="hero_title"></h1>
-      <p class="lead" data-i18n="hero_description"></p>
+      <section class="hero reveal" data-reveal>
+        <p class="kicker" data-i18n="hero_kicker"></p>
+        <h1 data-i18n="hero_title"></h1>
+        <p class="hero-description" data-i18n="hero_description"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#featured" data-i18n="cta_primary"></a>
+          <a class="btn btn-ghost" href="#projects" data-i18n="cta_secondary"></a>
+        </div>
+      </section>
 
-      <section class="card">
-        <h2 data-i18n="focus_title"></h2>
-        <p data-i18n="focus_description"></p>
-        <button id="helloBtn" type="button" data-i18n="cta_primary"></button>
+      <section id="featured" class="panel featured reveal" data-reveal>
+        <p class="panel-label" data-i18n="featured_label"></p>
+        <h2 data-i18n="featured_title"></h2>
+        <p class="panel-copy" data-i18n="featured_description"></p>
+        <ul class="featured-meta" aria-label="Featured details">
+          <li data-i18n="featured_meta_1"></li>
+          <li data-i18n="featured_meta_2"></li>
+          <li data-i18n="featured_meta_3"></li>
+        </ul>
+      </section>
+
+      <section id="projects" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">PROJECTS</p>
+          <h2 data-i18n="projects_title"></h2>
+          <p data-i18n="projects_description"></p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <p class="project-index">01</p>
+            <h3 data-i18n="project_1_title"></h3>
+            <p data-i18n="project_1_description"></p>
+          </article>
+          <article class="project-card">
+            <p class="project-index">02</p>
+            <h3 data-i18n="project_2_title"></h3>
+            <p data-i18n="project_2_description"></p>
+          </article>
+          <article class="project-card">
+            <p class="project-index">03</p>
+            <h3 data-i18n="project_3_title"></h3>
+            <p data-i18n="project_3_description"></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="capabilities" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">CAPABILITIES</p>
+          <h2 data-i18n="capabilities_title"></h2>
+        </div>
+        <div class="capability-grid">
+          <article class="capability-card">
+            <h3 data-i18n="capability_1_title"></h3>
+            <p data-i18n="capability_1_description"></p>
+          </article>
+          <article class="capability-card">
+            <h3 data-i18n="capability_2_title"></h3>
+            <p data-i18n="capability_2_description"></p>
+          </article>
+          <article class="capability-card">
+            <h3 data-i18n="capability_3_title"></h3>
+            <p data-i18n="capability_3_description"></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">STUDIO SIGNAL</p>
+          <h2 data-i18n="signal_title"></h2>
+        </div>
+        <ul class="signal-list" aria-label="Studio signal updates">
+          <li>
+            <span data-i18n="signal_item_1_date"></span>
+            <p data-i18n="signal_item_1_text"></p>
+          </li>
+          <li>
+            <span data-i18n="signal_item_2_date"></span>
+            <p data-i18n="signal_item_2_text"></p>
+          </li>
+          <li>
+            <span data-i18n="signal_item_3_date"></span>
+            <p data-i18n="signal_item_3_text"></p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact" class="contact-panel reveal" data-reveal>
+        <h2 data-i18n="contact_title"></h2>
+        <p data-i18n="contact_description"></p>
+        <button id="helloBtn" class="btn btn-primary" type="button" data-i18n="cta_contact"></button>
       </section>
     </main>
     <script src="./script.js"></script>
