@@ -111,45 +111,6 @@
       </section>
 
       <section class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">FIT BOUNDARY</p>
-          <h2 data-i18n="vibe_fit_title">Use it when component drift is already costing delivery speed.</h2>
-          <p data-i18n="vibe_fit_desc">This page makes adoption boundaries explicit so teams can decide quickly.</p>
-        </div>
-        <div class="compare-grid">
-          <article class="story-card highlight">
-            <h3 data-i18n="vibe_fit_good_title">Strong fit</h3>
-            <ul class="stack-list compact">
-              <li data-i18n="vibe_fit_good_1">Three or more active repositories share one delivery schedule.</li>
-              <li data-i18n="vibe_fit_good_2">Onboarding quality drops when owners hand off rules manually.</li>
-              <li data-i18n="vibe_fit_good_3">Release reviews often find dependency issues too late.</li>
-            </ul>
-          </article>
-          <article class="story-card">
-            <h3 data-i18n="vibe_fit_not_title">Not ideal yet</h3>
-            <ul class="stack-list compact">
-              <li data-i18n="vibe_fit_not_1">Single-repo teams with stable setup and low contributor turnover.</li>
-              <li data-i18n="vibe_fit_not_2">Teams not ready to assign owners for component review decisions.</li>
-              <li data-i18n="vibe_fit_not_3">Teams expecting one-click automation without rollout discipline.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">CURRENT LIMITS</p>
-          <h2 data-i18n="vibe_limits_title">What is intentionally out of scope in this phase</h2>
-          <p data-i18n="vibe_limits_desc">We are prioritizing measurable pilot outcomes before wider automation promises.</p>
-        </div>
-        <ul class="stack-list">
-          <li data-i18n="vibe_limits_1">No forced repository rewrite. Existing structure is mapped first.</li>
-          <li data-i18n="vibe_limits_2">Cloud-wide policy automation is a later phase, not a day-one requirement.</li>
-          <li data-i18n="vibe_limits_3">Expansion happens only after pilot metrics show repeatable gains.</li>
-        </ul>
-      </section>
-
-      <section class="section reveal" data-reveal>
         <div class="split-grid">
           <article class="story-card">
             <h2 data-i18n="vibe_problem_title">Problem</h2>
@@ -176,136 +137,6 @@
             </p>
           </article>
         </div>
-      </section>
-
-      <section class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">INTEGRATION VIEW</p>
-          <h2 data-i18n="vibe_integrations_title">Tool Fit</h2>
-        </div>
-        <div class="integration-grid">
-          <article class="story-card">
-            <h3 data-i18n="vibe_integrations_1_title">Workspace Inputs</h3>
-            <ul class="stack-list compact">
-              <li data-i18n="vibe_integrations_1_item1">Cursor rules and project context layers</li>
-              <li data-i18n="vibe_integrations_1_item2">Claude Code settings and CLAUDE.md memory hierarchy</li>
-              <li data-i18n="vibe_integrations_1_item3">Command and hook assets across multiple repos</li>
-            </ul>
-          </article>
-          <article class="story-card highlight">
-            <h3 data-i18n="vibe_integrations_2_title">Operational Outputs</h3>
-            <ul class="stack-list compact">
-              <li data-i18n="vibe_integrations_2_item1">Single inventory of active components per project</li>
-              <li data-i18n="vibe_integrations_2_item2">Dependency insights for change-risk review</li>
-              <li data-i18n="vibe_integrations_2_item3">Repeatable handoff and onboarding playbook</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">SIGNALS</p>
-          <h2 data-i18n="vibe_signal_title">Why Now</h2>
-          <p data-i18n="vibe_signal_desc">
-            Official tool behavior and real team workflows point to one repeated bottleneck: component operations break first when scale rises.
-          </p>
-        </div>
-        <ul class="stack-list">
-          <li data-i18n="vibe_signal_1">Cursor docs state that LLMs do not retain memory between completions, so reusable rules and context layers become essential.</li>
-          <li data-i18n="vibe_signal_2">Claude Code supports memory and settings at multiple scopes, which is powerful but harder to keep consistent across many repos.</li>
-          <li data-i18n="vibe_signal_3">MCP enables external tools, but server setup and approval boundaries add operational load for each project.</li>
-        </ul>
-      </section>
-
-      <section id="voice" class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">VOICE OF TEAMS</p>
-          <h2 data-i18n="vibe_voice_title">What Teams Actually Say</h2>
-          <p data-i18n="vibe_voice_desc">
-            We turned repeated field complaints into one operating flow so teams can ship faster without context chaos.
-          </p>
-        </div>
-        <div class="voice-tabs" role="tablist" aria-label="Voice scenarios">
-          <button
-            class="voice-tab is-active"
-            id="voice-tab-1"
-            role="tab"
-            type="button"
-            aria-selected="true"
-            aria-controls="voice-panel-1"
-            data-voice-tab="1"
-            data-i18n="vibe_voice_tab_1"
-          >
-            Engineering lead
-          </button>
-          <button
-            class="voice-tab"
-            id="voice-tab-2"
-            role="tab"
-            type="button"
-            aria-selected="false"
-            aria-controls="voice-panel-2"
-            data-voice-tab="2"
-            data-i18n="vibe_voice_tab_2"
-          >
-            Product engineer
-          </button>
-          <button
-            class="voice-tab"
-            id="voice-tab-3"
-            role="tab"
-            type="button"
-            aria-selected="false"
-            aria-controls="voice-panel-3"
-            data-voice-tab="3"
-            data-i18n="vibe_voice_tab_3"
-          >
-            Platform owner
-          </button>
-        </div>
-        <div class="voice-panels">
-          <article class="voice-panel is-active" id="voice-panel-1" role="tabpanel" aria-labelledby="voice-tab-1" data-voice-panel="1">
-            <h3 class="voice-role" data-i18n="vibe_voice_1_role">Engineering lead</h3>
-            <div class="voice-dialog">
-              <p class="mini-label" data-i18n="vibe_voice_problem_label">What they say</p>
-              <p class="voice-quote" data-i18n="vibe_voice_1_quote">"Why does this repo behave differently even with the same prompt?"</p>
-            </div>
-            <div class="voice-answer">
-              <p class="mini-label" data-i18n="vibe_voice_solution_label">How VibeSmith answers</p>
-              <p class="voice-solution" data-i18n="vibe_voice_1_solution">
-                VibeSmith compares active rules, memory layers, and settings side by side to surface drift before release.
-              </p>
-            </div>
-          </article>
-          <article class="voice-panel" id="voice-panel-2" role="tabpanel" aria-labelledby="voice-tab-2" data-voice-panel="2" hidden>
-            <h3 class="voice-role" data-i18n="vibe_voice_2_role">Product engineer</h3>
-            <div class="voice-dialog">
-              <p class="mini-label" data-i18n="vibe_voice_problem_label">What they say</p>
-              <p class="voice-quote" data-i18n="vibe_voice_2_quote">"Onboarding takes days because no one knows which command set is current."</p>
-            </div>
-            <div class="voice-answer">
-              <p class="mini-label" data-i18n="vibe_voice_solution_label">How VibeSmith answers</p>
-              <p class="voice-solution" data-i18n="vibe_voice_2_solution">
-                One inventory and owner map make the current component baseline obvious on day one.
-              </p>
-            </div>
-          </article>
-          <article class="voice-panel" id="voice-panel-3" role="tabpanel" aria-labelledby="voice-tab-3" data-voice-panel="3" hidden>
-            <h3 class="voice-role" data-i18n="vibe_voice_3_role">Platform owner</h3>
-            <div class="voice-dialog">
-              <p class="mini-label" data-i18n="vibe_voice_problem_label">What they say</p>
-              <p class="voice-quote" data-i18n="vibe_voice_3_quote">"MCP gave us power, but now approvals and server scopes are another fire."</p>
-            </div>
-            <div class="voice-answer">
-              <p class="mini-label" data-i18n="vibe_voice_solution_label">How VibeSmith answers</p>
-              <p class="voice-solution" data-i18n="vibe_voice_3_solution">
-                Dependency and boundary visibility helps teams review MCP risk earlier, before rollout blocks delivery.
-              </p>
-            </div>
-          </article>
-        </div>
-        <p class="voice-footnote" data-i18n="vibe_voice_footer">These scenarios come from recurring multi-repo AI operations patterns.</p>
       </section>
 
       <section class="section reveal" data-reveal>
@@ -395,31 +226,6 @@
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow">BEFORE / AFTER</p>
-          <h2 data-i18n="vibe_ba_title">Before/After</h2>
-        </div>
-        <div class="compare-grid">
-          <article class="story-card">
-            <h3 data-i18n="vibe_before_title">Before</h3>
-            <ul class="stack-list compact">
-              <li data-i18n="vibe_before_1">Rules, commands, and hooks spread across repo-specific files</li>
-              <li data-i18n="vibe_before_2">Hidden dependencies discovered late during delivery</li>
-              <li data-i18n="vibe_before_3">Onboarding relies on tribal knowledge and manual handoff</li>
-            </ul>
-          </article>
-          <article class="story-card highlight">
-            <h3 data-i18n="vibe_after_title">After</h3>
-            <ul class="stack-list compact">
-              <li data-i18n="vibe_after_1">One inventory view for active AI coding components</li>
-              <li data-i18n="vibe_after_2">Dependency graph and search surface risky coupling earlier</li>
-              <li data-i18n="vibe_after_3">Repeatable project setup with clearer team handoff</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section reveal" data-reveal>
-        <div class="section-head">
           <p class="section-eyebrow">CAPABILITIES</p>
           <h2 data-i18n="vibe_cap_title">Core Capabilities</h2>
         </div>
@@ -439,33 +245,6 @@
           <article class="story-card">
             <h3 data-i18n="vibe_cap_4_title">Scale path</h3>
             <p data-i18n="vibe_cap_4_body">Start local-first now and evolve to team-level workflows in the next phase.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="metrics" class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">PILOT METRICS</p>
-          <h2 data-i18n="vibe_metrics_title">Pilot Metrics</h2>
-          <p data-i18n="vibe_metrics_desc">
-            Pilot success is measured against baseline week and target week, not by impressions.
-          </p>
-        </div>
-        <div class="metric-grid">
-          <article class="metric-card">
-            <p class="mini-label" data-i18n="vibe_metric_1_label">Metric 01</p>
-            <h3 data-i18n="vibe_metric_1_title">Setup time</h3>
-            <p data-i18n="vibe_metric_1_body">How fast a new repository reaches stable component operation.</p>
-          </article>
-          <article class="metric-card">
-            <p class="mini-label" data-i18n="vibe_metric_2_label">Metric 02</p>
-            <h3 data-i18n="vibe_metric_2_title">Context stability</h3>
-            <p data-i18n="vibe_metric_2_body">How consistently rules and memory layers remain aligned across sessions.</p>
-          </article>
-          <article class="metric-card">
-            <p class="mini-label" data-i18n="vibe_metric_3_label">Metric 03</p>
-            <h3 data-i18n="vibe_metric_3_title">Release confidence</h3>
-            <p data-i18n="vibe_metric_3_body">How early hidden coupling and risky configuration changes are surfaced.</p>
           </article>
         </div>
       </section>
@@ -513,68 +292,6 @@
             </ul>
           </article>
         </div>
-      </section>
-
-      <section id="gates" class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">DECISION GATES</p>
-          <h2 data-i18n="vibe_gate_title">When expansion is justified</h2>
-        </div>
-        <div class="compare-grid">
-          <article class="story-card">
-            <h3 data-i18n="vibe_gate_keep_title">Keep pilot scope if</h3>
-            <ul class="stack-list compact">
-              <li data-i18n="vibe_gate_keep_1">Setup time has not improved enough to clear onboarding pain.</li>
-              <li data-i18n="vibe_gate_keep_2">Context mismatches still appear in core delivery paths.</li>
-              <li data-i18n="vibe_gate_keep_3">Review owners and policies are not yet stable.</li>
-            </ul>
-          </article>
-          <article class="story-card highlight">
-            <h3 data-i18n="vibe_gate_expand_title">Expand rollout if</h3>
-            <ul class="stack-list compact">
-              <li data-i18n="vibe_gate_expand_1">Setup time reduction is sustained across new repositories.</li>
-              <li data-i18n="vibe_gate_expand_2">Risky coupling is surfaced earlier than current release checkpoints.</li>
-              <li data-i18n="vibe_gate_expand_3">Team members follow one shared operating flow with low exception rate.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">FAQ</p>
-          <h2 data-i18n="vibe_faq_title">Adoption FAQ</h2>
-        </div>
-        <div class="faq-list">
-          <article class="faq-item">
-            <h3 data-i18n="vibe_faq_1_q">Do we need to change our current repository structure?</h3>
-            <p data-i18n="vibe_faq_1_a">No full rewrite is required. Pilot rollout maps existing assets first and standardizes gradually.</p>
-          </article>
-          <article class="faq-item">
-            <h3 data-i18n="vibe_faq_2_q">Can we use this with both Cursor and Claude Code at once?</h3>
-            <p data-i18n="vibe_faq_2_a">Yes. The goal is to keep component operations consistent across both toolchains.</p>
-          </article>
-          <article class="faq-item">
-            <h3 data-i18n="vibe_faq_3_q">What does success look like in the first month?</h3>
-            <p data-i18n="vibe_faq_3_a">Faster setup, fewer context mismatches, and earlier detection of risky dependencies.</p>
-          </article>
-          <article class="faq-item">
-            <h3 data-i18n="vibe_faq_4_q">How do we start without overcommitting?</h3>
-            <p data-i18n="vibe_faq_4_a">Run a scoped 2-4 week pilot on one active project, then expand only with measured gains.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="section-eyebrow">STATUS</p>
-          <h2 data-i18n="vibe_status_title">Status & Roadmap</h2>
-        </div>
-        <ul class="stack-list">
-          <li data-i18n="vibe_status_1">Phase 1: local-first operation for power users and compact product teams</li>
-          <li data-i18n="vibe_status_2">Phase 2: team beta workflows, shared policies, and cloud expansion</li>
-          <li data-i18n="vibe_status_3">Current priority: prove setup speed, context stability, and release confidence in pilot cycles</li>
-        </ul>
       </section>
 
       <section id="contact" class="contact-panel reveal" data-reveal>
