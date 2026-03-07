@@ -8,6 +8,12 @@
 /work-session [time] [type] [options]
 ```
 
+장기 무인 반복 개선(24h급)이 목적이면 `/work-session` 대신 아래를 사용한다.
+
+```bash
+./scripts/long-horizon-loop.sh --hours 24
+```
+
 - `time`: `2h`, `30m` 형식. 기본값 무제한.
 - `type`: `all`(기본), `frontend`, `backend`, `docs`, `api-spec`
 - options:

@@ -68,3 +68,13 @@
   - `scripts/work-session-bootstrap-labels.sh`
   - `scripts/work-session-kpi.sh`
   - `scripts/notify-moshi.sh`
+  - `scripts/long-horizon-loop.sh`
+
+## Long-Horizon Memory Templates
+
+장기 연속 실행용 템플릿은 아래 경로를 사용한다.
+
+- `.codex/templates/long-horizon/Prompt.md`
+- `.codex/templates/long-horizon/Plan.md`
+- `.codex/templates/long-horizon/Implement.md`
+- `.codex/templates/long-horizon/Documentation.md`
