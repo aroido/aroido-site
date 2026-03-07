@@ -20,6 +20,7 @@ const helloBtn = document.getElementById("helloBtn");
 const metaDescription = document.getElementById("metaDescription");
 const langButtons = Array.from(document.querySelectorAll(".lang-btn"));
 const revealNodes = Array.from(document.querySelectorAll("[data-reveal]"));
+const topbar = document.querySelector(".topbar");
 const titleKey = document.documentElement.getAttribute("data-title-key") || "page_title";
 const descriptionKey = document.documentElement.getAttribute("data-description-key") || "meta_description";
 
@@ -135,6 +136,67 @@ function initializeRevealMotion() {
   revealNodes.forEach((node) => observer.observe(node));
 }
 
+function getAnchorOffset() {
+  if (!topbar) {
+    return 16;
+  }
+
+  const style = window.getComputedStyle(topbar);
+  const stickyTop = Number.parseFloat(style.top) || 0;
+  const height = topbar.getBoundingClientRect().height || 0;
+  return Math.ceil(height + stickyTop + 12);
+}
+
+function scrollToHashTarget(hash, behavior = "smooth") {
+  if (!hash || hash === "#") {
+    return;
+  }
+
+  const target = document.querySelector(hash);
+  if (!target) {
+    return;
+  }
+
+  const targetTop = target.getBoundingClientRect().top + window.scrollY;
+  const offsetTop = Math.max(0, targetTop - getAnchorOffset());
+  window.scrollTo({ top: offsetTop, behavior });
+}
+
+function initializeAnchorOffsets() {
+  const inPageLinks = Array.from(document.querySelectorAll('a[href^="#"]')).filter((node) => {
+    const href = node.getAttribute("href");
+    return typeof href === "string" && href.length > 1;
+  });
+
+  inPageLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const hash = link.getAttribute("href");
+      if (!hash) {
+        return;
+      }
+
+      const target = document.querySelector(hash);
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      scrollToHashTarget(hash, "smooth");
+      history.replaceState(null, "", hash);
+    });
+  });
+
+  window.addEventListener("hashchange", () => {
+    scrollToHashTarget(window.location.hash, "auto");
+  });
+
+  if (window.location.hash) {
+    setTimeout(() => {
+      scrollToHashTarget(window.location.hash, "auto");
+    }, 0);
+  }
+}
+
 async function loadTranslations() {
   try {
     const response = await fetch("/i18n/messages.json", { cache: "no-store" });
@@ -167,4 +229,5 @@ if (helloBtn) {
 loadTranslations().finally(() => {
   initializeLanguage();
   initializeRevealMotion();
+  initializeAnchorOffsets();
 });

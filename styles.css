@@ -13,6 +13,10 @@
   --accent-cyan: #10dffb;
   --accent-pink: #ff4da6;
   --shadow: 0 16px 42px rgba(15, 16, 14, 0.14);
+  --section-gap: 1.6rem;
+  --card-gap: 0.98rem;
+  --card-pad: 1.08rem;
+  --anchor-offset: 7.2rem;
 }
 
 * {
@@ -23,6 +27,11 @@ html,
 body {
   margin: 0;
   min-height: 100%;
+  overflow-x: clip;
+}
+
+html {
+  scroll-padding-top: var(--anchor-offset);
 }
 
 body {
@@ -61,12 +70,12 @@ body::before {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 0.8rem;
-  padding: 0.65rem 0.85rem;
-  margin-bottom: 2.8rem;
+  gap: 0.86rem;
+  padding: 0.68rem 0.92rem;
+  margin-bottom: 2.35rem;
   border: 2px solid var(--line);
   border-radius: 999px;
-  background: var(--surface-strong);
+  background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.09);
   backdrop-filter: blur(4px);
 }
@@ -233,12 +242,20 @@ body::before {
 .section,
 .contact-panel {
   position: relative;
-  margin-top: 1.35rem;
+  margin-top: var(--section-gap);
   border: 2px solid var(--line);
   border-radius: 24px;
   background: var(--surface);
   box-shadow: var(--shadow);
   overflow: hidden;
+}
+
+.hero,
+.page-hero,
+.panel,
+.section,
+.contact-panel {
+  scroll-margin-top: var(--anchor-offset);
 }
 
 .panel,
@@ -316,31 +333,31 @@ body::before {
 .route-grid,
 .split-grid {
   display: grid;
-  gap: 0.86rem;
+  gap: var(--card-gap);
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .compare-grid {
   display: grid;
-  gap: 0.86rem;
+  gap: var(--card-gap);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .media-layout {
   display: grid;
-  gap: 0.86rem;
+  gap: var(--card-gap);
   grid-template-columns: 1.45fr 1fr;
 }
 
 .media-stack {
   display: grid;
-  gap: 0.86rem;
+  gap: var(--card-gap);
   grid-template-columns: 1fr;
 }
 
 .media-proof-grid {
   display: grid;
-  gap: 0.86rem;
+  gap: var(--card-gap);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -425,14 +442,14 @@ body::before {
 
 .focus-grid {
   display: grid;
-  gap: 0.86rem;
+  gap: var(--card-gap);
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .focus-card {
   border: 2px solid var(--line);
   border-radius: 17px;
-  padding: 1rem;
+  padding: var(--card-pad);
   background: rgba(255, 255, 255, 0.76);
 }
 
@@ -453,20 +470,20 @@ body::before {
 
 .integration-grid {
   display: grid;
-  gap: 0.86rem;
+  gap: var(--card-gap);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .metric-grid {
   display: grid;
-  gap: 0.86rem;
+  gap: var(--card-gap);
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .metric-card {
   border: 2px solid var(--line);
   border-radius: 17px;
-  padding: 1rem;
+  padding: var(--card-pad);
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(205, 255, 38, 0.16)),
     rgba(255, 255, 255, 0.86);
@@ -485,14 +502,14 @@ body::before {
 
 .faq-list {
   display: grid;
-  gap: 0.86rem;
+  gap: var(--card-gap);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .faq-item {
   border: 2px solid var(--line);
   border-radius: 17px;
-  padding: 1rem;
+  padding: var(--card-pad);
   background: rgba(255, 255, 255, 0.78);
 }
 
@@ -513,7 +530,7 @@ body::before {
   position: relative;
   border: 2px solid var(--line);
   border-radius: 17px;
-  padding: 1rem;
+  padding: var(--card-pad);
   background: rgba(255, 255, 255, 0.76);
   text-decoration: none;
   color: inherit;
@@ -576,14 +593,26 @@ body::before {
 }
 
 @media (max-width: 980px) {
+  :root {
+    --anchor-offset: 9.5rem;
+  }
+
   .topbar {
     grid-template-columns: 1fr;
     border-radius: 20px;
-    padding: 0.75rem;
+    padding: 0.8rem;
   }
 
   .main-nav {
-    justify-content: flex-start;
+    justify-content: stretch;
+    width: 100%;
+    gap: 0.35rem;
+  }
+
+  .main-nav a {
+    flex: 1 1 calc(25% - 0.35rem);
+    text-align: center;
+    padding: 0.48rem 0.3rem;
   }
 
   .route-grid,
@@ -621,6 +650,13 @@ body::before {
     padding-top: 0.7rem;
   }
 
+  .topbar {
+    position: static;
+    top: auto;
+    margin-bottom: 1.35rem;
+    backdrop-filter: none;
+  }
+
   .hero,
   .page-hero,
   .panel,
@@ -632,7 +668,8 @@ body::before {
 
   .hero h1,
   .page-hero h1 {
-    max-width: 9ch;
+    max-width: 10ch;
+    font-size: clamp(2.8rem, 17vw, 4.6rem);
   }
 
   .route-grid,
@@ -656,5 +693,13 @@ body::before {
 
   .main-nav a {
     font-size: 0.78rem;
+  }
+
+  .lang-switch {
+    width: 100%;
+  }
+
+  .lang-btn {
+    flex: 1 1 auto;
   }
 }
