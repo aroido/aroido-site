@@ -1,0 +1,20 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="26" fill="#111827"/>
+  <text x="58" y="86" fill="#F2F6FB" font-size="32" font-family="'Space Grotesk', sans-serif" font-weight="700">Operational Search</text>
+  <rect x="58" y="112" width="820" height="14" rx="7" fill="#5E748A"/>
+
+  <rect x="58" y="160" width="1084" height="72" rx="14" fill="#1C2B3E"/>
+  <rect x="82" y="184" width="420" height="24" rx="12" fill="#2A4159"/>
+  <rect x="956" y="180" width="164" height="32" rx="10" fill="#CDFF26"/>
+
+  <rect x="58" y="258" width="350" height="444" rx="14" fill="#172638"/>
+  <rect x="432" y="258" width="710" height="444" rx="14" fill="#172638"/>
+
+  <rect x="82" y="292" width="302" height="14" rx="7" fill="#4B6278"/>
+  <rect x="82" y="324" width="248" height="14" rx="7" fill="#4B6278"/>
+  <rect x="82" y="356" width="280" height="14" rx="7" fill="#4B6278"/>
+
+  <rect x="456" y="292" width="662" height="92" rx="12" fill="#22354A"/>
+  <rect x="456" y="404" width="662" height="92" rx="12" fill="#22354A"/>
+  <rect x="456" y="516" width="662" height="92" rx="12" fill="#22354A"/>
+</svg>

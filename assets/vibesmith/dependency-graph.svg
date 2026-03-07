@@ -1,0 +1,24 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="26" fill="#101723"/>
+  <text x="62" y="88" fill="#F2F6FB" font-size="32" font-family="'Space Grotesk', sans-serif" font-weight="700">Dependency Graph</text>
+  <text x="62" y="124" fill="#90A4B7" font-size="18" font-family="'IBM Plex Mono', monospace">cross-repo component coupling map</text>
+
+  <circle cx="230" cy="380" r="42" fill="#22344A"/>
+  <circle cx="430" cy="230" r="36" fill="#2A415A"/>
+  <circle cx="430" cy="530" r="36" fill="#2A415A"/>
+  <circle cx="660" cy="380" r="50" fill="#2F4A65"/>
+  <circle cx="900" cy="250" r="38" fill="#2A415A"/>
+  <circle cx="930" cy="520" r="40" fill="#2A415A"/>
+
+  <line x1="230" y1="380" x2="430" y2="230" stroke="#4D6784" stroke-width="4"/>
+  <line x1="230" y1="380" x2="430" y2="530" stroke="#4D6784" stroke-width="4"/>
+  <line x1="430" y1="230" x2="660" y2="380" stroke="#4D6784" stroke-width="4"/>
+  <line x1="430" y1="530" x2="660" y2="380" stroke="#4D6784" stroke-width="4"/>
+  <line x1="660" y1="380" x2="900" y2="250" stroke="#4D6784" stroke-width="4"/>
+  <line x1="660" y1="380" x2="930" y2="520" stroke="#4D6784" stroke-width="4"/>
+
+  <rect x="62" y="620" width="1076" height="82" rx="14" fill="#162536"/>
+  <rect x="90" y="648" width="190" height="28" rx="10" fill="#CDFF26"/>
+  <rect x="302" y="648" width="180" height="28" rx="10" fill="#10DFFB"/>
+  <rect x="502" y="648" width="220" height="28" rx="10" fill="#FF5B1F"/>
+</svg>

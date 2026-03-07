@@ -1,0 +1,18 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="26" fill="#101924"/>
+  <text x="60" y="88" fill="#F3F7FB" font-size="32" font-family="'Space Grotesk', sans-serif" font-weight="700">Graph Detail</text>
+
+  <rect x="60" y="130" width="1080" height="570" rx="16" fill="#18283A"/>
+  <circle cx="310" cy="410" r="36" fill="#2B425C"/>
+  <circle cx="500" cy="280" r="32" fill="#2B425C"/>
+  <circle cx="500" cy="540" r="32" fill="#2B425C"/>
+  <circle cx="730" cy="410" r="44" fill="#31506C"/>
+  <circle cx="920" cy="290" r="34" fill="#2B425C"/>
+  <circle cx="930" cy="540" r="34" fill="#2B425C"/>
+  <line x1="310" y1="410" x2="500" y2="280" stroke="#5E7690" stroke-width="4"/>
+  <line x1="310" y1="410" x2="500" y2="540" stroke="#5E7690" stroke-width="4"/>
+  <line x1="500" y1="280" x2="730" y2="410" stroke="#5E7690" stroke-width="4"/>
+  <line x1="500" y1="540" x2="730" y2="410" stroke="#5E7690" stroke-width="4"/>
+  <line x1="730" y1="410" x2="920" y2="290" stroke="#5E7690" stroke-width="4"/>
+  <line x1="730" y1="410" x2="930" y2="540" stroke="#5E7690" stroke-width="4"/>
+</svg>

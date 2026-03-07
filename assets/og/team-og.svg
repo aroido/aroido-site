@@ -1,0 +1,11 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#111826"/>
+  <rect x="58" y="58" width="1084" height="514" rx="26" stroke="#33495F" stroke-width="2"/>
+  <text x="96" y="184" fill="#F3F8FC" font-size="58" font-family="'Space Grotesk', sans-serif" font-weight="700">Aroido Team</text>
+  <text x="96" y="250" fill="#D5E3EE" font-size="36" font-family="'Space Grotesk', sans-serif" font-weight="600">Small team, heavy output</text>
+  <text x="96" y="302" fill="#90A5B8" font-size="25" font-family="'IBM Plex Mono', monospace">product direction • design engineering • delivery ops</text>
+  <rect x="96" y="348" width="1028" height="162" rx="18" fill="#18283A"/>
+  <rect x="132" y="390" width="310" height="82" rx="14" fill="#22374F"/>
+  <rect x="468" y="390" width="310" height="82" rx="14" fill="#22374F"/>
+  <rect x="804" y="390" width="310" height="82" rx="14" fill="#22374F"/>
+</svg>

@@ -9,7 +9,7 @@
     en: {
       page_title: "Aroido | Hip Product Studio",
       meta_description:
-        "Aroido designs and ships bold products with Vibesmith as the current flagship.",
+        "Aroido designs and ships bold products with VibeSmith as the current flagship.",
       hello_alert: "Aroido readiness check is complete.",
     },
     ko: {
@@ -23,6 +23,7 @@
     helloBtn: document.getElementById("helloBtn"),
     metaDescription: document.getElementById("metaDescription"),
     langButtons: Array.from(document.querySelectorAll(".lang-btn")),
+    trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
     voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
     voicePanels: Array.from(document.querySelectorAll("[data-voice-panel]")),
     revealNodes: Array.from(document.querySelectorAll("[data-reveal]")),
@@ -43,10 +44,6 @@
     translations: fallbackTranslations,
   };
 
-  function setCurrentLanguage(language) {
-    state.currentLanguage = normalizeLanguage(language);
-  }
-
   function isPlainObject(value) {
     if (!value || typeof value !== "object" || Array.isArray(value)) {
       return false;
@@ -54,22 +51,6 @@
 
     const prototype = Object.getPrototypeOf(value);
     return prototype === Object.prototype || prototype === null;
-  }
-
-  function setTranslations(translations) {
-    if (!isPlainObject(translations)) {
-      return;
-    }
-
-    state.translations = translations;
-  }
-
-  function getCurrentLanguage() {
-    return state.currentLanguage;
-  }
-
-  function getTranslationsState() {
-    return state.translations;
   }
 
   function normalizeLanguage(value) {
@@ -80,6 +61,33 @@
     const lower = value.toLowerCase();
     const detected = SUPPORTED_LANGUAGES.find((language) => lower.startsWith(language));
     return detected || DEFAULT_LANGUAGE;
+  }
+
+  function getQueryLanguage() {
+    try {
+      const raw = new URLSearchParams(window.location.search).get("lang");
+      if (!raw || typeof raw !== "string") {
+        return null;
+      }
+
+      const lower = raw.toLowerCase();
+      const match = SUPPORTED_LANGUAGES.find((language) => lower.startsWith(language));
+      return match || null;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function syncLanguageQuery(language) {
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", language);
+      const query = url.searchParams.toString();
+      const nextUrl = `${url.pathname}${query ? `?${query}` : ""}${url.hash}`;
+      window.history.replaceState(null, "", nextUrl);
+    } catch (_error) {
+      /* Ignore URL write errors in restricted contexts */
+    }
   }
 
   function getStoredLanguage() {
@@ -98,6 +106,30 @@
     }
   }
 
+  function setCurrentLanguage(language) {
+    state.currentLanguage = normalizeLanguage(language);
+  }
+
+  function getCurrentLanguage() {
+    return state.currentLanguage;
+  }
+
+  function setTranslations(translations) {
+    if (!isPlainObject(translations)) {
+      return;
+    }
+    state.translations = translations;
+  }
+
+  function getTranslationsState() {
+    return state.translations;
+  }
+
+  function getTranslationsForLanguage(language) {
+    const translations = getTranslationsState();
+    return translations[language] || {};
+  }
+
   function getTranslation(language, key) {
     const languageTable = getTranslationsForLanguage(language);
     const defaultTable = getTranslationsForLanguage(DEFAULT_LANGUAGE);
@@ -111,11 +143,6 @@
     }
 
     return undefined;
-  }
-
-  function getTranslationsForLanguage(language) {
-    const translations = getTranslationsState();
-    return translations[language] || {};
   }
 
   function updateHeadMetadata(language) {
@@ -153,26 +180,25 @@
     });
   }
 
-  function renderLanguage(language) {
-    document.documentElement.lang = language;
-    updateHeadMetadata(language);
-    updateTextNodes(language);
-    updateLanguageButtons(language);
-  }
-
-  function persistLanguageSelection(language) {
-    setCurrentLanguage(language);
-    setStoredLanguage(language);
-  }
-
-  function applyLanguage(language) {
+  function applyLanguage(language, options = {}) {
+    const { syncQuery = true } = options;
     const nextLanguage = normalizeLanguage(language);
-    renderLanguage(nextLanguage);
-    persistLanguageSelection(nextLanguage);
+
+    document.documentElement.lang = nextLanguage;
+    updateHeadMetadata(nextLanguage);
+    updateTextNodes(nextLanguage);
+    updateLanguageButtons(nextLanguage);
+
+    setCurrentLanguage(nextLanguage);
+    setStoredLanguage(nextLanguage);
+
+    if (syncQuery) {
+      syncLanguageQuery(nextLanguage);
+    }
   }
 
   function initializeLanguage() {
-    const preferred = getStoredLanguage() || navigator.language || DEFAULT_LANGUAGE;
+    const preferred = getQueryLanguage() || getStoredLanguage() || navigator.language || DEFAULT_LANGUAGE;
     applyLanguage(preferred);
   }
 
@@ -185,6 +211,26 @@
     });
   }
 
+  function trackEvent(name, properties = {}) {
+    if (!name || typeof name !== "string") {
+      return;
+    }
+
+    const payload = {
+      page_path: window.location.pathname,
+      language: getCurrentLanguage(),
+      ...properties,
+    };
+
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({ event: name, ...payload });
+    }
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", name, payload);
+    }
+  }
+
   function initializeHelloButton() {
     if (!dom.helloBtn) {
       return;
@@ -193,6 +239,26 @@
     dom.helloBtn.addEventListener("click", () => {
       const fallback = fallbackTranslations.en.hello_alert;
       alert(getTranslation(getCurrentLanguage(), "hello_alert") || fallback);
+    });
+  }
+
+  function initializeTrackedEvents() {
+    if (dom.trackedNodes.length === 0) {
+      return;
+    }
+
+    dom.trackedNodes.forEach((node) => {
+      node.addEventListener("click", () => {
+        const eventName = node.getAttribute("data-track-event");
+        if (!eventName) {
+          return;
+        }
+
+        trackEvent(eventName, {
+          label: node.getAttribute("data-track-label") || "",
+          target: node.getAttribute("href") || node.id || node.tagName.toLowerCase(),
+        });
+      });
     });
   }
 
@@ -251,7 +317,7 @@
       tabs.find((tab) => tab.getAttribute("aria-selected") === "true") || tabs[0];
     const initialId = initialTab.getAttribute("data-voice-tab");
 
-    function activateVoicePanel(panelId, shouldFocus = false) {
+    function activateVoicePanel(panelId, shouldFocus = false, shouldTrack = false) {
       tabs.forEach((tab) => {
         const isActive = tab.getAttribute("data-voice-tab") === panelId;
         tab.setAttribute("aria-selected", String(isActive));
@@ -267,13 +333,17 @@
         panel.classList.toggle("is-active", isActive);
         panel.hidden = !isActive;
       });
+
+      if (shouldTrack) {
+        trackEvent("voice_tab_switch", { tab_id: panelId });
+      }
     }
 
     tabs.forEach((tab, index) => {
       tab.addEventListener("click", () => {
         const panelId = tab.getAttribute("data-voice-tab");
         if (panelId) {
-          activateVoicePanel(panelId);
+          activateVoicePanel(panelId, false, true);
         }
       });
 
@@ -299,7 +369,7 @@
         const nextTab = tabs[nextIndex];
         const panelId = nextTab.getAttribute("data-voice-tab");
         if (panelId) {
-          activateVoicePanel(panelId, true);
+          activateVoicePanel(panelId, true, true);
         }
       });
     });
@@ -400,24 +470,19 @@
     }
   }
 
-  function applyTranslationsPayload(payload) {
-    if (!payload) {
-      return;
-    }
-
-    setTranslations(payload);
-  }
-
   async function loadTranslations() {
     const payload = await fetchTranslationsPayload();
-    applyTranslationsPayload(payload);
+    if (payload) {
+      setTranslations(payload);
+    }
   }
 
   function reapplyCurrentLanguage() {
-    applyLanguage(getCurrentLanguage());
+    applyLanguage(getCurrentLanguage(), { syncQuery: false });
   }
 
   function runSynchronousBootstrap() {
+    initializeTrackedEvents();
     initializeLanguageSwitch();
     initializeHelloButton();
     initializeVoicePanels();
