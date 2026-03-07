@@ -154,7 +154,7 @@
         </ul>
       </section>
 
-      <section class="section reveal" data-reveal>
+      <section id="voice" class="section reveal" data-reveal>
         <div class="section-head">
           <p class="section-eyebrow">VOICE OF TEAMS</p>
           <h2 data-i18n="vibe_voice_title">What Teams Actually Say</h2>
@@ -162,29 +162,86 @@
             We turned repeated field complaints into one operating flow so teams can ship faster without context chaos.
           </p>
         </div>
-        <div class="voice-grid">
-          <article class="voice-card">
-            <p class="mini-label" data-i18n="vibe_voice_1_role">Engineering lead</p>
-            <p class="voice-quote" data-i18n="vibe_voice_1_quote">"Why does this repo behave differently even with the same prompt?"</p>
-            <p class="voice-solution" data-i18n="vibe_voice_1_solution">
-              VibeSmith compares active rules, memory layers, and settings side by side to surface drift before release.
-            </p>
+        <div class="voice-tabs" role="tablist" aria-label="Voice scenarios">
+          <button
+            class="voice-tab is-active"
+            id="voice-tab-1"
+            role="tab"
+            type="button"
+            aria-selected="true"
+            aria-controls="voice-panel-1"
+            data-voice-tab="1"
+            data-i18n="vibe_voice_tab_1"
+          >
+            Engineering lead
+          </button>
+          <button
+            class="voice-tab"
+            id="voice-tab-2"
+            role="tab"
+            type="button"
+            aria-selected="false"
+            aria-controls="voice-panel-2"
+            data-voice-tab="2"
+            data-i18n="vibe_voice_tab_2"
+          >
+            Product engineer
+          </button>
+          <button
+            class="voice-tab"
+            id="voice-tab-3"
+            role="tab"
+            type="button"
+            aria-selected="false"
+            aria-controls="voice-panel-3"
+            data-voice-tab="3"
+            data-i18n="vibe_voice_tab_3"
+          >
+            Platform owner
+          </button>
+        </div>
+        <div class="voice-panels">
+          <article class="voice-panel is-active" id="voice-panel-1" role="tabpanel" aria-labelledby="voice-tab-1" data-voice-panel="1">
+            <h3 class="voice-role" data-i18n="vibe_voice_1_role">Engineering lead</h3>
+            <div class="voice-dialog">
+              <p class="mini-label" data-i18n="vibe_voice_problem_label">What they say</p>
+              <p class="voice-quote" data-i18n="vibe_voice_1_quote">"Why does this repo behave differently even with the same prompt?"</p>
+            </div>
+            <div class="voice-answer">
+              <p class="mini-label" data-i18n="vibe_voice_solution_label">How VibeSmith answers</p>
+              <p class="voice-solution" data-i18n="vibe_voice_1_solution">
+                VibeSmith compares active rules, memory layers, and settings side by side to surface drift before release.
+              </p>
+            </div>
           </article>
-          <article class="voice-card">
-            <p class="mini-label" data-i18n="vibe_voice_2_role">Product engineer</p>
-            <p class="voice-quote" data-i18n="vibe_voice_2_quote">"Onboarding takes days because no one knows which command set is current."</p>
-            <p class="voice-solution" data-i18n="vibe_voice_2_solution">
-              One inventory and owner map make the current component baseline obvious on day one.
-            </p>
+          <article class="voice-panel" id="voice-panel-2" role="tabpanel" aria-labelledby="voice-tab-2" data-voice-panel="2" hidden>
+            <h3 class="voice-role" data-i18n="vibe_voice_2_role">Product engineer</h3>
+            <div class="voice-dialog">
+              <p class="mini-label" data-i18n="vibe_voice_problem_label">What they say</p>
+              <p class="voice-quote" data-i18n="vibe_voice_2_quote">"Onboarding takes days because no one knows which command set is current."</p>
+            </div>
+            <div class="voice-answer">
+              <p class="mini-label" data-i18n="vibe_voice_solution_label">How VibeSmith answers</p>
+              <p class="voice-solution" data-i18n="vibe_voice_2_solution">
+                One inventory and owner map make the current component baseline obvious on day one.
+              </p>
+            </div>
           </article>
-          <article class="voice-card highlight">
-            <p class="mini-label" data-i18n="vibe_voice_3_role">Platform owner</p>
-            <p class="voice-quote" data-i18n="vibe_voice_3_quote">"MCP gave us power, but now approvals and server scopes are another fire."</p>
-            <p class="voice-solution" data-i18n="vibe_voice_3_solution">
-              Dependency and boundary visibility helps teams review MCP risk earlier, before rollout blocks delivery.
-            </p>
+          <article class="voice-panel" id="voice-panel-3" role="tabpanel" aria-labelledby="voice-tab-3" data-voice-panel="3" hidden>
+            <h3 class="voice-role" data-i18n="vibe_voice_3_role">Platform owner</h3>
+            <div class="voice-dialog">
+              <p class="mini-label" data-i18n="vibe_voice_problem_label">What they say</p>
+              <p class="voice-quote" data-i18n="vibe_voice_3_quote">"MCP gave us power, but now approvals and server scopes are another fire."</p>
+            </div>
+            <div class="voice-answer">
+              <p class="mini-label" data-i18n="vibe_voice_solution_label">How VibeSmith answers</p>
+              <p class="voice-solution" data-i18n="vibe_voice_3_solution">
+                Dependency and boundary visibility helps teams review MCP risk earlier, before rollout blocks delivery.
+              </p>
+            </div>
           </article>
         </div>
+        <p class="voice-footnote" data-i18n="vibe_voice_footer">These scenarios come from recurring multi-repo AI operations patterns.</p>
       </section>
 
       <section class="section reveal" data-reveal>
