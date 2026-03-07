@@ -16,7 +16,7 @@ usage() {
 Usage: ./scripts/ai-finish-task [options]
 
 Options:
-  --issue <number>          GitLab issue IID
+  --issue <number>          Optional GitLab issue IID
   --commit-msg <message>    Commit message (first line used as MR title)
   --target <branch>         Target branch (default: main)
   --auto-merge              Enable GitLab auto-merge
@@ -59,12 +59,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ -z "$ISSUE" ]]; then
-  echo "--issue is required" >&2
-  exit 1
-fi
-
-if [[ ! "$ISSUE" =~ ^[0-9]+$ ]]; then
+if [[ -n "$ISSUE" && ! "$ISSUE" =~ ^[0-9]+$ ]]; then
   echo "--issue must be numeric" >&2
   exit 1
 fi
@@ -141,10 +136,10 @@ fi
 
 if [[ "$has_staged_changes" == "true" ]]; then
   echo "[3/6] Creating commit..."
-  if [[ "$COMMIT_MSG" == *"#$ISSUE"* ]]; then
-    run_cmd git commit -m "$COMMIT_MSG"
-  else
+  if [[ -n "$ISSUE" && "$COMMIT_MSG" != *"#$ISSUE"* ]]; then
     run_cmd git commit -m "$COMMIT_MSG" -m "Closes #$ISSUE"
+  else
+    run_cmd git commit -m "$COMMIT_MSG"
   fi
 else
   echo "[3/6] No staged changes to commit; continuing with existing branch state."
@@ -161,7 +156,11 @@ fi
 
 if [[ -z "$mr_iid" ]]; then
   title="${COMMIT_MSG%%$'\n'*}"
-  description="Automated by scripts/ai-finish-task\n\nCloses #$ISSUE"
+  if [[ -n "$ISSUE" ]]; then
+    description="Automated by scripts/ai-finish-task\n\nCloses #$ISSUE"
+  else
+    description="Automated by scripts/ai-finish-task"
+  fi
   run_cmd env -u GITLAB_TOKEN -u GITLAB_ACCESS_TOKEN -u OAUTH_TOKEN glab mr create \
     --source-branch "$branch" \
     --target-branch "$TARGET_BRANCH" \
@@ -179,18 +178,20 @@ else
 fi
 
 if [[ "$AUTO_MERGE" == "true" ]]; then
-  echo "[6/6] Enabling auto-merge..."
+  echo "[6/6] Ensuring MR is ready and enabling auto-merge..."
   if [[ "$DRY_RUN" == "true" ]]; then
+    echo "+ glab mr update <iid> --ready --yes"
     echo "+ glab mr merge <iid> --auto-merge --squash --remove-source-branch --yes"
   else
     if [[ -z "$mr_iid" ]]; then
       echo "Unable to resolve MR IID for auto-merge" >&2
       exit 1
     fi
+    glab_user mr update "$mr_iid" --ready --yes >/dev/null || true
     glab_user mr merge "$mr_iid" --auto-merge --squash --remove-source-branch --yes
   fi
 else
   echo "[6/6] Auto-merge not requested."
 fi
 
-echo "Done. branch=$branch issue=$ISSUE target=$TARGET_BRANCH auto_merge=$AUTO_MERGE dry_run=$DRY_RUN"
+echo "Done. branch=$branch issue=${ISSUE:-n/a} target=$TARGET_BRANCH auto_merge=$AUTO_MERGE dry_run=$DRY_RUN"

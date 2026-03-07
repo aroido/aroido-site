@@ -43,6 +43,35 @@
     translations: fallbackTranslations,
   };
 
+  function setCurrentLanguage(language) {
+    state.currentLanguage = normalizeLanguage(language);
+  }
+
+  function isPlainObject(value) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) {
+      return false;
+    }
+
+    const prototype = Object.getPrototypeOf(value);
+    return prototype === Object.prototype || prototype === null;
+  }
+
+  function setTranslations(translations) {
+    if (!isPlainObject(translations)) {
+      return;
+    }
+
+    state.translations = translations;
+  }
+
+  function getCurrentLanguage() {
+    return state.currentLanguage;
+  }
+
+  function getTranslationsState() {
+    return state.translations;
+  }
+
   function normalizeLanguage(value) {
     if (!value || typeof value !== "string") {
       return DEFAULT_LANGUAGE;
@@ -70,8 +99,8 @@
   }
 
   function getTranslation(language, key) {
-    const languageTable = state.translations[language] || {};
-    const defaultTable = state.translations[DEFAULT_LANGUAGE] || {};
+    const languageTable = getTranslationsForLanguage(language);
+    const defaultTable = getTranslationsForLanguage(DEFAULT_LANGUAGE);
 
     if (Object.prototype.hasOwnProperty.call(languageTable, key)) {
       return languageTable[key];
@@ -82,6 +111,11 @@
     }
 
     return undefined;
+  }
+
+  function getTranslationsForLanguage(language) {
+    const translations = getTranslationsState();
+    return translations[language] || {};
   }
 
   function updateHeadMetadata(language) {
@@ -119,16 +153,22 @@
     });
   }
 
+  function renderLanguage(language) {
+    document.documentElement.lang = language;
+    updateHeadMetadata(language);
+    updateTextNodes(language);
+    updateLanguageButtons(language);
+  }
+
+  function persistLanguageSelection(language) {
+    setCurrentLanguage(language);
+    setStoredLanguage(language);
+  }
+
   function applyLanguage(language) {
     const nextLanguage = normalizeLanguage(language);
-
-    document.documentElement.lang = nextLanguage;
-    updateHeadMetadata(nextLanguage);
-    updateTextNodes(nextLanguage);
-    updateLanguageButtons(nextLanguage);
-
-    state.currentLanguage = nextLanguage;
-    setStoredLanguage(nextLanguage);
+    renderLanguage(nextLanguage);
+    persistLanguageSelection(nextLanguage);
   }
 
   function initializeLanguage() {
@@ -152,7 +192,7 @@
 
     dom.helloBtn.addEventListener("click", () => {
       const fallback = fallbackTranslations.en.hello_alert;
-      alert(getTranslation(state.currentLanguage, "hello_alert") || fallback);
+      alert(getTranslation(getCurrentLanguage(), "hello_alert") || fallback);
     });
   }
 
@@ -284,12 +324,16 @@
     return Math.ceil(height + stickyTop + 12);
   }
 
+  function getHashTarget(hash) {
+    return document.querySelector(hash);
+  }
+
   function scrollToHashTarget(hash, behavior = "smooth") {
     if (!hash || hash === "#") {
       return;
     }
 
-    const target = document.querySelector(hash);
+    const target = getHashTarget(hash);
     if (!target) {
       return;
     }
@@ -307,7 +351,7 @@
           return;
         }
 
-        const target = document.querySelector(hash);
+        const target = getHashTarget(hash);
         if (!target) {
           return;
         }
@@ -330,7 +374,7 @@
   }
 
   function isValidTranslationTable(table) {
-    return table && typeof table === "object";
+    return isPlainObject(table);
   }
 
   function isValidTranslationsPayload(payload) {
@@ -341,33 +385,54 @@
     return SUPPORTED_LANGUAGES.every((language) => isValidTranslationTable(payload[language]));
   }
 
-  async function loadTranslations() {
+  async function fetchTranslationsPayload() {
     try {
       const response = await fetch("/i18n/messages.json", { cache: "no-store" });
       if (!response.ok) {
-        return;
+        return null;
       }
 
-      const data = await response.json();
-      if (isValidTranslationsPayload(data)) {
-        state.translations = data;
-      }
+      const payload = await response.json();
+      return isValidTranslationsPayload(payload) ? payload : null;
     } catch (_error) {
       /* Keep fallback translations when external file cannot be loaded */
+      return null;
     }
   }
 
-  function initialize() {
+  function applyTranslationsPayload(payload) {
+    if (!payload) {
+      return;
+    }
+
+    setTranslations(payload);
+  }
+
+  async function loadTranslations() {
+    const payload = await fetchTranslationsPayload();
+    applyTranslationsPayload(payload);
+  }
+
+  function reapplyCurrentLanguage() {
+    applyLanguage(getCurrentLanguage());
+  }
+
+  function runSynchronousBootstrap() {
     initializeLanguageSwitch();
     initializeHelloButton();
     initializeVoicePanels();
     initializeRevealMotion();
     initializeAnchorOffsets();
     initializeLanguage();
+  }
 
-    loadTranslations().finally(() => {
-      applyLanguage(state.currentLanguage);
-    });
+  function runAsynchronousBootstrap() {
+    loadTranslations().finally(reapplyCurrentLanguage);
+  }
+
+  function initialize() {
+    runSynchronousBootstrap();
+    runAsynchronousBootstrap();
   }
 
   initialize();
