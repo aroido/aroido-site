@@ -62,6 +62,16 @@ Use dedicated long-horizon loop when you want continuous autonomous improvement.
 - `.codex/.long-horizon-kpi.jsonl`
 - `.codex/.long-horizon-kpi.csv`
 
+Refactor-focused profile:
+
+```bash
+./scripts/long-horizon-loop.sh \
+  --spec docs/specs/long-horizon-refactor-best-practices-spec.md \
+  --hours 24 \
+  --checkpoint-every 3 \
+  --stale-minutes 20
+```
+
 - durable memory files are stored per session under `.codex/long-horizon/<session-id>/`
 - stop signal:
 

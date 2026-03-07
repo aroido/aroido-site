@@ -77,6 +77,16 @@ touch .codex/STOP_LONG_HORIZON_LOOP
   --append
 ```
 
+Refactor best-practice profile:
+
+```bash
+./scripts/long-horizon-loop.sh \
+  --spec docs/specs/long-horizon-refactor-best-practices-spec.md \
+  --hours 24 \
+  --checkpoint-every 3 \
+  --stale-minutes 20
+```
+
 ## Policy
 
 1. `main` 직접 push 금지

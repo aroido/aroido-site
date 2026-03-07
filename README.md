@@ -99,3 +99,13 @@ KPI 누적 출력:
   --session-dir .codex/long-horizon/<session-id> \
   --append
 ```
+
+리팩토링 전용 장기 실행 프로필:
+
+```bash
+./scripts/long-horizon-loop.sh \
+  --spec docs/specs/long-horizon-refactor-best-practices-spec.md \
+  --hours 24 \
+  --checkpoint-every 3 \
+  --stale-minutes 20
+```
