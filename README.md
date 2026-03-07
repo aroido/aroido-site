@@ -19,6 +19,26 @@ Aroido 웹페이지 프로젝트입니다.
 - 세밀 제어(이슈 단위): `/work-session` 명령과 기존 SDD 플로우 사용
 - 장기 연속 실행(24h급): `scripts/long-horizon-loop.sh` 사용
 
+## 워크세션 자동 루프
+
+진단 스펙 기반 자동 개선 루프를 실행할 수 있습니다.
+
+```bash
+./scripts/work-session-loop.sh \
+  --spec docs/specs/site-redesign-content-gap-spec-v2.md \
+  --cycles 3 \
+  --notify-token '<MOSHI_TOKEN>'
+```
+
+- 루프 단계: `research -> improve -> self-feedback -> fix -> verify`
+- 로그 경로: `.codex/work-session-loop/<session-id>/`
+- 무한 루프: `--forever`
+- 중지 신호:
+
+```bash
+touch .codex/STOP_WORK_SESSION_LOOP
+```
+
 ## 장기 연속 실행 루프
 
 장기 루프는 세션별 durable memory 파일을 유지합니다.

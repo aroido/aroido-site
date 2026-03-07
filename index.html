@@ -1,14 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-title-key="home_seo_title" data-description-key="home_meta_description">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aroido | Hip Product Studio</title>
+    <title>Aroido | AI Product Studio & VibeSmith</title>
     <meta
       id="metaDescription"
       name="description"
-      content="Aroido designs and ships bold products with VibeSmith as the current flagship."
+      content="Aroido is an AI product studio building VibeSmith, a component operations layer for Cursor and Claude Code teams."
     />
+    <link rel="canonical" href="https://aroido.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Aroido | AI Product Studio & VibeSmith" />
+    <meta property="og:description" content="AI coding workflow products focused on context stability and faster delivery." />
+    <meta property="og:url" content="https://aroido.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aroido | AI Product Studio & VibeSmith" />
+    <meta name="twitter:description" content="AI coding workflow products focused on context stability and faster delivery." />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -29,28 +37,129 @@
 
       <section class="hero reveal" data-reveal>
         <p class="kicker" data-i18n="hero_kicker">Aroido Studio - Seoul</p>
-        <h1 data-i18n="hero_title">We build loud ideas into shippable products.</h1>
+        <h1 data-i18n="hero_title">Run your AI coding stack without config chaos.</h1>
         <p class="hero-description" data-i18n="hero_description">
-          Aroido turns rapid experiments into production-ready digital products. VibeSmith is our current front line.
+          VibeSmith helps teams operate Cursor and Claude Code components in one coherent layer, so context stays aligned and delivery stays fast.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/projects/vibesmith/" data-i18n="cta_primary">See Vibesmith Focus</a>
-          <a class="btn btn-ghost" href="/projects/" data-i18n="cta_secondary">Browse Selected Work</a>
+          <a class="btn btn-primary" href="/projects/vibesmith/" data-i18n="cta_primary">Open VibeSmith</a>
+          <a class="btn btn-ghost" href="/projects/" data-i18n="cta_secondary">Explore Use Cases</a>
         </div>
       </section>
 
       <section id="featured" class="panel featured reveal" data-reveal>
-        <p class="panel-label" data-i18n="featured_label">Featured Now</p>
-        <h2 data-i18n="featured_title">VibeSmith is our flagship momentum.</h2>
+        <p class="panel-label" data-i18n="featured_label">Featured Product</p>
+        <h2 data-i18n="featured_title">VibeSmith by Aroido</h2>
         <p class="panel-copy" data-i18n="featured_description">
-          We are refining a workflow where creative vibe coding meets measurable release quality.
+          Built for teams juggling multiple repos, rules, hooks, and MCP tools across Cursor and Claude Code.
         </p>
         <ul class="featured-meta" aria-label="Featured details">
-          <li data-i18n="featured_meta_1">Spec-driven workflow with explicit verification gates</li>
-          <li data-i18n="featured_meta_2">Fast iteration loops with stable release discipline</li>
-          <li data-i18n="featured_meta_3">Built for creators and compact product teams</li>
+          <li data-i18n="featured_meta_1">Unified inventory for Skills, Agents, Commands, Hooks, and Rules</li>
+          <li data-i18n="featured_meta_2">Dependency graph to catch hidden coupling before release</li>
+          <li data-i18n="featured_meta_3">Local-first operation with clear path to team-scale rollout</li>
         </ul>
-        <a class="inline-link" href="/projects/vibesmith/" data-i18n="featured_cta">Read the VibeSmith story</a>
+        <a class="inline-link" href="/projects/vibesmith/" data-i18n="featured_cta">See why this matters</a>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">PRODUCT PREVIEW</p>
+          <h2 data-i18n="media_home_title">Reserved area for real product visuals</h2>
+          <p data-i18n="media_home_desc">
+            Drop one workflow GIF and three supporting screenshots here to make the value instantly visible.
+          </p>
+        </div>
+        <div class="media-layout">
+          <figure class="media-card media-card-hero" role="img" aria-label="VibeSmith workflow demo placeholder">
+            <div class="media-placeholder">
+              <span class="media-tag" data-i18n="media_slot_hero_tag">Hero GIF</span>
+              <strong data-i18n="media_slot_hero_title">Workflow demo (8-12 seconds)</strong>
+              <p data-i18n="media_slot_hero_desc">
+                Show: component scan -> dependency insight -> safer release decision.
+              </p>
+            </div>
+            <figcaption data-i18n="media_slot_hero_caption">
+              Recommended path: /assets/vibesmith/workflow-demo.gif
+            </figcaption>
+          </figure>
+          <div class="media-stack">
+            <figure class="media-card media-card-short" role="img" aria-label="Dashboard screenshot placeholder">
+              <div class="media-placeholder">
+                <span class="media-tag" data-i18n="media_slot_dash_tag">Screenshot 01</span>
+                <strong data-i18n="media_slot_dash_title">Dashboard overview</strong>
+              </div>
+              <figcaption data-i18n="media_slot_dash_caption">/assets/vibesmith/dashboard-overview.webp</figcaption>
+            </figure>
+            <figure class="media-card media-card-short" role="img" aria-label="Dependency graph screenshot placeholder">
+              <div class="media-placeholder">
+                <span class="media-tag" data-i18n="media_slot_graph_tag">Screenshot 02</span>
+                <strong data-i18n="media_slot_graph_title">Dependency graph</strong>
+              </div>
+              <figcaption data-i18n="media_slot_graph_caption">/assets/vibesmith/dependency-graph.webp</figcaption>
+            </figure>
+            <figure class="media-card media-card-short" role="img" aria-label="Search flow screenshot placeholder">
+              <div class="media-placeholder">
+                <span class="media-tag" data-i18n="media_slot_search_tag">Screenshot 03</span>
+                <strong data-i18n="media_slot_search_title">Operational search</strong>
+              </div>
+              <figcaption data-i18n="media_slot_search_caption">/assets/vibesmith/search-flow.webp</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">WHY NOW</p>
+          <h2 data-i18n="why_title">Why teams now need a component manager</h2>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <h3 data-i18n="why_card1_title">Context is fragmented by default</h3>
+            <p data-i18n="why_card1_body">
+              Cursor and Claude Code each split context across rules, memories, and settings files, which creates hidden drift over time.
+            </p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="why_card2_title">Multi-repo workflows amplify drift</h3>
+            <p data-i18n="why_card2_body">
+              Community teams report duplicated instructions and inconsistent project context when running AI coding flows across repositories.
+            </p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="why_card3_title">MCP expands power and complexity</h3>
+            <p data-i18n="why_card3_body">
+              Tool integrations are powerful, but project-scoped MCP servers and approval paths add another layer to manage safely.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">OUTCOME</p>
+          <h2 data-i18n="impact_title">What VibeSmith improves in practice</h2>
+        </div>
+        <div class="route-grid">
+          <article class="route-card">
+            <h3 data-i18n="impact_card1_title">Faster onboarding</h3>
+            <p data-i18n="impact_card1_body">
+              New contributors can see the active component map and project rules without hunting across folders.
+            </p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="impact_card2_title">Lower configuration drift</h3>
+            <p data-i18n="impact_card2_body">
+              Shared component definitions reduce copy-paste divergence between projects and sessions.
+            </p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="impact_card3_title">Safer release cycles</h3>
+            <p data-i18n="impact_card3_body">
+              Dependency visibility and component-level checks surface risky changes earlier in the cycle.
+            </p>
+          </article>
+        </div>
       </section>
 
       <section class="section reveal" data-reveal>

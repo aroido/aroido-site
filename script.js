@@ -20,6 +20,8 @@ const helloBtn = document.getElementById("helloBtn");
 const metaDescription = document.getElementById("metaDescription");
 const langButtons = Array.from(document.querySelectorAll(".lang-btn"));
 const revealNodes = Array.from(document.querySelectorAll("[data-reveal]"));
+const titleKey = document.documentElement.getAttribute("data-title-key") || "page_title";
+const descriptionKey = document.documentElement.getAttribute("data-description-key") || "meta_description";
 
 let currentLanguage = DEFAULT_LANGUAGE;
 let translations = fallbackTranslations;
@@ -70,12 +72,12 @@ function applyLanguage(language) {
 
   document.documentElement.lang = nextLanguage;
 
-  const pageTitle = translate(nextLanguage, "page_title");
+  const pageTitle = translate(nextLanguage, titleKey) || translate(nextLanguage, "page_title");
   if (pageTitle) {
     document.title = pageTitle;
   }
 
-  const metaCopy = translate(nextLanguage, "meta_description");
+  const metaCopy = translate(nextLanguage, descriptionKey) || translate(nextLanguage, "meta_description");
   if (metaDescription && metaCopy) {
     metaDescription.setAttribute("content", metaCopy);
   }
