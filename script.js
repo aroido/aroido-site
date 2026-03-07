@@ -23,6 +23,8 @@
     helloBtn: document.getElementById("helloBtn"),
     metaDescription: document.getElementById("metaDescription"),
     langButtons: Array.from(document.querySelectorAll(".lang-btn")),
+    voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
+    voicePanels: Array.from(document.querySelectorAll("[data-voice-panel]")),
     revealNodes: Array.from(document.querySelectorAll("[data-reveal]")),
     translatableNodes: Array.from(document.querySelectorAll("[data-i18n]")),
     topbar: document.querySelector(".topbar"),
@@ -183,6 +185,90 @@
     dom.revealNodes.forEach((node) => observer.observe(node));
   }
 
+  function initializeVoicePanels() {
+    if (dom.voiceTabs.length === 0 || dom.voicePanels.length === 0) {
+      return;
+    }
+
+    const panelById = new Map();
+    dom.voicePanels.forEach((panel) => {
+      const id = panel.getAttribute("data-voice-panel");
+      if (id) {
+        panelById.set(id, panel);
+      }
+    });
+
+    const tabs = dom.voiceTabs.filter((tab) => {
+      const id = tab.getAttribute("data-voice-tab");
+      return typeof id === "string" && panelById.has(id);
+    });
+
+    if (tabs.length === 0) {
+      return;
+    }
+
+    const initialTab =
+      tabs.find((tab) => tab.getAttribute("aria-selected") === "true") || tabs[0];
+    const initialId = initialTab.getAttribute("data-voice-tab");
+
+    function activateVoicePanel(panelId, shouldFocus = false) {
+      tabs.forEach((tab) => {
+        const isActive = tab.getAttribute("data-voice-tab") === panelId;
+        tab.setAttribute("aria-selected", String(isActive));
+        tab.setAttribute("tabindex", isActive ? "0" : "-1");
+        tab.classList.toggle("is-active", isActive);
+        if (isActive && shouldFocus) {
+          tab.focus();
+        }
+      });
+
+      dom.voicePanels.forEach((panel) => {
+        const isActive = panel.getAttribute("data-voice-panel") === panelId;
+        panel.classList.toggle("is-active", isActive);
+        panel.hidden = !isActive;
+      });
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        const panelId = tab.getAttribute("data-voice-tab");
+        if (panelId) {
+          activateVoicePanel(panelId);
+        }
+      });
+
+      tab.addEventListener("keydown", (event) => {
+        const lastIndex = tabs.length - 1;
+        let nextIndex = null;
+
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          nextIndex = index === lastIndex ? 0 : index + 1;
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          nextIndex = index === 0 ? lastIndex : index - 1;
+        } else if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = lastIndex;
+        }
+
+        if (nextIndex === null) {
+          return;
+        }
+
+        event.preventDefault();
+        const nextTab = tabs[nextIndex];
+        const panelId = nextTab.getAttribute("data-voice-tab");
+        if (panelId) {
+          activateVoicePanel(panelId, true);
+        }
+      });
+    });
+
+    if (initialId) {
+      activateVoicePanel(initialId);
+    }
+  }
+
   function getAnchorOffset() {
     if (!dom.topbar) {
       return 16;
@@ -274,6 +360,7 @@
   function initialize() {
     initializeLanguageSwitch();
     initializeHelloButton();
+    initializeVoicePanels();
     initializeRevealMotion();
     initializeAnchorOffsets();
     initializeLanguage();
