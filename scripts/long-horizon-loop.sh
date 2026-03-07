@@ -32,6 +32,13 @@ PLAN_TIMEOUT_SECONDS="${LONG_HORIZON_PLAN_TIMEOUT_SECONDS:-420}"
 BUILD_TIMEOUT_SECONDS="${LONG_HORIZON_BUILD_TIMEOUT_SECONDS:-1800}"
 DOC_TIMEOUT_SECONDS="${LONG_HORIZON_DOC_TIMEOUT_SECONDS:-420}"
 VERIFY_TIMEOUT_SECONDS="${LONG_HORIZON_VERIFY_TIMEOUT_SECONDS:-600}"
+CHECKPOINT_TIMEOUT_SECONDS="${LONG_HORIZON_CHECKPOINT_TIMEOUT_SECONDS:-1800}"
+
+CHECKPOINT_EVERY_CYCLES="${LONG_HORIZON_CHECKPOINT_EVERY:-0}"
+STALE_MINUTES="${LONG_HORIZON_STALE_MINUTES:-20}"
+
+KPI_JSONL_FILE="${LONG_HORIZON_KPI_JSONL_FILE:-$ROOT_DIR/.codex/.long-horizon-kpi.jsonl}"
+KPI_CSV_FILE="${LONG_HORIZON_KPI_CSV_FILE:-$ROOT_DIR/.codex/.long-horizon-kpi.csv}"
 
 usage() {
   cat <<USAGE
@@ -52,10 +59,15 @@ Options:
   --build-timeout <sec>          Timeout for implementation step (default: $BUILD_TIMEOUT_SECONDS)
   --doc-timeout <sec>            Timeout for docs step (default: $DOC_TIMEOUT_SECONDS)
   --verify-timeout <sec>         Timeout for verify step (default: $VERIFY_TIMEOUT_SECONDS)
+  --checkpoint-timeout <sec>     Timeout for checkpoint step (default: $CHECKPOINT_TIMEOUT_SECONDS)
+  --checkpoint-every <n>         Auto-checkpoint every N successful cycles (default: $CHECKPOINT_EVERY_CYCLES, 0=off)
+  --stale-minutes <n>            Alert when no progress for N minutes (default: $STALE_MINUTES, 0=off)
   --session-id <id>              Session id (default: current UTC timestamp)
   --resume <id>                  Resume existing session id under $LOG_ROOT
   --log-root <path>              Session log root (default: $LOG_ROOT)
   --template-dir <path>          Template dir for memory files (default: $TEMPLATE_DIR)
+  --kpi-jsonl <path>             KPI jsonl output (default: $KPI_JSONL_FILE)
+  --kpi-csv <path>               KPI csv output (default: $KPI_CSV_FILE)
   --notify-token <token>         Moshi token for cycle completion alerts
   --allow-main                   Allow execution on main/master branch
   --dry-run                      Print commands only
@@ -141,6 +153,26 @@ notify_cycle() {
     >/dev/null || true
 }
 
+notify_stale() {
+  local idle_minutes="$1"
+
+  log "no progress detected for ${idle_minutes} minute(s)"
+  if [[ -z "$NOTIFY_TOKEN" ]]; then
+    return
+  fi
+
+  if [[ "$DRY_RUN" == "true" ]]; then
+    log "dry-run notify stale idle_minutes=$idle_minutes"
+    return
+  fi
+
+  "$ROOT_DIR/scripts/notify-moshi.sh" \
+    --token "$NOTIFY_TOKEN" \
+    --title "Long loop stale" \
+    --message "장기 루프 진행 정체 감지: ${idle_minutes}분 동안 변경 없음 (session: ${SESSION_ID})" \
+    >/dev/null || true
+}
+
 run_codex_exec() {
   local prompt_file="$1"
   local last_message_file="$2"
@@ -209,6 +241,68 @@ run_verify() {
   return 0
 }
 
+run_checkpoint() {
+  local cycle_id="$1"
+  local output_file="$2"
+  local timeout_seconds="$3"
+  local commit_msg="chore: long-horizon checkpoint session=${SESSION_ID} cycle=${cycle_id}"
+
+  local -a cmd=(
+    "$ROOT_DIR/scripts/long-horizon-checkpoint.sh"
+    --session-id "$SESSION_ID"
+    --commit-msg "$commit_msg"
+  )
+
+  if [[ "$DRY_RUN" == "true" ]]; then
+    cmd+=(--dry-run)
+    printf '+ %q ' "${cmd[@]}"
+    echo "2>&1 | tee $output_file"
+    return 0
+  fi
+
+  (
+    "${cmd[@]}" 2>&1 | tee "$output_file"
+  ) &
+  local cmd_pid=$!
+
+  local wait_rc=0
+  wait_with_timeout "$cmd_pid" "$timeout_seconds" || wait_rc=$?
+  if [[ "$wait_rc" -ne 0 ]]; then
+    if [[ "$wait_rc" -eq 124 ]]; then
+      echo "checkpoint timeout exceeded (${timeout_seconds}s): $output_file" >&2
+    fi
+    return "$wait_rc"
+  fi
+
+  return 0
+}
+
+write_cycle_report() {
+  local report_file="$1"
+  local cycle_num="$2"
+  local cycle_status="$3"
+  local failure_stage="$4"
+  local duration_sec="$5"
+  local has_changes="$6"
+  local head_changed="$7"
+  local checkpoint_triggered="$8"
+  local checkpoint_ok="$9"
+
+  cat > "$report_file" <<EOF
+{
+  "session_id": "$SESSION_ID",
+  "cycle": $cycle_num,
+  "status": "$cycle_status",
+  "failure_stage": "$failure_stage",
+  "duration_sec": $duration_sec,
+  "has_changes": $has_changes,
+  "head_changed": $head_changed,
+  "checkpoint_triggered": $checkpoint_triggered,
+  "checkpoint_ok": $checkpoint_ok
+}
+EOF
+}
+
 write_state() {
   local status="$1"
   local cycle="$2"
@@ -228,6 +322,10 @@ write_state() {
   "branch": "$branch",
   "cycle": $cycle,
   "consecutive_failures": $failures,
+  "checkpoint_every_cycles": $CHECKPOINT_EVERY_CYCLES,
+  "stale_minutes": $STALE_MINUTES,
+  "last_progress_at": "$LAST_PROGRESS_AT_UTC",
+  "stale_alert_sent": $STALE_ALERT_SENT,
   "last_message": "$message",
   "session_dir": "$SESSION_DIR",
   "stop_file": "$STOP_FILE"
@@ -299,6 +397,18 @@ while [[ $# -gt 0 ]]; do
       VERIFY_TIMEOUT_SECONDS="${2:-}"
       shift 2
       ;;
+    --checkpoint-timeout)
+      CHECKPOINT_TIMEOUT_SECONDS="${2:-}"
+      shift 2
+      ;;
+    --checkpoint-every)
+      CHECKPOINT_EVERY_CYCLES="${2:-}"
+      shift 2
+      ;;
+    --stale-minutes)
+      STALE_MINUTES="${2:-}"
+      shift 2
+      ;;
     --session-id)
       SESSION_ID="${2:-}"
       shift 2
@@ -314,6 +424,14 @@ while [[ $# -gt 0 ]]; do
       ;;
     --template-dir)
       TEMPLATE_DIR="${2:-}"
+      shift 2
+      ;;
+    --kpi-jsonl)
+      KPI_JSONL_FILE="${2:-}"
+      shift 2
+      ;;
+    --kpi-csv)
+      KPI_CSV_FILE="${2:-}"
       shift 2
       ;;
     --notify-token)
@@ -347,6 +465,9 @@ validate_integer "$PLAN_TIMEOUT_SECONDS" "--plan-timeout"
 validate_integer "$BUILD_TIMEOUT_SECONDS" "--build-timeout"
 validate_integer "$DOC_TIMEOUT_SECONDS" "--doc-timeout"
 validate_integer "$VERIFY_TIMEOUT_SECONDS" "--verify-timeout"
+validate_integer "$CHECKPOINT_TIMEOUT_SECONDS" "--checkpoint-timeout"
+validate_integer "$CHECKPOINT_EVERY_CYCLES" "--checkpoint-every"
+validate_integer "$STALE_MINUTES" "--stale-minutes"
 
 if [[ "$FOREVER" == "false" ]]; then
   validate_integer "$HOURS" "--hours"
@@ -427,6 +548,10 @@ else
   cycle=1
 fi
 
+LAST_PROGRESS_AT_UTC="$STARTED_AT_UTC"
+last_progress_epoch="$START_EPOCH"
+STALE_ALERT_SENT="false"
+
 consecutive_failures=0
 write_state "running" "$cycle" "$consecutive_failures" "session initialized"
 
@@ -441,6 +566,7 @@ if [[ "$FOREVER" == "true" ]]; then
 else
   log "duration_hours=$HOURS end_at=$END_AT_UTC"
 fi
+log "checkpoint_every=$CHECKPOINT_EVERY_CYCLES stale_minutes=$STALE_MINUTES"
 
 while true; do
   now_epoch="$(date +%s)"
@@ -449,10 +575,27 @@ while true; do
     break
   fi
 
+  if [[ "$STALE_MINUTES" -gt 0 ]]; then
+    stale_threshold_seconds=$((STALE_MINUTES * 60))
+    idle_seconds=$((now_epoch - last_progress_epoch))
+    if [[ "$idle_seconds" -ge "$stale_threshold_seconds" && "$STALE_ALERT_SENT" != "true" ]]; then
+      notify_stale "$((idle_seconds / 60))"
+      STALE_ALERT_SENT="true"
+      write_state "running" "$cycle" "$consecutive_failures" "stale alert triggered"
+    fi
+  fi
+
   if [[ -f "$STOP_FILE" ]]; then
     log "stop file detected: $STOP_FILE"
     break
   fi
+
+  cycle_started_epoch="$(date +%s)"
+  cycle_head_before="$(git rev-parse HEAD)"
+  cycle_failed="false"
+  failure_stage="none"
+  checkpoint_triggered="false"
+  checkpoint_ok="false"
 
   cycle_id="$(printf '%03d' "$cycle")"
   cycle_dir="$SESSION_DIR/cycle-$cycle_id"
@@ -472,7 +615,9 @@ while true; do
   docs_log="$cycle_dir/docs.log.txt"
 
   verify_log="$cycle_dir/verify.log.txt"
+  checkpoint_log="$cycle_dir/checkpoint.log.txt"
   git_status_file="$cycle_dir/git-status.txt"
+  cycle_report_file="$cycle_dir/cycle-report.json"
 
   cat > "$plan_prompt" <<EOF
 You are running long-horizon cycle $cycle for repository $ROOT_DIR.
@@ -538,16 +683,16 @@ Task:
 4) Output concise Korean summary.
 EOF
 
-  cycle_failed="false"
-
   if ! run_codex_exec "$plan_prompt" "$plan_last" "$plan_log" "$PLAN_TIMEOUT_SECONDS"; then
     cycle_failed="true"
+    failure_stage="planning"
     log "cycle=$cycle_id failed during planning"
   fi
 
   if [[ "$cycle_failed" == "false" ]]; then
     if ! run_codex_exec "$build_prompt" "$build_last" "$build_log" "$BUILD_TIMEOUT_SECONDS"; then
       cycle_failed="true"
+      failure_stage="implementation"
       log "cycle=$cycle_id failed during implementation"
     fi
   fi
@@ -555,6 +700,7 @@ EOF
   if [[ "$cycle_failed" == "false" ]]; then
     if ! run_verify "$verify_log" "$VERIFY_TIMEOUT_SECONDS"; then
       cycle_failed="true"
+      failure_stage="verify"
       log "cycle=$cycle_id failed during verify"
     fi
   fi
@@ -562,7 +708,19 @@ EOF
   if [[ "$cycle_failed" == "false" ]]; then
     if ! run_codex_exec "$docs_prompt" "$docs_last" "$docs_log" "$DOC_TIMEOUT_SECONDS"; then
       cycle_failed="true"
+      failure_stage="docs"
       log "cycle=$cycle_id failed during docs"
+    fi
+  fi
+
+  if [[ "$cycle_failed" == "false" && "$CHECKPOINT_EVERY_CYCLES" -gt 0 && $((cycle % CHECKPOINT_EVERY_CYCLES)) -eq 0 ]]; then
+    checkpoint_triggered="true"
+    if run_checkpoint "$cycle_id" "$checkpoint_log" "$CHECKPOINT_TIMEOUT_SECONDS"; then
+      checkpoint_ok="true"
+    else
+      cycle_failed="true"
+      failure_stage="checkpoint"
+      log "cycle=$cycle_id failed during checkpoint"
     fi
   fi
 
@@ -572,11 +730,55 @@ EOF
     git status --short > "$git_status_file"
   fi
 
+  if [[ "$DRY_RUN" == "true" ]]; then
+    has_changes="true"
+  elif [[ -s "$git_status_file" ]]; then
+    has_changes="true"
+  else
+    has_changes="false"
+  fi
+
+  cycle_head_after="$(git rev-parse HEAD)"
+  if [[ "$cycle_head_before" == "$cycle_head_after" ]]; then
+    head_changed="false"
+  else
+    head_changed="true"
+  fi
+
+  if [[ "$has_changes" == "true" || "$head_changed" == "true" ]]; then
+    last_progress_epoch="$(date +%s)"
+    LAST_PROGRESS_AT_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    STALE_ALERT_SENT="false"
+    progress_detected="true"
+  else
+    progress_detected="false"
+  fi
+
+  cycle_finished_epoch="$(date +%s)"
+  cycle_duration_sec=$((cycle_finished_epoch - cycle_started_epoch))
+
+  if [[ "$cycle_failed" == "true" ]]; then
+    cycle_status="failed"
+  else
+    cycle_status="success"
+  fi
+
+  write_cycle_report \
+    "$cycle_report_file" \
+    "$cycle" \
+    "$cycle_status" \
+    "$failure_stage" \
+    "$cycle_duration_sec" \
+    "$has_changes" \
+    "$head_changed" \
+    "$checkpoint_triggered" \
+    "$checkpoint_ok"
+
   if [[ "$cycle_failed" == "true" ]]; then
     consecutive_failures=$((consecutive_failures + 1))
     notify_cycle "$cycle" "failed" "로그: $cycle_dir"
-    write_state "running" "$cycle" "$consecutive_failures" "cycle $cycle_id failed"
-    log "cycle=$cycle_id failed (consecutive_failures=$consecutive_failures)"
+    write_state "running" "$cycle" "$consecutive_failures" "cycle $cycle_id failed at $failure_stage"
+    log "cycle=$cycle_id failed at $failure_stage (consecutive_failures=$consecutive_failures)"
     if [[ "$consecutive_failures" -ge "$MAX_FAILURES" ]]; then
       log "max failures reached; stopping loop"
       break
@@ -584,8 +786,8 @@ EOF
   else
     consecutive_failures=0
     notify_cycle "$cycle" "done" "검증 통과, 로그: $cycle_dir"
-    write_state "running" "$cycle" "$consecutive_failures" "cycle $cycle_id success"
-    log "cycle=$cycle_id success"
+    write_state "running" "$cycle" "$consecutive_failures" "cycle $cycle_id success (progress=$progress_detected)"
+    log "cycle=$cycle_id success (progress=$progress_detected)"
   fi
 
   cycle=$((cycle + 1))
@@ -614,7 +816,10 @@ cat > "$summary_file" <<EOF
 - forever_mode: $FOREVER
 - configured_hours: $HOURS
 - max_failures: $MAX_FAILURES
+- checkpoint_every_cycles: $CHECKPOINT_EVERY_CYCLES
+- stale_minutes: $STALE_MINUTES
 - consecutive_failures_at_end: $consecutive_failures
+- last_progress_at: $LAST_PROGRESS_AT_UTC
 - logs: $SESSION_DIR
 - memory_files:
   - $PROMPT_FILE
@@ -622,6 +827,17 @@ cat > "$summary_file" <<EOF
   - $IMPLEMENT_FILE
   - $DOC_FILE
 EOF
+
+if [[ "$DRY_RUN" == "true" ]]; then
+  echo "+ ./scripts/long-horizon-kpi.sh --session-dir $SESSION_DIR --jsonl-file $KPI_JSONL_FILE --csv-file $KPI_CSV_FILE --append"
+elif [[ -x "$ROOT_DIR/scripts/long-horizon-kpi.sh" ]]; then
+  "$ROOT_DIR/scripts/long-horizon-kpi.sh" \
+    --session-dir "$SESSION_DIR" \
+    --jsonl-file "$KPI_JSONL_FILE" \
+    --csv-file "$KPI_CSV_FILE" \
+    --append \
+    >/dev/null || true
+fi
 
 write_state "completed" "$cycle" "$consecutive_failures" "session completed"
 log "summary=$summary_file"

@@ -64,6 +64,8 @@ touch .codex/STOP_WORK_SESSION_LOOP
 ./scripts/long-horizon-loop.sh \
   --spec docs/specs/work-session-spec.md \
   --hours 24 \
+  --checkpoint-every 3 \
+  --stale-minutes 20 \
   --notify-token '<MOSHI_TOKEN>'
 ```
 
@@ -83,4 +85,17 @@ touch .codex/STOP_LONG_HORIZON_LOOP
 
 ```bash
 ./scripts/long-horizon-checkpoint.sh --session-id <session-id>
+```
+
+KPI 누적 출력:
+
+- `.codex/.long-horizon-kpi.jsonl`
+- `.codex/.long-horizon-kpi.csv`
+
+수동 집계:
+
+```bash
+./scripts/long-horizon-kpi.sh \
+  --session-dir .codex/long-horizon/<session-id> \
+  --append
 ```
