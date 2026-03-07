@@ -27,6 +27,7 @@
 
 - Commands
   - `work-session.md`
+  - `long-horizon.md`
   - `spec-create.md`
   - `spec-review.md`
   - `i18n-audit.md`
@@ -34,6 +35,7 @@
   - `deploy-preview.md`
 - Skills
   - `command-work-session`
+  - `command-long-horizon`
   - `agent-spec-writer`
   - `subagent-pr-reviewer`
   - `perf-a11y`
@@ -68,6 +70,8 @@
   - `scripts/work-session-bootstrap-labels.sh`
   - `scripts/work-session-kpi.sh`
   - `scripts/notify-moshi.sh`
+  - `scripts/long-horizon-bootstrap.sh`
+  - `scripts/long-horizon-checkpoint.sh`
   - `scripts/long-horizon-loop.sh`
 
 ## Long-Horizon Memory Templates
