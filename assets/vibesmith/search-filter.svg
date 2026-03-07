@@ -1,0 +1,20 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="26" fill="#111928"/>
+  <text x="58" y="86" fill="#F2F6FB" font-size="32" font-family="'Space Grotesk', sans-serif" font-weight="700">Search + Filter</text>
+  <rect x="58" y="116" width="460" height="14" rx="7" fill="#627A90"/>
+
+  <rect x="58" y="158" width="1084" height="72" rx="14" fill="#1E2F45"/>
+  <rect x="84" y="182" width="620" height="24" rx="12" fill="#2E475F"/>
+  <rect x="990" y="176" width="132" height="34" rx="10" fill="#10DFFB"/>
+
+  <rect x="58" y="254" width="360" height="448" rx="14" fill="#18283C"/>
+  <rect x="438" y="254" width="704" height="448" rx="14" fill="#18283C"/>
+
+  <rect x="84" y="290" width="310" height="14" rx="7" fill="#4E657B"/>
+  <rect x="84" y="320" width="290" height="14" rx="7" fill="#4E657B"/>
+  <rect x="84" y="350" width="260" height="14" rx="7" fill="#4E657B"/>
+
+  <rect x="466" y="290" width="646" height="84" rx="12" fill="#22374E"/>
+  <rect x="466" y="392" width="646" height="84" rx="12" fill="#22374E"/>
+  <rect x="466" y="494" width="646" height="84" rx="12" fill="#22374E"/>
+</svg>

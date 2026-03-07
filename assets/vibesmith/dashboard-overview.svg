@@ -1,0 +1,22 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="26" fill="#0F1521"/>
+  <rect x="34" y="34" width="1132" height="692" rx="18" stroke="#314657" stroke-width="2"/>
+  <text x="72" y="92" fill="#F3F7FA" font-size="32" font-family="'Space Grotesk', sans-serif" font-weight="700">Dashboard Overview</text>
+  <rect x="72" y="122" width="220" height="12" rx="6" fill="#5B7286"/>
+
+  <rect x="72" y="170" width="328" height="154" rx="16" fill="#1A2636"/>
+  <rect x="420" y="170" width="328" height="154" rx="16" fill="#1A2636"/>
+  <rect x="768" y="170" width="328" height="154" rx="16" fill="#1A2636"/>
+
+  <rect x="72" y="352" width="720" height="336" rx="16" fill="#162435"/>
+  <rect x="818" y="352" width="278" height="158" rx="16" fill="#162435"/>
+  <rect x="818" y="530" width="278" height="158" rx="16" fill="#162435"/>
+
+  <rect x="98" y="392" width="666" height="18" rx="9" fill="#2E4358"/>
+  <rect x="98" y="426" width="524" height="12" rx="6" fill="#4E6478"/>
+  <rect x="98" y="450" width="620" height="12" rx="6" fill="#4E6478"/>
+  <rect x="98" y="474" width="470" height="12" rx="6" fill="#4E6478"/>
+
+  <rect x="842" y="382" width="120" height="34" rx="10" fill="#CDFF26"/>
+  <rect x="842" y="560" width="150" height="34" rx="10" fill="#10DFFB"/>
+</svg>

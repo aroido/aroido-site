@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="34" fill="#0E1422"/>
+  <text x="74" y="110" fill="#F3F7FA" font-size="42" font-family="'Space Grotesk', sans-serif" font-weight="700">End-to-End Workflow</text>
+  <text x="74" y="152" fill="#90A4B7" font-size="21" font-family="'IBM Plex Mono', monospace">inventory -> graph inspection -> rollout action</text>
+
+  <rect x="74" y="204" width="450" height="620" rx="18" fill="#162537"/>
+  <rect x="574" y="204" width="450" height="620" rx="18" fill="#162537"/>
+  <rect x="1074" y="204" width="450" height="620" rx="18" fill="#162537"/>
+
+  <rect x="110" y="258" width="378" height="26" rx="13" fill="#2D435A"/>
+  <rect x="110" y="298" width="316" height="14" rx="7" fill="#4D627A"/>
+  <rect x="110" y="328" width="350" height="14" rx="7" fill="#4D627A"/>
+  <rect x="110" y="358" width="270" height="14" rx="7" fill="#4D627A"/>
+
+  <circle cx="800" cy="430" r="38" fill="#2E4A65"/>
+  <circle cx="700" cy="560" r="32" fill="#2A415A"/>
+  <circle cx="900" cy="570" r="32" fill="#2A415A"/>
+  <line x1="800" y1="430" x2="700" y2="560" stroke="#5A738E" stroke-width="4"/>
+  <line x1="800" y1="430" x2="900" y2="570" stroke="#5A738E" stroke-width="4"/>
+
+  <rect x="1110" y="268" width="380" height="110" rx="14" fill="#22344B"/>
+  <rect x="1110" y="410" width="380" height="16" rx="8" fill="#4D627A"/>
+  <rect x="1110" y="442" width="330" height="16" rx="8" fill="#4D627A"/>
+  <rect x="1110" y="494" width="240" height="48" rx="12" fill="#CDFF26"/>
+</svg>

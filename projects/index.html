@@ -10,13 +10,36 @@
       content="Aroido currently operates one public product, VibeSmith. Start from overview and move to the detailed product page."
     />
     <link rel="canonical" href="https://aroido.com/projects/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/?lang=en" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/projects/?lang=ko" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Aroido Product | VibeSmith" />
     <meta property="og:description" content="One live public product with clear navigation from overview to full detail." />
     <meta property="og:url" content="https://aroido.com/projects/" />
+    <meta property="og:image" content="https://aroido.com/assets/og/vibesmith-og.svg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Aroido Product | VibeSmith" />
     <meta name="twitter:description" content="One live public product with clear navigation from overview to full detail." />
+    <meta name="twitter:image" content="https://aroido.com/assets/og/vibesmith-og.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Aroido Product Brief",
+        "url": "https://aroido.com/projects/",
+        "inLanguage": ["en", "ko"],
+        "hasPart": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "VibeSmith",
+            "url": "https://aroido.com/projects/vibesmith/"
+          }
+        ]
+      }
+    </script>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
@@ -25,7 +48,7 @@
         <a class="brand brand-link" href="/">AROIDO</a>
         <nav class="main-nav" aria-label="Main">
           <a href="/" data-i18n="nav_home">Home</a>
-          <a href="/projects/" aria-current="page" data-i18n="nav_projects">Product</a>
+          <a href="/projects/vibesmith/" data-i18n="nav_projects">VibeSmith</a>
           <a href="/team/" data-i18n="nav_team">Team</a>
           <a href="#contact" data-i18n="nav_contact">Contact</a>
         </nav>
@@ -35,20 +58,20 @@
         </div>
       </header>
 
-      <section class="page-hero reveal" data-reveal>
+      <section id="brief" class="page-hero reveal" data-reveal>
         <p class="kicker" data-i18n="projects_kicker">Product</p>
-        <h1 data-i18n="projects_page_title">One Product, Clear Value.</h1>
+        <h1 data-i18n="projects_page_title">VibeSmith Briefing.</h1>
         <p data-i18n="projects_page_description">
-          Aroido currently operates one public product, VibeSmith. This page is the overview and the entry point to full detail.
+          Aroido currently operates one public product, VibeSmith. This page gives a quick fit check before you move to full product detail.
         </p>
       </section>
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="projects_current_eyebrow">Current Release</p>
-          <h2 data-i18n="projects_current_title">Public Product Catalog</h2>
+          <h2 data-i18n="projects_current_title">Flagship Product</h2>
           <p data-i18n="projects_current_desc">
-            We currently publish one product. Additional tracks stay private until they are release-ready.
+            We currently publish one product. Internal tracks stay private until they are externally useful.
           </p>
         </div>
         <div class="single-grid">
@@ -61,7 +84,32 @@
               <li data-i18n="projects_card_vibesmith_point2">Solves: config drift, hidden coupling, onboarding friction</li>
               <li data-i18n="projects_card_vibesmith_point3">Measure: setup time, context stability, release confidence</li>
             </ul>
-            <a class="inline-link" href="/projects/vibesmith/" data-i18n="projects_card_vibesmith_cta">Open VibeSmith detail</a>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="/projects/vibesmith/" data-i18n="projects_card_vibesmith_cta" data-track-event="hero_cta_click" data-track-label="projects_open_detail">Open VibeSmith detail</a>
+              <a class="btn btn-ghost" href="/projects/vibesmith/#rollout" data-i18n="projects_card_vibesmith_pilot_cta" data-track-event="hero_cta_click" data-track-label="projects_open_rollout">See pilot blueprint</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="projects_framework_eyebrow">READ IN 30 SECONDS</p>
+          <h2 data-i18n="projects_framework_title">How to read each project quickly</h2>
+          <p data-i18n="projects_framework_desc">Use this order: who gets value first, what pain is removed, and what proof to measure.</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <h3 data-i18n="projects_framework_1_title">Who</h3>
+            <p data-i18n="projects_framework_1_body">Which team profile gets value first.</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="projects_framework_2_title">Pain</h3>
+            <p data-i18n="projects_framework_2_body">What workflow friction we remove.</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="projects_framework_3_title">Proof</h3>
+            <p data-i18n="projects_framework_3_body">What should be measured in pilot cycles.</p>
           </article>
         </div>
       </section>
@@ -69,13 +117,13 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="projects_nav_eyebrow">Navigation</p>
-          <h2 data-i18n="projects_nav_title">Hierarchy</h2>
-          <p data-i18n="projects_nav_desc">Use this structure to move between overview and deep detail.</p>
+          <h2 data-i18n="projects_nav_title">Path</h2>
+          <p data-i18n="projects_nav_desc">Start with this brief page, then move into deep product detail and rollout sections.</p>
         </div>
         <div class="compare-grid">
           <a class="route-card highlight" href="/projects/">
-            <h3 data-i18n="projects_nav_overview_title">Product overview</h3>
-            <p data-i18n="projects_nav_overview_desc">Current public product list and status.</p>
+            <h3 data-i18n="projects_nav_overview_title">VibeSmith brief</h3>
+            <p data-i18n="projects_nav_overview_desc">One-page fit and value summary.</p>
           </a>
           <a class="route-card" href="/projects/vibesmith/">
             <h3 data-i18n="projects_nav_detail_title">VibeSmith detail</h3>
@@ -89,7 +137,7 @@
         <p data-i18n="contact_description">
           If your team wants speed without chaos, we can design and ship with you.
         </p>
-        <button id="helloBtn" class="btn btn-primary" type="button" data-i18n="cta_contact">Run readiness check</button>
+        <button id="helloBtn" class="btn btn-primary" type="button" data-i18n="cta_contact" data-track-event="contact_cta_click" data-track-label="projects_contact_readiness">Run readiness check</button>
       </section>
     </main>
     <script src="../script.js"></script>

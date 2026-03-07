@@ -9,6 +9,34 @@
       name="description"
       content="Aroido team manifesto, members, and collaboration model."
     />
+    <link rel="canonical" href="https://aroido.com/team/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/team/?lang=en" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/team/?lang=ko" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/team/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Aroido Team | Product, Design, Delivery" />
+    <meta property="og:description" content="A compact studio combining product direction, design engineering, and delivery operations." />
+    <meta property="og:url" content="https://aroido.com/team/" />
+    <meta property="og:image" content="https://aroido.com/assets/og/team-og.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aroido Team | Product, Design, Delivery" />
+    <meta name="twitter:description" content="A compact studio combining product direction, design engineering, and delivery operations." />
+    <meta name="twitter:image" content="https://aroido.com/assets/og/team-og.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Aroido",
+        "url": "https://aroido.com/",
+        "department": {
+          "@type": "Organization",
+          "name": "Aroido Team",
+          "url": "https://aroido.com/team/"
+        }
+      }
+    </script>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
@@ -17,7 +45,7 @@
         <a class="brand brand-link" href="/">AROIDO</a>
         <nav class="main-nav" aria-label="Main">
           <a href="/" data-i18n="nav_home">Home</a>
-          <a href="/projects/" data-i18n="nav_projects">Product</a>
+          <a href="/projects/vibesmith/" data-i18n="nav_projects">VibeSmith</a>
           <a href="/team/" aria-current="page" data-i18n="nav_team">Team</a>
           <a href="#contact" data-i18n="nav_contact">Contact</a>
         </nav>
@@ -87,7 +115,7 @@
         <p data-i18n="contact_description">
           If your team wants speed without chaos, we can design and ship with you.
         </p>
-        <button id="helloBtn" class="btn btn-primary" type="button" data-i18n="cta_contact">Run readiness check</button>
+        <button id="helloBtn" class="btn btn-primary" type="button" data-i18n="cta_contact" data-track-event="contact_cta_click" data-track-label="team_contact_readiness">Run readiness check</button>
       </section>
     </main>
     <script src="../script.js"></script>
