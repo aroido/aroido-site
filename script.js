@@ -142,6 +142,10 @@ function getAnchorOffset() {
   }
 
   const style = window.getComputedStyle(topbar);
+  if (style.position !== "sticky" && style.position !== "fixed") {
+    return 16;
+  }
+
   const stickyTop = Number.parseFloat(style.top) || 0;
   const height = topbar.getBoundingClientRect().height || 0;
   return Math.ceil(height + stickyTop + 12);

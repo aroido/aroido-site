@@ -29,5 +29,5 @@ build/
 .codex/long-horizon/
 .codex/STOP_LONG_HORIZON_LOOP
 .codex/work-session-loop/
-.codex/ui-audit/
+.codex/ui-audit*/
 .work-session-summary.md

@@ -243,10 +243,13 @@
         </div>
       </section>
 
-      <section class="section reveal" data-reveal>
+      <section id="metrics" class="section reveal" data-reveal>
         <div class="section-head">
           <p class="section-eyebrow">PILOT METRICS</p>
           <h2 data-i18n="vibe_metrics_title">Pilot Metrics</h2>
+          <p data-i18n="vibe_metrics_desc">
+            Pilot success is measured against baseline week and target week, not by impressions.
+          </p>
         </div>
         <div class="metric-grid">
           <article class="metric-card">
@@ -263,6 +266,76 @@
             <p class="mini-label" data-i18n="vibe_metric_3_label">Metric 03</p>
             <h3 data-i18n="vibe_metric_3_title">Release confidence</h3>
             <p data-i18n="vibe_metric_3_body">How early hidden coupling and risky configuration changes are surfaced.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="rollout" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">ROLL-OUT</p>
+          <h2 data-i18n="vibe_rollout_title">30-Day Rollout Blueprint</h2>
+          <p data-i18n="vibe_rollout_desc">
+            The rollout is staged to prove measurable wins before broader expansion.
+          </p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="vibe_rollout_1_tag">Week 1</p>
+            <h3 data-i18n="vibe_rollout_1_title">Baseline and repository mapping</h3>
+            <p data-i18n="vibe_rollout_1_body">
+              Capture current setup cost and map component assets across active repositories.
+            </p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_rollout_1_item1">Deliverable: repo/component inventory snapshot</li>
+              <li data-i18n="vibe_rollout_1_item2">Deliverable: risk map of critical coupling paths</li>
+            </ul>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_rollout_2_tag">Week 2-3</p>
+            <h3 data-i18n="vibe_rollout_2_title">Team workflow adaptation</h3>
+            <p data-i18n="vibe_rollout_2_body">
+              Standardize operating routines for review, search, and change-risk checks.
+            </p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_rollout_2_item1">Deliverable: shared review checklist and owner model</li>
+              <li data-i18n="vibe_rollout_2_item2">Deliverable: onboarding runbook for new contributors</li>
+            </ul>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_rollout_3_tag">Week 4</p>
+            <h3 data-i18n="vibe_rollout_3_title">Outcome review and scale decision</h3>
+            <p data-i18n="vibe_rollout_3_body">
+              Compare baseline versus pilot metrics and decide whether to expand scope.
+            </p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_rollout_3_item1">Deliverable: before/after metric report</li>
+              <li data-i18n="vibe_rollout_3_item2">Deliverable: expansion plan with risk controls</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="gates" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">DECISION GATES</p>
+          <h2 data-i18n="vibe_gate_title">When expansion is justified</h2>
+        </div>
+        <div class="compare-grid">
+          <article class="story-card">
+            <h3 data-i18n="vibe_gate_keep_title">Keep pilot scope if</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_gate_keep_1">Setup time has not improved enough to clear onboarding pain.</li>
+              <li data-i18n="vibe_gate_keep_2">Context mismatches still appear in core delivery paths.</li>
+              <li data-i18n="vibe_gate_keep_3">Review owners and policies are not yet stable.</li>
+            </ul>
+          </article>
+          <article class="story-card highlight">
+            <h3 data-i18n="vibe_gate_expand_title">Expand rollout if</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_gate_expand_1">Setup time reduction is sustained across new repositories.</li>
+              <li data-i18n="vibe_gate_expand_2">Risky coupling is surfaced earlier than current release checkpoints.</li>
+              <li data-i18n="vibe_gate_expand_3">Team members follow one shared operating flow with low exception rate.</li>
+            </ul>
           </article>
         </div>
       </section>
