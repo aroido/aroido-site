@@ -25,4 +25,5 @@ build/
 .codex/.pending-moshi-notifications.jsonl
 .codex/long-horizon/
 .codex/STOP_LONG_HORIZON_LOOP
+.codex/work-session-loop/
 .work-session-summary.md

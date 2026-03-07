@@ -1,14 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-title-key="projects_seo_title" data-description-key="projects_meta_description">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aroido | Projects</title>
+    <title>Aroido Projects | VibeSmith, Ops, Pilot</title>
     <meta
       id="metaDescription"
       name="description"
-      content="Aroido project index with now, labs, and archive tracks."
+      content="Explore Aroido projects with clear fit, pain points, and measurable outcomes, including VibeSmith and pilot tracks."
     />
+    <link rel="canonical" href="https://aroido.com/projects/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Aroido Projects | VibeSmith, Ops, Pilot" />
+    <meta property="og:description" content="Project pages designed for fast evaluation: who, pain, proof, and next action." />
+    <meta property="og:url" content="https://aroido.com/projects/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aroido Projects | VibeSmith, Ops, Pilot" />
+    <meta name="twitter:description" content="Project pages designed for fast evaluation: who, pain, proof, and next action." />
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
@@ -29,10 +37,31 @@
 
       <section class="page-hero reveal" data-reveal>
         <p class="kicker" data-i18n="projects_kicker">Projects</p>
-        <h1 data-i18n="projects_page_title">Shipping now, building next.</h1>
+        <h1 data-i18n="projects_page_title">Products With Clear Outcomes.</h1>
         <p data-i18n="projects_page_description">
-          We keep current products visible while tracking labs and archive tracks with one operational system.
+          Product pages here focus on concrete user value, current status, and what each project helps teams do better.
         </p>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">FRAME</p>
+          <h2 data-i18n="projects_framework_title">How to read each project quickly</h2>
+        </div>
+        <div class="route-grid">
+          <article class="route-card">
+            <h3 data-i18n="projects_framework_1_title">Who</h3>
+            <p data-i18n="projects_framework_1_body">Which team profile gets value first.</p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="projects_framework_2_title">Pain</h3>
+            <p data-i18n="projects_framework_2_body">What workflow friction we remove.</p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="projects_framework_3_title">Proof</h3>
+            <p data-i18n="projects_framework_3_body">What should be measured in pilot cycles.</p>
+          </article>
+        </div>
       </section>
 
       <section class="section reveal" data-reveal>
@@ -46,17 +75,33 @@
           <article class="route-card highlight">
             <h3 data-i18n="projects_card_vibesmith_title">Vibesmith</h3>
             <p data-i18n="projects_card_vibesmith_desc">AI Agent Components Manager for Cursor and Claude Code with unified management and dependency graph.</p>
+            <p class="mini-label" data-i18n="projects_card_vibesmith_status">Status: Active Build</p>
+            <ul class="stack-list compact">
+              <li data-i18n="projects_card_vibesmith_point1">For: teams running 3+ active AI coding repos</li>
+              <li data-i18n="projects_card_vibesmith_point2">Solves: config drift, hidden coupling, onboarding friction</li>
+              <li data-i18n="projects_card_vibesmith_point3">Measure: setup time, context stability, release confidence</li>
+            </ul>
             <a class="inline-link" href="/projects/vibesmith/" data-i18n="projects_card_vibesmith_cta">Open project page</a>
           </article>
           <article class="route-card">
-            <h3 data-i18n="projects_card_ops_title">Session Ops Toolkit</h3>
-            <p data-i18n="projects_card_ops_desc">Automation routines for issue routing, verification gates, and merge completion.</p>
-            <span class="mini-label" data-i18n="projects_card_ops_cta">Internal system</span>
+            <h3 data-i18n="projects_card_ops_title">Agent Ops Playbook</h3>
+            <p data-i18n="projects_card_ops_desc">Reusable operational patterns distilled from real AI coding workflows across compact product teams.</p>
+            <ul class="stack-list compact">
+              <li data-i18n="projects_card_ops_point1">For: leads standardizing agent usage and review rhythm</li>
+              <li data-i18n="projects_card_ops_point2">Solves: inconsistent execution between contributors</li>
+              <li data-i18n="projects_card_ops_point3">Output: reusable operating checklists and handoff templates</li>
+            </ul>
+            <span class="mini-label" data-i18n="projects_card_ops_cta">In validation</span>
           </article>
           <article class="route-card">
-            <h3 data-i18n="projects_card_system_title">Spec-driven Site System</h3>
-            <p data-i18n="projects_card_system_desc">Bilingual IA, reusable components, and documentation contracts for scale.</p>
-            <span class="mini-label" data-i18n="projects_card_system_cta">Infrastructure</span>
+            <h3 data-i18n="projects_card_system_title">Pilot Program</h3>
+            <p data-i18n="projects_card_system_desc">A 2-4 week collaboration track to measure setup speed, context stability, and release confidence with VibeSmith.</p>
+            <ul class="stack-list compact">
+              <li data-i18n="projects_card_system_point1">Week 1: baseline and integration mapping</li>
+              <li data-i18n="projects_card_system_point2">Week 2-3: rollout with team workflow adaptation</li>
+              <li data-i18n="projects_card_system_point3">Week 4: metrics review and adoption decision</li>
+            </ul>
+            <span class="mini-label" data-i18n="projects_card_system_cta">Partner track</span>
           </article>
         </div>
       </section>
