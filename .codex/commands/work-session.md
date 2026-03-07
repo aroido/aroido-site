@@ -14,6 +14,12 @@
 ./scripts/long-horizon-loop.sh --hours 24
 ```
 
+또는 dedicated 명령 문서:
+
+```bash
+/long-horizon
+```
+
 - `time`: `2h`, `30m` 형식. 기본값 무제한.
 - `type`: `all`(기본), `frontend`, `backend`, `docs`, `api-spec`
 - options:

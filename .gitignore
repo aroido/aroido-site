@@ -23,6 +23,7 @@ build/
 .codex/.work-session-preflight.json
 .codex/.work-session-kpi.json
 .codex/.pending-moshi-notifications.jsonl
+.codex/.long-horizon-mr-description.md
 .codex/long-horizon/
 .codex/STOP_LONG_HORIZON_LOOP
 .codex/work-session-loop/

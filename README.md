@@ -48,6 +48,16 @@ touch .codex/STOP_WORK_SESSION_LOOP
 - `Implement.md`
 - `Documentation.md`
 
+권장 Git 운영(세션당 1회):
+
+```bash
+./scripts/long-horizon-bootstrap.sh --target main
+```
+
+- 전용 worktree/branch 생성
+- Draft MR 생성
+- 이후 생성된 worktree에서 루프 실행
+
 예시:
 
 ```bash
@@ -67,4 +77,10 @@ touch .codex/STOP_WORK_SESSION_LOOP
 
 ```bash
 touch .codex/STOP_LONG_HORIZON_LOOP
+```
+
+마일스톤 체크포인트(verify + commit + push + MR note):
+
+```bash
+./scripts/long-horizon-checkpoint.sh --session-id <session-id>
 ```

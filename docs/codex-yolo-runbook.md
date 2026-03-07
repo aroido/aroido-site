@@ -35,10 +35,24 @@ cyl
 
 Use dedicated long-horizon loop when you want continuous autonomous improvement.
 
+1. Bootstrap isolated worktree/branch and open Draft MR.
+
+```bash
+./scripts/long-horizon-bootstrap.sh --target main
+```
+
+2. Move into the generated worktree and run long loop.
+
 ```bash
 ./scripts/long-horizon-loop.sh \
   --spec docs/specs/work-session-spec.md \
   --hours 24
+```
+
+3. At each milestone, checkpoint changes.
+
+```bash
+./scripts/long-horizon-checkpoint.sh --session-id <session-id>
 ```
 
 - durable memory files are stored per session under `.codex/long-horizon/<session-id>/`
