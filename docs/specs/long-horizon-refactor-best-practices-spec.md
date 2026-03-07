@@ -55,5 +55,9 @@ Aroido 정적 웹 코드베이스를 장기 루프에서 안전하게 리팩토�
   --spec docs/specs/long-horizon-refactor-best-practices-spec.md \
   --hours 24 \
   --checkpoint-every 3 \
-  --stale-minutes 20
+  --stale-minutes 20 \
+  --max-no-progress-cycles 6 \
+  --auto-finish \
+  --finish-target main \
+  --finish-auto-merge
 ```

@@ -47,6 +47,26 @@ run_shell() {
   fi
 }
 
+normalize_path() {
+  local input_path="$1"
+
+  if command -v python3 >/dev/null 2>&1; then
+    python3 - "$input_path" <<'PY'
+import os
+import sys
+print(os.path.abspath(sys.argv[1]))
+PY
+    return
+  fi
+
+  if command -v realpath >/dev/null 2>&1; then
+    realpath "$input_path"
+    return
+  fi
+
+  echo "$input_path"
+}
+
 require_clean_worktree() {
   local dirty=""
   dirty="$(git status --porcelain)"
@@ -125,9 +145,7 @@ if [[ "$TARGET_BRANCH" == "$BRANCH_NAME" ]]; then
   exit 1
 fi
 
-if command -v realpath >/dev/null 2>&1; then
-  WORKTREE_PATH="$(realpath -m "$WORKTREE_PATH")"
-fi
+WORKTREE_PATH="$(normalize_path "$WORKTREE_PATH")"
 
 if [[ -e "$WORKTREE_PATH" ]]; then
   echo "worktree path already exists: $WORKTREE_PATH" >&2

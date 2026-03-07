@@ -66,6 +66,10 @@ touch .codex/STOP_WORK_SESSION_LOOP
   --hours 24 \
   --checkpoint-every 3 \
   --stale-minutes 20 \
+  --max-no-progress-cycles 6 \
+  --auto-finish \
+  --finish-target main \
+  --finish-auto-merge \
   --notify-token '<MOSHI_TOKEN>'
 ```
 
@@ -87,6 +91,11 @@ touch .codex/STOP_LONG_HORIZON_LOOP
 ./scripts/long-horizon-checkpoint.sh --session-id <session-id>
 ```
 
+무진척 연속 중단 규칙:
+
+- `--max-no-progress-cycles <n>`: `progress=false`가 N회 연속이면 루프 자동 종료
+- `--auto-finish`: 종료 시 `scripts/ai-finish-task` 자동 실행 (`verify -> commit/push -> MR -> auto-merge`)
+
 KPI 누적 출력:
 
 - `.codex/.long-horizon-kpi.jsonl`
@@ -107,5 +116,9 @@ KPI 누적 출력:
   --spec docs/specs/long-horizon-refactor-best-practices-spec.md \
   --hours 24 \
   --checkpoint-every 3 \
-  --stale-minutes 20
+  --stale-minutes 20 \
+  --max-no-progress-cycles 6 \
+  --auto-finish \
+  --finish-target main \
+  --finish-auto-merge
 ```

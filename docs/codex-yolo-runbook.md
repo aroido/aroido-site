@@ -48,7 +48,11 @@ Use dedicated long-horizon loop when you want continuous autonomous improvement.
   --spec docs/specs/work-session-spec.md \
   --hours 24 \
   --checkpoint-every 3 \
-  --stale-minutes 20
+  --stale-minutes 20 \
+  --max-no-progress-cycles 6 \
+  --auto-finish \
+  --finish-target main \
+  --finish-auto-merge
 ```
 
 3. At each milestone, checkpoint changes.
@@ -69,10 +73,16 @@ Refactor-focused profile:
   --spec docs/specs/long-horizon-refactor-best-practices-spec.md \
   --hours 24 \
   --checkpoint-every 3 \
-  --stale-minutes 20
+  --stale-minutes 20 \
+  --max-no-progress-cycles 6 \
+  --auto-finish \
+  --finish-target main \
+  --finish-auto-merge
 ```
 
 - durable memory files are stored per session under `.codex/long-horizon/<session-id>/`
+- `--max-no-progress-cycles <n>` enables hard stop when cycles keep ending with `progress=false`
+- `--auto-finish` runs `scripts/ai-finish-task` at loop end (commit/push/MR/auto-merge)
 - stop signal:
 
 ```bash

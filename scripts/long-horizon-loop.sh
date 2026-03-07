@@ -36,6 +36,14 @@ CHECKPOINT_TIMEOUT_SECONDS="${LONG_HORIZON_CHECKPOINT_TIMEOUT_SECONDS:-1800}"
 
 CHECKPOINT_EVERY_CYCLES="${LONG_HORIZON_CHECKPOINT_EVERY:-0}"
 STALE_MINUTES="${LONG_HORIZON_STALE_MINUTES:-20}"
+MAX_NO_PROGRESS_CYCLES="${LONG_HORIZON_MAX_NO_PROGRESS_CYCLES:-0}"
+
+AUTO_FINISH="${LONG_HORIZON_AUTO_FINISH:-false}"
+FINISH_TARGET_BRANCH="${LONG_HORIZON_FINISH_TARGET_BRANCH:-main}"
+FINISH_COMMIT_MSG="${LONG_HORIZON_FINISH_COMMIT_MSG:-}"
+FINISH_ISSUE="${LONG_HORIZON_FINISH_ISSUE:-}"
+FINISH_AUTO_MERGE="${LONG_HORIZON_FINISH_AUTO_MERGE:-false}"
+FINISH_TIMEOUT_SECONDS="${LONG_HORIZON_FINISH_TIMEOUT_SECONDS:-1800}"
 
 KPI_JSONL_FILE="${LONG_HORIZON_KPI_JSONL_FILE:-$ROOT_DIR/.codex/.long-horizon-kpi.jsonl}"
 KPI_CSV_FILE="${LONG_HORIZON_KPI_CSV_FILE:-$ROOT_DIR/.codex/.long-horizon-kpi.csv}"
@@ -62,6 +70,13 @@ Options:
   --checkpoint-timeout <sec>     Timeout for checkpoint step (default: $CHECKPOINT_TIMEOUT_SECONDS)
   --checkpoint-every <n>         Auto-checkpoint every N successful cycles (default: $CHECKPOINT_EVERY_CYCLES, 0=off)
   --stale-minutes <n>            Alert when no progress for N minutes (default: $STALE_MINUTES, 0=off)
+  --max-no-progress-cycles <n>   Stop after N consecutive no-progress cycles (default: $MAX_NO_PROGRESS_CYCLES, 0=off)
+  --auto-finish                  Run ai-finish-task when loop exits
+  --finish-target <branch>       Target branch for auto-finish MR (default: $FINISH_TARGET_BRANCH)
+  --finish-commit-msg <text>     Commit message for auto-finish (default: auto-generated)
+  --finish-issue <number>        Optional issue IID for auto-finish
+  --finish-auto-merge            Enable auto-merge in auto-finish
+  --finish-timeout <sec>         Timeout for auto-finish step (default: $FINISH_TIMEOUT_SECONDS)
   --session-id <id>              Session id (default: current UTC timestamp)
   --resume <id>                  Resume existing session id under $LOG_ROOT
   --log-root <path>              Session log root (default: $LOG_ROOT)
@@ -107,6 +122,15 @@ validate_web_mode() {
   fi
 }
 
+validate_boolean() {
+  local value="$1"
+  local label="$2"
+  if [[ "$value" != "true" && "$value" != "false" ]]; then
+    echo "$label must be true or false" >&2
+    exit 1
+  fi
+}
+
 wait_with_timeout() {
   local pid="$1"
   local timeout_seconds="$2"
@@ -148,9 +172,58 @@ notify_cycle() {
 
   "$ROOT_DIR/scripts/notify-moshi.sh" \
     --token "$NOTIFY_TOKEN" \
-    --title "Long loop $status" \
-    --message "장기 루프 ${cycle}회차 ${status}: ${message}" \
+    --title "Long loop #${cycle} ${status}" \
+    --message "장기 루프 ${cycle}회차 상태 요약: ${message}" \
     >/dev/null || true
+}
+
+notify_cycle_start() {
+  local cycle="$1"
+  local message="$2"
+
+  if [[ -z "$NOTIFY_TOKEN" ]]; then
+    return
+  fi
+
+  if [[ "$DRY_RUN" == "true" ]]; then
+    log "dry-run notify cycle=$cycle status=start"
+    return
+  fi
+
+  "$ROOT_DIR/scripts/notify-moshi.sh" \
+    --token "$NOTIFY_TOKEN" \
+    --title "Long loop #${cycle} start" \
+    --message "장기 루프 ${cycle}회차 시작 계획: ${message}" \
+    >/dev/null || true
+}
+
+notify_session_event() {
+  local phase="$1"
+  local message="$2"
+
+  if [[ -z "$NOTIFY_TOKEN" ]]; then
+    return
+  fi
+
+  if [[ "$DRY_RUN" == "true" ]]; then
+    log "dry-run notify session phase=$phase"
+    return
+  fi
+
+  "$ROOT_DIR/scripts/notify-moshi.sh" \
+    --token "$NOTIFY_TOKEN" \
+    --title "Long loop session ${phase}" \
+    --message "장기 루프 세션 ${phase}: ${message}" \
+    >/dev/null || true
+}
+
+bool_to_ko() {
+  local value="$1"
+  if [[ "$value" == "true" ]]; then
+    echo "예"
+  else
+    echo "아니오"
+  fi
 }
 
 notify_stale() {
@@ -277,6 +350,52 @@ run_checkpoint() {
   return 0
 }
 
+run_auto_finish() {
+  local output_file="$1"
+  local timeout_seconds="$2"
+
+  local commit_msg="$FINISH_COMMIT_MSG"
+  if [[ -z "$commit_msg" ]]; then
+    commit_msg="chore: long-horizon finalize session=${SESSION_ID}"
+  fi
+
+  local -a cmd=(
+    "$ROOT_DIR/scripts/ai-finish-task"
+    --target "$FINISH_TARGET_BRANCH"
+    --commit-msg "$commit_msg"
+  )
+
+  if [[ -n "$FINISH_ISSUE" ]]; then
+    cmd+=(--issue "$FINISH_ISSUE")
+  fi
+  if [[ "$FINISH_AUTO_MERGE" == "true" ]]; then
+    cmd+=(--auto-merge)
+  fi
+
+  if [[ "$DRY_RUN" == "true" ]]; then
+    cmd+=(--dry-run)
+    printf '+ %q ' "${cmd[@]}"
+    echo "2>&1 | tee $output_file"
+    return 0
+  fi
+
+  (
+    "${cmd[@]}" 2>&1 | tee "$output_file"
+  ) &
+  local cmd_pid=$!
+
+  local wait_rc=0
+  wait_with_timeout "$cmd_pid" "$timeout_seconds" || wait_rc=$?
+  if [[ "$wait_rc" -ne 0 ]]; then
+    if [[ "$wait_rc" -eq 124 ]]; then
+      echo "auto-finish timeout exceeded (${timeout_seconds}s): $output_file" >&2
+    fi
+    return "$wait_rc"
+  fi
+
+  return 0
+}
+
 write_cycle_report() {
   local report_file="$1"
   local cycle_num="$2"
@@ -324,8 +443,14 @@ write_state() {
   "consecutive_failures": $failures,
   "checkpoint_every_cycles": $CHECKPOINT_EVERY_CYCLES,
   "stale_minutes": $STALE_MINUTES,
+  "max_no_progress_cycles": $MAX_NO_PROGRESS_CYCLES,
+  "consecutive_no_progress": $CONSECUTIVE_NO_PROGRESS,
   "last_progress_at": "$LAST_PROGRESS_AT_UTC",
   "stale_alert_sent": $STALE_ALERT_SENT,
+  "stop_reason": "$STOP_REASON",
+  "auto_finish_enabled": $AUTO_FINISH,
+  "finish_target_branch": "$FINISH_TARGET_BRANCH",
+  "finish_auto_merge": $FINISH_AUTO_MERGE,
   "last_message": "$message",
   "session_dir": "$SESSION_DIR",
   "stop_file": "$STOP_FILE"
@@ -409,6 +534,34 @@ while [[ $# -gt 0 ]]; do
       STALE_MINUTES="${2:-}"
       shift 2
       ;;
+    --max-no-progress-cycles)
+      MAX_NO_PROGRESS_CYCLES="${2:-}"
+      shift 2
+      ;;
+    --auto-finish)
+      AUTO_FINISH="true"
+      shift
+      ;;
+    --finish-target)
+      FINISH_TARGET_BRANCH="${2:-}"
+      shift 2
+      ;;
+    --finish-commit-msg)
+      FINISH_COMMIT_MSG="${2:-}"
+      shift 2
+      ;;
+    --finish-issue)
+      FINISH_ISSUE="${2:-}"
+      shift 2
+      ;;
+    --finish-auto-merge)
+      FINISH_AUTO_MERGE="true"
+      shift
+      ;;
+    --finish-timeout)
+      FINISH_TIMEOUT_SECONDS="${2:-}"
+      shift 2
+      ;;
     --session-id)
       SESSION_ID="${2:-}"
       shift 2
@@ -468,6 +621,15 @@ validate_integer "$VERIFY_TIMEOUT_SECONDS" "--verify-timeout"
 validate_integer "$CHECKPOINT_TIMEOUT_SECONDS" "--checkpoint-timeout"
 validate_integer "$CHECKPOINT_EVERY_CYCLES" "--checkpoint-every"
 validate_integer "$STALE_MINUTES" "--stale-minutes"
+validate_integer "$MAX_NO_PROGRESS_CYCLES" "--max-no-progress-cycles"
+validate_integer "$FINISH_TIMEOUT_SECONDS" "--finish-timeout"
+validate_boolean "$AUTO_FINISH" "--auto-finish"
+validate_boolean "$FINISH_AUTO_MERGE" "--finish-auto-merge"
+
+if [[ -n "$FINISH_ISSUE" && ! "$FINISH_ISSUE" =~ ^[0-9]+$ ]]; then
+  echo "--finish-issue must be numeric" >&2
+  exit 1
+fi
 
 if [[ "$FOREVER" == "false" ]]; then
   validate_integer "$HOURS" "--hours"
@@ -487,6 +649,11 @@ fi
 
 if [[ ! -x "$ROOT_DIR/scripts/ai-verify" ]]; then
   echo "missing executable: $ROOT_DIR/scripts/ai-verify" >&2
+  exit 1
+fi
+
+if [[ "$AUTO_FINISH" == "true" && ! -x "$ROOT_DIR/scripts/ai-finish-task" ]]; then
+  echo "missing executable: $ROOT_DIR/scripts/ai-finish-task" >&2
   exit 1
 fi
 
@@ -536,9 +703,12 @@ fi
 last_cycle_num=0
 while IFS= read -r cycle_dir; do
   base_name="$(basename "$cycle_dir")"
-  num="${base_name#cycle-}"
-  if [[ "$num" =~ ^[0-9]+$ ]] && [[ "$num" -gt "$last_cycle_num" ]]; then
-    last_cycle_num="$num"
+  num_raw="${base_name#cycle-}"
+  if [[ "$num_raw" =~ ^[0-9]+$ ]]; then
+    num=$((10#$num_raw))
+    if [[ "$num" -gt "$last_cycle_num" ]]; then
+      last_cycle_num="$num"
+    fi
   fi
 done < <(find "$SESSION_DIR" -maxdepth 1 -mindepth 1 -type d -name 'cycle-*' 2>/dev/null || true)
 
@@ -551,6 +721,9 @@ fi
 LAST_PROGRESS_AT_UTC="$STARTED_AT_UTC"
 last_progress_epoch="$START_EPOCH"
 STALE_ALERT_SENT="false"
+CONSECUTIVE_NO_PROGRESS=0
+STOP_REASON="running"
+AUTO_FINISH_RESULT="skipped"
 
 consecutive_failures=0
 write_state "running" "$cycle" "$consecutive_failures" "session initialized"
@@ -567,11 +740,14 @@ else
   log "duration_hours=$HOURS end_at=$END_AT_UTC"
 fi
 log "checkpoint_every=$CHECKPOINT_EVERY_CYCLES stale_minutes=$STALE_MINUTES"
+log "max_no_progress_cycles=$MAX_NO_PROGRESS_CYCLES auto_finish=$AUTO_FINISH finish_target=$FINISH_TARGET_BRANCH finish_auto_merge=$FINISH_AUTO_MERGE"
+notify_session_event "start" "세션ID=${SESSION_ID}, 브랜치=${branch}, 종료예정=${END_AT_UTC:-forever}, 체크포인트주기=${CHECKPOINT_EVERY_CYCLES}, 무진척중단=${MAX_NO_PROGRESS_CYCLES}, 자동마무리=${AUTO_FINISH}"
 
 while true; do
   now_epoch="$(date +%s)"
   if [[ "$FOREVER" == "false" && "$now_epoch" -ge "$END_EPOCH" ]]; then
     log "time limit reached"
+    STOP_REASON="time_limit_reached"
     break
   fi
 
@@ -587,6 +763,7 @@ while true; do
 
   if [[ -f "$STOP_FILE" ]]; then
     log "stop file detected: $STOP_FILE"
+    STOP_REASON="stop_file_detected"
     break
   fi
 
@@ -599,7 +776,12 @@ while true; do
 
   cycle_id="$(printf '%03d' "$cycle")"
   cycle_dir="$SESSION_DIR/cycle-$cycle_id"
-  mkdir -p "$cycle_dir"
+  if [[ -e "$cycle_dir" ]]; then
+    echo "cycle dir already exists (resume collision): $cycle_dir" >&2
+    STOP_REASON="resume_cycle_collision"
+    break
+  fi
+  mkdir "$cycle_dir"
   log "cycle=$cycle_id start"
 
   plan_prompt="$cycle_dir/plan.prompt.md"
@@ -682,6 +864,13 @@ Task:
 3) Do not edit product code in this step.
 4) Output concise Korean summary.
 EOF
+
+  if [[ "$MAX_NO_PROGRESS_CYCLES" -gt 0 ]]; then
+    no_progress_rule="켜짐(${CONSECUTIVE_NO_PROGRESS}/${MAX_NO_PROGRESS_CYCLES})"
+  else
+    no_progress_rule="꺼짐"
+  fi
+  notify_cycle_start "$cycle" "계획=Plan 갱신 -> 최우선 1건 구현 -> verify -> docs, 무진척규칙=${no_progress_rule}, 체크포인트주기=${CHECKPOINT_EVERY_CYCLES}, 로그=cycle-${cycle_id}"
 
   if ! run_codex_exec "$plan_prompt" "$plan_last" "$plan_log" "$PLAN_TIMEOUT_SECONDS"; then
     cycle_failed="true"
@@ -776,24 +965,68 @@ EOF
 
   if [[ "$cycle_failed" == "true" ]]; then
     consecutive_failures=$((consecutive_failures + 1))
-    notify_cycle "$cycle" "failed" "로그: $cycle_dir"
+    CONSECUTIVE_NO_PROGRESS=0
+    if [[ "$MAX_NO_PROGRESS_CYCLES" -gt 0 ]]; then
+      no_progress_status="0/${MAX_NO_PROGRESS_CYCLES}"
+    else
+      no_progress_status="0/off"
+    fi
+    if [[ "$checkpoint_triggered" == "true" ]]; then
+      if [[ "$checkpoint_ok" == "true" ]]; then
+        checkpoint_status="성공"
+      else
+        checkpoint_status="실패"
+      fi
+    else
+      checkpoint_status="미실행"
+    fi
+    notify_cycle "$cycle" "failed" "상태=실패, 실패단계=${failure_stage}, 소요=${cycle_duration_sec}초, 작업변경=$(bool_to_ko "$has_changes"), 커밋변경=$(bool_to_ko "$head_changed"), 진척=$(bool_to_ko "$progress_detected"), 무진척연속=${no_progress_status}, 체크포인트=${checkpoint_status}, 로그=cycle-${cycle_id}"
     write_state "running" "$cycle" "$consecutive_failures" "cycle $cycle_id failed at $failure_stage"
     log "cycle=$cycle_id failed at $failure_stage (consecutive_failures=$consecutive_failures)"
     if [[ "$consecutive_failures" -ge "$MAX_FAILURES" ]]; then
       log "max failures reached; stopping loop"
+      STOP_REASON="max_failures_reached"
       break
     fi
   else
     consecutive_failures=0
-    notify_cycle "$cycle" "done" "검증 통과, 로그: $cycle_dir"
-    write_state "running" "$cycle" "$consecutive_failures" "cycle $cycle_id success (progress=$progress_detected)"
-    log "cycle=$cycle_id success (progress=$progress_detected)"
+    if [[ "$progress_detected" == "true" ]]; then
+      CONSECUTIVE_NO_PROGRESS=0
+    else
+      CONSECUTIVE_NO_PROGRESS=$((CONSECUTIVE_NO_PROGRESS + 1))
+    fi
+
+    if [[ "$MAX_NO_PROGRESS_CYCLES" -gt 0 ]]; then
+      no_progress_status="${CONSECUTIVE_NO_PROGRESS}/${MAX_NO_PROGRESS_CYCLES}"
+    else
+      no_progress_status="${CONSECUTIVE_NO_PROGRESS}/off"
+    fi
+    if [[ "$checkpoint_triggered" == "true" ]]; then
+      if [[ "$checkpoint_ok" == "true" ]]; then
+        checkpoint_status="성공"
+      else
+        checkpoint_status="실패"
+      fi
+    else
+      checkpoint_status="미실행"
+    fi
+    notify_cycle "$cycle" "done" "상태=성공, 소요=${cycle_duration_sec}초, 작업변경=$(bool_to_ko "$has_changes"), 커밋변경=$(bool_to_ko "$head_changed"), 진척=$(bool_to_ko "$progress_detected"), 무진척연속=${no_progress_status}, 체크포인트=${checkpoint_status}, 로그=cycle-${cycle_id}"
+    write_state "running" "$cycle" "$consecutive_failures" "cycle $cycle_id success (progress=$progress_detected, no_progress_streak=$CONSECUTIVE_NO_PROGRESS)"
+    log "cycle=$cycle_id success (progress=$progress_detected, no_progress_streak=$CONSECUTIVE_NO_PROGRESS)"
+
+    if [[ "$MAX_NO_PROGRESS_CYCLES" -gt 0 && "$CONSECUTIVE_NO_PROGRESS" -ge "$MAX_NO_PROGRESS_CYCLES" ]]; then
+      log "max no-progress cycles reached ($CONSECUTIVE_NO_PROGRESS/$MAX_NO_PROGRESS_CYCLES); stopping loop"
+      STOP_REASON="max_no_progress_cycles_reached"
+      write_state "running" "$cycle" "$consecutive_failures" "max no-progress cycles reached ($CONSECUTIVE_NO_PROGRESS/$MAX_NO_PROGRESS_CYCLES)"
+      break
+    fi
   fi
 
   cycle=$((cycle + 1))
 
   if [[ "$DRY_RUN" == "true" ]]; then
     log "dry-run finished after first cycle"
+    STOP_REASON="dry_run"
     break
   fi
 
@@ -804,6 +1037,31 @@ done
 
 finished_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 summary_file="$SESSION_DIR/session-summary.md"
+finish_log="$SESSION_DIR/finish.log.txt"
+
+if [[ "$STOP_REASON" == "running" ]]; then
+  STOP_REASON="loop_exited"
+fi
+
+if [[ "$AUTO_FINISH" == "true" ]]; then
+  log "auto-finish start target=$FINISH_TARGET_BRANCH auto_merge=$FINISH_AUTO_MERGE"
+  if run_auto_finish "$finish_log" "$FINISH_TIMEOUT_SECONDS"; then
+    AUTO_FINISH_RESULT="success"
+    log "auto-finish succeeded"
+  else
+    AUTO_FINISH_RESULT="failed"
+    log "auto-finish failed (see $finish_log)"
+  fi
+else
+  AUTO_FINISH_RESULT="skipped"
+fi
+
+notify_session_event "end" "중단사유=${STOP_REASON}, 자동마무리결과=${AUTO_FINISH_RESULT}, 실패연속=${consecutive_failures}, 무진척연속=${CONSECUTIVE_NO_PROGRESS}, 마지막진척시각=${LAST_PROGRESS_AT_UTC}"
+
+FINISH_LOG_VALUE="n/a"
+if [[ "$AUTO_FINISH" == "true" ]]; then
+  FINISH_LOG_VALUE="$finish_log"
+fi
 
 cat > "$summary_file" <<EOF
 # Long Horizon Loop Summary
@@ -816,10 +1074,19 @@ cat > "$summary_file" <<EOF
 - forever_mode: $FOREVER
 - configured_hours: $HOURS
 - max_failures: $MAX_FAILURES
+- max_no_progress_cycles: $MAX_NO_PROGRESS_CYCLES
 - checkpoint_every_cycles: $CHECKPOINT_EVERY_CYCLES
 - stale_minutes: $STALE_MINUTES
 - consecutive_failures_at_end: $consecutive_failures
+- consecutive_no_progress_at_end: $CONSECUTIVE_NO_PROGRESS
+- stop_reason: $STOP_REASON
 - last_progress_at: $LAST_PROGRESS_AT_UTC
+- auto_finish: $AUTO_FINISH
+- auto_finish_result: $AUTO_FINISH_RESULT
+- finish_target_branch: $FINISH_TARGET_BRANCH
+- finish_issue: ${FINISH_ISSUE:-n/a}
+- finish_auto_merge: $FINISH_AUTO_MERGE
+- finish_log: $FINISH_LOG_VALUE
 - logs: $SESSION_DIR
 - memory_files:
   - $PROMPT_FILE
@@ -839,6 +1106,10 @@ elif [[ -x "$ROOT_DIR/scripts/long-horizon-kpi.sh" ]]; then
     >/dev/null || true
 fi
 
-write_state "completed" "$cycle" "$consecutive_failures" "session completed"
+if [[ "$AUTO_FINISH_RESULT" == "failed" ]]; then
+  write_state "failed" "$cycle" "$consecutive_failures" "session completed; auto-finish failed"
+else
+  write_state "completed" "$cycle" "$consecutive_failures" "session completed; auto-finish=$AUTO_FINISH_RESULT"
+fi
 log "summary=$summary_file"
 log "done"
