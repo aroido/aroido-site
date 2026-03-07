@@ -31,6 +31,23 @@ Use interactive search session when latest facts are required.
 cyl
 ```
 
+## Long-Horizon Flow (24h class)
+
+Use dedicated long-horizon loop when you want continuous autonomous improvement.
+
+```bash
+./scripts/long-horizon-loop.sh \
+  --spec docs/specs/work-session-spec.md \
+  --hours 24
+```
+
+- durable memory files are stored per session under `.codex/long-horizon/<session-id>/`
+- stop signal:
+
+```bash
+touch .codex/STOP_LONG_HORIZON_LOOP
+```
+
 ## Failure Recovery
 
 - Verification failed:
