@@ -1,85 +1,84 @@
-# VibeSmith Messaging Evidence Pack (Official + Reddit)
+# VibeSmith Messaging Evidence Pack (Round 2)
 
 Updated: 2026-03-07
 
-## 1) Official Docs Signals
+## Goal
 
-1. Cursor Rules docs  
-https://docs.cursor.com/en/context  
-- LLM은 completion 사이 메모리를 유지하지 않으며, rule 기반 컨텍스트 주입이 필요하다는 점을 명시.
+- 평가 기준을 `"좋아 보이는 카피"`가 아니라 `"타깃 팀이 도입 결정을 내릴 근거"`로 전환한다.
+- 콘텐츠 품질 목표: `명확성 + 필요성 + 신뢰성 + 전환성` 4축 모두 강화.
 
-2. Claude Code Settings  
-https://docs.anthropic.com/en/docs/claude-code/settings  
-- 다중 설정 파일/권한 정책/승인 제어가 존재해 운영 일관성 관리가 중요함.
+## 1) Official Product-Doc Signals (Primary Sources)
 
-3. Claude Code Memory  
+1. Cursor Rules for AI  
+https://docs.cursor.com/context/rules-for-ai  
+- Cursor 쪽 공식 문서에서 규칙 기반 컨텍스트 운영이 핵심이라는 방향을 제시.
+
+2. Claude Code Memory  
 https://docs.anthropic.com/en/docs/claude-code/memory  
-- CLAUDE.md 기반 메모리 계층 관리가 가능하지만, 프로젝트가 많아질수록 유지 관리 체계가 필요.
+- CLAUDE.md 기반 메모리 계층(프로젝트/글로벌)을 설명하며, 스코프가 늘수록 운영 일관성 체계가 중요해짐.
+
+3. Claude Code Settings  
+https://docs.anthropic.com/en/docs/claude-code/settings  
+- 설정/권한/승인 정책을 다루며 팀 단위 운영 정책의 필요성을 강화.
 
 4. Claude Code MCP  
 https://docs.anthropic.com/en/docs/claude-code/mcp  
-- MCP 서버 연동이 강력하나 프로젝트 스코프/승인 경계 등 운영 복잡도가 함께 증가.
+- MCP 연동 가치와 함께 운영 복잡도(승인/서버 관리) 증가 포인트가 존재.
 
-5. Claude Code Best Practices  
-https://www.anthropic.com/engineering/claude-code-best-practices  
-- 파일 쓰기/명령 실행/MCP 도구 호출에 대한 승인과 설정 공유 필요성을 강조.
+5. MCP Authorization Spec (2025-06-18)
+https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization  
+- MCP 서버 인증/인가 요구사항은 "강력한 연동 = 더 높은 운영 통제 비용"이라는 메시지를 뒷받침.
 
-## 2) Reddit Field Signals
+## 2) Search/Content Trust Signals (Primary Sources)
 
-1. Claude Code permissions discussion  
-https://www.reddit.com/r/ClaudeAI/comments/1rhtfpz/claude_code_permissions_discussion/  
-- 반복 승인 피로, allowlist 관리 난이도, 안전성 불안에 대한 실사용자 논의.
+1. Google SEO Starter Guide  
+https://developers.google.com/search/docs/fundamentals/seo-starter-guide
 
-2. How to stop Claude Code from asking for permission every time?  
-https://www.reddit.com/r/ClaudeAI/comments/1l45dcr/how_to_stop_claude_code_from_asking_for/  
-- 자동화 편의와 보안 통제 사이의 긴장(운영 정책 필요성) 확인.
+2. Google Title Links documentation  
+https://developers.google.com/search/docs/appearance/title-link
 
-3. Anyone else tired of re-explaining codebase context to AI tools?  
-https://www.reddit.com/r/cursor/comments/1pmenwl/anyone_else_tired_of_reexplaining_codebase/  
-- 매번 컨텍스트 재설명 문제, 규칙 적용 체감 불안정성에 대한 현장 피드백.
+3. Google Snippet & meta description docs  
+https://developers.google.com/search/docs/appearance/snippet
 
-4. Anyone else need project-specific .cursor/rules but want them synced?  
-https://www.reddit.com/r/cursor/comments/1ozjyoq/  
-- 프로젝트별 규칙은 필요하지만 동기화/재사용 체계가 부족하다는 니즈.
+4. Google Helpful Content System  
+https://developers.google.com/search/docs/fundamentals/creating-helpful-content
 
-5. One shared rules + memory bank for every AI coding IDE  
-https://www.reddit.com/r/cursor/comments/1koj6vx/  
-- IDE별 규칙 파일을 통합 관리하려는 시도가 이미 나타남.
+핵심 해석:
+- 검색/유입 관점에서도 "사람 중심의 명확한 문제-해결-증거" 구조가 장기적으로 유리.
+- 과장형 슬로건보다 구체적 유즈케이스/도입 단계/근거 링크가 더 신뢰를 만든다.
 
-## 3) Messaging Implications
+## 3) Conversion Reality Check (Benchmark)
 
-- 핵심 문제 정의:
-  - `컨텍스트 분산`
-  - `설정 드리프트`
-  - `승인/보안 운영 피로`
-  - `멀티 레포 재사용 어려움`
+- Unbounce Conversion Benchmark Report
+https://unbounce.com/conversion-benchmark-report/
 
-- 제품 가치 문장 프레임:
-  - `분산된 AI 코딩 컴포넌트를 한 운영 레이어로 통합`
-  - `종속성 가시화로 늦게 터지는 충돌을 앞당겨 발견`
-  - `팀 온보딩과 핸드오프를 반복 가능한 형태로 표준화`
+핵심 해석:
+- 랜딩 전환은 업종/트래픽 성격에 따라 편차가 크다.
+- 따라서 VibeSmith 페이지는 "즉시 구매형"보다 "진단/파일럿 상담 전환형" CTA가 더 합리적.
 
-## 4) Copy Bank (KR)
+## 4) Messaging Implications
 
-1. `AI 코딩 속도는 빨라졌지만, 운영은 더 복잡해졌습니다.`
-2. `VibeSmith는 Cursor와 Claude Code 구성요소를 하나의 운영 맵으로 연결합니다.`
-3. `규칙·명령·훅이 흩어질수록 품질보다 우연에 의존하게 됩니다.`
-4. `보이지 않던 결합을 종속성 그래프로 먼저 드러냅니다.`
-5. `새 팀원이 폴더를 뒤지는 대신, 운영 지도를 먼저 이해하게 만듭니다.`
-6. `반복되는 컨텍스트 재설명 비용을 줄이고 실제 구현 시간에 집중하게 합니다.`
-7. `강한 자동화와 안전한 승인 경계를 동시에 설계합니다.`
-8. `로컬 우선으로 시작해 팀 규모 운영까지 자연스럽게 확장합니다.`
-9. `설정 복제에서 운영 시스템으로, AI 개발 체계를 업그레이드합니다.`
-10. `VibeSmith는 AI 코딩의 결과만이 아니라 운영 신뢰도까지 관리합니다.`
+- MUST 강조:
+  - 멀티 레포 운영팀의 실제 마찰(설정 드리프트, 승인 피로, 온보딩 지연)
+  - 30일 도입 흐름(기준선 -> 적용 -> 성과 리뷰)
+  - 확장/유지 판단 게이트(언제 확장하고 언제 보류할지)
+  - 출처 링크(공식 문서) 제시로 신뢰성 보강
 
-## 5) Content Guardrails
+- MUST 금지:
+  - 결과 확정형 과장 카피
+  - 출처 없는 수치 주장
+  - 내부 용어 남발로 인한 진입장벽 상승
 
-- MUST:
-  - 사용자 결과 중심 문장으로 시작한다.
-  - 추상 슬로건보다 실제 운영 문제를 먼저 제시한다.
-  - 상태/범위/다음 단계(파일럿, 도입 문의)를 명확히 분리한다.
+## 5) Applied In This Iteration
 
-- MUST NOT:
-  - 근거 없는 수치 사용
-  - 내부 개발 프로세스 용어를 메인 카피로 남발
-  - 제품 상태를 과장하는 표현
+1. `Why Now` 섹션에 근거 문서 링크 블록 추가.
+2. `Pilot Metrics` 설명을 baseline/target 관점으로 구체화.
+3. `30-Day Rollout Blueprint` + `Decision Gates` 섹션 추가.
+4. 히어로/카드/리스트 spacing 리듬 확장으로 모바일 가독성 개선.
+
+## 6) Remaining Gaps To Reach "100/100"
+
+1. 실제 제품 캡처/GIF 교체 (placeholder 제거)
+2. 최소 1개 파일럿 사례(전/후 지표) 공개
+3. CTA를 "2분 적합도 진단"처럼 결과형으로 재설계
+4. 프로젝트 카드에 "대상/문제/증거"를 더 짧게 요약한 숏버전 추가

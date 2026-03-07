@@ -326,6 +326,21 @@ body::before {
   line-height: 1.66;
 }
 
+.source-links {
+  margin-top: 1rem;
+}
+
+.source-links .stack-list {
+  margin-top: 0.55rem;
+}
+
+.source-links a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: 1.5px;
+}
+
 .featured-meta li + li,
 .stack-list li + li {
   margin-top: 0.42rem;
