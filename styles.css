@@ -357,6 +357,12 @@ body::before {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.single-grid {
+  display: grid;
+  gap: var(--card-gap);
+  grid-template-columns: 1fr;
+}
+
 .compare-grid {
   display: grid;
   gap: var(--card-gap);
@@ -574,6 +580,35 @@ body::before {
   background: linear-gradient(150deg, rgba(255, 255, 255, 0.96), rgba(16, 223, 251, 0.2));
 }
 
+.crumbs {
+  margin: -0.2rem 0 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.38rem;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.crumbs a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.crumbs a:hover,
+.crumbs a:focus-visible {
+  border-bottom-color: var(--line);
+}
+
+.crumbs [aria-current="page"] {
+  color: var(--ink);
+  font-weight: 700;
+}
+
 .pill-row {
   display: flex;
   gap: 0.45rem;
@@ -707,6 +742,13 @@ body::before {
   .split-grid,
   .compare-grid {
     grid-template-columns: 1fr;
+  }
+
+  .crumbs {
+    margin-top: -0.1rem;
+    margin-bottom: 1rem;
+    font-size: 0.72rem;
+    gap: 0.3rem;
   }
 
   .focus-grid,
