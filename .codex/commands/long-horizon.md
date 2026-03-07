@@ -26,7 +26,10 @@
 워크트리에서 실행:
 
 ```bash
-./scripts/long-horizon-loop.sh --hours 24
+./scripts/long-horizon-loop.sh \
+  --hours 24 \
+  --checkpoint-every 3 \
+  --stale-minutes 20
 ```
 
 - durable memory 파일:
@@ -57,6 +60,21 @@ touch .codex/STOP_LONG_HORIZON_LOOP
 
 ```bash
 ./scripts/long-horizon-loop.sh --resume <session-id>
+```
+
+### 5) KPI Accumulation
+
+루프 종료 시 KPI가 자동 누적된다.
+
+- JSONL: `.codex/.long-horizon-kpi.jsonl`
+- CSV: `.codex/.long-horizon-kpi.csv`
+
+수동 집계:
+
+```bash
+./scripts/long-horizon-kpi.sh \
+  --session-dir .codex/long-horizon/<session-id> \
+  --append
 ```
 
 ## Policy

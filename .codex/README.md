@@ -72,6 +72,7 @@
   - `scripts/notify-moshi.sh`
   - `scripts/long-horizon-bootstrap.sh`
   - `scripts/long-horizon-checkpoint.sh`
+  - `scripts/long-horizon-kpi.sh`
   - `scripts/long-horizon-loop.sh`
 
 ## Long-Horizon Memory Templates

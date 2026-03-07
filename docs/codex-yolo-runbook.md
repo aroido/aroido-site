@@ -46,7 +46,9 @@ Use dedicated long-horizon loop when you want continuous autonomous improvement.
 ```bash
 ./scripts/long-horizon-loop.sh \
   --spec docs/specs/work-session-spec.md \
-  --hours 24
+  --hours 24 \
+  --checkpoint-every 3 \
+  --stale-minutes 20
 ```
 
 3. At each milestone, checkpoint changes.
@@ -54,6 +56,11 @@ Use dedicated long-horizon loop when you want continuous autonomous improvement.
 ```bash
 ./scripts/long-horizon-checkpoint.sh --session-id <session-id>
 ```
+
+4. Session KPI is automatically appended at loop end.
+
+- `.codex/.long-horizon-kpi.jsonl`
+- `.codex/.long-horizon-kpi.csv`
 
 - durable memory files are stored per session under `.codex/long-horizon/<session-id>/`
 - stop signal:
