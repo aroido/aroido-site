@@ -1,0 +1,29 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="aroido-bg" x1="52" y1="52" x2="460" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101524" />
+      <stop offset="1" stop-color="#1A253F" />
+    </linearGradient>
+    <linearGradient id="aroido-metal" x1="150" y1="120" x2="388" y2="410" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EBF1FF" />
+      <stop offset="1" stop-color="#BCC9E7" />
+    </linearGradient>
+    <linearGradient id="aroido-bolt" x1="178" y1="130" x2="336" y2="414" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#44E5FF" />
+      <stop offset="1" stop-color="#D0FF33" />
+    </linearGradient>
+    <filter id="aroido-glow" x="90" y="72" width="332" height="368" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+      <feGaussianBlur stdDeviation="8" result="effect1_foregroundBlur" />
+    </filter>
+  </defs>
+  <rect x="20" y="20" width="472" height="472" rx="112" fill="url(#aroido-bg)" />
+  <path
+    d="M256 88L94 420H176L208 350H304L336 420H418L256 88ZM256 204L309 322H203L256 204Z"
+    fill="url(#aroido-metal)"
+  />
+  <g filter="url(#aroido-glow)">
+    <path d="M161 420H236L351 112H276L161 420Z" fill="url(#aroido-bolt)" />
+  </g>
+</svg>
