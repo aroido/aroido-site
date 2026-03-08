@@ -52,6 +52,8 @@
           <img
             class="brand-mark"
             src="/assets/aroido-brand/aroido-mark-dark-mono.svg"
+            data-mark-light="/assets/aroido-brand/aroido-mark-light-mono.svg"
+            data-mark-dark="/assets/aroido-brand/aroido-mark-dark-mono.svg"
             alt=""
             aria-hidden="true"
             width="18"
@@ -67,13 +69,20 @@
           <a href="/team/" data-i18n="nav_team">Team</a>
           <a href="/team/#contact" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">Contact</a>
         </nav>
-        <div class="lang-switch" role="group" aria-label="Language switch">
-          <button class="lang-btn" data-lang="en" type="button">EN</button>
-          <button class="lang-btn" data-lang="ko" type="button">KO</button>
+        <div class="header-controls">
+          <div class="theme-switch" role="group" aria-label="Theme switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">Dark</button>
+          </div>
+          <div class="lang-switch" role="group" aria-label="Language switch">
+            <button class="lang-btn" data-lang="en" type="button">EN</button>
+            <button class="lang-btn" data-lang="ko" type="button">KO</button>
+          </div>
         </div>
       </header>
 
-      <section id="brief" class="page-hero reveal" data-reveal>
+      <section id="brief" class="page-hero projects-hero reveal" data-reveal>
         <p class="kicker" data-i18n="projects_kicker">Product</p>
         <h1 data-i18n="projects_page_title">VibeSmith Briefing.</h1>
         <p data-i18n="projects_page_description">
@@ -112,9 +121,8 @@
               <li data-i18n="projects_card_vibesmith_point3">Measure: setup time, context stability, release confidence</li>
             </ul>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="/projects/vibesmith/#demo" data-i18n="projects_card_vibesmith_cta" data-track-event="hero_cta_click" data-track-label="projects_open_demo">Open VibeSmith demo</a>
+              <a class="btn btn-primary" href="/projects/vibesmith/" data-i18n="projects_card_vibesmith_cta" data-track-event="hero_cta_click" data-track-label="projects_open_vibesmith">Open VibeSmith demo</a>
               <a class="btn btn-ghost" href="/projects/vibesmith/#download" data-i18n="projects_card_vibesmith_download_cta" data-track-event="download_cta_click" data-track-label="projects_open_download">Community/Brew guide</a>
-              <a class="btn btn-ghost" href="mailto:contact@aroido.com?subject=VibeSmith%20Pilot%20Inquiry" data-i18n="projects_card_vibesmith_pilot_cta" data-track-event="contact_cta_click" data-track-label="projects_pilot_mailto">Start pilot discussion</a>
               <a class="btn btn-ghost" href="/projects/vibesmith/#docs" data-i18n="projects_card_vibesmith_docs_cta" data-track-event="hero_cta_click" data-track-label="projects_open_docs">Read adoption docs</a>
             </div>
           </article>
@@ -122,13 +130,11 @@
       </section>
 
       <section id="contact" class="contact-panel reveal" data-reveal>
-        <h2 data-i18n="contact_title">Build something sharp together.</h2>
-        <p data-i18n="contact_description">
-          If your team wants speed without chaos, we can design and ship with you.
-        </p>
+        <h2 data-i18n="projects_footer_title">Download first. Upgrade later.</h2>
+        <p data-i18n="projects_footer_desc">VibeSmith Community is free today. Run it in your workflow now, then join the Pro waitlist only if your team needs managed governance features.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:contact@aroido.com?subject=VibeSmith%20Pilot%20Inquiry" data-i18n="cta_contact" data-track-event="contact_cta_click" data-track-label="projects_contact_pilot_mailto">Start pilot conversation</a>
-          <a class="btn btn-ghost" href="/projects/vibesmith/#docs" data-i18n="cta_contact_docs" data-track-event="hero_cta_click" data-track-label="projects_contact_open_docs">Read rollout docs</a>
+          <a class="btn btn-primary" href="/projects/vibesmith/#download" data-i18n="projects_footer_primary" data-track-event="download_cta_click" data-track-label="projects_footer_open_download">Open free download</a>
+          <a class="btn btn-ghost" href="mailto:contact@aroido.com?subject=VibeSmith%20Pro%20Waitlist" data-i18n="projects_footer_secondary" data-track-event="contact_cta_click" data-track-label="projects_footer_pro_waitlist">Join Pro waitlist</a>
         </div>
       </section>
     </main>

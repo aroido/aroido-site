@@ -3,13 +3,15 @@
 
   const DEFAULT_LANGUAGE = "en";
   const LANGUAGE_KEY = "aroido:language";
+  const THEME_MODE_KEY = "aroido:theme-mode";
+  const DEFAULT_THEME_MODE = "auto";
+  const SUPPORTED_THEME_MODES = ["auto", "light", "dark"];
   const SUPPORTED_LANGUAGES = ["en", "ko"];
   const COMMUNITY_RELEASE_PERMALINK =
     "https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest";
-  const COMMUNITY_DMG_URL =
-    "https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/VibeSmith-0.5.3.dmg";
-  const COMMUNITY_SHA_URL =
-    "https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/SHA256SUMS.txt";
+  const COMMUNITY_ARCHIVE_URL =
+    "https://gitlab.com/aroido/vibesmith-community/-/archive/main/vibesmith-community-main.zip";
+  const COMMUNITY_REPOSITORY_URL = "https://gitlab.com/aroido/vibesmith-community";
 
   const fallbackTranslations = {
     en: {
@@ -17,11 +19,17 @@
       meta_description:
         "Aroido designs and ships bold products with VibeSmith as the current flagship.",
       hello_alert: "Aroido readiness check is complete.",
+      theme_auto: "Auto",
+      theme_light: "Light",
+      theme_dark: "Dark",
     },
     ko: {
       page_title: "Aroido | 힙한 프로덕트 스튜디오",
       meta_description: "Aroido는 VibeSmith를 중심으로 빠르게 제품을 설계하고 출시합니다.",
       hello_alert: "Aroido 준비 상태 점검이 완료되었습니다.",
+      theme_auto: "시스템",
+      theme_light: "라이트",
+      theme_dark: "다크",
     },
   };
 
@@ -32,11 +40,13 @@
     ogLocale: document.querySelector('meta[property="og:locale"]'),
     twitterTitle: document.querySelector('meta[name="twitter:title"]'),
     twitterDescription: document.querySelector('meta[name="twitter:description"]'),
+    themeButtons: Array.from(document.querySelectorAll(".theme-btn")),
+    brandMarks: Array.from(document.querySelectorAll(".brand-mark[data-mark-light][data-mark-dark]")),
     langButtons: Array.from(document.querySelectorAll(".lang-btn")),
     communityLinkNodes: Array.from(document.querySelectorAll("[data-community-link]")),
     communityReleaseUrlNode: document.querySelector("[data-community-release-url]"),
-    communityDmgUrlNode: document.querySelector("[data-community-dmg-url]"),
-    communityShaUrlNode: document.querySelector("[data-community-sha-url]"),
+    communityArchiveUrlNode: document.querySelector("[data-community-archive-url]"),
+    communityRepositoryUrlNode: document.querySelector("[data-community-repository-url]"),
     localizedMediaNodes: Array.from(document.querySelectorAll("[data-media-src-en][data-media-src-ko]")),
     gifPosterNodes: Array.from(document.querySelectorAll("[data-gif-poster-en], [data-gif-poster-ko]")),
     trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
@@ -58,6 +68,7 @@
   const state = {
     currentLanguage: DEFAULT_LANGUAGE,
     translations: fallbackTranslations,
+    currentThemeMode: DEFAULT_THEME_MODE,
   };
   const gifPosterTimers = new WeakMap();
 
@@ -78,6 +89,24 @@
     const lower = value.toLowerCase();
     const detected = SUPPORTED_LANGUAGES.find((language) => lower.startsWith(language));
     return detected || DEFAULT_LANGUAGE;
+  }
+
+  function normalizeThemeMode(value) {
+    if (!value || typeof value !== "string") {
+      return DEFAULT_THEME_MODE;
+    }
+
+    const lower = value.toLowerCase();
+    return SUPPORTED_THEME_MODES.includes(lower) ? lower : DEFAULT_THEME_MODE;
+  }
+
+  function getSystemTheme() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function resolveTheme(themeMode) {
+    const nextMode = normalizeThemeMode(themeMode);
+    return nextMode === "auto" ? getSystemTheme() : nextMode;
   }
 
   function getQueryLanguage() {
@@ -123,12 +152,36 @@
     }
   }
 
+  function getStoredThemeMode() {
+    try {
+      return localStorage.getItem(THEME_MODE_KEY);
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function setStoredThemeMode(themeMode) {
+    try {
+      localStorage.setItem(THEME_MODE_KEY, themeMode);
+    } catch (_error) {
+      /* Ignore storage errors in private mode/restricted contexts */
+    }
+  }
+
   function setCurrentLanguage(language) {
     state.currentLanguage = normalizeLanguage(language);
   }
 
   function getCurrentLanguage() {
     return state.currentLanguage;
+  }
+
+  function setCurrentThemeMode(themeMode) {
+    state.currentThemeMode = normalizeThemeMode(themeMode);
+  }
+
+  function getCurrentThemeMode() {
+    return state.currentThemeMode;
   }
 
   function setTranslations(translations) {
@@ -221,6 +274,35 @@
     });
   }
 
+  function updateThemeButtons(themeMode) {
+    if (dom.themeButtons.length === 0) {
+      return;
+    }
+
+    const nextMode = normalizeThemeMode(themeMode);
+    dom.themeButtons.forEach((button) => {
+      const mode = normalizeThemeMode(button.getAttribute("data-theme-mode"));
+      button.setAttribute("aria-pressed", String(mode === nextMode));
+    });
+  }
+
+  function updateBrandMarks(resolvedTheme) {
+    if (!Array.isArray(dom.brandMarks) || dom.brandMarks.length === 0) {
+      return;
+    }
+
+    dom.brandMarks.forEach((mark) => {
+      const nextSource =
+        resolvedTheme === "dark"
+          ? mark.getAttribute("data-mark-light")
+          : mark.getAttribute("data-mark-dark");
+
+      if (nextSource) {
+        mark.setAttribute("src", nextSource);
+      }
+    });
+  }
+
   function setCommunityLink(type, href) {
     dom.communityLinkNodes.forEach((node) => {
       if (node.getAttribute("data-community-link") === type) {
@@ -244,12 +326,12 @@
     }
 
     setCommunityLink("release", COMMUNITY_RELEASE_PERMALINK);
-    setCommunityLink("dmg", COMMUNITY_DMG_URL);
-    setCommunityLink("sha", COMMUNITY_SHA_URL);
+    setCommunityLink("archive", COMMUNITY_ARCHIVE_URL);
+    setCommunityLink("repository", COMMUNITY_REPOSITORY_URL);
 
     updateCommunityPathNode(dom.communityReleaseUrlNode, COMMUNITY_RELEASE_PERMALINK);
-    updateCommunityPathNode(dom.communityDmgUrlNode, COMMUNITY_DMG_URL);
-    updateCommunityPathNode(dom.communityShaUrlNode, COMMUNITY_SHA_URL);
+    updateCommunityPathNode(dom.communityArchiveUrlNode, COMMUNITY_ARCHIVE_URL);
+    updateCommunityPathNode(dom.communityRepositoryUrlNode, COMMUNITY_REPOSITORY_URL);
   }
 
   function applyLocalizedMedia(language) {
@@ -339,6 +421,50 @@
     });
   }
 
+  function applyTheme(themeMode, options = {}) {
+    const { persist = true } = options;
+    const nextMode = normalizeThemeMode(themeMode);
+    const resolvedTheme = resolveTheme(nextMode);
+
+    document.documentElement.setAttribute("data-theme-mode", nextMode);
+    document.documentElement.setAttribute("data-theme", resolvedTheme);
+    setCurrentThemeMode(nextMode);
+    updateThemeButtons(nextMode);
+    updateBrandMarks(resolvedTheme);
+
+    if (persist) {
+      setStoredThemeMode(nextMode);
+    }
+  }
+
+  function initializeThemeSwitch() {
+    if (dom.themeButtons.length > 0) {
+      dom.themeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextMode = button.getAttribute("data-theme-mode");
+          applyTheme(nextMode);
+          trackEvent("theme_mode_change", { theme_mode: normalizeThemeMode(nextMode) });
+        });
+      });
+    }
+
+    const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const syncSystemTheme = () => {
+      if (getCurrentThemeMode() === "auto") {
+        applyTheme("auto", { persist: false });
+      }
+    };
+
+    if (typeof darkMediaQuery.addEventListener === "function") {
+      darkMediaQuery.addEventListener("change", syncSystemTheme);
+    } else if (typeof darkMediaQuery.addListener === "function") {
+      darkMediaQuery.addListener(syncSystemTheme);
+    }
+
+    const storedThemeMode = getStoredThemeMode();
+    applyTheme(storedThemeMode || DEFAULT_THEME_MODE, { persist: false });
+  }
+
   function trackEvent(name, properties = {}) {
     if (!name || typeof name !== "string") {
       return;
@@ -347,6 +473,8 @@
     const payload = {
       page_path: window.location.pathname,
       language: getCurrentLanguage(),
+      theme_mode: getCurrentThemeMode(),
+      theme: document.documentElement.getAttribute("data-theme") || "light",
       ...properties,
     };
 
@@ -600,6 +728,7 @@
 
   function runSynchronousBootstrap() {
     initializeCommunityReleaseLinks();
+    initializeThemeSwitch();
     initializeTrackedEvents();
     initializeLanguageSwitch();
     initializeVoicePanels();
