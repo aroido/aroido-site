@@ -32,7 +32,7 @@
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Web",
         "url": "https://aroido.com/projects/vibesmith/",
-        "inLanguage": ["en", "ko"],
+        "inLanguage": ["en-US", "ko-KR"],
         "description": "A component operations layer for teams running multi-repo AI coding workflows with Cursor and Claude Code.",
         "featureList": [
           "Unified inventory for Skills, Agents, Commands, Hooks, and Rules",
@@ -45,14 +45,15 @@
     <link rel="stylesheet" href="../../styles.css" />
   </head>
   <body>
-    <main class="site-shell">
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">Skip to content</a>
+    <main id="main-content" class="site-shell">
       <header class="topbar reveal" data-reveal>
         <a class="brand brand-link" href="/">AROIDO</a>
         <nav class="main-nav" aria-label="Main">
           <a href="/" data-i18n="nav_home">Home</a>
-          <a href="/projects/vibesmith/" aria-current="page" data-i18n="nav_projects">VibeSmith</a>
+          <a href="/projects/" aria-current="page" data-i18n="nav_projects">Product</a>
           <a href="/team/" data-i18n="nav_team">Team</a>
-          <a href="#contact" data-i18n="nav_contact">Contact</a>
+          <a href="/team/#contact" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">Contact</a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Language switch">
           <button class="lang-btn" data-lang="en" type="button">EN</button>
@@ -139,13 +140,16 @@
         </div>
       </section>
 
-      <section class="section reveal" data-reveal>
+      <section id="demo" class="section reveal" data-reveal>
         <div class="section-head">
           <p class="section-eyebrow">VISUAL PROOF</p>
-          <h2 data-i18n="vibe_media_title">Visual Slots</h2>
-          <p data-i18n="vibe_media_desc">
-            Keep this section and replace placeholders with actual captures from your current build.
-          </p>
+          <h2 data-i18n="vibe_media_title">Product interface walkthrough</h2>
+          <p data-i18n="vibe_media_desc">Current build screens mapped to real operator decisions.</p>
+          <ul class="proof-chip-row" aria-label="Visual proof signals">
+            <li class="proof-chip" data-i18n="vibe_media_chip_1">Production-like workflow</li>
+            <li class="proof-chip" data-i18n="vibe_media_chip_2">Pilot decision screens</li>
+            <li class="proof-chip" data-i18n="vibe_media_chip_3">Repo-scale clarity</li>
+          </ul>
         </div>
         <div class="media-proof-grid">
           <figure class="media-card media-card-hero media-proof-hero media-live" role="img" aria-label="End-to-end workflow">
@@ -153,6 +157,8 @@
               class="media-visual"
               src="/assets/vibesmith/vibesmith-workflow.svg"
               alt="VibeSmith end-to-end workflow"
+              width="1600"
+              height="900"
               loading="lazy"
               decoding="async"
             />
@@ -163,63 +169,71 @@
                 Recommended: 8-12 seconds showing scan, graph inspection, and action.
               </p>
             </div>
-            <figcaption data-i18n="vibe_media_gif_caption">Current asset: /assets/vibesmith/vibesmith-workflow.svg (replace with vibesmith-workflow.gif when ready)</figcaption>
+            <figcaption data-i18n="vibe_media_gif_caption">Current build workflow view (/assets/vibesmith/vibesmith-workflow.svg)</figcaption>
           </figure>
           <figure class="media-card media-live" role="img" aria-label="Inventory screenshot">
             <img
               class="media-visual"
               src="/assets/vibesmith/inventory.svg"
               alt="VibeSmith component inventory"
+              width="1600"
+              height="1000"
               loading="lazy"
               decoding="async"
             />
             <div class="media-placeholder media-overlay">
-              <span class="media-tag" data-i18n="vibe_media_card1_tag">Screen 01</span>
+              <span class="media-tag" data-i18n="vibe_media_card1_tag">Decision 01</span>
               <strong data-i18n="vibe_media_card1_title">Component inventory</strong>
             </div>
-            <figcaption data-i18n="vibe_media_card1_caption">/assets/vibesmith/inventory.svg</figcaption>
+            <figcaption data-i18n="vibe_media_card1_caption">Decision: confirm active components and ownership boundaries.</figcaption>
           </figure>
           <figure class="media-card media-live" role="img" aria-label="Graph detail screenshot">
             <img
               class="media-visual"
               src="/assets/vibesmith/graph-detail.svg"
               alt="VibeSmith graph detail view"
+              width="1600"
+              height="1000"
               loading="lazy"
               decoding="async"
             />
             <div class="media-placeholder media-overlay">
-              <span class="media-tag" data-i18n="vibe_media_card2_tag">Screen 02</span>
+              <span class="media-tag" data-i18n="vibe_media_card2_tag">Decision 02</span>
               <strong data-i18n="vibe_media_card2_title">Dependency graph detail</strong>
             </div>
-            <figcaption data-i18n="vibe_media_card2_caption">/assets/vibesmith/graph-detail.svg</figcaption>
+            <figcaption data-i18n="vibe_media_card2_caption">Decision: identify coupling paths that can block release.</figcaption>
           </figure>
           <figure class="media-card media-live" role="img" aria-label="Search and filter screenshot">
             <img
               class="media-visual"
               src="/assets/vibesmith/search-filter.svg"
               alt="VibeSmith search and filter flow"
+              width="1600"
+              height="1000"
               loading="lazy"
               decoding="async"
             />
             <div class="media-placeholder media-overlay">
-              <span class="media-tag" data-i18n="vibe_media_card3_tag">Screen 03</span>
+              <span class="media-tag" data-i18n="vibe_media_card3_tag">Decision 03</span>
               <strong data-i18n="vibe_media_card3_title">Search and filter flow</strong>
             </div>
-            <figcaption data-i18n="vibe_media_card3_caption">/assets/vibesmith/search-filter.svg</figcaption>
+            <figcaption data-i18n="vibe_media_card3_caption">Decision: trace duplicated rules and stale commands across repos.</figcaption>
           </figure>
           <figure class="media-card media-live" role="img" aria-label="Release impact panel screenshot">
             <img
               class="media-visual"
               src="/assets/vibesmith/release-impact.svg"
               alt="VibeSmith release impact panel"
+              width="1600"
+              height="1000"
               loading="lazy"
               decoding="async"
             />
             <div class="media-placeholder media-overlay">
-              <span class="media-tag" data-i18n="vibe_media_card4_tag">Screen 04</span>
+              <span class="media-tag" data-i18n="vibe_media_card4_tag">Decision 04</span>
               <strong data-i18n="vibe_media_card4_title">Release impact panel</strong>
             </div>
-            <figcaption data-i18n="vibe_media_card4_caption">/assets/vibesmith/release-impact.svg</figcaption>
+            <figcaption data-i18n="vibe_media_card4_caption">Decision: proceed, hold, or split rollout scope with confidence.</figcaption>
           </figure>
         </div>
       </section>
@@ -245,6 +259,198 @@
           <article class="story-card">
             <h3 data-i18n="vibe_cap_4_title">Scale path</h3>
             <p data-i18n="vibe_cap_4_body">Start local-first now and evolve to team-level workflows in the next phase.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">WHY NOW</p>
+          <h2 data-i18n="vibe_signal_title">Why Now</h2>
+          <p data-i18n="vibe_signal_desc">
+            Official tool behavior and real team workflows point to one repeated bottleneck: component operations break first when scale rises.
+          </p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <p data-i18n="vibe_signal_1">
+              Cursor docs state that memory does not carry across completions, so team-wide reusable rules and context layers become mandatory.
+            </p>
+          </article>
+          <article class="story-card">
+            <p data-i18n="vibe_signal_2">
+              Claude Code supports memory/settings at multiple scopes, which is powerful but increases consistency overhead as repos grow.
+            </p>
+          </article>
+          <article class="story-card">
+            <p data-i18n="vibe_signal_3">
+              MCP expands integration power, but project-level server and approval boundaries add operational complexity by default.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">BEFORE / AFTER</p>
+          <h2 data-i18n="vibe_ba_title">Before/After</h2>
+        </div>
+        <div class="compare-grid">
+          <article class="story-card">
+            <h3 data-i18n="vibe_before_title">Before</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_before_1">Rules, commands, and hooks spread across repo-specific files</li>
+              <li data-i18n="vibe_before_2">Hidden dependencies discovered late during delivery</li>
+              <li data-i18n="vibe_before_3">Onboarding relies on tribal knowledge and manual handoff</li>
+            </ul>
+          </article>
+          <article class="story-card highlight">
+            <h3 data-i18n="vibe_after_title">After</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_after_1">One inventory view for active AI coding components</li>
+              <li data-i18n="vibe_after_2">Dependency graph and search surface risky coupling earlier</li>
+              <li data-i18n="vibe_after_3">Repeatable project setup with clearer team handoff</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">OPERATOR VOICE</p>
+          <h2 data-i18n="vibe_voice_title">What Teams Actually Say</h2>
+          <p data-i18n="vibe_voice_desc">
+            Same complaints keep repeating across teams. This section turns those exact lines into an operating flow.
+          </p>
+        </div>
+        <div class="voice-tabs" role="tablist" aria-label="Operator voice tabs">
+          <button
+            class="voice-tab is-active"
+            type="button"
+            role="tab"
+            id="voice-tab-lead"
+            data-voice-tab="voice-lead"
+            aria-controls="voice-panel-lead"
+            aria-selected="true"
+            tabindex="0"
+            data-i18n="vibe_voice_tab_1"
+          >
+            Engineering lead
+          </button>
+          <button
+            class="voice-tab"
+            type="button"
+            role="tab"
+            id="voice-tab-product"
+            data-voice-tab="voice-product"
+            aria-controls="voice-panel-product"
+            aria-selected="false"
+            tabindex="-1"
+            data-i18n="vibe_voice_tab_2"
+          >
+            Product engineer
+          </button>
+          <button
+            class="voice-tab"
+            type="button"
+            role="tab"
+            id="voice-tab-platform"
+            data-voice-tab="voice-platform"
+            aria-controls="voice-panel-platform"
+            aria-selected="false"
+            tabindex="-1"
+            data-i18n="vibe_voice_tab_3"
+          >
+            Platform owner
+          </button>
+        </div>
+        <div class="voice-panels">
+          <article
+            class="voice-panel is-active"
+            id="voice-panel-lead"
+            role="tabpanel"
+            aria-labelledby="voice-tab-lead"
+            data-voice-panel="voice-lead"
+          >
+            <h3 class="voice-role" data-i18n="vibe_voice_1_role">Engineering lead</h3>
+            <div class="voice-dialog">
+              <p class="mini-label" data-i18n="vibe_voice_problem_label">What they say</p>
+              <p class="voice-quote" data-i18n="vibe_voice_1_quote">"Why does this repo behave differently even with the same prompt?"</p>
+            </div>
+            <div class="voice-answer">
+              <p class="mini-label" data-i18n="vibe_voice_solution_label">How VibeSmith answers</p>
+              <p class="voice-solution" data-i18n="vibe_voice_1_solution">
+                VibeSmith compares active rules, memory layers, and settings side by side to surface drift before release.
+              </p>
+            </div>
+          </article>
+          <article
+            class="voice-panel"
+            id="voice-panel-product"
+            role="tabpanel"
+            aria-labelledby="voice-tab-product"
+            data-voice-panel="voice-product"
+            hidden
+          >
+            <h3 class="voice-role" data-i18n="vibe_voice_2_role">Product engineer</h3>
+            <div class="voice-dialog">
+              <p class="mini-label" data-i18n="vibe_voice_problem_label">What they say</p>
+              <p class="voice-quote" data-i18n="vibe_voice_2_quote">"Onboarding takes days because no one knows which command set is current."</p>
+            </div>
+            <div class="voice-answer">
+              <p class="mini-label" data-i18n="vibe_voice_solution_label">How VibeSmith answers</p>
+              <p class="voice-solution" data-i18n="vibe_voice_2_solution">
+                One inventory and owner map make the current component baseline obvious on day one.
+              </p>
+            </div>
+          </article>
+          <article
+            class="voice-panel"
+            id="voice-panel-platform"
+            role="tabpanel"
+            aria-labelledby="voice-tab-platform"
+            data-voice-panel="voice-platform"
+            hidden
+          >
+            <h3 class="voice-role" data-i18n="vibe_voice_3_role">Platform owner</h3>
+            <div class="voice-dialog">
+              <p class="mini-label" data-i18n="vibe_voice_problem_label">What they say</p>
+              <p class="voice-quote" data-i18n="vibe_voice_3_quote">"MCP gave us power, but now approvals and server scopes are another fire."</p>
+            </div>
+            <div class="voice-answer">
+              <p class="mini-label" data-i18n="vibe_voice_solution_label">How VibeSmith answers</p>
+              <p class="voice-solution" data-i18n="vibe_voice_3_solution">
+                Dependency and boundary visibility helps teams review MCP risk earlier, before rollout blocks delivery.
+              </p>
+            </div>
+          </article>
+        </div>
+        <p class="voice-footnote" data-i18n="vibe_voice_footer">These scenarios come from recurring multi-repo AI operations patterns.</p>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">PILOT METRICS</p>
+          <h2 data-i18n="vibe_metrics_title">Pilot Metrics</h2>
+          <p data-i18n="vibe_metrics_desc">
+            Pilot success is measured against baseline week and target week, not by impressions.
+          </p>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <p class="mini-label" data-i18n="vibe_metric_1_label">Metric 01</p>
+            <h3 data-i18n="vibe_metric_1_title">Setup time</h3>
+            <p data-i18n="vibe_metric_1_body">Baseline: hours to first stable setup. Target: reduce setup time by 30%+ in pilot scope.</p>
+          </article>
+          <article class="metric-card">
+            <p class="mini-label" data-i18n="vibe_metric_2_label">Metric 02</p>
+            <h3 data-i18n="vibe_metric_2_title">Context stability</h3>
+            <p data-i18n="vibe_metric_2_body">Baseline: context mismatch incidents per sprint. Target: reduce repeated correction loops.</p>
+          </article>
+          <article class="metric-card">
+            <p class="mini-label" data-i18n="vibe_metric_3_label">Metric 03</p>
+            <h3 data-i18n="vibe_metric_3_title">Release confidence</h3>
+            <p data-i18n="vibe_metric_3_body">Baseline: late coupling findings near release. Target: surface risks during planning and review.</p>
           </article>
         </div>
       </section>
@@ -294,13 +500,73 @@
         </div>
       </section>
 
+      <section id="docs" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">FIT & BOUNDARY</p>
+          <h2 data-i18n="vibe_fit_title">Use it when component drift is already costing delivery speed.</h2>
+          <p data-i18n="vibe_fit_desc">Adoption boundaries are explicit so teams can decide quickly.</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <h3 data-i18n="vibe_fit_good_title">Strong fit</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_fit_good_1">Three or more active repositories share one delivery schedule.</li>
+              <li data-i18n="vibe_fit_good_2">Onboarding quality drops when owners hand off rules manually.</li>
+              <li data-i18n="vibe_fit_good_3">Release reviews often find dependency issues too late.</li>
+            </ul>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="vibe_fit_not_title">Not ideal yet</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_fit_not_1">Single-repo teams with stable setup and low contributor turnover.</li>
+              <li data-i18n="vibe_fit_not_2">Teams not ready to assign owners for component review decisions.</li>
+              <li data-i18n="vibe_fit_not_3">Teams expecting one-click automation without rollout discipline.</li>
+            </ul>
+          </article>
+          <article class="story-card highlight">
+            <h3 data-i18n="vibe_limits_title">What is intentionally out of scope in this phase</h3>
+            <p data-i18n="vibe_limits_desc">We prioritize measurable pilot outcomes before wider automation promises.</p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_limits_1">No forced repository rewrite. Existing structure is mapped first.</li>
+              <li data-i18n="vibe_limits_2">Cloud-wide policy automation is a later phase, not a day-one requirement.</li>
+              <li data-i18n="vibe_limits_3">Expansion happens only after pilot metrics show repeatable gains.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow">FAQ</p>
+          <h2 data-i18n="vibe_faq_title">Adoption FAQ</h2>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3 data-i18n="vibe_faq_1_q">Do we need to change our current repository structure?</h3>
+            <p data-i18n="vibe_faq_1_a">No full rewrite is required. Pilot rollout maps existing assets first and standardizes gradually.</p>
+          </article>
+          <article class="faq-item">
+            <h3 data-i18n="vibe_faq_2_q">Can we use this with both Cursor and Claude Code at once?</h3>
+            <p data-i18n="vibe_faq_2_a">Yes. The goal is to keep component operations consistent across both toolchains.</p>
+          </article>
+          <article class="faq-item">
+            <h3 data-i18n="vibe_faq_3_q">What does success look like in the first month?</h3>
+            <p data-i18n="vibe_faq_3_a">Faster setup, fewer context mismatches, and earlier detection of risky dependencies.</p>
+          </article>
+          <article class="faq-item">
+            <h3 data-i18n="vibe_faq_4_q">How do we start without overcommitting?</h3>
+            <p data-i18n="vibe_faq_4_a">Run a scoped 2-4 week pilot on one active project, then expand only with measured gains.</p>
+          </article>
+        </div>
+      </section>
+
       <section id="contact" class="contact-panel reveal" data-reveal>
         <h2 data-i18n="vibe_cta_title">Want to test VibeSmith with your team?</h2>
         <p data-i18n="vibe_cta_description">If you are operating AI coding workflows in production, we can run a scoped pilot around your real repository setup.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/projects/" data-i18n="vibe_cta_primary" data-track-event="hero_cta_click" data-track-label="vibe_open_brief">Back to product overview</a>
-          <a class="btn btn-ghost" href="/team/#contact" data-i18n="vibe_cta_pilot" data-track-event="contact_cta_click" data-track-label="vibe_start_pilot">Start pilot discussion</a>
-          <button id="helloBtn" class="btn btn-ghost" type="button" data-i18n="vibe_cta_secondary" data-track-event="contact_cta_click" data-track-label="vibe_get_brief">Get product brief</button>
+          <a class="btn btn-primary" href="#demo" data-i18n="vibe_cta_primary" data-track-event="hero_cta_click" data-track-label="vibe_open_demo">See demo flow</a>
+          <a class="btn btn-ghost" href="mailto:contact@aroido.com?subject=VibeSmith%20Pilot%20Inquiry" data-i18n="vibe_cta_pilot" data-track-event="contact_cta_click" data-track-label="vibe_pilot_mailto">Start pilot discussion</a>
+          <a class="btn btn-ghost" href="#docs" data-i18n="vibe_cta_secondary" data-track-event="hero_cta_click" data-track-label="vibe_open_docs">Read rollout docs</a>
         </div>
       </section>
     </main>
