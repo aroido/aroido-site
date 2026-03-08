@@ -387,6 +387,24 @@ body::before {
   line-height: 1.5;
 }
 
+.download-command {
+  margin: 0.38rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.58rem 0.68rem;
+  background: rgba(16, 16, 16, 0.94);
+  color: #ecf2f8;
+  overflow-x: auto;
+}
+
+.download-command code {
+  display: block;
+  white-space: pre;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.8rem;
+  line-height: 1.52;
+}
+
 .route-grid,
 .split-grid {
   display: grid;

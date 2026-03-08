@@ -4,7 +4,10 @@
   const DEFAULT_LANGUAGE = "en";
   const LANGUAGE_KEY = "aroido:language";
   const SUPPORTED_LANGUAGES = ["en", "ko"];
-  const RELEASE_PERMALINK_BASE = "https://gitlab.com/aroido/vibesmith/-/releases/permalink/latest";
+  const COMMUNITY_RELEASE_PERMALINK =
+    "https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest";
+  const COMMUNITY_RELEASE_API =
+    "https://gitlab.com/api/v4/projects/aroido%2Fvibesmith-community/releases?per_page=1";
 
   const fallbackTranslations = {
     en: {
@@ -28,7 +31,10 @@
     twitterTitle: document.querySelector('meta[name="twitter:title"]'),
     twitterDescription: document.querySelector('meta[name="twitter:description"]'),
     langButtons: Array.from(document.querySelectorAll(".lang-btn")),
-    releaseDownloadNodes: Array.from(document.querySelectorAll("[data-release-download-path]")),
+    communityLinkNodes: Array.from(document.querySelectorAll("[data-community-link]")),
+    communityReleaseUrlNode: document.querySelector("[data-community-release-url]"),
+    communityDmgUrlNode: document.querySelector("[data-community-dmg-url]"),
+    communityShaUrlNode: document.querySelector("[data-community-sha-url]"),
     trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
     voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
     voicePanels: Array.from(document.querySelectorAll("[data-voice-panel]")),
@@ -210,27 +216,72 @@
     });
   }
 
-  function buildReleaseDownloadUrl(assetPath) {
-    if (!assetPath || typeof assetPath !== "string") {
-      return null;
-    }
-
-    const normalizedPath = assetPath.startsWith("/") ? assetPath : `/${assetPath}`;
-    return `${RELEASE_PERMALINK_BASE}/downloads${normalizedPath}`;
-  }
-
-  function initializeReleaseDownloadLinks() {
-    if (dom.releaseDownloadNodes.length === 0) {
-      return;
-    }
-
-    dom.releaseDownloadNodes.forEach((node) => {
-      const assetPath = node.getAttribute("data-release-download-path");
-      const href = buildReleaseDownloadUrl(assetPath);
-      if (href) {
+  function setCommunityLink(type, href) {
+    dom.communityLinkNodes.forEach((node) => {
+      if (node.getAttribute("data-community-link") === type) {
         node.setAttribute("href", href);
       }
     });
+  }
+
+  function updateCommunityPathNode(node, href) {
+    if (!node || !href) {
+      return;
+    }
+
+    node.textContent = href;
+  }
+
+  function initializeCommunityReleaseLinks() {
+    if (dom.communityLinkNodes.length === 0) {
+      return;
+    }
+
+    setCommunityLink("release", COMMUNITY_RELEASE_PERMALINK);
+    setCommunityLink("dmg", COMMUNITY_RELEASE_PERMALINK);
+    setCommunityLink("sha", COMMUNITY_RELEASE_PERMALINK);
+
+    updateCommunityPathNode(dom.communityReleaseUrlNode, COMMUNITY_RELEASE_PERMALINK);
+    updateCommunityPathNode(dom.communityDmgUrlNode, COMMUNITY_RELEASE_PERMALINK);
+    updateCommunityPathNode(dom.communityShaUrlNode, COMMUNITY_RELEASE_PERMALINK);
+
+    fetch(COMMUNITY_RELEASE_API, { cache: "no-store" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((payload) => {
+        if (!Array.isArray(payload) || payload.length === 0) {
+          return;
+        }
+
+        const latest = payload[0];
+        const links = Array.isArray(latest?.assets?.links) ? latest.assets.links : [];
+        const findDirectAsset = (matcher) => {
+          const match = links.find((link) => matcher((link?.name || "").toLowerCase()));
+          if (!match) {
+            return null;
+          }
+          return match.direct_asset_url || match.url || null;
+        };
+
+        const dmgUrl = findDirectAsset(
+          (name) => name.endsWith(".dmg") && !name.endsWith(".dmg.blockmap")
+        );
+        const shaUrl = findDirectAsset(
+          (name) => name === "sha256sums.txt" || name.endsWith(".sha256")
+        );
+
+        if (dmgUrl) {
+          setCommunityLink("dmg", dmgUrl);
+          updateCommunityPathNode(dom.communityDmgUrlNode, dmgUrl);
+        }
+
+        if (shaUrl) {
+          setCommunityLink("sha", shaUrl);
+          updateCommunityPathNode(dom.communityShaUrlNode, shaUrl);
+        }
+      })
+      .catch(() => {
+        /* Keep fallback permalink links when API fetch fails */
+      });
   }
 
   function applyLanguage(language, options = {}) {
@@ -524,7 +575,7 @@
   }
 
   function runSynchronousBootstrap() {
-    initializeReleaseDownloadLinks();
+    initializeCommunityReleaseLinks();
     initializeTrackedEvents();
     initializeLanguageSwitch();
     initializeVoicePanels();

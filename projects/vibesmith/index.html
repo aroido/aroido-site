@@ -563,48 +563,64 @@
       <section id="download" class="section reveal" data-reveal>
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="vibe_download_eyebrow">Download</p>
-          <h2 data-i18n="vibe_download_title">Download VibeSmith for macOS</h2>
-          <p data-i18n="vibe_download_desc">The latest stable package is shared from GitLab Releases.</p>
+          <h2 data-i18n="vibe_download_title">Get VibeSmith Community Build</h2>
+          <p data-i18n="vibe_download_desc">Choose the community release path or install guide for Homebrew users.</p>
         </div>
-        <div class="single-grid">
+        <div class="compare-grid">
           <article class="route-card highlight">
-            <h3 data-i18n="vibe_download_card_title">macOS Universal DMG</h3>
-            <p data-i18n="vibe_download_card_desc">One package for Apple Silicon and Intel Macs.</p>
-            <p class="mini-label" data-i18n="vibe_download_path_label">Release asset path</p>
-            <p class="download-path">/VibeSmith-macOS-universal.dmg</p>
+            <h3 data-i18n="vibe_download_card_title">Option A. Community Releases</h3>
+            <p data-i18n="vibe_download_card_desc">Open the latest release page or download the detected DMG asset directly.</p>
+            <p class="mini-label" data-i18n="vibe_download_release_page_label">Latest release page</p>
+            <p class="download-path" data-community-release-url>https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest</p>
+            <p class="mini-label" data-i18n="vibe_download_path_label">Detected DMG asset</p>
+            <p class="download-path" data-community-dmg-url>https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest</p>
+            <p class="mini-label" data-i18n="vibe_download_sha_label">Detected checksum asset</p>
+            <p class="download-path" data-community-sha-url>https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest</p>
             <div class="hero-actions">
               <a
                 class="btn btn-primary"
-                href="https://gitlab.com/aroido/vibesmith/-/releases/permalink/latest/downloads/VibeSmith-macOS-universal.dmg"
-                data-release-download-path="/VibeSmith-macOS-universal.dmg"
+                href="https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest"
+                data-community-link="release"
                 data-i18n="vibe_download_cta"
+                data-track-event="download_cta_click"
+                data-track-label="vibe_download_release_page"
+              >
+                Open latest release
+              </a>
+              <a
+                class="btn btn-ghost"
+                href="https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest"
+                data-community-link="dmg"
+                data-i18n="vibe_download_checksum_cta"
                 data-track-event="download_cta_click"
                 data-track-label="vibe_download_dmg_latest"
               >
-                Download DMG
+                Download latest DMG
               </a>
               <a
                 class="btn btn-ghost"
-                href="https://gitlab.com/aroido/vibesmith/-/releases/permalink/latest/downloads/VibeSmith-macOS-universal.dmg.sha256"
-                data-release-download-path="/VibeSmith-macOS-universal.dmg.sha256"
-                data-i18n="vibe_download_checksum_cta"
+                href="https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest"
+                data-community-link="sha"
+                data-i18n="vibe_download_notes_cta"
                 data-track-event="download_cta_click"
                 data-track-label="vibe_download_checksum_latest"
               >
-                SHA256 checksum
-              </a>
-              <a
-                class="btn btn-ghost"
-                href="https://gitlab.com/aroido/vibesmith/-/releases/permalink/latest"
-                data-i18n="vibe_download_notes_cta"
-                data-track-event="download_cta_click"
-                data-track-label="vibe_download_release_notes_latest"
-              >
-                View release notes
+                Download SHA256SUMS
               </a>
             </div>
             <p class="download-note" data-i18n="vibe_download_note">
-              If this link returns 404, publish the same asset path in the latest GitLab release.
+              If direct links are missing, use the release page button first.
+            </p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="vibe_download_brew_title">Option B. Homebrew Guide</h3>
+            <p data-i18n="vibe_download_brew_desc">Tap is available. Use the command flow below, then install once cask is published.</p>
+            <p class="mini-label" data-i18n="vibe_download_brew_label">Terminal commands</p>
+            <pre class="download-command"><code data-i18n="vibe_download_brew_command">brew tap aroido/vibesmith-community https://gitlab.com/aroido/vibesmith-community.git
+brew search --casks vibesmith
+brew install --cask vibesmith-community</code></pre>
+            <p class="download-note" data-i18n="vibe_download_brew_note">
+              If cask is not found yet, install from Community Releases (Option A).
             </p>
           </article>
         </div>
