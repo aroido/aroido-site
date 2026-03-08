@@ -14,6 +14,22 @@ Aroido 웹페이지 프로젝트입니다.
 
 브라우저에서 `index.html`을 열어 확인할 수 있습니다.
 
+## VibeSmith DMG 배포 링크 규칙
+
+사이트의 다운로드 버튼은 GitLab 최신 릴리즈 퍼머링크를 사용합니다.
+
+- DMG:
+  - `https://gitlab.com/aroido/vibesmith/-/releases/permalink/latest/downloads/VibeSmith-macOS-universal.dmg`
+- SHA256:
+  - `https://gitlab.com/aroido/vibesmith/-/releases/permalink/latest/downloads/VibeSmith-macOS-universal.dmg.sha256`
+- 릴리즈 노트:
+  - `https://gitlab.com/aroido/vibesmith/-/releases/permalink/latest`
+
+릴리즈 생성 시 asset 파일명(경로)을 아래와 같이 고정해야 링크가 유지됩니다.
+
+- `VibeSmith-macOS-universal.dmg`
+- `VibeSmith-macOS-universal.dmg.sha256`
+
 ## 자동화 모드 분리
 
 - 세밀 제어(이슈 단위): `/work-session` 명령과 기존 SDD 플로우 사용

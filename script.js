@@ -4,6 +4,7 @@
   const DEFAULT_LANGUAGE = "en";
   const LANGUAGE_KEY = "aroido:language";
   const SUPPORTED_LANGUAGES = ["en", "ko"];
+  const RELEASE_PERMALINK_BASE = "https://gitlab.com/aroido/vibesmith/-/releases/permalink/latest";
 
   const fallbackTranslations = {
     en: {
@@ -27,6 +28,7 @@
     twitterTitle: document.querySelector('meta[name="twitter:title"]'),
     twitterDescription: document.querySelector('meta[name="twitter:description"]'),
     langButtons: Array.from(document.querySelectorAll(".lang-btn")),
+    releaseDownloadNodes: Array.from(document.querySelectorAll("[data-release-download-path]")),
     trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
     voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
     voicePanels: Array.from(document.querySelectorAll("[data-voice-panel]")),
@@ -205,6 +207,29 @@
       const buttonLanguage = button.getAttribute("data-lang");
       const isActive = buttonLanguage === language;
       button.setAttribute("aria-pressed", String(isActive));
+    });
+  }
+
+  function buildReleaseDownloadUrl(assetPath) {
+    if (!assetPath || typeof assetPath !== "string") {
+      return null;
+    }
+
+    const normalizedPath = assetPath.startsWith("/") ? assetPath : `/${assetPath}`;
+    return `${RELEASE_PERMALINK_BASE}/downloads${normalizedPath}`;
+  }
+
+  function initializeReleaseDownloadLinks() {
+    if (dom.releaseDownloadNodes.length === 0) {
+      return;
+    }
+
+    dom.releaseDownloadNodes.forEach((node) => {
+      const assetPath = node.getAttribute("data-release-download-path");
+      const href = buildReleaseDownloadUrl(assetPath);
+      if (href) {
+        node.setAttribute("href", href);
+      }
     });
   }
 
@@ -499,6 +524,7 @@
   }
 
   function runSynchronousBootstrap() {
+    initializeReleaseDownloadLinks();
     initializeTrackedEvents();
     initializeLanguageSwitch();
     initializeVoicePanels();
