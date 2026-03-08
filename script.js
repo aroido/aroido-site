@@ -38,6 +38,7 @@
     communityDmgUrlNode: document.querySelector("[data-community-dmg-url]"),
     communityShaUrlNode: document.querySelector("[data-community-sha-url]"),
     localizedMediaNodes: Array.from(document.querySelectorAll("[data-media-src-en][data-media-src-ko]")),
+    gifPosterNodes: Array.from(document.querySelectorAll("[data-gif-poster-en], [data-gif-poster-ko]")),
     trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
     voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
     voicePanels: Array.from(document.querySelectorAll("[data-voice-panel]")),
@@ -58,6 +59,7 @@
     currentLanguage: DEFAULT_LANGUAGE,
     translations: fallbackTranslations,
   };
+  const gifPosterTimers = new WeakMap();
 
   function isPlainObject(value) {
     if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -266,6 +268,44 @@
     });
   }
 
+  function scheduleGifPosterReveal(card) {
+    if (!card || typeof card.classList === "undefined") {
+      return;
+    }
+
+    card.classList.remove("is-gif-live");
+
+    const existingTimer = gifPosterTimers.get(card);
+    if (existingTimer) {
+      window.clearTimeout(existingTimer);
+    }
+
+    const timerId = window.setTimeout(() => {
+      card.classList.add("is-gif-live");
+      gifPosterTimers.delete(card);
+    }, 1800);
+
+    gifPosterTimers.set(card, timerId);
+  }
+
+  function applyGifPosters(language) {
+    if (!Array.isArray(dom.gifPosterNodes) || dom.gifPosterNodes.length === 0) {
+      return;
+    }
+
+    const nextLanguage = normalizeLanguage(language);
+    const attribute = nextLanguage === "ko" ? "data-gif-poster-ko" : "data-gif-poster-en";
+
+    dom.gifPosterNodes.forEach((node) => {
+      const posterUrl = node.getAttribute(attribute) || node.getAttribute("data-gif-poster-en");
+      if (posterUrl) {
+        node.style.setProperty("--gif-poster-url", `url("${posterUrl}")`);
+      }
+
+      scheduleGifPosterReveal(node.closest(".media-card"));
+    });
+  }
+
   function applyLanguage(language, options = {}) {
     const { syncQuery = true } = options;
     const nextLanguage = normalizeLanguage(language);
@@ -275,6 +315,7 @@
     updateTextNodes(nextLanguage);
     updateLanguageButtons(nextLanguage);
     applyLocalizedMedia(nextLanguage);
+    applyGifPosters(nextLanguage);
 
     setCurrentLanguage(nextLanguage);
     setStoredLanguage(nextLanguage);
