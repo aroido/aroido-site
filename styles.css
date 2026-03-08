@@ -448,7 +448,7 @@ body::before {
 
 .media-layout {
   display: grid;
-  gap: var(--card-gap);
+  gap: clamp(0.85rem, 1.6vw, 1.15rem);
   grid-template-columns: 1.45fr 1fr;
 }
 
@@ -468,19 +468,20 @@ body::before {
 }
 
 .proof-chip {
-  border: 1px solid var(--line);
+  border: 1px solid rgba(24, 35, 56, 0.16);
   border-radius: 999px;
-  padding: 0.32rem 0.62rem;
+  padding: 0.34rem 0.66rem;
   font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
   font-size: 0.74rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.78);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(242, 248, 255, 0.9));
+  box-shadow: 0 4px 12px rgba(26, 34, 52, 0.08);
 }
 
 .media-proof-grid {
   display: grid;
-  gap: var(--card-gap);
+  gap: clamp(0.85rem, 1.6vw, 1.15rem);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -490,25 +491,49 @@ body::before {
 
 .media-card {
   position: relative;
-  border: 2px dashed var(--line);
-  border-radius: 17px;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(16, 223, 251, 0.12)),
-    repeating-linear-gradient(-45deg, rgba(16, 16, 16, 0.04) 0 10px, rgba(255, 255, 255, 0.12) 10px 20px);
-  padding: 0.95rem;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(22, 34, 53, 0.18);
+  border-radius: 22px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(238, 247, 255, 0.93));
+  box-shadow: 0 14px 30px rgba(13, 24, 42, 0.14);
+  padding: 1rem;
   min-height: 178px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 0.6rem;
+  transition: transform 210ms ease, box-shadow 210ms ease, border-color 210ms ease;
+}
+
+.media-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(65rem 45rem at 110% -25%, rgba(122, 234, 255, 0.18), transparent 58%),
+    radial-gradient(50rem 42rem at -15% 120%, rgba(255, 117, 214, 0.13), transparent 52%);
+}
+
+.media-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.media-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(22, 34, 53, 0.28);
+  box-shadow: 0 18px 34px rgba(13, 24, 42, 0.2);
 }
 
 .media-card-hero {
-  min-height: 304px;
+  min-height: 338px;
 }
 
 .media-card-short {
-  min-height: 130px;
+  min-height: 160px;
 }
 
 .media-placeholder {
@@ -524,10 +549,10 @@ body::before {
   letter-spacing: 0.1em;
   font-size: 0.7rem;
   color: var(--ink-soft);
-  border: 1px solid var(--line);
+  border: 1px solid rgba(218, 232, 248, 0.44);
   border-radius: 999px;
   padding: 0.2rem 0.55rem;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(12, 18, 30, 0.5);
 }
 
 .media-placeholder strong {
@@ -553,7 +578,8 @@ body::before {
 .media-live {
   padding: 0;
   border-style: solid;
-  background: #0d1420;
+  background:
+    linear-gradient(180deg, #0a1323 0%, #0f1d36 66%, #162a49 100%);
 }
 
 .media-visual {
@@ -565,7 +591,8 @@ body::before {
 
 .media-live .media-visual {
   object-fit: contain;
-  background: #0d1420;
+  background:
+    linear-gradient(180deg, rgba(6, 12, 24, 0.88) 0%, rgba(12, 25, 44, 0.72) 100%);
 }
 
 .media-overlay {
@@ -576,22 +603,22 @@ body::before {
   z-index: 2;
   width: fit-content;
   max-width: min(94%, 38rem);
-  padding: 0.45rem 0.56rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(10, 14, 22, 0.7);
-  backdrop-filter: blur(2px);
+  padding: 0.5rem 0.62rem;
+  border-radius: 14px;
+  border: 1px solid rgba(222, 238, 255, 0.2);
+  background: linear-gradient(145deg, rgba(8, 14, 24, 0.78), rgba(12, 24, 42, 0.58));
+  backdrop-filter: blur(6px);
 }
 
 .media-live .media-placeholder strong,
 .media-live .media-placeholder p {
-  color: #f2f6fb;
+  color: #f6fbff;
 }
 
 .media-live .media-tag {
-  color: #dbe5ef;
-  border-color: rgba(255, 255, 255, 0.34);
-  background: rgba(255, 255, 255, 0.06);
+  color: #dceaf8;
+  border-color: rgba(216, 233, 250, 0.45);
+  background: rgba(227, 239, 252, 0.1);
 }
 
 .media-live figcaption {
@@ -600,13 +627,36 @@ body::before {
   right: 0.72rem;
   bottom: 0.72rem;
   z-index: 2;
-  color: #eaf1f8;
-  background: linear-gradient(145deg, rgba(10, 14, 22, 0.86), rgba(13, 40, 60, 0.74));
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #eef6ff;
+  background: linear-gradient(145deg, rgba(8, 14, 25, 0.88), rgba(17, 38, 67, 0.8));
+  border: 1px solid rgba(210, 231, 250, 0.28);
   line-height: 1.4;
   font-family: "Space Grotesk", "IBM Plex Sans KR", "Noto Sans KR", sans-serif;
   font-size: 0.83rem;
-  padding: 0.46rem 0.6rem;
+  padding: 0.5rem 0.62rem;
+}
+
+.section-media {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.97), rgba(245, 251, 255, 0.9));
+}
+
+.section-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(34rem 20rem at 105% -15%, rgba(79, 238, 255, 0.13), transparent 62%),
+    radial-gradient(26rem 17rem at -5% 108%, rgba(255, 140, 204, 0.1), transparent 60%);
+}
+
+.section-media > * {
+  position: relative;
+  z-index: 1;
 }
 
 .status-pill {
