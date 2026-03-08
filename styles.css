@@ -207,6 +207,48 @@ body::before {
   color: var(--ink-soft);
 }
 
+.kicker-row,
+.brand-chip,
+.card-title-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.58rem;
+}
+
+.kicker-row {
+  margin-bottom: 0.65rem;
+}
+
+.kicker-row .kicker,
+.brand-chip .panel-label {
+  margin: 0;
+}
+
+.card-title-row {
+  display: flex;
+  margin-bottom: 0.16rem;
+}
+
+.vibe-app-icon {
+  display: block;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(16, 16, 16, 0.18);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.96), rgba(228, 232, 240, 0.92));
+  box-shadow: 0 8px 18px rgba(16, 19, 24, 0.16);
+}
+
+.vibe-app-icon-sm {
+  width: 44px;
+  height: 44px;
+}
+
+.vibe-app-icon-xs {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
 .hero h1,
 .page-hero h1 {
   margin: 0;
@@ -880,6 +922,10 @@ body::before {
 .story-card h3 {
   margin: 0.42rem 0 0;
   font-size: 1.2rem;
+}
+
+.card-title-row h3 {
+  margin: 0;
 }
 
 .route-card.highlight,
