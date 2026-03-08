@@ -37,6 +37,7 @@
     communityReleaseUrlNode: document.querySelector("[data-community-release-url]"),
     communityDmgUrlNode: document.querySelector("[data-community-dmg-url]"),
     communityShaUrlNode: document.querySelector("[data-community-sha-url]"),
+    localizedMediaNodes: Array.from(document.querySelectorAll("[data-media-src-en][data-media-src-ko]")),
     trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
     voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
     voicePanels: Array.from(document.querySelectorAll("[data-voice-panel]")),
@@ -249,6 +250,22 @@
     updateCommunityPathNode(dom.communityShaUrlNode, COMMUNITY_SHA_URL);
   }
 
+  function applyLocalizedMedia(language) {
+    if (!Array.isArray(dom.localizedMediaNodes) || dom.localizedMediaNodes.length === 0) {
+      return;
+    }
+
+    const nextLanguage = normalizeLanguage(language);
+    const attribute = nextLanguage === "ko" ? "data-media-src-ko" : "data-media-src-en";
+
+    dom.localizedMediaNodes.forEach((node) => {
+      const nextSrc = node.getAttribute(attribute);
+      if (nextSrc && node.getAttribute("src") !== nextSrc) {
+        node.setAttribute("src", nextSrc);
+      }
+    });
+  }
+
   function applyLanguage(language, options = {}) {
     const { syncQuery = true } = options;
     const nextLanguage = normalizeLanguage(language);
@@ -257,6 +274,7 @@
     updateHeadMetadata(nextLanguage);
     updateTextNodes(nextLanguage);
     updateLanguageButtons(nextLanguage);
+    applyLocalizedMedia(nextLanguage);
 
     setCurrentLanguage(nextLanguage);
     setStoredLanguage(nextLanguage);
