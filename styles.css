@@ -368,6 +368,25 @@ body::before {
   margin-top: 0.7rem;
 }
 
+.download-path {
+  margin: 0.38rem 0 0;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.76);
+  padding: 0.46rem 0.6rem;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  word-break: break-all;
+}
+
+.download-note {
+  margin: 0.86rem 0 0;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
 .route-grid,
 .split-grid {
   display: grid;
