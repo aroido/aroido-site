@@ -44,6 +44,29 @@ body {
     linear-gradient(160deg, var(--bg-base), var(--bg-layer));
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.4rem;
+  z-index: 30;
+  transform: translateY(-180%);
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  padding: 0.5rem 0.82rem;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: transform 150ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -376,6 +399,26 @@ body::before {
   grid-template-columns: 1fr;
 }
 
+.proof-chip-row {
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.46rem;
+}
+
+.proof-chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.32rem 0.62rem;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.78);
+}
+
 .media-proof-grid {
   display: grid;
   gap: var(--card-gap);
@@ -468,7 +511,7 @@ body::before {
   top: 0.72rem;
   z-index: 2;
   width: fit-content;
-  max-width: min(90%, 34rem);
+  max-width: min(94%, 38rem);
   padding: 0.45rem 0.56rem;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.22);
@@ -494,8 +537,12 @@ body::before {
   bottom: 0.72rem;
   z-index: 2;
   color: #eaf1f8;
-  background: rgba(10, 14, 22, 0.7);
+  background: linear-gradient(145deg, rgba(10, 14, 22, 0.86), rgba(13, 40, 60, 0.74));
   border: 1px solid rgba(255, 255, 255, 0.2);
+  line-height: 1.4;
+  font-family: "Space Grotesk", "IBM Plex Sans KR", "Noto Sans KR", sans-serif;
+  font-size: 0.83rem;
+  padding: 0.46rem 0.6rem;
 }
 
 .status-pill {

@@ -20,8 +20,12 @@
   };
 
   const dom = {
-    helloBtn: document.getElementById("helloBtn"),
     metaDescription: document.getElementById("metaDescription"),
+    ogTitle: document.querySelector('meta[property="og:title"]'),
+    ogDescription: document.querySelector('meta[property="og:description"]'),
+    ogLocale: document.querySelector('meta[property="og:locale"]'),
+    twitterTitle: document.querySelector('meta[name="twitter:title"]'),
+    twitterDescription: document.querySelector('meta[name="twitter:description"]'),
     langButtons: Array.from(document.querySelectorAll(".lang-btn")),
     trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
     voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
@@ -31,7 +35,7 @@
     topbar: document.querySelector(".topbar"),
     inPageLinks: Array.from(document.querySelectorAll('a[href^="#"]')).filter((node) => {
       const href = node.getAttribute("href");
-      return typeof href === "string" && href.length > 1;
+      return typeof href === "string" && href.length > 1 && !node.classList.contains("skip-link");
     }),
   };
 
@@ -130,6 +134,10 @@
     return translations[language] || {};
   }
 
+  function getLocaleForLanguage(language) {
+    return language === "ko" ? "ko_KR" : "en_US";
+  }
+
   function getTranslation(language, key) {
     const languageTable = getTranslationsForLanguage(language);
     const defaultTable = getTranslationsForLanguage(DEFAULT_LANGUAGE);
@@ -155,6 +163,26 @@
       getTranslation(language, descriptionKey) || getTranslation(language, "meta_description");
     if (dom.metaDescription && metaCopy) {
       dom.metaDescription.setAttribute("content", metaCopy);
+    }
+
+    if (dom.ogTitle && pageTitle) {
+      dom.ogTitle.setAttribute("content", pageTitle);
+    }
+
+    if (dom.twitterTitle && pageTitle) {
+      dom.twitterTitle.setAttribute("content", pageTitle);
+    }
+
+    if (dom.ogDescription && metaCopy) {
+      dom.ogDescription.setAttribute("content", metaCopy);
+    }
+
+    if (dom.twitterDescription && metaCopy) {
+      dom.twitterDescription.setAttribute("content", metaCopy);
+    }
+
+    if (dom.ogLocale) {
+      dom.ogLocale.setAttribute("content", getLocaleForLanguage(language));
     }
   }
 
@@ -229,17 +257,6 @@
     if (typeof window.gtag === "function") {
       window.gtag("event", name, payload);
     }
-  }
-
-  function initializeHelloButton() {
-    if (!dom.helloBtn) {
-      return;
-    }
-
-    dom.helloBtn.addEventListener("click", () => {
-      const fallback = fallbackTranslations.en.hello_alert;
-      alert(getTranslation(getCurrentLanguage(), "hello_alert") || fallback);
-    });
   }
 
   function initializeTrackedEvents() {
@@ -484,7 +501,6 @@
   function runSynchronousBootstrap() {
     initializeTrackedEvents();
     initializeLanguageSwitch();
-    initializeHelloButton();
     initializeVoicePanels();
     initializeRevealMotion();
     initializeAnchorOffsets();
