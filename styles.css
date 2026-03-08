@@ -369,6 +369,7 @@ body::before {
 }
 
 .download-path {
+  display: block;
   margin: 0.38rem 0 0;
   border: 1px dashed var(--line);
   border-radius: 10px;
@@ -378,13 +379,26 @@ body::before {
   font-size: 0.82rem;
   line-height: 1.4;
   color: var(--ink-soft);
-  word-break: break-all;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.download-path:hover,
+.download-path:focus-visible {
+  border-style: solid;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
 }
 
 .download-note {
   margin: 0.86rem 0 0;
   color: var(--ink-soft);
   line-height: 1.5;
+}
+
+.download-actions .btn {
+  white-space: nowrap;
 }
 
 .download-command {
@@ -399,10 +413,11 @@ body::before {
 
 .download-command code {
   display: block;
-  white-space: pre;
+  white-space: pre-wrap;
   font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
   font-size: 0.8rem;
   line-height: 1.52;
+  word-break: break-word;
 }
 
 .route-grid,
@@ -416,6 +431,13 @@ body::before {
   display: grid;
   gap: var(--card-gap);
   grid-template-columns: 1fr;
+}
+
+.download-grid {
+  display: grid;
+  gap: var(--card-gap);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
 }
 
 .compare-grid {
@@ -539,6 +561,11 @@ body::before {
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+.media-live .media-visual {
+  object-fit: contain;
+  background: #0d1420;
 }
 
 .media-overlay {
@@ -907,6 +934,10 @@ body::before {
     grid-template-columns: 1fr;
   }
 
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+
   .media-layout {
     grid-template-columns: 1fr;
   }
@@ -964,7 +995,8 @@ body::before {
 
   .route-grid,
   .split-grid,
-  .compare-grid {
+  .compare-grid,
+  .download-grid {
     grid-template-columns: 1fr;
   }
 

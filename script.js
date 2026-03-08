@@ -6,8 +6,10 @@
   const SUPPORTED_LANGUAGES = ["en", "ko"];
   const COMMUNITY_RELEASE_PERMALINK =
     "https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest";
-  const COMMUNITY_RELEASE_API =
-    "https://gitlab.com/api/v4/projects/aroido%2Fvibesmith-community/releases?per_page=1";
+  const COMMUNITY_DMG_URL =
+    "https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/VibeSmith-0.5.3.dmg";
+  const COMMUNITY_SHA_URL =
+    "https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/SHA256SUMS.txt";
 
   const fallbackTranslations = {
     en: {
@@ -229,6 +231,7 @@
       return;
     }
 
+    node.setAttribute("href", href);
     node.textContent = href;
   }
 
@@ -238,50 +241,12 @@
     }
 
     setCommunityLink("release", COMMUNITY_RELEASE_PERMALINK);
-    setCommunityLink("dmg", COMMUNITY_RELEASE_PERMALINK);
-    setCommunityLink("sha", COMMUNITY_RELEASE_PERMALINK);
+    setCommunityLink("dmg", COMMUNITY_DMG_URL);
+    setCommunityLink("sha", COMMUNITY_SHA_URL);
 
     updateCommunityPathNode(dom.communityReleaseUrlNode, COMMUNITY_RELEASE_PERMALINK);
-    updateCommunityPathNode(dom.communityDmgUrlNode, COMMUNITY_RELEASE_PERMALINK);
-    updateCommunityPathNode(dom.communityShaUrlNode, COMMUNITY_RELEASE_PERMALINK);
-
-    fetch(COMMUNITY_RELEASE_API, { cache: "no-store" })
-      .then((response) => (response.ok ? response.json() : null))
-      .then((payload) => {
-        if (!Array.isArray(payload) || payload.length === 0) {
-          return;
-        }
-
-        const latest = payload[0];
-        const links = Array.isArray(latest?.assets?.links) ? latest.assets.links : [];
-        const findDirectAsset = (matcher) => {
-          const match = links.find((link) => matcher((link?.name || "").toLowerCase()));
-          if (!match) {
-            return null;
-          }
-          return match.direct_asset_url || match.url || null;
-        };
-
-        const dmgUrl = findDirectAsset(
-          (name) => name.endsWith(".dmg") && !name.endsWith(".dmg.blockmap")
-        );
-        const shaUrl = findDirectAsset(
-          (name) => name === "sha256sums.txt" || name.endsWith(".sha256")
-        );
-
-        if (dmgUrl) {
-          setCommunityLink("dmg", dmgUrl);
-          updateCommunityPathNode(dom.communityDmgUrlNode, dmgUrl);
-        }
-
-        if (shaUrl) {
-          setCommunityLink("sha", shaUrl);
-          updateCommunityPathNode(dom.communityShaUrlNode, shaUrl);
-        }
-      })
-      .catch(() => {
-        /* Keep fallback permalink links when API fetch fails */
-      });
+    updateCommunityPathNode(dom.communityDmgUrlNode, COMMUNITY_DMG_URL);
+    updateCommunityPathNode(dom.communityShaUrlNode, COMMUNITY_SHA_URL);
   }
 
   function applyLanguage(language, options = {}) {

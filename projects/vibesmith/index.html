@@ -155,7 +155,7 @@
           <figure class="media-card media-card-hero media-proof-hero media-live" role="img" aria-label="End-to-end workflow">
             <img
               class="media-visual"
-              src="/assets/vibesmith/vibesmith-workflow.svg"
+              src="/assets/vibesmith-community/02-graph-interaction.gif"
               alt="VibeSmith end-to-end workflow"
               width="1600"
               height="900"
@@ -169,12 +169,12 @@
                 Recommended: 8-12 seconds showing scan, graph inspection, and action.
               </p>
             </div>
-            <figcaption data-i18n="vibe_media_gif_caption">Current build workflow view (/assets/vibesmith/vibesmith-workflow.svg)</figcaption>
+            <figcaption data-i18n="vibe_media_gif_caption">Community release workflow capture from the latest build.</figcaption>
           </figure>
           <figure class="media-card media-live" role="img" aria-label="Inventory screenshot">
             <img
               class="media-visual"
-              src="/assets/vibesmith/inventory.svg"
+              src="/assets/vibesmith-community/02-components-en-light.png"
               alt="VibeSmith component inventory"
               width="1600"
               height="1000"
@@ -190,7 +190,7 @@
           <figure class="media-card media-live" role="img" aria-label="Graph detail screenshot">
             <img
               class="media-visual"
-              src="/assets/vibesmith/graph-detail.svg"
+              src="/assets/vibesmith-community/03-dependencies-en-light.png"
               alt="VibeSmith graph detail view"
               width="1600"
               height="1000"
@@ -206,7 +206,7 @@
           <figure class="media-card media-live" role="img" aria-label="Search and filter screenshot">
             <img
               class="media-visual"
-              src="/assets/vibesmith/search-filter.svg"
+              src="/assets/vibesmith-community/05-component-detail-en-light.png"
               alt="VibeSmith search and filter flow"
               width="1600"
               height="1000"
@@ -222,7 +222,7 @@
           <figure class="media-card media-live" role="img" aria-label="Release impact panel screenshot">
             <img
               class="media-visual"
-              src="/assets/vibesmith/release-impact.svg"
+              src="/assets/vibesmith-community/06-projects-en-light.png"
               alt="VibeSmith release impact panel"
               width="1600"
               height="1000"
@@ -566,17 +566,41 @@
           <h2 data-i18n="vibe_download_title">Get VibeSmith Community Build</h2>
           <p data-i18n="vibe_download_desc">Choose the community release path or install guide for Homebrew users.</p>
         </div>
-        <div class="compare-grid">
+        <div class="download-grid">
           <article class="route-card highlight">
             <h3 data-i18n="vibe_download_card_title">Option A. Community Releases</h3>
-            <p data-i18n="vibe_download_card_desc">Open the latest release page or download the detected DMG asset directly.</p>
+            <p data-i18n="vibe_download_card_desc">Open the latest release page and the pinned v0.5.3 binary links.</p>
             <p class="mini-label" data-i18n="vibe_download_release_page_label">Latest release page</p>
-            <p class="download-path" data-community-release-url>https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest</p>
-            <p class="mini-label" data-i18n="vibe_download_path_label">Detected DMG asset</p>
-            <p class="download-path" data-community-dmg-url>https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest</p>
+            <a
+              class="download-path"
+              data-community-release-url
+              href="https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest
+            </a>
+            <p class="mini-label" data-i18n="vibe_download_path_label">Pinned DMG asset (v0.5.3)</p>
+            <a
+              class="download-path"
+              data-community-dmg-url
+              href="https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/VibeSmith-0.5.3.dmg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/VibeSmith-0.5.3.dmg
+            </a>
             <p class="mini-label" data-i18n="vibe_download_sha_label">Detected checksum asset</p>
-            <p class="download-path" data-community-sha-url>https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest</p>
-            <div class="hero-actions">
+            <a
+              class="download-path"
+              data-community-sha-url
+              href="https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/SHA256SUMS.txt"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/SHA256SUMS.txt
+            </a>
+            <div class="hero-actions download-actions">
               <a
                 class="btn btn-primary"
                 href="https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest"
@@ -589,32 +613,32 @@
               </a>
               <a
                 class="btn btn-ghost"
-                href="https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest"
+                href="https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/VibeSmith-0.5.3.dmg"
                 data-community-link="dmg"
                 data-i18n="vibe_download_checksum_cta"
                 data-track-event="download_cta_click"
                 data-track-label="vibe_download_dmg_latest"
               >
-                Download latest DMG
+                Open pinned DMG
               </a>
               <a
                 class="btn btn-ghost"
-                href="https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest"
+                href="https://gitlab.com/aroido/vibesmith-community/-/packages/generic/vibesmith-release/v0.5.3-alpha.110/SHA256SUMS.txt"
                 data-community-link="sha"
                 data-i18n="vibe_download_notes_cta"
                 data-track-event="download_cta_click"
                 data-track-label="vibe_download_checksum_latest"
               >
-                Download SHA256SUMS
+                Open SHA256SUMS
               </a>
             </div>
             <p class="download-note" data-i18n="vibe_download_note">
-              If direct links are missing, use the release page button first.
+              Direct DMG/SHA links require GitLab access to the private community repository.
             </p>
           </article>
           <article class="route-card">
             <h3 data-i18n="vibe_download_brew_title">Option B. Homebrew Guide</h3>
-            <p data-i18n="vibe_download_brew_desc">Tap is available. Use the command flow below, then install once cask is published.</p>
+            <p data-i18n="vibe_download_brew_desc">Tap is available. Run the commands below and install once the cask is published.</p>
             <p class="mini-label" data-i18n="vibe_download_brew_label">Terminal commands</p>
             <pre class="download-command"><code data-i18n="vibe_download_brew_command">brew tap aroido/vibesmith-community https://gitlab.com/aroido/vibesmith-community.git
 brew search --casks vibesmith
