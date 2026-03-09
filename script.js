@@ -54,7 +54,9 @@
     communityReleaseUrlNode: document.querySelector("[data-community-release-url]"),
     communityArchiveUrlNode: document.querySelector("[data-community-archive-url]"),
     communityRepositoryUrlNode: document.querySelector("[data-community-repository-url]"),
-    localizedMediaNodes: Array.from(document.querySelectorAll("[data-media-src-en][data-media-src-ko]")),
+    localizedMediaNodes: Array.from(
+      document.querySelectorAll("[data-media-src-en], [data-media-src-en-light]")
+    ),
     copyCommandButtons: Array.from(document.querySelectorAll("[data-copy-target]")),
     trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
     voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
@@ -750,10 +752,16 @@
     }
 
     const nextLanguage = normalizeLanguage(language);
-    const attribute = nextLanguage === "ko" ? "data-media-src-ko" : "data-media-src-en";
+    const resolvedTheme =
+      document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
 
     dom.localizedMediaNodes.forEach((node) => {
-      const nextSrc = node.getAttribute(attribute);
+      const nextSrc =
+        node.getAttribute(`data-media-src-${nextLanguage}-${resolvedTheme}`) ||
+        node.getAttribute(`data-media-src-${nextLanguage}`) ||
+        node.getAttribute(`data-media-src-${DEFAULT_LANGUAGE}-${resolvedTheme}`) ||
+        node.getAttribute(`data-media-src-${DEFAULT_LANGUAGE}`) ||
+        "";
       if (nextSrc && node.getAttribute("src") !== nextSrc) {
         node.setAttribute("src", nextSrc);
       }
@@ -813,6 +821,7 @@
     setCurrentThemeMode(nextMode);
     updateThemeButtons(nextMode);
     updateBrandMarks(resolvedTheme);
+    applyLocalizedMedia(getCurrentLanguage());
 
     if (persist) {
       setStoredThemeMode(nextMode);
