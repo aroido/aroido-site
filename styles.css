@@ -767,23 +767,6 @@ html:lang(ko) .page-hero h1 {
     linear-gradient(180deg, rgba(6, 12, 24, 0.88) 0%, rgba(12, 25, 44, 0.72) 100%);
 }
 
-.media-gif-poster {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 1;
-  transition: opacity 420ms ease;
-  background-image: var(--gif-poster-url);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.media-card.is-gif-live .media-gif-poster {
-  opacity: 0;
-}
-
 .media-overlay {
   position: absolute;
   left: 0.72rem;
