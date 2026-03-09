@@ -17,6 +17,7 @@
   const COMMUNITY_REPOSITORY_URL = "https://gitlab.com/aroido/vibesmith-community";
   const COMMUNITY_LINK_CACHE_KEY = "aroido:community-links";
   const COMMUNITY_LINK_CACHE_TTL_MS = 30 * 60 * 1000;
+  const COPY_FEEDBACK_DURATION_MS = 1800;
 
   const fallbackTranslations = {
     en: {
@@ -54,6 +55,7 @@
     communityArchiveUrlNode: document.querySelector("[data-community-archive-url]"),
     communityRepositoryUrlNode: document.querySelector("[data-community-repository-url]"),
     localizedMediaNodes: Array.from(document.querySelectorAll("[data-media-src-en][data-media-src-ko]")),
+    copyCommandButtons: Array.from(document.querySelectorAll("[data-copy-target]")),
     trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
     voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
     voicePanels: Array.from(document.querySelectorAll("[data-voice-panel]")),
@@ -77,6 +79,7 @@
     currentThemeMode: DEFAULT_THEME_MODE,
     debugLanguage: null,
   };
+  const copyFeedbackTimers = new WeakMap();
 
   function isPlainObject(value) {
     if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -89,6 +92,136 @@
 
   function isNonEmptyString(value) {
     return typeof value === "string" && value.length > 0;
+  }
+
+  function clearCopyFeedbackTimer(button) {
+    const existingTimer = copyFeedbackTimers.get(button);
+    if (existingTimer) {
+      window.clearTimeout(existingTimer);
+      copyFeedbackTimers.delete(button);
+    }
+  }
+
+  function getCopyButtonDefaultKey(button) {
+    const configuredKey =
+      button.getAttribute("data-copy-default-key") || button.getAttribute("data-i18n");
+    return isNonEmptyString(configuredKey) ? configuredKey : "copy_command";
+  }
+
+  function setCopyButtonLabel(button, key, copyState = null) {
+    const translationKey = isNonEmptyString(key) ? key : getCopyButtonDefaultKey(button);
+    button.setAttribute("data-i18n", translationKey);
+
+    if (copyState) {
+      button.setAttribute("data-copy-state", copyState);
+    } else {
+      button.removeAttribute("data-copy-state");
+    }
+
+    const translatedLabel =
+      getTranslation(getCurrentLanguage(), translationKey) ||
+      getTranslation(DEFAULT_LANGUAGE, translationKey);
+    if (isNonEmptyString(translatedLabel)) {
+      button.textContent = translatedLabel;
+    }
+  }
+
+  function scheduleCopyButtonReset(button) {
+    clearCopyFeedbackTimer(button);
+    const timer = window.setTimeout(() => {
+      setCopyButtonLabel(button, getCopyButtonDefaultKey(button));
+      copyFeedbackTimers.delete(button);
+    }, COPY_FEEDBACK_DURATION_MS);
+    copyFeedbackTimers.set(button, timer);
+  }
+
+  function getCopyTargetText(targetId) {
+    if (!isNonEmptyString(targetId)) {
+      return "";
+    }
+
+    const targetNode = document.getElementById(targetId);
+    if (!targetNode) {
+      return "";
+    }
+
+    const rawText = targetNode.textContent;
+    return isNonEmptyString(rawText) ? rawText.trim() : "";
+  }
+
+  function copyTextWithExecCommand(text) {
+    if (!isNonEmptyString(text)) {
+      return false;
+    }
+
+    const helper = document.createElement("textarea");
+    helper.value = text;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.top = "-9999px";
+    helper.style.left = "-9999px";
+    helper.style.opacity = "0";
+
+    document.body.appendChild(helper);
+    helper.focus();
+    helper.select();
+
+    let isCopied = false;
+    try {
+      isCopied = document.execCommand("copy");
+    } catch (_error) {
+      isCopied = false;
+    }
+
+    document.body.removeChild(helper);
+    return isCopied;
+  }
+
+  async function copyTextToClipboard(text) {
+    if (!isNonEmptyString(text)) {
+      return false;
+    }
+
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (_error) {
+        /* Fallback to execCommand for non-secure contexts or denied permissions */
+      }
+    }
+
+    return copyTextWithExecCommand(text);
+  }
+
+  function initializeCopyCommandButtons() {
+    if (!Array.isArray(dom.copyCommandButtons) || dom.copyCommandButtons.length === 0) {
+      return;
+    }
+
+    dom.copyCommandButtons.forEach((button) => {
+      const defaultKey = getCopyButtonDefaultKey(button);
+      button.setAttribute("data-copy-default-key", defaultKey);
+      button.setAttribute("aria-live", "polite");
+
+      button.addEventListener("click", async () => {
+        const targetId = button.getAttribute("data-copy-target") || "";
+        const content = getCopyTargetText(targetId);
+        const wasCopied = await copyTextToClipboard(content);
+
+        if (wasCopied) {
+          setCopyButtonLabel(button, "copy_copied", "success");
+        } else {
+          setCopyButtonLabel(button, "copy_failed", "error");
+        }
+
+        trackEvent("copy_command_result", {
+          status: wasCopied ? "success" : "error",
+          target_id: targetId,
+        });
+        scheduleCopyButtonReset(button);
+      });
+    });
   }
 
   function normalizeLanguage(value) {
@@ -980,6 +1113,7 @@
     initializeCommunityReleaseLinks();
     initializeThemeSwitch();
     initializeTrackedEvents();
+    initializeCopyCommandButtons();
     initializeLanguageSwitch();
     initializeVoicePanels();
     initializeRevealMotion();

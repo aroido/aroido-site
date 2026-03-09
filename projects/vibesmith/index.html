@@ -160,19 +160,19 @@
           <h2 data-i18n="vibe_media_title">Workflow proof from real vibe coder pain</h2>
           <p data-i18n="vibe_media_desc">Each screen corresponds to one vibe coder decision point instead of generic product showcase.</p>
           <ul class="proof-chip-row" aria-label="Visual proof signals" data-i18n-aria-label="aria_visual_proof">
-            <li class="proof-chip" data-i18n="vibe_media_chip_1">Production-like workflow</li>
+            <li class="proof-chip" data-i18n="vibe_media_chip_1">Operations dashboard signal</li>
             <li class="proof-chip" data-i18n="vibe_media_chip_2">Pilot decision screens</li>
             <li class="proof-chip" data-i18n="vibe_media_chip_3">Repo-scale clarity</li>
           </ul>
         </div>
         <div class="media-proof-grid">
-          <figure class="media-card media-card-hero media-proof-hero" role="img" aria-label="Dependency graph screenshot" data-i18n-aria-label="aria_media_vibe_hero_dependency">
+          <figure class="media-card media-card-hero media-proof-hero" role="img" aria-label="Operations dashboard screenshot" data-i18n-aria-label="aria_media_vibe_hero_dashboard">
             <img
               class="media-visual"
-              src="/assets/vibesmith-community/03-dependencies-en-light.jpg"
-              alt="VibeSmith dependency graph screenshot"
-              data-media-src-en="/assets/vibesmith-community/03-dependencies-en-light.jpg"
-              data-media-src-ko="/assets/vibesmith-community/03-dependencies-ko-light.jpg"
+              src="/assets/vibesmith-community/01-dashboard-en-light.jpg"
+              alt="VibeSmith operations dashboard screenshot"
+              data-media-src-en="/assets/vibesmith-community/01-dashboard-en-light.jpg"
+              data-media-src-ko="/assets/vibesmith-community/01-dashboard-ko-light.jpg"
               width="1400"
               height="1555"
               loading="lazy"
@@ -180,12 +180,12 @@
             />
             <div class="media-placeholder media-overlay">
               <span class="media-tag" data-i18n="vibe_media_gif_tag">Workflow capture</span>
-              <strong data-i18n="vibe_media_gif_title">Dependency graph view</strong>
+              <strong data-i18n="vibe_media_gif_title">Operations dashboard view</strong>
               <p data-i18n="vibe_media_gif_desc">
-                Inspect coupling paths and graph state in one screen.
+                Check status, conflicts, and coverage in one screen.
               </p>
             </div>
-            <figcaption data-i18n="vibe_media_gif_caption">Screenshot from v0.5.3 community build (dependency graph view).</figcaption>
+            <figcaption data-i18n="vibe_media_gif_caption">Screenshot from v0.5.3 community build (operations dashboard).</figcaption>
           </figure>
           <figure class="media-card media-live" role="img" aria-label="Inventory screenshot" data-i18n-aria-label="aria_media_vibe_inventory">
             <img
@@ -500,8 +500,20 @@
           <article class="route-card">
             <h3 data-i18n="vibe_download_brew_title">Option B. Homebrew Guide</h3>
             <p data-i18n="vibe_download_brew_desc">Tap is public. Use Homebrew install only after the cask appears.</p>
-            <p class="mini-label" data-i18n="vibe_download_brew_label">Terminal commands</p>
-            <pre class="download-command"><code data-i18n="vibe_download_brew_command">brew tap aroido/vibesmith-community https://gitlab.com/aroido/vibesmith-community.git
+            <div class="download-command-head">
+              <p class="mini-label" data-i18n="vibe_download_brew_label">Terminal commands</p>
+              <button
+                class="copy-command-btn"
+                type="button"
+                data-copy-target="vibe-brew-command"
+                data-i18n="copy_command"
+                data-track-event="copy_command_click"
+                data-track-label="vibe_copy_brew_command"
+              >
+                Copy command
+              </button>
+            </div>
+            <pre id="vibe-brew-command" class="download-command"><code data-i18n="vibe_download_brew_command">brew tap aroido/vibesmith-community https://gitlab.com/aroido/vibesmith-community.git
 brew search vibesmith-community
 # If no cask appears yet, install from Option A release assets.</code></pre>
             <p class="download-note" data-i18n="vibe_download_brew_note">

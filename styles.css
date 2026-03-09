@@ -572,6 +572,40 @@ html:lang(ko) .page-hero h1 {
   line-height: 1.5;
 }
 
+.download-command-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.download-command-head .mini-label {
+  margin-top: 0;
+}
+
+.copy-command-btn {
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  padding: 0.32rem 0.68rem;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.copy-command-btn[data-copy-state="success"] {
+  background: var(--accent-lime);
+}
+
+.copy-command-btn[data-copy-state="error"] {
+  background: rgba(255, 91, 31, 0.2);
+}
+
 .download-actions .btn {
   white-space: nowrap;
 }
@@ -1260,6 +1294,20 @@ html[data-theme="dark"] .download-path:focus-visible {
 html[data-theme="dark"] .download-command {
   border-color: rgba(141, 160, 199, 0.56);
   background: rgba(3, 7, 16, 0.94);
+}
+
+html[data-theme="dark"] .copy-command-btn {
+  border-color: rgba(141, 160, 199, 0.62);
+  background: rgba(11, 18, 34, 0.9);
+  color: #e8f1ff;
+}
+
+html[data-theme="dark"] .copy-command-btn[data-copy-state="success"] {
+  color: #101622;
+}
+
+html[data-theme="dark"] .copy-command-btn[data-copy-state="error"] {
+  color: #ffe8dc;
 }
 
 html[data-theme="dark"] .vibe-app-icon {
