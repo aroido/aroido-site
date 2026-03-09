@@ -3,6 +3,8 @@
 
   const DEFAULT_LANGUAGE = "en";
   const LANGUAGE_KEY = "aroido:language";
+  const DEBUG_LANGUAGE_KEY = "aroido:debug-language";
+  const DEBUG_LANGUAGE_QUERY_KEY = "debug_lang";
   const THEME_MODE_KEY = "aroido:theme-mode";
   const DEFAULT_THEME_MODE = "auto";
   const SUPPORTED_THEME_MODES = ["auto", "light", "dark"];
@@ -42,6 +44,7 @@
     twitterDescription: document.querySelector('meta[name="twitter:description"]'),
     themeButtons: Array.from(document.querySelectorAll(".theme-btn")),
     brandMarks: Array.from(document.querySelectorAll(".brand-mark[data-mark-light][data-mark-dark]")),
+    langSwitchNodes: Array.from(document.querySelectorAll(".lang-switch")),
     langButtons: Array.from(document.querySelectorAll(".lang-btn")),
     communityLinkNodes: Array.from(document.querySelectorAll("[data-community-link]")),
     communityReleaseUrlNode: document.querySelector("[data-community-release-url]"),
@@ -69,6 +72,7 @@
     currentLanguage: DEFAULT_LANGUAGE,
     translations: fallbackTranslations,
     currentThemeMode: DEFAULT_THEME_MODE,
+    debugLanguage: null,
   };
   const gifPosterTimers = new WeakMap();
 
@@ -89,6 +93,19 @@
     const lower = value.toLowerCase();
     const detected = SUPPORTED_LANGUAGES.find((language) => lower.startsWith(language));
     return detected || DEFAULT_LANGUAGE;
+  }
+
+  function normalizeDebugLanguage(value) {
+    if (!value || typeof value !== "string") {
+      return null;
+    }
+
+    const lower = value.toLowerCase();
+    if (lower.startsWith("ko")) {
+      return "ko";
+    }
+
+    return null;
   }
 
   function normalizeThemeMode(value) {
@@ -124,10 +141,33 @@
     }
   }
 
+  function getQueryDebugLanguageDirective() {
+    try {
+      const raw = new URLSearchParams(window.location.search).get(DEBUG_LANGUAGE_QUERY_KEY);
+      if (!raw || typeof raw !== "string") {
+        return null;
+      }
+
+      const lower = raw.toLowerCase();
+      if (lower === "off" || lower === "false" || lower === "0") {
+        return "off";
+      }
+
+      return normalizeDebugLanguage(lower);
+    } catch (_error) {
+      return null;
+    }
+  }
+
   function syncLanguageQuery(language) {
     try {
       const url = new URL(window.location.href);
-      url.searchParams.set("lang", language);
+      if (isDebugLanguageEnabled()) {
+        url.searchParams.set("lang", language);
+      } else {
+        url.searchParams.delete("lang");
+      }
+      url.searchParams.delete(DEBUG_LANGUAGE_QUERY_KEY);
       const query = url.searchParams.toString();
       const nextUrl = `${url.pathname}${query ? `?${query}` : ""}${url.hash}`;
       window.history.replaceState(null, "", nextUrl);
@@ -147,6 +187,30 @@
   function setStoredLanguage(language) {
     try {
       localStorage.setItem(LANGUAGE_KEY, language);
+    } catch (_error) {
+      /* Ignore storage errors in private mode/restricted contexts */
+    }
+  }
+
+  function getStoredDebugLanguage() {
+    try {
+      return sessionStorage.getItem(DEBUG_LANGUAGE_KEY);
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function setStoredDebugLanguage(language) {
+    try {
+      sessionStorage.setItem(DEBUG_LANGUAGE_KEY, language);
+    } catch (_error) {
+      /* Ignore storage errors in private mode/restricted contexts */
+    }
+  }
+
+  function clearStoredDebugLanguage() {
+    try {
+      sessionStorage.removeItem(DEBUG_LANGUAGE_KEY);
     } catch (_error) {
       /* Ignore storage errors in private mode/restricted contexts */
     }
@@ -182,6 +246,29 @@
 
   function getCurrentThemeMode() {
     return state.currentThemeMode;
+  }
+
+  function setDebugLanguage(language) {
+    state.debugLanguage = normalizeDebugLanguage(language);
+  }
+
+  function getDebugLanguage() {
+    return state.debugLanguage;
+  }
+
+  function isDebugLanguageEnabled() {
+    return getDebugLanguage() === "ko";
+  }
+
+  function initializeDebugLanguageMode() {
+    const debugDirective = getQueryDebugLanguageDirective();
+    if (debugDirective === "off") {
+      clearStoredDebugLanguage();
+    } else if (debugDirective) {
+      setStoredDebugLanguage(debugDirective);
+    }
+
+    setDebugLanguage(getStoredDebugLanguage());
   }
 
   function setTranslations(translations) {
@@ -271,6 +358,13 @@
       const buttonLanguage = button.getAttribute("data-lang");
       const isActive = buttonLanguage === language;
       button.setAttribute("aria-pressed", String(isActive));
+    });
+  }
+
+  function updateLanguageSwitchVisibility(isVisible) {
+    dom.langSwitchNodes.forEach((node) => {
+      node.hidden = !isVisible;
+      node.setAttribute("aria-hidden", String(!isVisible));
     });
   }
 
@@ -390,7 +484,8 @@
 
   function applyLanguage(language, options = {}) {
     const { syncQuery = true } = options;
-    const nextLanguage = normalizeLanguage(language);
+    const requestedLanguage = normalizeLanguage(language);
+    const nextLanguage = isDebugLanguageEnabled() ? requestedLanguage : DEFAULT_LANGUAGE;
 
     document.documentElement.lang = nextLanguage;
     updateHeadMetadata(nextLanguage);
@@ -408,11 +503,20 @@
   }
 
   function initializeLanguage() {
-    const preferred = getQueryLanguage() || getStoredLanguage() || navigator.language || DEFAULT_LANGUAGE;
+    const preferred = isDebugLanguageEnabled()
+      ? getQueryLanguage() || getDebugLanguage() || getStoredLanguage() || DEFAULT_LANGUAGE
+      : DEFAULT_LANGUAGE;
     applyLanguage(preferred);
   }
 
   function initializeLanguageSwitch() {
+    const isVisible = isDebugLanguageEnabled();
+    updateLanguageSwitchVisibility(isVisible);
+
+    if (!isVisible) {
+      return;
+    }
+
     dom.langButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const nextLanguage = button.getAttribute("data-lang");
@@ -727,6 +831,7 @@
   }
 
   function runSynchronousBootstrap() {
+    initializeDebugLanguageMode();
     initializeCommunityReleaseLinks();
     initializeThemeSwitch();
     initializeTrackedEvents();
