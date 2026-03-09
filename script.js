@@ -11,9 +11,12 @@
   const SUPPORTED_LANGUAGES = ["en", "ko"];
   const COMMUNITY_RELEASE_PERMALINK =
     "https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest";
-  const COMMUNITY_ARCHIVE_URL =
-    "https://gitlab.com/aroido/vibesmith-community/-/archive/main/vibesmith-community-main.zip";
+  const COMMUNITY_RELEASE_API_URL =
+    "https://gitlab.com/api/v4/projects/aroido%2Fvibesmith-community/releases/permalink/latest";
+  const COMMUNITY_ARCHIVE_URL = COMMUNITY_RELEASE_PERMALINK;
   const COMMUNITY_REPOSITORY_URL = "https://gitlab.com/aroido/vibesmith-community";
+  const COMMUNITY_LINK_CACHE_KEY = "aroido:community-links";
+  const COMMUNITY_LINK_CACHE_TTL_MS = 30 * 60 * 1000;
 
   const fallbackTranslations = {
     en: {
@@ -56,6 +59,7 @@
     voicePanels: Array.from(document.querySelectorAll("[data-voice-panel]")),
     revealNodes: Array.from(document.querySelectorAll("[data-reveal]")),
     translatableNodes: Array.from(document.querySelectorAll("[data-i18n]")),
+    translatableAriaLabelNodes: Array.from(document.querySelectorAll("[data-i18n-aria-label]")),
     topbar: document.querySelector(".topbar"),
     inPageLinks: Array.from(document.querySelectorAll('a[href^="#"]')).filter((node) => {
       const href = node.getAttribute("href");
@@ -81,6 +85,10 @@
 
     const prototype = Object.getPrototypeOf(value);
     return prototype === Object.prototype || prototype === null;
+  }
+
+  function isNonEmptyString(value) {
+    return typeof value === "string" && value.length > 0;
   }
 
   function normalizeLanguage(value) {
@@ -160,10 +168,11 @@
   function syncLanguageQuery(language) {
     try {
       const url = new URL(window.location.href);
-      if (isDebugLanguageEnabled()) {
-        url.searchParams.set("lang", language);
-      } else {
+      const nextLanguage = normalizeLanguage(language);
+      if (nextLanguage === DEFAULT_LANGUAGE) {
         url.searchParams.delete("lang");
+      } else {
+        url.searchParams.set("lang", nextLanguage);
       }
       url.searchParams.delete(DEBUG_LANGUAGE_QUERY_KEY);
       const query = url.searchParams.toString();
@@ -225,6 +234,59 @@
   function setStoredThemeMode(themeMode) {
     try {
       localStorage.setItem(THEME_MODE_KEY, themeMode);
+    } catch (_error) {
+      /* Ignore storage errors in private mode/restricted contexts */
+    }
+  }
+
+  function getCachedCommunityLinks() {
+    try {
+      const raw = localStorage.getItem(COMMUNITY_LINK_CACHE_KEY);
+      if (!raw) {
+        return null;
+      }
+
+      const parsed = JSON.parse(raw);
+      if (!isPlainObject(parsed)) {
+        return null;
+      }
+
+      const releaseUrl = parsed.releaseUrl;
+      const packageUrl = parsed.packageUrl;
+      const fetchedAt = Number(parsed.fetchedAt);
+
+      if (!isNonEmptyString(releaseUrl) || !isNonEmptyString(packageUrl)) {
+        return null;
+      }
+
+      if (!Number.isFinite(fetchedAt)) {
+        return null;
+      }
+
+      if (Date.now() - fetchedAt > COMMUNITY_LINK_CACHE_TTL_MS) {
+        return null;
+      }
+
+      return { releaseUrl, packageUrl };
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function setCachedCommunityLinks(releaseUrl, packageUrl) {
+    try {
+      if (!isNonEmptyString(releaseUrl) || !isNonEmptyString(packageUrl)) {
+        return;
+      }
+
+      localStorage.setItem(
+        COMMUNITY_LINK_CACHE_KEY,
+        JSON.stringify({
+          releaseUrl,
+          packageUrl,
+          fetchedAt: Date.now(),
+        })
+      );
     } catch (_error) {
       /* Ignore storage errors in private mode/restricted contexts */
     }
@@ -351,6 +413,20 @@
     });
   }
 
+  function updateAriaLabelNodes(language) {
+    dom.translatableAriaLabelNodes.forEach((node) => {
+      const key = node.getAttribute("data-i18n-aria-label");
+      if (!key) {
+        return;
+      }
+
+      const value = getTranslation(language, key);
+      if (isNonEmptyString(value)) {
+        node.setAttribute("aria-label", value);
+      }
+    });
+  }
+
   function updateLanguageButtons(language) {
     dom.langButtons.forEach((button) => {
       const buttonLanguage = button.getAttribute("data-lang");
@@ -412,18 +488,128 @@
     node.textContent = href;
   }
 
+  function applyCommunityLinks(releaseUrl, packageUrl) {
+    if (!isNonEmptyString(releaseUrl) || !isNonEmptyString(packageUrl)) {
+      return;
+    }
+
+    setCommunityLink("release", releaseUrl);
+    setCommunityLink("archive", packageUrl);
+    setCommunityLink("repository", COMMUNITY_REPOSITORY_URL);
+
+    updateCommunityPathNode(dom.communityReleaseUrlNode, releaseUrl);
+    updateCommunityPathNode(dom.communityArchiveUrlNode, packageUrl);
+    updateCommunityPathNode(dom.communityRepositoryUrlNode, COMMUNITY_REPOSITORY_URL);
+  }
+
   function initializeCommunityReleaseLinks() {
     if (dom.communityLinkNodes.length === 0) {
       return;
     }
 
-    setCommunityLink("release", COMMUNITY_RELEASE_PERMALINK);
-    setCommunityLink("archive", COMMUNITY_ARCHIVE_URL);
-    setCommunityLink("repository", COMMUNITY_REPOSITORY_URL);
+    applyCommunityLinks(COMMUNITY_RELEASE_PERMALINK, COMMUNITY_ARCHIVE_URL);
+  }
 
-    updateCommunityPathNode(dom.communityReleaseUrlNode, COMMUNITY_RELEASE_PERMALINK);
-    updateCommunityPathNode(dom.communityArchiveUrlNode, COMMUNITY_ARCHIVE_URL);
-    updateCommunityPathNode(dom.communityRepositoryUrlNode, COMMUNITY_REPOSITORY_URL);
+  function normalizeGitLabUrl(url) {
+    if (!isNonEmptyString(url)) {
+      return null;
+    }
+
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      return url;
+    }
+
+    if (url.startsWith("/")) {
+      return `https://gitlab.com${url}`;
+    }
+
+    return null;
+  }
+
+  function getLatestPackageUrl(payload) {
+    const links = payload?.assets?.links;
+    if (!Array.isArray(links) || links.length === 0) {
+      return null;
+    }
+
+    const candidates = links
+      .map((link) => {
+        const name = String(link?.name || "");
+        const direct = normalizeGitLabUrl(link?.direct_asset_url);
+        const fallback = normalizeGitLabUrl(link?.url);
+        return {
+          name,
+          url: direct || fallback,
+        };
+      })
+      .filter((link) => isNonEmptyString(link.url) && isNonEmptyString(link.name));
+
+    const dmg = candidates.find(
+      (link) => /\.dmg$/i.test(link.name) && !/blockmap/i.test(link.name)
+    );
+    if (dmg) {
+      return dmg.url;
+    }
+
+    const zip = candidates.find(
+      (link) =>
+        /\.zip$/i.test(link.name) &&
+        /vibesmith/i.test(link.name) &&
+        !/blockmap/i.test(link.name)
+    );
+    if (zip) {
+      return zip.url;
+    }
+
+    const genericZip = candidates.find(
+      (link) => /\.zip$/i.test(link.name) && !/blockmap/i.test(link.name)
+    );
+    return genericZip ? genericZip.url : null;
+  }
+
+  function applyLatestCommunityReleaseLinks(payload) {
+    if (!isPlainObject(payload)) {
+      return null;
+    }
+
+    const releaseUrl = normalizeGitLabUrl(payload?._links?.self) || COMMUNITY_RELEASE_PERMALINK;
+    const packageUrl = getLatestPackageUrl(payload) || COMMUNITY_ARCHIVE_URL;
+
+    applyCommunityLinks(releaseUrl, packageUrl);
+    return { releaseUrl, packageUrl };
+  }
+
+  async function fetchLatestCommunityReleasePayload() {
+    try {
+      const response = await fetch(COMMUNITY_RELEASE_API_URL, { cache: "no-store" });
+      if (!response.ok) {
+        return null;
+      }
+      const payload = await response.json();
+      return isPlainObject(payload) ? payload : null;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  async function refreshCommunityReleaseLinks() {
+    if (dom.communityLinkNodes.length === 0) {
+      return;
+    }
+
+    const cached = getCachedCommunityLinks();
+    if (cached) {
+      applyCommunityLinks(cached.releaseUrl, cached.packageUrl);
+      return;
+    }
+
+    const payload = await fetchLatestCommunityReleasePayload();
+    if (payload) {
+      const latestLinks = applyLatestCommunityReleaseLinks(payload);
+      if (latestLinks) {
+        setCachedCommunityLinks(latestLinks.releaseUrl, latestLinks.packageUrl);
+      }
+    }
   }
 
   function applyLocalizedMedia(language) {
@@ -445,11 +631,12 @@
   function applyLanguage(language, options = {}) {
     const { syncQuery = true } = options;
     const requestedLanguage = normalizeLanguage(language);
-    const nextLanguage = isDebugLanguageEnabled() ? requestedLanguage : DEFAULT_LANGUAGE;
+    const nextLanguage = requestedLanguage;
 
     document.documentElement.lang = nextLanguage;
     updateHeadMetadata(nextLanguage);
     updateTextNodes(nextLanguage);
+    updateAriaLabelNodes(nextLanguage);
     updateLanguageButtons(nextLanguage);
     applyLocalizedMedia(nextLanguage);
 
@@ -462,19 +649,13 @@
   }
 
   function initializeLanguage() {
-    const preferred = isDebugLanguageEnabled()
-      ? getQueryLanguage() || getDebugLanguage() || getStoredLanguage() || DEFAULT_LANGUAGE
-      : DEFAULT_LANGUAGE;
+    const preferred =
+      getQueryLanguage() || getStoredLanguage() || normalizeLanguage(navigator.language);
     applyLanguage(preferred);
   }
 
   function initializeLanguageSwitch() {
-    const isVisible = isDebugLanguageEnabled();
-    updateLanguageSwitchVisibility(isVisible);
-
-    if (!isVisible) {
-      return;
-    }
+    updateLanguageSwitchVisibility(true);
 
     dom.langButtons.forEach((button) => {
       button.addEventListener("click", () => {
@@ -803,6 +984,7 @@
 
   function runAsynchronousBootstrap() {
     loadTranslations().finally(reapplyCurrentLanguage);
+    refreshCommunityReleaseLinks();
   }
 
   function initialize() {

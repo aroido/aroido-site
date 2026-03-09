@@ -11,6 +11,7 @@
     />
     <link rel="canonical" href="https://aroido.com/" />
     <link rel="alternate" hreflang="en" href="https://aroido.com/?lang=en" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/?lang=ko" />
     <link rel="alternate" hreflang="x-default" href="https://aroido.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aroido" />
@@ -52,6 +53,12 @@
         ]
       }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -73,19 +80,19 @@
           />
           <span>AROIDO</span>
         </a>
-        <nav class="main-nav" aria-label="Main">
+        <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="aria_main_nav">
           <a href="/" aria-current="page" data-i18n="nav_home">Home</a>
           <a href="/projects/" data-i18n="nav_projects">Product</a>
           <a href="/team/" data-i18n="nav_team">Team</a>
           <a href="/team/#contact" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">Contact</a>
         </nav>
         <div class="header-controls">
-          <div class="theme-switch" role="group" aria-label="Theme switch">
+          <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
             <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
             <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
             <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">Dark</button>
           </div>
-          <div class="lang-switch" role="group" aria-label="Language switch">
+          <div class="lang-switch" role="group" aria-label="Language switch" data-i18n-aria-label="aria_language_switch">
             <button class="lang-btn" data-lang="en" type="button">EN</button>
             <button class="lang-btn" data-lang="ko" type="button">KO</button>
           </div>
@@ -107,7 +114,7 @@
           <a class="btn btn-primary" href="/projects/vibesmith/#download" data-i18n="cta_primary" data-track-event="download_cta_click" data-track-label="home_open_download_primary">Install Community and start today</a>
           <a class="btn btn-ghost" href="/projects/vibesmith/#demo" data-i18n="cta_secondary" data-track-event="hero_cta_click" data-track-label="home_open_demo_secondary">See the 3-minute workflow</a>
         </div>
-        <div class="hype-strip" aria-label="Quick value signals">
+        <div class="hype-strip" aria-label="Quick value signals" data-i18n-aria-label="aria_quick_signals">
           <span class="hype-item" data-i18n="home_hype_1">Community build is free</span>
           <span class="hype-item" data-i18n="home_hype_2">No forced repository rewrite</span>
           <span class="hype-item" data-i18n="home_hype_3">Pilot in one active repo</span>
@@ -132,7 +139,7 @@
         <p class="panel-copy" data-i18n="featured_description">
           Built for vibe coders who launch new repositories often and need one reliable component memory.
         </p>
-        <ul class="featured-meta" aria-label="Featured details">
+        <ul class="featured-meta" aria-label="Featured details" data-i18n-aria-label="aria_featured_details">
           <li data-i18n="featured_meta_1">Search and filter components across projects in one inventory</li>
           <li data-i18n="featured_meta_2">Copy proven components into new repos with dependency-aware flow</li>
           <li data-i18n="featured_meta_3">Preview conflicts before preset apply so rollout stays predictable</li>
@@ -171,14 +178,14 @@
           <p class="section-eyebrow" data-i18n="home_media_eyebrow">REAL PRODUCT FLOW</p>
           <h2 data-i18n="media_home_title">Real screens from real setup moments</h2>
           <p data-i18n="media_home_desc">This is the workflow vibe coders use when bootstrapping or cleaning a project.</p>
-          <ul class="proof-chip-row" aria-label="Visual proof signals">
+          <ul class="proof-chip-row" aria-label="Visual proof signals" data-i18n-aria-label="aria_visual_proof">
             <li class="proof-chip" data-i18n="home_media_chip_1">Search + inventory in motion</li>
             <li class="proof-chip" data-i18n="home_media_chip_2">Dependency visibility</li>
             <li class="proof-chip" data-i18n="home_media_chip_3">Project-ready component detail</li>
           </ul>
         </div>
         <div class="media-layout">
-          <figure class="media-card media-card-hero" role="img" aria-label="VibeSmith component workflow screenshot">
+          <figure class="media-card media-card-hero" role="img" aria-label="VibeSmith component workflow screenshot" data-i18n-aria-label="aria_media_home_workflow">
             <img
               class="media-visual"
               src="/assets/vibesmith-community/02-components-en-light.jpg"
@@ -200,7 +207,7 @@
             <figcaption data-i18n="media_slot_hero_caption">Screenshot from v0.5.3 community build (component workflow).</figcaption>
           </figure>
           <div class="media-stack">
-            <figure class="media-card media-card-short media-live" role="img" aria-label="Operations dashboard screenshot">
+            <figure class="media-card media-card-short media-live" role="img" aria-label="Operations dashboard screenshot" data-i18n-aria-label="aria_media_home_dashboard">
               <img
                 class="media-visual"
                 src="/assets/vibesmith-community/01-dashboard-en-light.jpg"
@@ -218,7 +225,7 @@
               </div>
               <figcaption data-i18n="media_slot_dash_caption">Status, conflicts, and coverage in one snapshot.</figcaption>
             </figure>
-            <figure class="media-card media-card-short media-live" role="img" aria-label="Dependency graph">
+            <figure class="media-card media-card-short media-live" role="img" aria-label="Dependency graph" data-i18n-aria-label="aria_media_home_dependency">
               <img
                 class="media-visual"
                 src="/assets/vibesmith-community/03-dependencies-en-light.jpg"
@@ -236,7 +243,7 @@
               </div>
               <figcaption data-i18n="media_slot_graph_caption">Inspect coupling paths and dependency structure.</figcaption>
             </figure>
-            <figure class="media-card media-card-short media-live" role="img" aria-label="Component detail screenshot">
+            <figure class="media-card media-card-short media-live" role="img" aria-label="Component detail screenshot" data-i18n-aria-label="aria_media_home_component">
               <img
                 class="media-visual"
                 src="/assets/vibesmith-community/05-component-detail-en-light.jpg"
