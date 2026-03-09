@@ -11,6 +11,7 @@
     />
     <link rel="canonical" href="https://aroido.com/projects/vibesmith/" />
     <link rel="alternate" hreflang="en" href="https://aroido.com/projects/vibesmith/?lang=en" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/projects/vibesmith/?lang=ko" />
     <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/vibesmith/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aroido" />
@@ -42,6 +43,12 @@
         ]
       }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+    />
     <link rel="stylesheet" href="../../styles.css" />
   </head>
   <body>
@@ -63,19 +70,19 @@
           />
           <span>AROIDO</span>
         </a>
-        <nav class="main-nav" aria-label="Main">
+        <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="aria_main_nav">
           <a href="/" data-i18n="nav_home">Home</a>
           <a href="/projects/" aria-current="page" data-i18n="nav_projects">Product</a>
           <a href="/team/" data-i18n="nav_team">Team</a>
           <a href="/team/#contact" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">Contact</a>
         </nav>
         <div class="header-controls">
-          <div class="theme-switch" role="group" aria-label="Theme switch">
+          <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
             <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
             <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
             <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">Dark</button>
           </div>
-          <div class="lang-switch" role="group" aria-label="Language switch">
+          <div class="lang-switch" role="group" aria-label="Language switch" data-i18n-aria-label="aria_language_switch">
             <button class="lang-btn" data-lang="en" type="button">EN</button>
             <button class="lang-btn" data-lang="ko" type="button">KO</button>
           </div>
@@ -111,7 +118,7 @@
         </div>
       </section>
 
-      <nav class="crumbs reveal" data-reveal aria-label="Breadcrumb">
+      <nav class="crumbs reveal" data-reveal aria-label="Breadcrumb" data-i18n-aria-label="aria_breadcrumb">
         <a href="/" data-i18n="crumb_home">Home</a>
         <span>/</span>
         <a href="/projects/" data-i18n="crumb_product">Product</a>
@@ -157,14 +164,14 @@
           <p class="section-eyebrow" data-i18n="vibe_media_eyebrow">Visual Proof</p>
           <h2 data-i18n="vibe_media_title">Workflow proof from real vibe coder pain</h2>
           <p data-i18n="vibe_media_desc">Each screen corresponds to one vibe coder decision point instead of generic product showcase.</p>
-          <ul class="proof-chip-row" aria-label="Visual proof signals">
+          <ul class="proof-chip-row" aria-label="Visual proof signals" data-i18n-aria-label="aria_visual_proof">
             <li class="proof-chip" data-i18n="vibe_media_chip_1">Production-like workflow</li>
             <li class="proof-chip" data-i18n="vibe_media_chip_2">Pilot decision screens</li>
             <li class="proof-chip" data-i18n="vibe_media_chip_3">Repo-scale clarity</li>
           </ul>
         </div>
         <div class="media-proof-grid">
-          <figure class="media-card media-card-hero media-proof-hero" role="img" aria-label="Dependency graph screenshot">
+          <figure class="media-card media-card-hero media-proof-hero" role="img" aria-label="Dependency graph screenshot" data-i18n-aria-label="aria_media_vibe_hero_dependency">
             <img
               class="media-visual"
               src="/assets/vibesmith-community/03-dependencies-en-light.jpg"
@@ -185,7 +192,7 @@
             </div>
             <figcaption data-i18n="vibe_media_gif_caption">Screenshot from v0.5.3 community build (dependency graph view).</figcaption>
           </figure>
-          <figure class="media-card media-live" role="img" aria-label="Inventory screenshot">
+          <figure class="media-card media-live" role="img" aria-label="Inventory screenshot" data-i18n-aria-label="aria_media_vibe_inventory">
             <img
               class="media-visual"
               src="/assets/vibesmith-community/02-components-en-light.jpg"
@@ -203,7 +210,7 @@
             </div>
             <figcaption data-i18n="vibe_media_card1_caption">Confirm active components and ownership boundaries.</figcaption>
           </figure>
-          <figure class="media-card media-live" role="img" aria-label="Dependency graph screenshot">
+          <figure class="media-card media-live" role="img" aria-label="Dependency graph screenshot" data-i18n-aria-label="aria_media_vibe_dependency">
             <img
               class="media-visual"
               src="/assets/vibesmith-community/03-dependencies-en-light.jpg"
@@ -221,7 +228,7 @@
             </div>
             <figcaption data-i18n="vibe_media_card2_caption">Trace coupling paths before risky changes ship.</figcaption>
           </figure>
-          <figure class="media-card media-live" role="img" aria-label="Component detail screenshot">
+          <figure class="media-card media-live" role="img" aria-label="Component detail screenshot" data-i18n-aria-label="aria_media_vibe_component">
             <img
               class="media-visual"
               src="/assets/vibesmith-community/05-component-detail-en-light.jpg"
@@ -239,7 +246,7 @@
             </div>
             <figcaption data-i18n="vibe_media_card3_caption">Inspect metadata, linked commands, and owners.</figcaption>
           </figure>
-          <figure class="media-card media-live" role="img" aria-label="Projects and scope screenshot">
+          <figure class="media-card media-live" role="img" aria-label="Projects and scope screenshot" data-i18n-aria-label="aria_media_vibe_projects_scope">
             <img
               class="media-visual"
               src="/assets/vibesmith-community/06-projects-en-light.jpg"
@@ -423,12 +430,12 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="vibe_download_eyebrow">Download</p>
           <h2 data-i18n="vibe_download_title">Get VibeSmith Community Build</h2>
-          <p data-i18n="vibe_download_desc">Choose the community release path or install guide for Homebrew users.</p>
+          <p data-i18n="vibe_download_desc">Choose the release hub, latest install package, or Homebrew fallback path.</p>
         </div>
         <div class="download-grid">
           <article class="route-card highlight">
             <h3 data-i18n="vibe_download_card_title">Option A. Release Hub</h3>
-            <p data-i18n="vibe_download_card_desc">Use public release notes first, then download community snapshot for local run.</p>
+            <p data-i18n="vibe_download_card_desc">Open latest release notes and download public community assets.</p>
             <p class="mini-label" data-i18n="vibe_download_release_page_label">Latest release page</p>
             <a
               class="download-path"
@@ -439,15 +446,15 @@
             >
               https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest
             </a>
-            <p class="mini-label" data-i18n="vibe_download_path_label">Community source snapshot (ZIP)</p>
+            <p class="mini-label" data-i18n="vibe_download_path_label">Latest install package</p>
             <a
               class="download-path"
               data-community-archive-url
-              href="https://gitlab.com/aroido/vibesmith-community/-/archive/main/vibesmith-community-main.zip"
+              href="https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest"
               target="_blank"
               rel="noopener noreferrer"
             >
-              https://gitlab.com/aroido/vibesmith-community/-/archive/main/vibesmith-community-main.zip
+              https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest
             </a>
             <p class="mini-label" data-i18n="vibe_download_sha_label">Community repository</p>
             <a
@@ -472,13 +479,13 @@
               </a>
               <a
                 class="btn btn-ghost"
-                href="https://gitlab.com/aroido/vibesmith-community/-/archive/main/vibesmith-community-main.zip"
+                href="https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest"
                 data-community-link="archive"
                 data-i18n="vibe_download_checksum_cta"
                 data-track-event="download_cta_click"
                 data-track-label="vibe_download_archive"
               >
-                Download source snapshot
+                Download latest package
               </a>
               <a
                 class="btn btn-ghost"
@@ -492,18 +499,18 @@
               </a>
             </div>
             <p class="download-note" data-i18n="vibe_download_note">
-              Community source and release notes are public. Direct packaged binaries can vary by release visibility.
+              Release notes and install artifacts are public. If direct package links change, open the latest release page first.
             </p>
           </article>
           <article class="route-card">
             <h3 data-i18n="vibe_download_brew_title">Option B. Homebrew Guide</h3>
-            <p data-i18n="vibe_download_brew_desc">Tap is available. Run the commands below and install once the cask is published.</p>
+            <p data-i18n="vibe_download_brew_desc">Tap is public. Use Homebrew install only after the cask appears.</p>
             <p class="mini-label" data-i18n="vibe_download_brew_label">Terminal commands</p>
             <pre class="download-command"><code data-i18n="vibe_download_brew_command">brew tap aroido/vibesmith-community https://gitlab.com/aroido/vibesmith-community.git
-brew search --casks vibesmith
-brew install --cask vibesmith-community</code></pre>
+brew search vibesmith-community
+# If no cask appears yet, install from Option A release assets.</code></pre>
             <p class="download-note" data-i18n="vibe_download_brew_note">
-              If cask is not listed yet, use Option A and follow release notes.
+              If no cask appears yet, stay on Option A and use release assets.
             </p>
           </article>
         </div>
