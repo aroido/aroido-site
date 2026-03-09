@@ -168,11 +168,10 @@
   function syncLanguageQuery(language) {
     try {
       const url = new URL(window.location.href);
-      const nextLanguage = normalizeLanguage(language);
-      if (nextLanguage === DEFAULT_LANGUAGE) {
-        url.searchParams.delete("lang");
+      if (isDebugLanguageEnabled()) {
+        url.searchParams.set("lang", language);
       } else {
-        url.searchParams.set("lang", nextLanguage);
+        url.searchParams.delete("lang");
       }
       url.searchParams.delete(DEBUG_LANGUAGE_QUERY_KEY);
       const query = url.searchParams.toString();
@@ -631,7 +630,7 @@
   function applyLanguage(language, options = {}) {
     const { syncQuery = true } = options;
     const requestedLanguage = normalizeLanguage(language);
-    const nextLanguage = requestedLanguage;
+    const nextLanguage = isDebugLanguageEnabled() ? requestedLanguage : DEFAULT_LANGUAGE;
 
     document.documentElement.lang = nextLanguage;
     updateHeadMetadata(nextLanguage);
@@ -649,13 +648,19 @@
   }
 
   function initializeLanguage() {
-    const preferred =
-      getQueryLanguage() || getStoredLanguage() || normalizeLanguage(navigator.language);
+    const preferred = isDebugLanguageEnabled()
+      ? getQueryLanguage() || getDebugLanguage() || getStoredLanguage() || DEFAULT_LANGUAGE
+      : DEFAULT_LANGUAGE;
     applyLanguage(preferred);
   }
 
   function initializeLanguageSwitch() {
-    updateLanguageSwitchVisibility(true);
+    const isVisible = isDebugLanguageEnabled();
+    updateLanguageSwitchVisibility(isVisible);
+
+    if (!isVisible) {
+      return;
+    }
 
     dom.langButtons.forEach((button) => {
       button.addEventListener("click", () => {
