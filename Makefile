@@ -10,10 +10,10 @@ help: ## Show available commands
 	@grep -E '^(ai-verify-fast|ai-verify-full|ai-finish|i18n-audit|work-session-preflight|work-session-bootstrap-labels|work-session-kpi|notify-moshi):.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-28s %s\n", $$1, $$2}'
 
 ai-verify-fast: ## Run fast AI verification profile
-	@./scripts/ai-verify --mode fast
+	@./scripts/run-ai-verify --mode fast
 
 ai-verify-full: ## Run full AI verification profile
-	@./scripts/ai-verify --mode full
+	@./scripts/run-ai-verify --mode full
 
 i18n-audit: ## Verify ko/en translation key parity
 	@./scripts/i18n-audit.sh

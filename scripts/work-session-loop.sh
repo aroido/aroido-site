@@ -195,12 +195,12 @@ run_verify() {
   local output_file="$1"
   local timeout_seconds="$2"
   if [[ "$DRY_RUN" == "true" ]]; then
-    echo "+ ./scripts/ai-verify --mode full | tee $output_file"
+    echo "+ ./scripts/run-ai-verify --mode full | tee $output_file"
     return 0
   fi
 
   (
-    ./scripts/ai-verify --mode full | tee "$output_file"
+    ./scripts/run-ai-verify --mode full | tee "$output_file"
   ) &
   local cmd_pid=$!
 
@@ -337,8 +337,8 @@ if [[ ! -f "$SPEC_PATH" ]]; then
   exit 1
 fi
 
-if [[ ! -x "$ROOT_DIR/scripts/ai-verify" ]]; then
-  echo "missing executable: $ROOT_DIR/scripts/ai-verify" >&2
+if [[ ! -x "$ROOT_DIR/scripts/run-ai-verify" ]]; then
+  echo "missing executable: $ROOT_DIR/scripts/run-ai-verify" >&2
   exit 1
 fi
 
@@ -434,7 +434,7 @@ Task:
   4) clearer CTA branching for demo/pilot/docs
 - Keep KO/EN content parity.
 - Do not introduce personal names.
-- Run ./scripts/ai-verify --mode full before finishing.
+- Run ./scripts/run-ai-verify --mode full before finishing.
 
 Output:
 - changed files
@@ -475,7 +475,7 @@ Task:
 - Fix the top-priority gaps from the self-feedback report.
 - Keep changes targeted and high impact.
 - Maintain KO/EN parity where text keys are affected.
-- Run ./scripts/ai-verify --mode full before finishing.
+- Run ./scripts/run-ai-verify --mode full before finishing.
 
 Output:
 - fixed items

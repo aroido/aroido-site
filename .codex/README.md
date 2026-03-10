@@ -65,7 +65,9 @@
   - `vercel` (`https://mcp.vercel.com`)
   - `flyctl` (`http://127.0.0.1:8080`, run `flyctl mcp server` first)
 - Scripts
+  - `scripts/codex-notify-context`
   - `scripts/i18n-audit.sh`
+  - `scripts/run-ai-verify`
   - `scripts/work-session-preflight.sh`
   - `scripts/work-session-bootstrap-labels.sh`
   - `scripts/work-session-kpi.sh`

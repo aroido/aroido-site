@@ -293,12 +293,12 @@ run_verify() {
   local timeout_seconds="$2"
 
   if [[ "$DRY_RUN" == "true" ]]; then
-    echo "+ ./scripts/ai-verify --mode full 2>&1 | tee $output_file"
+    echo "+ ./scripts/run-ai-verify --mode full 2>&1 | tee $output_file"
     return 0
   fi
 
   (
-    ./scripts/ai-verify --mode full 2>&1 | tee "$output_file"
+    ./scripts/run-ai-verify --mode full 2>&1 | tee "$output_file"
   ) &
   local cmd_pid=$!
 
@@ -647,8 +647,8 @@ if [[ -n "$SPEC_PATH" && ! -f "$SPEC_PATH" ]]; then
   exit 1
 fi
 
-if [[ ! -x "$ROOT_DIR/scripts/ai-verify" ]]; then
-  echo "missing executable: $ROOT_DIR/scripts/ai-verify" >&2
+if [[ ! -x "$ROOT_DIR/scripts/run-ai-verify" ]]; then
+  echo "missing executable: $ROOT_DIR/scripts/run-ai-verify" >&2
   exit 1
 fi
 
@@ -841,7 +841,7 @@ Task:
    - changed files
    - intent and rationale
    - rollback notes
-4) Run ./scripts/ai-verify --mode full before finishing.
+4) Run ./scripts/run-ai-verify --mode full before finishing.
 5) Output a Korean summary with remaining risk.
 EOF
 

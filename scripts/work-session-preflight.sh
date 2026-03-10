@@ -136,6 +136,12 @@ else
   fail "scripts/ai-verify missing"
 fi
 
+if [[ -f "$ROOT_DIR/scripts/run-ai-verify" ]]; then
+  pass "scripts/run-ai-verify exists"
+else
+  fail "scripts/run-ai-verify missing"
+fi
+
 if [[ -f "$ROOT_DIR/scripts/ai-finish-task" ]]; then
   AI_FINISH_OK="true"
   pass "scripts/ai-finish-task exists"
