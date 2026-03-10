@@ -542,9 +542,9 @@
           </article>
           <article class="route-card">
             <h3 data-i18n="vibe_download_brew_title">Option B. Homebrew Guide</h3>
-            <p data-i18n="vibe_download_brew_desc">Tap is public. Use Homebrew install only after the cask appears.</p>
+            <p data-i18n="vibe_download_brew_desc">Tap and cask are live. Install with Homebrew, or use the greedy upgrade path if VibeSmith is already on this Mac.</p>
             <div class="download-command-head">
-              <p class="mini-label" data-i18n="vibe_download_brew_label">Terminal commands</p>
+              <p class="mini-label" data-i18n="vibe_download_brew_label">Install and upgrade</p>
               <button
                 class="copy-command-btn"
                 type="button"
@@ -556,11 +556,15 @@
                 Copy command
               </button>
             </div>
-            <pre id="vibe-brew-command" class="download-command"><code data-i18n="vibe_download_brew_command">brew tap aroido/vibesmith-community https://gitlab.com/aroido/vibesmith-community.git
-brew search vibesmith-community
-# If no cask appears yet, install from Option A release assets.</code></pre>
+            <pre id="vibe-brew-command" class="download-command"><code data-i18n="vibe_download_brew_command">brew update
+brew tap aroido/vibesmith https://gitlab.com/aroido/homebrew-vibesmith.git
+brew install --cask aroido/vibesmith/vibesmith
+
+# If an older version is already installed:
+brew update
+brew upgrade --cask --greedy aroido/vibesmith/vibesmith</code></pre>
             <p class="download-note" data-i18n="vibe_download_brew_note">
-              If no cask appears yet, stay on Option A and use release assets.
+              Prefer this path for Homebrew installs and upgrades. Option A release assets are still available if you want the direct package instead.
             </p>
           </article>
         </div>
