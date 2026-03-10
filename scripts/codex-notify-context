@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_path="${CODEX_NOTIFY_REPO_PATH:-.}"
+summary="${CODEX_NOTIFY_PROMPT_SUMMARY:-Codex 작업}"
+verify_status="${CODEX_NOTIFY_VERIFY_STATUS:-검증 상태 미확인}"
+status_label="${CODEX_NOTIFY_STATUS_LABEL:-완료}"
+
+path_label="$repo_path"
+area_desc="사이트 작업"
+
+case "$repo_path" in
+  .)
+    path_label="루트"
+    area_desc="메인 사이트"
+    ;;
+  docs*)
+    area_desc="문서"
+    ;;
+  assets*)
+    area_desc="에셋"
+    ;;
+  i18n*)
+    area_desc="다국어"
+    ;;
+  scripts*)
+    area_desc="운영 스크립트"
+    ;;
+  projects*)
+    area_desc="프로젝트 페이지"
+    ;;
+  team*)
+    area_desc="팀 페이지"
+    ;;
+  contact*)
+    area_desc="문의 페이지"
+    ;;
+  debug*)
+    area_desc="디버그"
+    ;;
+esac
+
+title="[${status_label}] aroido-site · ${path_label}"
+message="Aroido 사이트 ${area_desc} 작업: ${summary}. 검증: ${verify_status}"
+
+jq -nc --arg title "$title" --arg message "$message" '{title: $title, message: $message}'

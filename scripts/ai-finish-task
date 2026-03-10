@@ -120,7 +120,7 @@ if [[ "$branch" == "$TARGET_BRANCH" ]]; then
 fi
 
 echo "[1/6] Running full verification..."
-run_shell "./scripts/ai-verify --mode full"
+run_shell "./scripts/run-ai-verify --mode full"
 
 echo "[2/6] Staging changes..."
 run_cmd git add -A

@@ -124,7 +124,7 @@ if [[ -z "$COMMIT_MSG" ]]; then
 fi
 
 echo "[1/5] Running full verification..."
-run_shell "./scripts/ai-verify --mode full"
+run_shell "./scripts/run-ai-verify --mode full"
 
 echo "[2/5] Staging changes..."
 run_cmd git add -A
@@ -179,7 +179,7 @@ if [[ "$ADD_MR_NOTE" == "true" ]]; then
 Long-horizon checkpoint completed.
 
 - branch: $branch
-- verify: passed (\`./scripts/ai-verify --mode full\`)
+- verify: passed (\`./scripts/run-ai-verify --mode full\`)
 - session_id: ${SESSION_ID:-n/a}
 - time(UTC): $(date -u +%Y-%m-%dT%H:%M:%SZ)
 EOF
