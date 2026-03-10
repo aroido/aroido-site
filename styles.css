@@ -190,6 +190,51 @@ body::before {
   gap: 0.32rem;
 }
 
+.header-context {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.44rem;
+  padding: 0.42rem 0.78rem;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(16, 223, 251, 0.12));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.header-context-mark {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent-orange), var(--accent-cyan));
+  box-shadow: 0 0 0 3px rgba(255, 91, 31, 0.12);
+  flex: 0 0 auto;
+}
+
+.header-context a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.header-context a:hover,
+.header-context a:focus-visible {
+  color: var(--ink);
+}
+
+.header-context [aria-current="page"] {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.header-context-sep {
+  opacity: 0.6;
+}
+
 .theme-switch,
 .lang-switch {
   display: inline-flex;
@@ -1188,11 +1233,6 @@ html:lang(ko) .page-hero h1 {
   color: var(--ink-soft);
 }
 
-.vibe-detail-crumbs {
-  margin-top: -1rem;
-  margin-bottom: 1rem;
-}
-
 .crumbs a {
   color: var(--ink);
   text-decoration: none;
@@ -1287,6 +1327,30 @@ html[data-theme="dark"] .theme-switch,
 html[data-theme="dark"] .lang-switch {
   border-color: rgba(141, 160, 199, 0.72);
   background: rgba(8, 13, 24, 0.88);
+}
+
+html[data-theme="dark"] .header-context {
+  border-color: rgba(141, 160, 199, 0.72);
+  background: linear-gradient(135deg, rgba(38, 52, 85, 0.76), rgba(8, 13, 24, 0.92));
+  box-shadow: inset 0 1px 0 rgba(199, 216, 255, 0.08);
+  color: #c8d5f0;
+}
+
+html[data-theme="dark"] .header-context a {
+  color: #c8d5f0;
+}
+
+html[data-theme="dark"] .header-context a:hover,
+html[data-theme="dark"] .header-context a:focus-visible {
+  color: #f5f8ff;
+}
+
+html[data-theme="dark"] .header-context [aria-current="page"] {
+  color: #f6ffcf;
+}
+
+html[data-theme="dark"] .header-context-mark {
+  box-shadow: 0 0 0 3px rgba(210, 255, 57, 0.15);
 }
 
 html[data-theme="dark"] .theme-btn,
@@ -1473,6 +1537,11 @@ html[data-theme="dark"] .vibe-app-icon {
     gap: 0.35rem;
   }
 
+  .header-context {
+    width: 100%;
+    justify-content: center;
+  }
+
   .theme-switch,
   .lang-switch {
     flex: 1 1 0;
@@ -1616,6 +1685,11 @@ html[data-theme="dark"] .vibe-app-icon {
 
   .main-nav a {
     font-size: 0.78rem;
+  }
+
+  .header-context {
+    font-size: 0.64rem;
+    padding-inline: 0.68rem;
   }
 
   .panel h2,
