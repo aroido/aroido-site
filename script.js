@@ -18,6 +18,7 @@
   const COMMUNITY_LINK_CACHE_KEY = "aroido:community-links";
   const COMMUNITY_LINK_CACHE_TTL_MS = 30 * 60 * 1000;
   const COPY_FEEDBACK_DURATION_MS = 1800;
+  const TALLY_POPUP_FORM_ID = "RG484l";
 
   const fallbackTranslations = {
     en: {
@@ -58,6 +59,7 @@
       document.querySelectorAll("[data-media-src-en], [data-media-src-en-light]")
     ),
     copyCommandButtons: Array.from(document.querySelectorAll("[data-copy-target]")),
+    tallyPopupNodes: Array.from(document.querySelectorAll("[data-tally-popup]")),
     trackedNodes: Array.from(document.querySelectorAll("[data-track-event]")),
     voiceTabs: Array.from(document.querySelectorAll("[data-voice-tab]")),
     voicePanels: Array.from(document.querySelectorAll("[data-voice-panel]")),
@@ -222,6 +224,44 @@
           target_id: targetId,
         });
         scheduleCopyButtonReset(button);
+      });
+    });
+  }
+
+  function initializeTallyPopupButtons() {
+    if (!Array.isArray(dom.tallyPopupNodes) || dom.tallyPopupNodes.length === 0) {
+      return;
+    }
+
+    dom.tallyPopupNodes.forEach((node) => {
+      node.addEventListener("click", (event) => {
+        if (!window.Tally || typeof window.Tally.openPopup !== "function") {
+          return;
+        }
+
+        event.preventDefault();
+
+        const intent = node.getAttribute("data-tally-popup") || "general";
+        const source =
+          node.getAttribute("data-tally-source") ||
+          node.getAttribute("data-track-label") ||
+          "unknown";
+
+        window.Tally.openPopup(TALLY_POPUP_FORM_ID, {
+          layout: "modal",
+          width: 700,
+          overlay: true,
+          hiddenFields: {
+            intent,
+            source,
+            pagePath: window.location.pathname,
+            pageUrl: window.location.href,
+            language: getCurrentLanguage(),
+          },
+          onSubmit: () => {
+            trackEvent("contact_form_submit", { intent, source });
+          },
+        });
       });
     });
   }
@@ -1123,6 +1163,7 @@
     initializeThemeSwitch();
     initializeTrackedEvents();
     initializeCopyCommandButtons();
+    initializeTallyPopupButtons();
     initializeLanguageSwitch();
     initializeVoicePanels();
     initializeRevealMotion();
