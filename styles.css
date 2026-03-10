@@ -177,6 +177,11 @@ body::before {
   color: #fff;
 }
 
+.main-nav a[data-nav-parent-current="true"] {
+  background: var(--ink);
+  color: #fff;
+}
+
 .header-controls {
   display: inline-flex;
   align-items: center;
@@ -1264,6 +1269,11 @@ html[data-theme="dark"] .main-nav a:focus-visible {
 }
 
 html[data-theme="dark"] .main-nav a[aria-current="page"] {
+  background: var(--accent-lime);
+  color: #09101b;
+}
+
+html[data-theme="dark"] .main-nav a[data-nav-parent-current="true"] {
   background: var(--accent-lime);
   color: #09101b;
 }
