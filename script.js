@@ -22,12 +22,12 @@
 
   const fallbackTranslations = {
     en: {
-      page_title: "Aroido | Bold Products, Current Focus: VibeSmith",
+      page_title: "Aroido | Products, Pilots, and Operating Systems",
       meta_description:
-        "Aroido builds products, pilot workflows, and operating systems with clear operating standards. VibeSmith is the current public focus.",
-      home_seo_title: "Aroido | Bold Products, Current Focus: VibeSmith",
+        "Aroido builds products, pilot workflows, and operating systems with clear operating standards. Explore the current public product, team model, and collaboration paths.",
+      home_seo_title: "Aroido | Products, Pilots, and Operating Systems",
       home_meta_description:
-        "Aroido builds products, pilot workflows, and operating systems with clear operating standards. VibeSmith is the current public focus.",
+        "Aroido builds products, pilot workflows, and operating systems with clear operating standards. Explore the current public product, team model, and collaboration paths.",
       projects_seo_title: "Aroido Product | VibeSmith",
       projects_meta_description:
         "Aroido currently operates one public product, VibeSmith. Start from overview and move to the detailed product page.",
@@ -46,12 +46,12 @@
       theme_dark: "Dark",
     },
     ko: {
-      page_title: "Aroido | 대담한 제품, 현재 공개 포커스는 VibeSmith",
+      page_title: "Aroido | 제품, 파일럿, 운영 시스템",
       meta_description:
-        "Aroido는 명확한 운영 기준으로 제품, 파일럿 워크플로우, 운영 시스템을 만듭니다. 현재 가장 공개적으로 보여주는 포커스는 VibeSmith입니다.",
-      home_seo_title: "Aroido | 대담한 제품, 현재 공개 포커스는 VibeSmith",
+        "Aroido는 명확한 운영 기준으로 제품, 파일럿 워크플로우, 운영 시스템을 만듭니다. 현재 공개 제품, 팀 운영 방식, 협업 경로를 확인하세요.",
+      home_seo_title: "Aroido | 제품, 파일럿, 운영 시스템",
       home_meta_description:
-        "Aroido는 명확한 운영 기준으로 제품, 파일럿 워크플로우, 운영 시스템을 만듭니다. 현재 가장 공개적으로 보여주는 포커스는 VibeSmith입니다.",
+        "Aroido는 명확한 운영 기준으로 제품, 파일럿 워크플로우, 운영 시스템을 만듭니다. 현재 공개 제품, 팀 운영 방식, 협업 경로를 확인하세요.",
       projects_seo_title: "Aroido 프로덕트 | VibeSmith",
       projects_meta_description:
         "Aroido는 현재 공개 프로덕트 VibeSmith 1개를 운영합니다. 개요에서 상세 페이지로 바로 이동할 수 있습니다.",
