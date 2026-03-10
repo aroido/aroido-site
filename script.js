@@ -22,12 +22,12 @@
 
   const fallbackTranslations = {
     en: {
-      page_title: "Aroido | One Current Public Product, Clear Operating Standards",
+      page_title: "Aroido | AI Product Systems for Multi-Repo Teams",
       meta_description:
-        "Aroido builds product systems, pilot workflows, and operating standards. Meet the team, understand the model, and start with VibeSmith, the current public product.",
-      home_seo_title: "Aroido | One Current Public Product, Clear Operating Standards",
+        "Aroido builds AI product systems for teams running multiple coding repos. Start with VibeSmith to reduce setup drift, dependency misses, and context loss across repos.",
+      home_seo_title: "Aroido | AI Product Systems for Multi-Repo Teams",
       home_meta_description:
-        "Aroido builds product systems, pilot workflows, and operating standards. Meet the team, understand the model, and start with VibeSmith, the current public product.",
+        "Aroido builds AI product systems for teams running multiple coding repos. Start with VibeSmith to reduce setup drift, dependency misses, and context loss across repos.",
       projects_seo_title: "Aroido Product | Current Public Product: VibeSmith",
       projects_meta_description:
         "Aroido currently ships one public product, VibeSmith. Start here for the brief, product page, and download path.",
@@ -46,12 +46,12 @@
       theme_dark: "Dark",
     },
     ko: {
-      page_title: "Aroido | 현재 공개 제품 1개와 명확한 운영 기준",
+      page_title: "Aroido | 멀티 레포 팀을 위한 AI 제품 시스템",
       meta_description:
-        "Aroido는 제품 시스템, 파일럿 워크플로우, 운영 기준을 만듭니다. 팀이 어떻게 일하는지 확인하고, 현재 공개 제품인 VibeSmith에서 시작하세요.",
-      home_seo_title: "Aroido | 현재 공개 제품 1개와 명확한 운영 기준",
+        "Aroido는 여러 AI 코딩 레포를 운영하는 팀을 위한 제품 시스템을 만듭니다. 세팅 드리프트, 종속성 누락, 컨텍스트 손실을 줄이려면 VibeSmith부터 시작하세요.",
+      home_seo_title: "Aroido | 멀티 레포 팀을 위한 AI 제품 시스템",
       home_meta_description:
-        "Aroido는 제품 시스템, 파일럿 워크플로우, 운영 기준을 만듭니다. 팀이 어떻게 일하는지 확인하고, 현재 공개 제품인 VibeSmith에서 시작하세요.",
+        "Aroido는 여러 AI 코딩 레포를 운영하는 팀을 위한 제품 시스템을 만듭니다. 세팅 드리프트, 종속성 누락, 컨텍스트 손실을 줄이려면 VibeSmith부터 시작하세요.",
       projects_seo_title: "Aroido 프로덕트 | 현재 공개 제품: VibeSmith",
       projects_meta_description:
         "Aroido의 현재 공개 제품은 VibeSmith 하나입니다. 이 페이지에서 브리프, 제품 페이지, 다운로드 경로로 이동할 수 있습니다.",
