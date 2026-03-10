@@ -60,6 +60,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
     />
+    <script async src="https://tally.so/widgets/embed.js"></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -82,7 +83,7 @@
           <a href="/" aria-current="page" data-i18n="nav_home">Home</a>
           <a href="/projects/" data-i18n="nav_projects">Product</a>
           <a href="/team/" data-i18n="nav_team">Team</a>
-          <a href="#contact" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">Contact</a>
+          <a href="/contact/" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub" data-tally-popup="general" data-tally-source="home_nav_contact">Contact</a>
         </nav>
         <div class="header-controls">
           <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
@@ -348,14 +349,15 @@
       </section>
 
       <section id="contact" class="contact-panel reveal" data-reveal>
-        <h2 data-i18n="contact_title">Start with the product, then follow the direction behind it.</h2>
+        <h2 data-i18n="contact_title">Pilot Community first. Open the contact form when rollout becomes real.</h2>
         <p data-i18n="contact_description">
-          VibeSmith is the clearest public proof of what Aroido is building today. Install Community first, or open
-          the team page if you want the broader thesis behind it.
+          Use VibeSmith Community in one active repo first. When you need Pro governance, a waitlist slot, or a
+          working session, open the shared form and route the request with one clean intake.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/projects/vibesmith/#download" data-i18n="cta_contact" data-track-event="download_cta_click" data-track-label="home_contact_open_download">Start free download</a>
-          <a class="btn btn-ghost" href="/team/" data-i18n="cta_contact_docs" data-track-event="hero_cta_click" data-track-label="home_contact_open_team">See the team direction</a>
+          <a class="btn btn-ghost" href="/contact/#waitlist" data-i18n="cta_contact_waitlist" data-track-event="contact_cta_click" data-track-label="home_contact_open_waitlist" data-tally-popup="waitlist" data-tally-source="home_contact_waitlist">Join Pro waitlist</a>
+          <a class="btn btn-ghost" href="/contact/#general" data-i18n="cta_contact_general" data-track-event="contact_cta_click" data-track-label="home_contact_open_general" data-tally-popup="general" data-tally-source="home_contact_general">Contact Aroido</a>
         </div>
       </section>
     </main>
