@@ -165,23 +165,6 @@ body::before {
   transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 
-.main-nav .nav-link-product {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.08rem;
-  line-height: 1;
-}
-
-.main-nav .nav-link-sub {
-  font-size: 0.54rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  opacity: 0.72;
-}
-
 .main-nav a:hover,
 .main-nav a:focus-visible {
   border-color: var(--line);
@@ -197,11 +180,6 @@ body::before {
 .main-nav a[data-nav-parent-current="true"] {
   background: var(--ink);
   color: #fff;
-}
-
-.main-nav a[aria-current="page"] .nav-link-sub,
-.main-nav a[data-nav-parent-current="true"] .nav-link-sub {
-  opacity: 0.8;
 }
 
 .header-controls {
@@ -1210,6 +1188,11 @@ html:lang(ko) .page-hero h1 {
   color: var(--ink-soft);
 }
 
+.vibe-detail-crumbs {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
 .crumbs a {
   color: var(--ink);
   text-decoration: none;
@@ -1484,10 +1467,6 @@ html[data-theme="dark"] .vibe-app-icon {
     padding: 0.48rem 0.3rem;
   }
 
-  .main-nav .nav-link-sub {
-    font-size: 0.5rem;
-  }
-
   .header-controls {
     width: 100%;
     justify-content: stretch;
@@ -1637,10 +1616,6 @@ html[data-theme="dark"] .vibe-app-icon {
 
   .main-nav a {
     font-size: 0.78rem;
-  }
-
-  .main-nav .nav-link-sub {
-    font-size: 0.48rem;
   }
 
   .panel h2,
