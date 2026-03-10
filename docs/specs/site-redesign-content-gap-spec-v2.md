@@ -96,7 +96,7 @@ VibeSmith 콘텐츠는 아래 문서를 기준으로 동기화해야 한다.
 
 필수 섹션:
 
-1. Hero: `Aroido = AI Product Studio`, `VibeSmith = Flagship`.
+1. Hero: `Aroido = broader product studio/team`, `VibeSmith = current public focus`.
 2. Evidence Strip: 핵심 지표 3개 (예: setup time, first-scan success, drift reduction).
 3. VibeSmith Visual Block: 제품 스크린샷 1장 + 3문장 요약.
 4. Why Us: 팀 운영 방식은 "고객 가치 관점"으로 재서술.

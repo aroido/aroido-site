@@ -22,17 +22,48 @@
 
   const fallbackTranslations = {
     en: {
-      page_title: "Aroido | Hip Product Studio",
+      page_title: "Aroido | Bold Products, Current Focus: VibeSmith",
       meta_description:
-        "Aroido designs and ships bold products with VibeSmith as the current flagship.",
+        "Aroido builds products, pilot workflows, and operating systems with clear operating standards. VibeSmith is the current public focus.",
+      home_seo_title: "Aroido | Bold Products, Current Focus: VibeSmith",
+      home_meta_description:
+        "Aroido builds products, pilot workflows, and operating systems with clear operating standards. VibeSmith is the current public focus.",
+      projects_seo_title: "Aroido Product | VibeSmith",
+      projects_meta_description:
+        "Aroido currently operates one public product, VibeSmith. Start from overview and move to the detailed product page.",
+      vibe_seo_title: "VibeSmith | Component Operations for Vibe Coders",
+      vibe_meta_description:
+        "VibeSmith helps vibe coders reuse components, reduce drift, and launch new repos with lower rollout risk.",
+      team_seo_title: "Aroido Team | Beliefs, Builders, and Current Focus",
+      team_meta_description:
+        "Meet the team behind Aroido and VibeSmith: why we exist, what we believe, and what we are building now.",
+      contact_seo_title: "Contact Aroido | Shared Inquiry and Waitlist Form",
+      contact_meta_description:
+        "Use Aroido's shared inquiry form for product questions and the VibeSmith Pro waitlist, with direct builder inboxes as fallback.",
       hello_alert: "Aroido readiness check is complete.",
       theme_auto: "Auto",
       theme_light: "Light",
       theme_dark: "Dark",
     },
     ko: {
-      page_title: "Aroido | 힙한 프로덕트 스튜디오",
-      meta_description: "Aroido는 VibeSmith를 중심으로 빠르게 제품을 설계하고 출시합니다.",
+      page_title: "Aroido | 대담한 제품, 현재 공개 포커스는 VibeSmith",
+      meta_description:
+        "Aroido는 명확한 운영 기준으로 제품, 파일럿 워크플로우, 운영 시스템을 만듭니다. 현재 가장 공개적으로 보여주는 포커스는 VibeSmith입니다.",
+      home_seo_title: "Aroido | 대담한 제품, 현재 공개 포커스는 VibeSmith",
+      home_meta_description:
+        "Aroido는 명확한 운영 기준으로 제품, 파일럿 워크플로우, 운영 시스템을 만듭니다. 현재 가장 공개적으로 보여주는 포커스는 VibeSmith입니다.",
+      projects_seo_title: "Aroido 프로덕트 | VibeSmith",
+      projects_meta_description:
+        "Aroido는 현재 공개 프로덕트 VibeSmith 1개를 운영합니다. 개요에서 상세 페이지로 바로 이동할 수 있습니다.",
+      vibe_seo_title: "VibeSmith | 바이브코더를 위한 컴포넌트 운영",
+      vibe_meta_description:
+        "VibeSmith는 바이브코더가 컴포넌트를 재사용하고 드리프트를 줄이며 새 레포를 더 안전하게 시작하도록 돕습니다.",
+      team_seo_title: "Aroido 팀 | 믿음, 빌더, 현재 공개 포커스",
+      team_meta_description:
+        "Aroido와 VibeSmith를 만드는 팀을 소개합니다. 왜 존재하는지, 무엇을 믿는지, 지금 무엇을 만들고 있는지 확인할 수 있습니다.",
+      contact_seo_title: "Aroido 문의 | 공유 문의 및 대기열 폼",
+      contact_meta_description:
+        "제품 문의와 VibeSmith Pro 대기열 등록은 Aroido 공유 폼으로 받고, 필요할 때만 Bigcat/Kkachi 직접 메일을 사용하세요.",
       hello_alert: "Aroido 준비 상태 점검이 완료되었습니다.",
       theme_auto: "시스템",
       theme_light: "라이트",
