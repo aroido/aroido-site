@@ -37,9 +37,9 @@
       team_seo_title: "Aroido Team | Beliefs, Builders, and Current Focus",
       team_meta_description:
         "Meet the team behind Aroido and VibeSmith: why we exist, what we believe, and what we are building now.",
-      contact_seo_title: "Contact Aroido | Shared Inquiry and Waitlist Form",
+      contact_seo_title: "Contact Aroido | Shared Inquiry and Pro Updates",
       contact_meta_description:
-        "Use Aroido's shared inquiry form for product questions and the VibeSmith Pro waitlist, with direct builder inboxes as fallback.",
+        "Use Aroido's shared inquiry form for product questions and VibeSmith Pro updates, with direct builder inboxes as fallback.",
       hello_alert: "Aroido readiness check is complete.",
       theme_auto: "Auto",
       theme_light: "Light",
@@ -61,9 +61,9 @@
       team_seo_title: "Aroido 팀 | 믿음, 빌더, 현재 공개 포커스",
       team_meta_description:
         "Aroido와 VibeSmith를 만드는 팀을 소개합니다. 왜 존재하는지, 무엇을 믿는지, 지금 무엇을 만들고 있는지 확인할 수 있습니다.",
-      contact_seo_title: "Aroido 문의 | 공유 문의 및 대기열 폼",
+      contact_seo_title: "Aroido 문의 | 공유 문의 및 Pro 업데이트",
       contact_meta_description:
-        "제품 문의와 VibeSmith Pro 대기열 등록은 Aroido 공유 폼으로 받고, 필요할 때만 Bigcat/Kkachi 직접 메일을 사용하세요.",
+        "제품 문의와 VibeSmith Pro 업데이트 요청은 Aroido 공유 폼으로 받고, 필요할 때만 Bigcat/Kkachi 직접 메일을 사용하세요.",
       hello_alert: "Aroido 준비 상태 점검이 완료되었습니다.",
       theme_auto: "시스템",
       theme_light: "라이트",
