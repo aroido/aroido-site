@@ -22,15 +22,15 @@
 
   const fallbackTranslations = {
     en: {
-      page_title: "Aroido | Products, Pilots, and Operating Systems",
+      page_title: "Aroido | One Current Public Product, Clear Operating Standards",
       meta_description:
-        "Aroido builds products, pilot workflows, and operating systems with clear operating standards. Explore the current public product, team model, and collaboration paths.",
-      home_seo_title: "Aroido | Products, Pilots, and Operating Systems",
+        "Aroido builds product systems, pilot workflows, and operating standards. Meet the team, understand the model, and start with VibeSmith, the current public product.",
+      home_seo_title: "Aroido | One Current Public Product, Clear Operating Standards",
       home_meta_description:
-        "Aroido builds products, pilot workflows, and operating systems with clear operating standards. Explore the current public product, team model, and collaboration paths.",
-      projects_seo_title: "Aroido Product | VibeSmith",
+        "Aroido builds product systems, pilot workflows, and operating standards. Meet the team, understand the model, and start with VibeSmith, the current public product.",
+      projects_seo_title: "Aroido Product | Current Public Product: VibeSmith",
       projects_meta_description:
-        "Aroido currently operates one public product, VibeSmith. Start from overview and move to the detailed product page.",
+        "Aroido currently ships one public product, VibeSmith. Start here for the brief, product page, and download path.",
       vibe_seo_title: "VibeSmith | Component Operations for Vibe Coders",
       vibe_meta_description:
         "VibeSmith helps vibe coders reuse components, reduce drift, and launch new repos with lower rollout risk.",
@@ -46,15 +46,15 @@
       theme_dark: "Dark",
     },
     ko: {
-      page_title: "Aroido | 제품, 파일럿, 운영 시스템",
+      page_title: "Aroido | 현재 공개 제품 1개와 명확한 운영 기준",
       meta_description:
-        "Aroido는 명확한 운영 기준으로 제품, 파일럿 워크플로우, 운영 시스템을 만듭니다. 현재 공개 제품, 팀 운영 방식, 협업 경로를 확인하세요.",
-      home_seo_title: "Aroido | 제품, 파일럿, 운영 시스템",
+        "Aroido는 제품 시스템, 파일럿 워크플로우, 운영 기준을 만듭니다. 팀이 어떻게 일하는지 확인하고, 현재 공개 제품인 VibeSmith에서 시작하세요.",
+      home_seo_title: "Aroido | 현재 공개 제품 1개와 명확한 운영 기준",
       home_meta_description:
-        "Aroido는 명확한 운영 기준으로 제품, 파일럿 워크플로우, 운영 시스템을 만듭니다. 현재 공개 제품, 팀 운영 방식, 협업 경로를 확인하세요.",
-      projects_seo_title: "Aroido 프로덕트 | VibeSmith",
+        "Aroido는 제품 시스템, 파일럿 워크플로우, 운영 기준을 만듭니다. 팀이 어떻게 일하는지 확인하고, 현재 공개 제품인 VibeSmith에서 시작하세요.",
+      projects_seo_title: "Aroido 프로덕트 | 현재 공개 제품: VibeSmith",
       projects_meta_description:
-        "Aroido는 현재 공개 프로덕트 VibeSmith 1개를 운영합니다. 개요에서 상세 페이지로 바로 이동할 수 있습니다.",
+        "Aroido의 현재 공개 제품은 VibeSmith 하나입니다. 이 페이지에서 브리프, 제품 페이지, 다운로드 경로로 이동할 수 있습니다.",
       vibe_seo_title: "VibeSmith | 바이브코더를 위한 컴포넌트 운영",
       vibe_meta_description:
         "VibeSmith는 바이브코더가 컴포넌트를 재사용하고 드리프트를 줄이며 새 레포를 더 안전하게 시작하도록 돕습니다.",
@@ -842,6 +842,7 @@
   function applyLanguage(language, options = {}) {
     const { syncQuery = true } = options;
     const requestedLanguage = normalizeLanguage(language);
+    // Public runtime stays en-only. ko remains available for internal debug review.
     const nextLanguage = isDebugLanguageEnabled() ? requestedLanguage : DEFAULT_LANGUAGE;
 
     document.documentElement.lang = nextLanguage;
