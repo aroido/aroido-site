@@ -3,7 +3,7 @@ title: "Why Teams Should Prune Unused AI Components Before They Pollute Context"
 date: "2026-03-11T18:40:00+09:00"
 excerpt: "Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately."
 slug: "why-teams-should-prune-unused-ai-components"
-coverImage: "/assets/vibesmith/unused-components-infographic.png"
+coverImage: "/assets/vibesmith-community/01-dashboard-en-light.png"
 tags:
   - vibesmith
   - ai-coding
@@ -25,12 +25,6 @@ This is why usage-based cleanup matters.
 - The real problem is not storage. It is search noise, context ambiguity, and unsafe reuse.
 - Recent research suggests repository context files can help or hurt AI coding performance depending on how relevant and minimal they are.
 - VibeSmith is useful here because usage signals, inventory, and dependency views let teams prune components with more discipline than ad hoc file deletion.
-
-If you need an internal one-page explainer before you send the full article around, start with the infographic below.
-
-![One-page infographic explaining why teams should prune unused AI components and how VibeSmith supports a usage plus dependency cleanup loop](/assets/vibesmith/unused-components-infographic.png "Unused AI components infographic")
-
-*A shareable summary of the cleanup argument: dead components create search noise, context pollution, and unsafe reuse; usage and dependency review make the cleanup safer.*
 
 ![VibeSmith dashboard showing repo-wide status, conflicts, and coverage](/assets/vibesmith-community/01-dashboard-en-light.png "VibeSmith dashboard overview")
 
