@@ -562,8 +562,16 @@ function formatPostCountLabel(count) {
 }
 
 function renderPostCard(post) {
+  const coverMarkup = post.coverImage
+    ? `
+            <a class="blog-card-cover" href="${escapeHtml(post.path)}" aria-hidden="true" tabindex="-1">
+              <img src="${escapeHtml(post.coverImage)}" alt="" loading="eager" decoding="async" />
+            </a>`
+    : "";
+
   return `
           <article class="blog-card">
+            ${coverMarkup}
             <p class="mini-label">${escapeHtml(post.displayDate)} · ${post.readingMinutes} min read</p>
             <h2><a href="${escapeHtml(post.path)}">${escapeHtml(post.title)}</a></h2>
             <p>${escapeHtml(post.excerpt)}</p>
