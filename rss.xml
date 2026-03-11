@@ -6,6 +6,13 @@
     <description>Product notes, release thinking, and operating decisions from Aroido.</description>
     <language>en-us</language>
     <item>
+      <title>Why Teams Should Prune Unused AI Components Before They Pollute Context</title>
+      <link>https://aroido.com/blog/why-teams-should-prune-unused-ai-components/</link>
+      <guid>https://aroido.com/blog/why-teams-should-prune-unused-ai-components/</guid>
+      <pubDate>Wed, 11 Mar 2026 09:40:00 GMT</pubDate>
+      <description>Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately.</description>
+    </item>
+    <item>
       <title>Why Multi-Repo AI Coding Gets Messy After the Third Repository</title>
       <link>https://aroido.com/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/</link>
       <guid>https://aroido.com/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/</guid>
