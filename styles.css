@@ -1956,6 +1956,24 @@ html[data-theme="dark"] .vibe-app-icon {
   text-underline-offset: 0.18em;
 }
 
+.article-prose img {
+  display: block;
+  width: min(100%, 860px);
+  height: auto;
+  margin: 1.3rem auto 0.7rem;
+  border: 1.5px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow);
+}
+
+.article-prose img + p {
+  margin-top: 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
 .article-prose code {
   border-radius: 0.36rem;
   padding: 0.12rem 0.32rem;

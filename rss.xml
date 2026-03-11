@@ -6,46 +6,46 @@
     <description>Product notes, release thinking, and operating decisions from Aroido.</description>
     <language>en-us</language>
     <item>
-      <title>Why We Kept the Blog in Git</title>
-      <link>https://aroido.com/blog/why-we-kept-the-blog-in-git/</link>
-      <guid>https://aroido.com/blog/why-we-kept-the-blog-in-git/</guid>
-      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
-      <description>Why a same-repo Markdown blog fits the current Aroido site better than adding a database or CMS too early.</description>
+      <title>Why Multi-Repo AI Coding Gets Messy After the Third Repository</title>
+      <link>https://aroido.com/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/</link>
+      <guid>https://aroido.com/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/</guid>
+      <pubDate>Wed, 11 Mar 2026 02:30:00 GMT</pubDate>
+      <description>Cursor, Claude Code, MCP, and GitLab Duo can accelerate one repo quickly. The real systems problem begins when standards, dependencies, and context have to survive across many repos.</description>
     </item>
     <item>
-      <title>What We Watch in Multi-Repo AI Teams</title>
-      <link>https://aroido.com/blog/what-we-watch-in-multi-repo-ai-teams/</link>
-      <guid>https://aroido.com/blog/what-we-watch-in-multi-repo-ai-teams/</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <description>Three signals that usually show a team has outgrown copy-paste repo setup and needs a stronger operating layer.</description>
+      <title>Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</title>
+      <link>https://aroido.com/blog/cursor-rules-vs-agents-md/</link>
+      <guid>https://aroido.com/blog/cursor-rules-vs-agents-md/</guid>
+      <pubDate>Tue, 10 Mar 2026 01:00:00 GMT</pubDate>
+      <description>Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories.</description>
     </item>
     <item>
-      <title>Phase 1 Is Public. Phase 2 Is Not the Promise Yet.</title>
-      <link>https://aroido.com/blog/phase-1-public-phase-2-not-yet/</link>
-      <guid>https://aroido.com/blog/phase-1-public-phase-2-not-yet/</guid>
-      <pubDate>Sun, 08 Mar 2026 01:30:00 GMT</pubDate>
-      <description>Why we prefer shipped proof and public validation before widening the promise around future workflow features.</description>
+      <title>Claude Code Hooks and Slash Commands for Multi-Repo Teams</title>
+      <link>https://aroido.com/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/</link>
+      <guid>https://aroido.com/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/</guid>
+      <pubDate>Mon, 09 Mar 2026 00:15:00 GMT</pubDate>
+      <description>Claude Code is increasingly powerful, but multi-repo teams get the most leverage from shared hooks, project commands, and durable review gates rather than one-off prompts.</description>
     </item>
     <item>
-      <title>Release Notes Should Teach Something</title>
-      <link>https://aroido.com/blog/release-notes-should-teach-something/</link>
-      <guid>https://aroido.com/blog/release-notes-should-teach-something/</guid>
-      <pubDate>Wed, 04 Mar 2026 23:45:00 GMT</pubDate>
-      <description>A short note on why updates are more credible when they explain the decision behind the change instead of listing UI motion.</description>
+      <title>What MCP Changes for AI Coding Workflows, and What It Does Not</title>
+      <link>https://aroido.com/blog/what-mcp-changes-for-ai-coding-workflows/</link>
+      <guid>https://aroido.com/blog/what-mcp-changes-for-ai-coding-workflows/</guid>
+      <pubDate>Sun, 08 Mar 2026 06:00:00 GMT</pubDate>
+      <description>MCP matters because it turns tool integrations into a shared protocol. It does not solve standards, naming, approvals, or dependency visibility by itself.</description>
     </item>
     <item>
-      <title>How We Decide a Page Is Ready</title>
-      <link>https://aroido.com/blog/how-we-decide-a-page-is-ready/</link>
-      <guid>https://aroido.com/blog/how-we-decide-a-page-is-ready/</guid>
-      <pubDate>Tue, 03 Mar 2026 02:00:00 GMT</pubDate>
-      <description>The bar is not visual polish alone. A page is ready when message, structure, and action path all survive the same review.</description>
+      <title>Cursor Background Agents for Teams: Speed, Security, and Handoffs</title>
+      <link>https://aroido.com/blog/cursor-background-agents-for-teams/</link>
+      <guid>https://aroido.com/blog/cursor-background-agents-for-teams/</guid>
+      <pubDate>Sat, 07 Mar 2026 01:45:00 GMT</pubDate>
+      <description>Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter.</description>
     </item>
     <item>
-      <title>Why We Write Before We Scale</title>
-      <link>https://aroido.com/blog/why-we-write-before-we-scale/</link>
-      <guid>https://aroido.com/blog/why-we-write-before-we-scale/</guid>
-      <pubDate>Mon, 02 Mar 2026 00:30:00 GMT</pubDate>
-      <description>Specs, release notes, and product pages all do the same job for us: they reduce ambiguity before more people touch the work.</description>
+      <title>GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts</title>
+      <link>https://aroido.com/blog/gitlab-duo-agent-platform-for-multi-repo-teams/</link>
+      <guid>https://aroido.com/blog/gitlab-duo-agent-platform-for-multi-repo-teams/</guid>
+      <pubDate>Fri, 06 Mar 2026 00:30:00 GMT</pubDate>
+      <description>GitLab Duo Agent Platform brings agents, flows, AGENTS.md customization, MCP, and lifecycle integration closer together. For multi-repo teams, that is the start of governance, not the end of it.</description>
     </item>
   </channel>
 </rss>
