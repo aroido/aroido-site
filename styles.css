@@ -1420,6 +1420,33 @@ html[data-theme="dark"] .team-person-card-accent {
   background: linear-gradient(145deg, rgba(19, 30, 55, 0.94), rgba(21, 46, 92, 0.88));
 }
 
+html[data-theme="dark"] .article-hero {
+  border-color: rgba(168, 184, 221, 0.72);
+  background:
+    radial-gradient(28rem 18rem at 16% 18%, rgba(255, 91, 31, 0.12), transparent 62%),
+    radial-gradient(28rem 18rem at 92% 88%, rgba(16, 223, 251, 0.16), transparent 60%),
+    linear-gradient(145deg, rgba(16, 24, 44, 0.96), rgba(10, 17, 32, 0.94));
+  box-shadow: 0 18px 42px rgba(2, 5, 12, 0.42);
+}
+
+html[data-theme="dark"] .article-hero h1,
+html[data-theme="dark"] .article-back-link {
+  color: #f3f7ff;
+}
+
+html[data-theme="dark"] .article-excerpt {
+  color: #c7d6f3;
+}
+
+html[data-theme="dark"] .article-meta {
+  color: #92a8d8;
+}
+
+html[data-theme="dark"] .article-hero .tag-list li {
+  border-color: rgba(177, 193, 225, 0.56);
+  background: rgba(10, 16, 31, 0.46);
+}
+
 html[data-theme="dark"] .team-person-card::before {
   background:
     radial-gradient(28rem 18rem at 105% -10%, rgba(52, 231, 255, 0.14), transparent 60%),
