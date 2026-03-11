@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Aroido Blog</title>
+    <link>https://aroido.com/blog/</link>
+    <description>Product notes, release thinking, and operating decisions from Aroido.</description>
+    <language>en-us</language>
+    <item>
+      <title>Why We Kept the Blog in Git</title>
+      <link>https://aroido.com/blog/why-we-kept-the-blog-in-git/</link>
+      <guid>https://aroido.com/blog/why-we-kept-the-blog-in-git/</guid>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Why a same-repo Markdown blog fits the current Aroido site better than adding a database or CMS too early.</description>
+    </item>
+    <item>
+      <title>What We Watch in Multi-Repo AI Teams</title>
+      <link>https://aroido.com/blog/what-we-watch-in-multi-repo-ai-teams/</link>
+      <guid>https://aroido.com/blog/what-we-watch-in-multi-repo-ai-teams/</guid>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Three signals that usually show a team has outgrown copy-paste repo setup and needs a stronger operating layer.</description>
+    </item>
+    <item>
+      <title>Phase 1 Is Public. Phase 2 Is Not the Promise Yet.</title>
+      <link>https://aroido.com/blog/phase-1-public-phase-2-not-yet/</link>
+      <guid>https://aroido.com/blog/phase-1-public-phase-2-not-yet/</guid>
+      <pubDate>Sun, 08 Mar 2026 01:30:00 GMT</pubDate>
+      <description>Why we prefer shipped proof and public validation before widening the promise around future workflow features.</description>
+    </item>
+    <item>
+      <title>Release Notes Should Teach Something</title>
+      <link>https://aroido.com/blog/release-notes-should-teach-something/</link>
+      <guid>https://aroido.com/blog/release-notes-should-teach-something/</guid>
+      <pubDate>Wed, 04 Mar 2026 23:45:00 GMT</pubDate>
+      <description>A short note on why updates are more credible when they explain the decision behind the change instead of listing UI motion.</description>
+    </item>
+    <item>
+      <title>How We Decide a Page Is Ready</title>
+      <link>https://aroido.com/blog/how-we-decide-a-page-is-ready/</link>
+      <guid>https://aroido.com/blog/how-we-decide-a-page-is-ready/</guid>
+      <pubDate>Tue, 03 Mar 2026 02:00:00 GMT</pubDate>
+      <description>The bar is not visual polish alone. A page is ready when message, structure, and action path all survive the same review.</description>
+    </item>
+    <item>
+      <title>Why We Write Before We Scale</title>
+      <link>https://aroido.com/blog/why-we-write-before-we-scale/</link>
+      <guid>https://aroido.com/blog/why-we-write-before-we-scale/</guid>
+      <pubDate>Mon, 02 Mar 2026 00:30:00 GMT</pubDate>
+      <description>Specs, release notes, and product pages all do the same job for us: they reduce ambiguity before more people touch the work.</description>
+    </item>
+  </channel>
+</rss>
