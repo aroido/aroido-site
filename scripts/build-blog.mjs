@@ -202,6 +202,11 @@ function validateAndNormalizePost(filePath) {
           .filter(Boolean)
       : [];
   const readingTime = calculateReadingTime(body);
+  const modifiedDate = fs.statSync(filePath).mtime;
+  const coverImage = typeof metadata.coverImage === "string" ? metadata.coverImage.trim() : "";
+  const socialImageUrl = coverImage.startsWith("/")
+    ? `${SITE_URL}${coverImage}`
+    : DEFAULT_OG_IMAGE;
 
   return {
     sourcePath: filePath,
@@ -213,15 +218,18 @@ function validateAndNormalizePost(filePath) {
     draft: Boolean(metadata.draft),
     tags,
     tagsWithSlugs: tags.map((tag) => ({ label: tag, slug: slugifyTag(tag) })),
+    coverImage,
     body,
     html: renderMarkdown(body),
     displayDate: formatDisplayDate(parsedDate),
     isoDate: formatIsoDate(parsedDate),
+    modifiedIsoDate: formatIsoDate(modifiedDate),
     rssDate: formatRssDate(parsedDate),
     readingMinutes: readingTime.minutes,
     wordCount: readingTime.words,
     path: `/blog/${metadata.slug}/`,
     canonicalUrl: `${SITE_URL}/blog/${metadata.slug}/`,
+    socialImageUrl,
   };
 }
 
@@ -482,6 +490,7 @@ function renderDocument({
   description,
   canonicalPath,
   ogType = "website",
+  ogImage = DEFAULT_OG_IMAGE,
   mainContent,
   structuredData,
 }) {
@@ -507,11 +516,11 @@ function renderDocument({
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
-    <meta property="og:image" content="${escapeHtml(DEFAULT_OG_IMAGE)}" />
+    <meta property="og:image" content="${escapeHtml(ogImage)}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
-    <meta name="twitter:image" content="${escapeHtml(DEFAULT_OG_IMAGE)}" />
+    <meta name="twitter:image" content="${escapeHtml(ogImage)}" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
@@ -600,11 +609,13 @@ function renderPagination(currentPage, totalPages) {
 
 function renderBlogIndexPage(posts, pageNumber, totalPages) {
   const archiveTitle =
-    pageNumber === 1 ? "Aroido Blog | Notes From the Build Loop" : `Aroido Blog | Archive Page ${pageNumber}`;
+    pageNumber === 1
+      ? "AI Coding Workflows Blog for Multi-Repo Teams | Cursor, Claude Code, MCP, GitLab Duo"
+      : `AI Coding Workflow Archive Page ${pageNumber} | Multi-Repo Team Blog`;
   const archiveDescription =
     pageNumber === 1
-      ? "Product notes, release thinking, and operating decisions from Aroido."
-      : `Archive page ${pageNumber} for Aroido blog posts on product, delivery, and AI repo operations.`;
+      ? "Aroido blog covering multi-repo AI coding standards, Cursor Rules, Claude Code, MCP, GitLab Duo, hidden dependencies, and team governance."
+      : `Archive page ${pageNumber} for Aroido articles about multi-repo AI coding systems, MCP, Cursor, Claude Code, and team governance.`;
   const routePath = pageNumber === 1 ? "/blog/" : `/blog/page/${pageNumber}/`;
   const canonicalPath = routePath;
   const listMarkup = posts.length
@@ -613,7 +624,10 @@ function renderBlogIndexPage(posts, pageNumber, totalPages) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: pageNumber === 1 ? "Aroido Blog" : `Aroido Blog Archive Page ${pageNumber}`,
+    name:
+      pageNumber === 1
+        ? "AI Coding Workflow Blog for Multi-Repo Teams"
+        : `AI Coding Workflow Archive Page ${pageNumber}`,
     url: `${SITE_URL}${canonicalPath}`,
     inLanguage: "en-US",
     isPartOf: {
@@ -636,28 +650,29 @@ function renderBlogIndexPage(posts, pageNumber, totalPages) {
 ${renderTopbar("blog")}
       <section class="page-hero blog-hero reveal" data-reveal>
         <p class="kicker" data-i18n="blog_eyebrow">Journal</p>
-        <h1 data-i18n="blog_listing_title">Writing from the build loop.</h1>
-        <p class="blog-hero-copy" data-i18n="blog_listing_description">
-          Product notes, release thinking, and operating decisions from Aroido.
+        <h1>AI coding workflows for multi-repo teams.</h1>
+        <p class="blog-hero-copy">
+          Search-focused articles on Cursor Rules, AGENTS.md, Claude Code, MCP, GitLab Duo Agent Platform, hidden dependencies, and standards drift across repositories.
         </p>
         <div class="blog-hero-meta">
           <span class="blog-pill">${formatPostCountLabel(posts.length)}</span>
           <span class="blog-pill">Page ${pageNumber} of ${totalPages}</span>
-          <span class="blog-pill">English posts for now</span>
+          <span class="blog-pill">Cursor · Claude Code · MCP · GitLab Duo</span>
         </div>
       </section>
 
-      <section class="section reveal" data-reveal>
+      <section class="section">
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="blog_archive_label">Archive</p>
           <h2>${pageNumber === 1 ? "Latest entries" : `Archive page ${pageNumber}`}</h2>
+          <p>Each article is written around the concrete problems VibeSmith is trying to solve: setup drift, context handoff, hidden dependencies, and governance across multiple AI coding repositories.</p>
         </div>
         <div class="blog-grid">
 ${listMarkup}
         </div>
       </section>
 ${renderPagination(pageNumber, totalPages)}
-      <section class="contact-panel reveal" data-reveal>
+      <section class="contact-panel">
         <h2 data-i18n="blog_footer_title">Need product context before you read deeper?</h2>
         <p data-i18n="blog_footer_description">
           Start with the current public product page, then come back here for the reasoning and release notes behind the work.
@@ -673,26 +688,45 @@ ${renderPagination(pageNumber, totalPages)}
     title: archiveTitle,
     description: archiveDescription,
     canonicalPath,
+    ogImage: DEFAULT_OG_IMAGE,
     mainContent,
     structuredData,
   });
 }
 
+function getRelatedPosts(post, allPosts, limit = 3) {
+  return allPosts
+    .filter((candidate) => candidate.slug !== post.slug)
+    .map((candidate) => {
+      const sharedTagCount = candidate.tags.filter((tag) => post.tags.includes(tag)).length;
+      return { candidate, sharedTagCount };
+    })
+    .sort((left, right) => {
+      if (right.sharedTagCount !== left.sharedTagCount) {
+        return right.sharedTagCount - left.sharedTagCount;
+      }
+      return right.candidate.date.getTime() - left.candidate.date.getTime();
+    })
+    .slice(0, limit)
+    .map((entry) => entry.candidate);
+}
+
 function renderPostPage(post, index, allPosts) {
   const previousPost = allPosts[index - 1] || null;
   const nextPost = allPosts[index + 1] || null;
-  const recentPosts = allPosts.filter((candidate) => candidate.slug !== post.slug).slice(0, 3);
+  const relatedPosts = getRelatedPosts(post, allPosts);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
     datePublished: post.isoDate,
-    dateModified: post.isoDate,
+    dateModified: post.modifiedIsoDate,
     inLanguage: "en-US",
     mainEntityOfPage: post.canonicalUrl,
     url: post.canonicalUrl,
     keywords: post.tags,
+    image: [post.socialImageUrl],
     author: {
       "@type": "Organization",
       name: "Aroido",
@@ -730,18 +764,18 @@ function renderPostPage(post, index, allPosts) {
           </nav>`
     : "";
 
-  const asideMarkup = recentPosts.length
+  const asideMarkup = relatedPosts.length
     ? `
           <aside class="article-aside">
             <div class="article-aside-card">
-              <p class="section-eyebrow" data-i18n="blog_recent_label">Recent posts</p>
+              <p class="section-eyebrow">Related reads</p>
               <ul class="article-recent-list">
-                ${recentPosts
+                ${relatedPosts
                   .map(
-                    (recentPost) => `
+                    (relatedPost) => `
                       <li>
-                        <a href="${recentPost.path}">${escapeHtml(recentPost.title)}</a>
-                        <span>${escapeHtml(recentPost.displayDate)}</span>
+                        <a href="${relatedPost.path}">${escapeHtml(relatedPost.title)}</a>
+                        <span>${escapeHtml(relatedPost.excerpt)}</span>
                       </li>`
                   )
                   .join("")}
@@ -767,7 +801,7 @@ ${renderTopbar("blog")}
         </section>
 
         <div class="article-layout">
-          <section class="article-body reveal" data-reveal>
+          <section class="article-body">
             <div class="article-prose">
 ${post.html}
             </div>
@@ -783,6 +817,7 @@ ${asideMarkup}
     description: post.excerpt,
     canonicalPath: post.path,
     ogType: "article",
+    ogImage: post.socialImageUrl,
     mainContent,
     structuredData,
   });

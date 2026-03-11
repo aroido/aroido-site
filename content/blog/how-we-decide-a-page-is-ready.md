@@ -3,6 +3,7 @@ title: "Cursor Background Agents for Teams: Speed, Security, and Handoffs"
 date: "2026-03-07T10:45:00+09:00"
 excerpt: "Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter."
 slug: "cursor-background-agents-for-teams"
+coverImage: "/assets/vibesmith-community/06-projects-en-light.png"
 tags:
   - cursor
   - background-agents
@@ -15,6 +16,12 @@ Cursor Background Agents are one of the clearest examples of where AI coding is 
 For teams, that can be a real speed advantage. It can also become a governance mess surprisingly quickly.
 
 Cursor's official docs do not hide the tradeoffs. Background Agents run in an isolated Ubuntu-based machine, require repo access through a GitHub app, retain data for a few days, have internet access, and auto-run terminal commands. The docs explicitly call out prompt-injection and data exfiltration risk.
+
+## Quick takeaways
+
+- Background Agents are real leverage for parallel work, not just a novelty feature.
+- The main production risks are approval boundaries, internet access, and weak handoff quality.
+- Multi-repo teams need explicit policy before they scale asynchronous agent work.
 
 That is exactly why we think teams need a stronger operating model around them.
 
@@ -103,6 +110,12 @@ A healthy team policy usually includes:
 - a way to compare workflow differences across repositories
 
 That last point is where the problem usually comes back to VibeSmith. Teams do not just need faster agents. They need coherent operating standards across repos so handoffs remain legible when the work gets more asynchronous.
+
+## Related reads
+
+- [Why Multi-Repo AI Coding Gets Messy After the Third Repository](/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/)
+- [Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where](/blog/cursor-rules-vs-agents-md/)
+- [What MCP Changes for AI Coding Workflows, and What It Does Not](/blog/what-mcp-changes-for-ai-coding-workflows/)
 
 ## Official references
 

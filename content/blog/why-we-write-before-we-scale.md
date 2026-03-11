@@ -3,6 +3,7 @@ title: "GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts"
 date: "2026-03-06T09:30:00+09:00"
 excerpt: "GitLab Duo Agent Platform brings agents, flows, AGENTS.md customization, MCP, and lifecycle integration closer together. For multi-repo teams, that is the start of governance, not the end of it."
 slug: "gitlab-duo-agent-platform-for-multi-repo-teams"
+coverImage: "/assets/vibesmith-community/02-components-en-light.png"
 tags:
   - gitlab-duo
   - governance
@@ -15,6 +16,12 @@ GitLab's current Duo Agent Platform docs are interesting because they move the c
 That matters for teams with multiple repositories because governance is usually where AI coding systems fall apart.
 
 The issue is rarely "can an agent write code?" The issue is whether the system around the agent can keep behavior legible across repositories, reviewers, and release paths.
+
+## Quick takeaways
+
+- GitLab Duo Agent Platform is meaningful because it pulls AI behavior closer to the delivery lifecycle.
+- Platform governance helps, but repo-level standards still determine whether teams stay coherent.
+- Multi-repo teams still need inventory, dependency visibility, and cross-repo rollout discipline.
 
 ![VibeSmith workflow illustration for reusable standards and release impact](/assets/vibesmith/release-impact.svg "VibeSmith release impact")
 
@@ -97,6 +104,12 @@ For multi-repo teams, we see the stack like this:
 That third layer is the product problem VibeSmith is aimed at.
 
 We are interested in GitLab Duo precisely because it makes governance more concrete. But the hardest part still lives one level lower: keeping reusable standards coherent across repositories that are evolving at different speeds.
+
+## Related reads
+
+- [What MCP Changes for AI Coding Workflows, and What It Does Not](/blog/what-mcp-changes-for-ai-coding-workflows/)
+- [Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where](/blog/cursor-rules-vs-agents-md/)
+- [Why Multi-Repo AI Coding Gets Messy After the Third Repository](/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/)
 
 ## Official references
 

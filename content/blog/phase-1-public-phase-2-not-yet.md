@@ -3,6 +3,7 @@ title: "Claude Code Hooks and Slash Commands for Multi-Repo Teams"
 date: "2026-03-09T09:15:00+09:00"
 excerpt: "Claude Code is increasingly powerful, but multi-repo teams get the most leverage from shared hooks, project commands, and durable review gates rather than one-off prompts."
 slug: "claude-code-hooks-and-slash-commands-for-multi-repo-teams"
+coverImage: "/assets/vibesmith-community/02-components-en-light.png"
 tags:
   - claude-code
   - hooks
@@ -15,6 +16,12 @@ Claude Code has moved well beyond "ask a model for code in the terminal." Anthro
 That is useful, but it also creates a new team problem. Once Claude Code can act, the quality of your shared operating rules matters more than the quality of your ad hoc prompt.
 
 For multi-repo teams, the highest-leverage parts of Claude Code are not the flashy one-off sessions. They are the parts you can version, reuse, and enforce: hooks, slash commands, and project memory.
+
+## Quick takeaways
+
+- Claude Code gets more valuable as teams standardize hooks, commands, and project memory.
+- Repo-local automation without cross-repo discipline quickly turns into command drift.
+- The best Claude Code workflows are reusable, inspectable, and enforceable.
 
 ![Animated VibeSmith search workflow showing reusable navigation and context](/assets/vibesmith-community/01-search-demo.gif "VibeSmith search flow")
 
@@ -90,6 +97,12 @@ Claude Code gives teams more leverage, but it also magnifies inconsistency. The 
 That is why we keep coming back to the same question: what is standardized, where is it stored, and how can the team inspect it across repositories?
 
 This is the layer where [VibeSmith](/projects/vibesmith/) becomes relevant. We are less interested in isolated prompting wins than in keeping reusable standards coherent across many repos.
+
+## Related reads
+
+- [Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where](/blog/cursor-rules-vs-agents-md/)
+- [What MCP Changes for AI Coding Workflows, and What It Does Not](/blog/what-mcp-changes-for-ai-coding-workflows/)
+- [Why Multi-Repo AI Coding Gets Messy After the Third Repository](/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/)
 
 ## Official references
 
