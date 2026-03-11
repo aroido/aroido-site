@@ -1298,19 +1298,22 @@ html[data-theme="dark"] body::before {
 }
 
 html[data-theme="dark"] .topbar {
-  background: rgba(8, 13, 24, 0.92);
-  border-color: rgba(141, 160, 199, 0.7);
+  background:
+    linear-gradient(135deg, rgba(10, 16, 31, 0.96), rgba(6, 10, 19, 0.92)),
+    rgba(8, 13, 24, 0.92);
+  border-color: rgba(168, 184, 221, 0.78);
   box-shadow: 0 10px 24px rgba(1, 2, 7, 0.44);
 }
 
 html[data-theme="dark"] .main-nav a {
-  color: var(--ink);
+  color: #d8e3fb;
+  text-shadow: 0 0 18px rgba(141, 160, 199, 0.08);
 }
 
 html[data-theme="dark"] .main-nav a:hover,
 html[data-theme="dark"] .main-nav a:focus-visible {
-  border-color: rgba(141, 160, 199, 0.76);
-  background: rgba(38, 52, 85, 0.56);
+  border-color: rgba(190, 204, 235, 0.82);
+  background: rgba(53, 69, 108, 0.72);
 }
 
 html[data-theme="dark"] .main-nav a[aria-current="page"] {
@@ -1325,8 +1328,13 @@ html[data-theme="dark"] .main-nav a[data-nav-parent-current="true"] {
 
 html[data-theme="dark"] .theme-switch,
 html[data-theme="dark"] .lang-switch {
-  border-color: rgba(141, 160, 199, 0.72);
-  background: rgba(8, 13, 24, 0.88);
+  border-color: rgba(177, 193, 225, 0.82);
+  background: rgba(10, 16, 31, 0.96);
+  box-shadow: inset 0 1px 0 rgba(237, 243, 255, 0.08);
+}
+
+html[data-theme="dark"] .brand-mark {
+  filter: brightness(1.1) saturate(1.05);
 }
 
 html[data-theme="dark"] .header-context {
@@ -1355,7 +1363,7 @@ html[data-theme="dark"] .header-context-mark {
 
 html[data-theme="dark"] .theme-btn,
 html[data-theme="dark"] .lang-btn {
-  color: #c8d5f0;
+  color: #d7e1f8;
 }
 
 html[data-theme="dark"] .theme-btn[aria-pressed="true"],
