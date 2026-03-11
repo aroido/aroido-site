@@ -3,6 +3,7 @@ title: "Why Multi-Repo AI Coding Gets Messy After the Third Repository"
 date: "2026-03-11T11:30:00+09:00"
 excerpt: "Cursor, Claude Code, MCP, and GitLab Duo can accelerate one repo quickly. The real systems problem begins when standards, dependencies, and context have to survive across many repos."
 slug: "why-multi-repo-ai-coding-gets-messy-after-the-third-repository"
+coverImage: "/assets/vibesmith-community/01-dashboard-en-light.png"
 tags:
   - multi-repo
   - ai-coding
@@ -15,6 +16,12 @@ If your team is already using Cursor, Claude Code, MCP, or GitLab Duo in one rep
 Then the second and third repositories arrive. Someone copies rules by hand. Someone forgets one MCP server. Someone ports a prompt file but not the related hook. A background agent fixes code in one repo with a workflow that does not exist in the next repo. The problem stops being "which AI tool should we use?" and becomes "how do we keep our operating standard coherent across all these repos?"
 
 That is the core problem VibeSmith is trying to solve.
+
+## Quick takeaways
+
+- Multi-repo AI coding usually breaks at the standards layer before it breaks at the model layer.
+- Cursor, Claude Code, MCP, and GitLab Duo all help locally, but teams still need cross-repo operating discipline.
+- The most expensive failures are setup drift, hidden dependencies, and weak handoffs between repos.
 
 ![VibeSmith dashboard showing repo-wide status, conflicts, and coverage](/assets/vibesmith-community/01-dashboard-en-light.png "VibeSmith dashboard overview")
 
@@ -99,6 +106,12 @@ VibeSmith is not trying to replace Cursor, Claude Code, GitLab Duo, or MCP. Thos
 The product is aimed at the layer above them: the team operating layer where reusable standards, components, and dependencies have to stay coherent across repositories. If the same setup debate keeps reappearing, that is the layer worth productizing.
 
 If that sounds familiar, start with the [VibeSmith product page](/projects/vibesmith/).
+
+## Related reads
+
+- [Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where](/blog/cursor-rules-vs-agents-md/)
+- [What MCP Changes for AI Coding Workflows, and What It Does Not](/blog/what-mcp-changes-for-ai-coding-workflows/)
+- [GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts](/blog/gitlab-duo-agent-platform-for-multi-repo-teams/)
 
 ## Official references
 

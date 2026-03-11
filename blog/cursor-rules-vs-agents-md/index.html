@@ -14,11 +14,11 @@
     <meta property="og:title" content="Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where | Aroido Blog" />
     <meta property="og:description" content="Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories." />
     <meta property="og:url" content="https://aroido.com/blog/cursor-rules-vs-agents-md/" />
-    <meta property="og:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
+    <meta property="og:image" content="https://aroido.com/assets/vibesmith-community/05-component-detail-en-light.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where | Aroido Blog" />
     <meta name="twitter:description" content="Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories." />
-    <meta name="twitter:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
+    <meta name="twitter:image" content="https://aroido.com/assets/vibesmith-community/05-component-detail-en-light.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
@@ -29,7 +29,7 @@
   "headline": "Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where",
   "description": "Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories.",
   "datePublished": "2026-03-10T01:00:00.000Z",
-  "dateModified": "2026-03-10T01:00:00.000Z",
+  "dateModified": "2026-03-11T10:39:59.611Z",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://aroido.com/blog/cursor-rules-vs-agents-md/",
   "url": "https://aroido.com/blog/cursor-rules-vs-agents-md/",
@@ -37,6 +37,9 @@
     "cursor",
     "agents-md",
     "standards"
+  ],
+  "image": [
+    "https://aroido.com/assets/vibesmith-community/05-component-detail-en-light.png"
   ],
   "author": {
     "@type": "Organization",
@@ -103,19 +106,21 @@
           <p class="article-excerpt">Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories.</p>
           <div class="article-meta">
             <span>Mar 10, 2026</span>
-            <span>3 min read</span>
-            <span>637 words</span>
+            <span>4 min read</span>
+            <span>674 words</span>
           </div>
           <ul class="tag-list" aria-label="Post tags"><li>cursor</li><li>agents-md</li><li>standards</li></ul>
         </section>
 
         <div class="article-layout">
-          <section class="article-body reveal" data-reveal>
+          <section class="article-body">
             <div class="article-prose">
 <p>If your team is trying to standardize AI coding workflows, the question is not whether to use <code>Cursor Rules</code> or <code>AGENTS.md</code>. The real question is what should live in a tool-specific context layer and what should stay portable across agents.</p>
 <p>That distinction matters more as soon as you operate across multiple repositories.</p>
 <p>Cursor&#39;s official docs position Rules as persistent, reusable instructions that are included in model context. The official AGENTS.md project positions AGENTS.md as an open, agent-facing Markdown standard that works across a wider ecosystem of tools. GitLab Duo&#39;s docs now explicitly support AGENTS.md for project-specific context as part of Agent Platform customization.</p>
 <p>Those are not competing ideas. They are different layers.</p>
+<h2>Quick takeaways</h2>
+<ul><li><code>AGENTS.md</code> is strongest as portable repo guidance across tools.</li><li>Cursor Rules are strongest as path-aware, Cursor-specific implementation control.</li><li>Multi-repo teams need a clean boundary between portable standards and tool-local behavior.</li></ul>
 <p><img src="/assets/vibesmith-community/05-component-detail-en-light.png" alt="VibeSmith component detail view showing linked context and metadata" title="VibeSmith component detail" loading="lazy" decoding="async" /></p>
 <p><em>The moment context has to survive across tools and repositories, file placement becomes a systems decision rather than a documentation preference.</em></p>
 <h2>What Cursor Rules are good at</h2>
@@ -146,6 +151,8 @@
 <ol><li><code>AGENTS.md</code> for cross-agent, cross-tool repo guidance</li><li>tool-local files like <code>.cursor/rules</code> or <code>.claude/commands</code> for workflow specialization</li><li>a higher-level system for inventory, reuse, dependency tracking, and rollout discipline across repos</li></ol>
 <p>That third layer is where VibeSmith becomes relevant. Once the team is reusing instructions and components across many repos, the problem is no longer just prompt quality. It is systems visibility.</p>
 <p>If your current workflow still depends on one operator remembering where the &quot;real&quot; instructions live, the standard is not durable yet.</p>
+<h2>Related reads</h2>
+<ul><li><a href="/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a></li><li><a href="/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/">Claude Code Hooks and Slash Commands for Multi-Repo Teams</a></li><li><a href="/blog/gitlab-duo-agent-platform-for-multi-repo-teams/">GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts</a></li></ul>
 <h2>Official references</h2>
 <ul><li><a href="https://docs.cursor.com/en/context/rules" rel="noreferrer" target="_blank">Cursor Rules</a></li><li><a href="https://agents.md/" rel="noreferrer" target="_blank">AGENTS.md official project</a></li><li><a href="https://docs.gitlab.com/development/documentation/agents_md/" rel="noreferrer" target="_blank">GitLab Duo documentation for AGENTS.md</a></li><li><a href="https://docs.gitlab.com/user/duo_agent_platform/" rel="noreferrer" target="_blank">GitLab Duo Agent Platform customization</a></li></ul>
             </div>
@@ -164,20 +171,20 @@
 
           <aside class="article-aside">
             <div class="article-aside-card">
-              <p class="section-eyebrow" data-i18n="blog_recent_label">Recent posts</p>
+              <p class="section-eyebrow">Related reads</p>
               <ul class="article-recent-list">
                 
                       <li>
+                        <a href="/blog/cursor-background-agents-for-teams/">Cursor Background Agents for Teams: Speed, Security, and Handoffs</a>
+                        <span>Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter.</span>
+                      </li>
+                      <li>
                         <a href="/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a>
-                        <span>Mar 11, 2026</span>
+                        <span>Cursor, Claude Code, MCP, and GitLab Duo can accelerate one repo quickly. The real systems problem begins when standards, dependencies, and context have to survive across many repos.</span>
                       </li>
                       <li>
                         <a href="/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/">Claude Code Hooks and Slash Commands for Multi-Repo Teams</a>
-                        <span>Mar 9, 2026</span>
-                      </li>
-                      <li>
-                        <a href="/blog/what-mcp-changes-for-ai-coding-workflows/">What MCP Changes for AI Coding Workflows, and What It Does Not</a>
-                        <span>Mar 8, 2026</span>
+                        <span>Claude Code is increasingly powerful, but multi-repo teams get the most leverage from shared hooks, project commands, and durable review gates rather than one-off prompts.</span>
                       </li>
               </ul>
             </div>

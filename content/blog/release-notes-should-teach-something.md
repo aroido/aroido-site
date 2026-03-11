@@ -3,6 +3,7 @@ title: "What MCP Changes for AI Coding Workflows, and What It Does Not"
 date: "2026-03-08T15:00:00+09:00"
 excerpt: "MCP matters because it turns tool integrations into a shared protocol. It does not solve standards, naming, approvals, or dependency visibility by itself."
 slug: "what-mcp-changes-for-ai-coding-workflows"
+coverImage: "/assets/vibesmith-community/03-dependencies-en-light.png"
 tags:
   - mcp
   - ai-infrastructure
@@ -17,6 +18,12 @@ Some teams talk about MCP as if it will automatically fix AI coding workflows by
 As of March 11, 2026, the official MCP specification page still lists `2025-06-18` as the current protocol version. The 2025-06-18 changelog adds things like structured tool output, stronger authorization posture, elicitation, and the `MCP-Protocol-Version` header for HTTP flows. Cursor's docs show how MCP is becoming a practical way to connect external tools and data into the coding loop. GitLab now supports MCP on both the client and server side within Duo workflows.
 
 That is a real shift. But it is not the whole system.
+
+## Quick takeaways
+
+- MCP standardizes how tools connect to capabilities and context.
+- It does not standardize team policy, naming, review gates, or dependency ownership.
+- Multi-repo teams still need a systems layer above protocol interoperability.
 
 ![VibeSmith dependency view highlighting hidden coupling paths](/assets/vibesmith-community/03-dependencies-en-light.png "VibeSmith dependency view")
 
@@ -92,6 +99,12 @@ We see MCP as a strong foundation layer, not the final answer.
 The layer we care about is the one above protocol interoperability: reusable standards, dependency visibility, and consistent operating rules across repositories. If your team can connect more tools but still cannot explain which reusable pieces belong together, you do not have a solved system yet.
 
 That is why our interest in MCP is practical. It is important because it lowers integration friction. But the real product problem remains cross-repo coherence.
+
+## Related reads
+
+- [Claude Code Hooks and Slash Commands for Multi-Repo Teams](/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/)
+- [GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts](/blog/gitlab-duo-agent-platform-for-multi-repo-teams/)
+- [Why Multi-Repo AI Coding Gets Messy After the Third Repository](/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/)
 
 ## Official references
 

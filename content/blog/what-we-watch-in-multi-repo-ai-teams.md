@@ -3,6 +3,7 @@ title: "Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where"
 date: "2026-03-10T10:00:00+09:00"
 excerpt: "Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories."
 slug: "cursor-rules-vs-agents-md"
+coverImage: "/assets/vibesmith-community/05-component-detail-en-light.png"
 tags:
   - cursor
   - agents-md
@@ -17,6 +18,12 @@ That distinction matters more as soon as you operate across multiple repositorie
 Cursor's official docs position Rules as persistent, reusable instructions that are included in model context. The official AGENTS.md project positions AGENTS.md as an open, agent-facing Markdown standard that works across a wider ecosystem of tools. GitLab Duo's docs now explicitly support AGENTS.md for project-specific context as part of Agent Platform customization.
 
 Those are not competing ideas. They are different layers.
+
+## Quick takeaways
+
+- `AGENTS.md` is strongest as portable repo guidance across tools.
+- Cursor Rules are strongest as path-aware, Cursor-specific implementation control.
+- Multi-repo teams need a clean boundary between portable standards and tool-local behavior.
 
 ![VibeSmith component detail view showing linked context and metadata](/assets/vibesmith-community/05-component-detail-en-light.png "VibeSmith component detail")
 
@@ -97,6 +104,12 @@ For teams working across multiple repositories, we prefer a layered model:
 That third layer is where VibeSmith becomes relevant. Once the team is reusing instructions and components across many repos, the problem is no longer just prompt quality. It is systems visibility.
 
 If your current workflow still depends on one operator remembering where the "real" instructions live, the standard is not durable yet.
+
+## Related reads
+
+- [Why Multi-Repo AI Coding Gets Messy After the Third Repository](/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/)
+- [Claude Code Hooks and Slash Commands for Multi-Repo Teams](/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/)
+- [GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts](/blog/gitlab-duo-agent-platform-for-multi-repo-teams/)
 
 ## Official references
 

@@ -14,11 +14,11 @@
     <meta property="og:title" content="Cursor Background Agents for Teams: Speed, Security, and Handoffs | Aroido Blog" />
     <meta property="og:description" content="Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter." />
     <meta property="og:url" content="https://aroido.com/blog/cursor-background-agents-for-teams/" />
-    <meta property="og:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
+    <meta property="og:image" content="https://aroido.com/assets/vibesmith-community/06-projects-en-light.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Cursor Background Agents for Teams: Speed, Security, and Handoffs | Aroido Blog" />
     <meta name="twitter:description" content="Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter." />
-    <meta name="twitter:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
+    <meta name="twitter:image" content="https://aroido.com/assets/vibesmith-community/06-projects-en-light.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
@@ -29,7 +29,7 @@
   "headline": "Cursor Background Agents for Teams: Speed, Security, and Handoffs",
   "description": "Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter.",
   "datePublished": "2026-03-07T01:45:00.000Z",
-  "dateModified": "2026-03-07T01:45:00.000Z",
+  "dateModified": "2026-03-11T10:39:59.611Z",
   "inLanguage": "en-US",
   "mainEntityOfPage": "https://aroido.com/blog/cursor-background-agents-for-teams/",
   "url": "https://aroido.com/blog/cursor-background-agents-for-teams/",
@@ -37,6 +37,9 @@
     "cursor",
     "background-agents",
     "governance"
+  ],
+  "image": [
+    "https://aroido.com/assets/vibesmith-community/06-projects-en-light.png"
   ],
   "author": {
     "@type": "Organization",
@@ -104,17 +107,19 @@
           <div class="article-meta">
             <span>Mar 7, 2026</span>
             <span>4 min read</span>
-            <span>666 words</span>
+            <span>708 words</span>
           </div>
           <ul class="tag-list" aria-label="Post tags"><li>cursor</li><li>background-agents</li><li>governance</li></ul>
         </section>
 
         <div class="article-layout">
-          <section class="article-body reveal" data-reveal>
+          <section class="article-body">
             <div class="article-prose">
 <p>Cursor Background Agents are one of the clearest examples of where AI coding is heading. The promise is obvious: start an asynchronous remote agent, let it edit and run code in a remote environment, check in later, and keep your foreground work moving.</p>
 <p>For teams, that can be a real speed advantage. It can also become a governance mess surprisingly quickly.</p>
 <p>Cursor&#39;s official docs do not hide the tradeoffs. Background Agents run in an isolated Ubuntu-based machine, require repo access through a GitHub app, retain data for a few days, have internet access, and auto-run terminal commands. The docs explicitly call out prompt-injection and data exfiltration risk.</p>
+<h2>Quick takeaways</h2>
+<ul><li>Background Agents are real leverage for parallel work, not just a novelty feature.</li><li>The main production risks are approval boundaries, internet access, and weak handoff quality.</li><li>Multi-repo teams need explicit policy before they scale asynchronous agent work.</li></ul>
 <p>That is exactly why we think teams need a stronger operating model around them.</p>
 <p><img src="/assets/vibesmith-community/06-projects-en-light.png" alt="VibeSmith projects view showing cross-project scope and inventory" title="VibeSmith projects view" loading="lazy" decoding="async" /></p>
 <p><em>When work can happen asynchronously away from the main editor, teams need a better view of scope, ownership, and reusable standards.</em></p>
@@ -150,6 +155,8 @@
 <p>A healthy team policy usually includes:</p>
 <ul><li>explicit repo allowlists</li><li>repo-local instruction files with approval expectations</li><li>clear branch and merge-review gates</li><li>restrictions for secret-bearing or deployment-sensitive paths</li><li>a required summary of commands, files changed, and unresolved risks</li><li>a way to compare workflow differences across repositories</li></ul>
 <p>That last point is where the problem usually comes back to VibeSmith. Teams do not just need faster agents. They need coherent operating standards across repos so handoffs remain legible when the work gets more asynchronous.</p>
+<h2>Related reads</h2>
+<ul><li><a href="/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a></li><li><a href="/blog/cursor-rules-vs-agents-md/">Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</a></li><li><a href="/blog/what-mcp-changes-for-ai-coding-workflows/">What MCP Changes for AI Coding Workflows, and What It Does Not</a></li></ul>
 <h2>Official references</h2>
 <ul><li><a href="https://docs.cursor.com/background-agents" rel="noreferrer" target="_blank">Cursor Background Agents</a></li><li><a href="https://docs.cursor.com/en/context/rules" rel="noreferrer" target="_blank">Cursor Rules</a></li><li><a href="https://agents.md/" rel="noreferrer" target="_blank">AGENTS.md official project</a></li><li><a href="/projects/vibesmith/">VibeSmith product page</a></li></ul>
             </div>
@@ -168,20 +175,20 @@
 
           <aside class="article-aside">
             <div class="article-aside-card">
-              <p class="section-eyebrow" data-i18n="blog_recent_label">Recent posts</p>
+              <p class="section-eyebrow">Related reads</p>
               <ul class="article-recent-list">
                 
                       <li>
-                        <a href="/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a>
-                        <span>Mar 11, 2026</span>
-                      </li>
-                      <li>
                         <a href="/blog/cursor-rules-vs-agents-md/">Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</a>
-                        <span>Mar 10, 2026</span>
+                        <span>Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories.</span>
                       </li>
                       <li>
-                        <a href="/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/">Claude Code Hooks and Slash Commands for Multi-Repo Teams</a>
-                        <span>Mar 9, 2026</span>
+                        <a href="/blog/gitlab-duo-agent-platform-for-multi-repo-teams/">GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts</a>
+                        <span>GitLab Duo Agent Platform brings agents, flows, AGENTS.md customization, MCP, and lifecycle integration closer together. For multi-repo teams, that is the start of governance, not the end of it.</span>
+                      </li>
+                      <li>
+                        <a href="/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a>
+                        <span>Cursor, Claude Code, MCP, and GitLab Duo can accelerate one repo quickly. The real systems problem begins when standards, dependencies, and context have to survive across many repos.</span>
                       </li>
               </ul>
             </div>
