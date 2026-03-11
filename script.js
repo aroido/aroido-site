@@ -41,9 +41,29 @@
       contact_meta_description:
         "Use Aroido's shared inquiry form for product questions and VibeSmith Pro updates, with direct builder inboxes as fallback.",
       hello_alert: "Aroido readiness check is complete.",
+      nav_blog: "Blog",
       theme_auto: "Auto",
       theme_light: "Light",
       theme_dark: "Dark",
+      blog_eyebrow: "Journal",
+      blog_listing_title: "Writing from the build loop.",
+      blog_listing_description:
+        "Product notes, release thinking, and operating decisions from Aroido.",
+      blog_archive_label: "Archive",
+      blog_read_more: "Read article",
+      blog_pagination_prev: "Previous",
+      blog_pagination_next: "Next",
+      blog_footer_title: "Need product context before you read deeper?",
+      blog_footer_description:
+        "Start with the current public product page, then come back here for the reasoning and release notes behind the work.",
+      blog_footer_primary: "See VibeSmith",
+      blog_footer_secondary: "Contact Aroido",
+      blog_recent_label: "Recent posts",
+      blog_post_label: "Blog post",
+      blog_back_to_blog: "Back to blog",
+      blog_article_nav_prev: "Previous article",
+      blog_article_nav_next: "Next article",
+      blog_posts_empty: "No posts published yet.",
     },
     ko: {
       page_title: "Aroido | 멀티 레포 팀을 위한 AI 제품 시스템",
@@ -65,9 +85,28 @@
       contact_meta_description:
         "제품 문의와 VibeSmith Pro 업데이트 요청은 Aroido 공유 폼으로 받고, 필요할 때만 Bigcat/Kkachi 직접 메일을 사용하세요.",
       hello_alert: "Aroido 준비 상태 점검이 완료되었습니다.",
+      nav_blog: "블로그",
       theme_auto: "시스템",
       theme_light: "라이트",
       theme_dark: "다크",
+      blog_eyebrow: "저널",
+      blog_listing_title: "빌드 루프에서 남기는 글.",
+      blog_listing_description: "Aroido의 제품 메모, 릴리즈 판단, 운영 결정을 정리합니다.",
+      blog_archive_label: "아카이브",
+      blog_read_more: "글 읽기",
+      blog_pagination_prev: "이전",
+      blog_pagination_next: "다음",
+      blog_footer_title: "더 읽기 전에 제품 맥락이 필요하신가요?",
+      blog_footer_description:
+        "현재 공개 제품 페이지부터 확인한 뒤, 다시 돌아와 작업 배경과 릴리즈 판단을 읽을 수 있습니다.",
+      blog_footer_primary: "VibeSmith 보기",
+      blog_footer_secondary: "Aroido 문의",
+      blog_recent_label: "최근 글",
+      blog_post_label: "블로그 글",
+      blog_back_to_blog: "블로그로 돌아가기",
+      blog_article_nav_prev: "이전 글",
+      blog_article_nav_next: "다음 글",
+      blog_posts_empty: "아직 공개된 글이 없습니다.",
     },
   };
 
@@ -572,6 +611,10 @@
   }
 
   function updateHeadMetadata(language) {
+    if (document.documentElement.getAttribute("data-static-meta") === "true") {
+      return;
+    }
+
     const pageTitle = getTranslation(language, titleKey) || getTranslation(language, "page_title");
     if (pageTitle) {
       document.title = pageTitle;

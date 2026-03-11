@@ -14,6 +14,41 @@ Aroido 웹페이지 프로젝트입니다.
 
 브라우저에서 `index.html`을 열어 확인할 수 있습니다.
 
+## 블로그 운영
+
+정적 블로그는 같은 레포 안의 Markdown 파일을 소스로 사용합니다.
+
+- 원본 글: `content/blog/*.md`
+- 생성 결과: `blog/`, `rss.xml`, `sitemap.xml`
+- 생성 명령:
+
+```bash
+node scripts/build-blog.mjs
+```
+
+- 검증:
+
+```bash
+./scripts/run-ai-verify --mode full
+```
+
+Markdown frontmatter 예시:
+
+```md
+---
+title: "Why We Kept the Blog in Git"
+date: "2026-03-11T09:00:00+09:00"
+excerpt: "Why a same-repo Markdown blog fits the current Aroido site better than adding a database or CMS too early."
+slug: "why-we-kept-the-blog-in-git"
+tags:
+  - product
+  - operations
+draft: false
+---
+```
+
+`blog/` 아래 HTML 파일은 생성 산출물이므로 직접 수정하지 않고, 원본 Markdown을 고친 뒤 다시 생성합니다.
+
 ## VibeSmith DMG 배포 링크 규칙
 
 사이트의 다운로드 버튼은 `vibesmith-community` 최신 릴리즈를 기준으로 동작합니다.
