@@ -19,6 +19,7 @@
   const COMMUNITY_LINK_CACHE_TTL_MS = 30 * 60 * 1000;
   const COPY_FEEDBACK_DURATION_MS = 1800;
   const TALLY_POPUP_FORM_ID = "RG484l";
+  const VERCEL_ANALYTICS_SCRIPT_PATH = "/_vercel/insights/script.js";
 
   const fallbackTranslations = {
     en: {
@@ -154,6 +155,62 @@
     debugLanguage: null,
   };
   const copyFeedbackTimers = new WeakMap();
+
+  function shouldLoadVercelAnalytics() {
+    return window.location.protocol === "https:";
+  }
+
+  function shouldIgnoreAnalyticsEvent(event) {
+    if (!event || typeof event.url !== "string") {
+      return false;
+    }
+
+    try {
+      const url = new URL(event.url, window.location.origin);
+      return url.pathname.startsWith("/debug/") || url.searchParams.has(DEBUG_LANGUAGE_QUERY_KEY);
+    } catch (_error) {
+      return (
+        event.url.includes("/debug/") || event.url.includes(`${DEBUG_LANGUAGE_QUERY_KEY}=`)
+      );
+    }
+  }
+
+  function initializeVercelAnalytics() {
+    if (!shouldLoadVercelAnalytics()) {
+      return;
+    }
+
+    if (
+      window.__aroidoVercelAnalyticsInitialized ||
+      document.querySelector(`script[src="${VERCEL_ANALYTICS_SCRIPT_PATH}"]`)
+    ) {
+      return;
+    }
+
+    window.__aroidoVercelAnalyticsInitialized = true;
+
+    // Load Vercel Analytics only on deployed HTTPS pages.
+    window.va =
+      typeof window.va === "function"
+        ? window.va
+        : function analyticsStub() {
+            (window.vaq = window.vaq || []).push(arguments);
+          };
+
+    // Keep internal debug traffic out of public analytics.
+    window.va("beforeSend", (event) => {
+      if (shouldIgnoreAnalyticsEvent(event)) {
+        return null;
+      }
+
+      return event;
+    });
+
+    const analyticsScript = document.createElement("script");
+    analyticsScript.defer = true;
+    analyticsScript.src = VERCEL_ANALYTICS_SCRIPT_PATH;
+    document.head.appendChild(analyticsScript);
+  }
 
   function isPlainObject(value) {
     if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -991,6 +1048,10 @@
     if (typeof window.gtag === "function") {
       window.gtag("event", name, payload);
     }
+
+    if (typeof window.va === "function") {
+      window.va("event", { name, data: payload });
+    }
   }
 
   function initializeTrackedEvents() {
@@ -1233,6 +1294,7 @@
   }
 
   function runSynchronousBootstrap() {
+    initializeVercelAnalytics();
     initializeDebugLanguageMode();
     initializeCommunityReleaseLinks();
     initializeThemeSwitch();
