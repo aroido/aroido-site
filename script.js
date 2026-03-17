@@ -1103,6 +1103,72 @@
     dom.revealNodes.forEach((node) => observer.observe(node));
   }
 
+  function buildVideoEmbedUrl(videoId, startSeconds) {
+    if (!isNonEmptyString(videoId)) {
+      return "";
+    }
+
+    const params = new URLSearchParams({
+      autoplay: "1",
+      playsinline: "1",
+      rel: "0",
+    });
+
+    const parsedStartSeconds = Number.parseInt(startSeconds, 10);
+    if (Number.isFinite(parsedStartSeconds) && parsedStartSeconds > 0) {
+      params.set("start", String(parsedStartSeconds));
+    }
+
+    return `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?${params.toString()}`;
+  }
+
+  function createVideoEmbedFrame(container, trigger) {
+    const videoId = container.getAttribute("data-video-id");
+    const videoUrl = buildVideoEmbedUrl(videoId, container.getAttribute("data-video-start"));
+    if (!isNonEmptyString(videoUrl)) {
+      return null;
+    }
+
+    const iframe = document.createElement("iframe");
+    iframe.className = "video-embed-frame";
+    iframe.src = videoUrl;
+    iframe.title = trigger.getAttribute("aria-label") || "Embedded video";
+    iframe.loading = "eager";
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.setAttribute("allowfullscreen", "");
+    return iframe;
+  }
+
+  function initializeVideoEmbeds() {
+    const containers = Array.from(document.querySelectorAll("[data-video-embed]"));
+    if (containers.length === 0) {
+      return;
+    }
+
+    containers.forEach((container) => {
+      const trigger = container.querySelector("[data-video-trigger]");
+      if (!(trigger instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      trigger.addEventListener(
+        "click",
+        () => {
+          const iframe = createVideoEmbedFrame(container, trigger);
+          if (!iframe) {
+            return;
+          }
+
+          container.classList.add("is-active");
+          trigger.replaceWith(iframe);
+        },
+        { once: true }
+      );
+    });
+  }
+
   function initializeVoicePanels() {
     if (dom.voiceTabs.length === 0 || dom.voicePanels.length === 0) {
       return;
@@ -1299,6 +1365,7 @@
     initializeCommunityReleaseLinks();
     initializeThemeSwitch();
     initializeTrackedEvents();
+    initializeVideoEmbeds();
     initializeCopyCommandButtons();
     initializeTallyPopupButtons();
     initializeLanguageSwitch();
