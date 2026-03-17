@@ -234,39 +234,75 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="home_media_eyebrow">PRODUCT PROOF</p>
           <h2 data-i18n="media_home_title">Public proof from the live product</h2>
-          <p data-i18n="media_home_desc">This is not a mockup. The current public product already ships a workflow for status, conflicts, and coverage.</p>
+          <p data-i18n="media_home_desc">This is not a mockup. Watch the current public demo inline, then open the product page for rollout and download context.</p>
           <ul class="proof-chip-row" aria-label="Visual proof signals" data-i18n-aria-label="aria_visual_proof">
             <li class="proof-chip" data-i18n="home_media_chip_1">v0.5.3 community build</li>
             <li class="proof-chip" data-i18n="home_media_chip_2">Public docs and release notes</li>
-            <li class="proof-chip" data-i18n="home_media_chip_3">Full walkthrough on product page</li>
+            <li class="proof-chip" data-i18n="home_media_chip_3">Playable demo on this page</li>
           </ul>
         </div>
         <div class="single-grid">
-          <figure class="media-card media-card-hero" role="img" aria-label="Operations dashboard screenshot" data-i18n-aria-label="aria_media_home_dashboard">
-            <img
-              class="media-visual"
-              src="/assets/vibesmith-community/01-dashboard-en-light.png"
-              alt="VibeSmith operations dashboard screenshot"
-              data-media-src-en-light="/assets/vibesmith-community/01-dashboard-en-light.png"
-              data-media-src-en-dark="/assets/vibesmith-community/01-dashboard-en-dark.png"
-              data-media-src-ko-light="/assets/vibesmith-community/01-dashboard-ko-light.png"
-              data-media-src-ko-dark="/assets/vibesmith-community/01-dashboard-ko-dark.png"
-              width="1400"
-              height="1555"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="media-placeholder media-overlay">
-              <span class="media-tag" data-i18n="media_slot_hero_tag">Workflow capture</span>
-              <strong data-i18n="media_slot_hero_title">Operations dashboard view</strong>
-              <p data-i18n="media_slot_hero_desc">
-                Check status, conflicts, and coverage in one screen before rollout gets messy.
-              </p>
-            </div>
-            <figcaption data-i18n="media_slot_hero_caption">Screenshot from v0.5.3 community build (operations dashboard).</figcaption>
-          </figure>
+          <div class="media-card media-card-hero media-live media-video" data-video-embed data-video-id="Nt6I_bM_gx8">
+            <button
+              class="video-embed-trigger"
+              type="button"
+              data-video-trigger
+              aria-label="Play the VibeSmith demo on this page"
+              data-i18n-aria-label="aria_video_home_play"
+              data-track-event="video_demo_play"
+              data-track-label="home_vibesmith_demo_inline"
+            >
+              <img
+                class="video-embed-poster"
+                src="/assets/vibesmith-community/01-dashboard-en-light.png"
+                alt=""
+                data-media-src-en-light="/assets/vibesmith-community/01-dashboard-en-light.png"
+                data-media-src-en-dark="/assets/vibesmith-community/01-dashboard-en-dark.png"
+                data-media-src-ko-light="/assets/vibesmith-community/01-dashboard-ko-light.png"
+                data-media-src-ko-dark="/assets/vibesmith-community/01-dashboard-ko-dark.png"
+                width="1400"
+                height="1555"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="video-embed-scrim" aria-hidden="true"></span>
+              <span class="video-embed-content">
+                <span class="media-tag" data-i18n="video_demo_tag">Live product walkthrough</span>
+                <strong data-i18n="home_video_title">Watch the VibeSmith demo without leaving the homepage</strong>
+                <span class="video-embed-copy" data-i18n="home_video_desc">
+                  Play the current public demo inline, then open the product page for rollout and download details.
+                </span>
+                <span class="video-embed-cta" data-i18n="video_demo_cta">Play demo</span>
+              </span>
+            </button>
+            <noscript>
+              <iframe
+                class="video-embed-frame"
+                src="https://www.youtube-nocookie.com/embed/Nt6I_bM_gx8?rel=0"
+                title="VibeSmith product walkthrough video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </noscript>
+          </div>
         </div>
-        <a class="inline-link" href="/projects/vibesmith/#demo" data-i18n="home_media_cta" data-track-event="hero_cta_click" data-track-label="home_media_open_vibesmith_demo">Watch the full VibeSmith walkthrough</a>
+        <p class="video-note" data-i18n="home_video_note">
+          The player loads only after you press play, so the homepage stays light while still showing the real demo.
+        </p>
+        <div class="media-inline-actions">
+          <a
+            class="inline-link"
+            href="https://youtu.be/Nt6I_bM_gx8?si=QA0Ib9a6SlO2pVTS"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="video_demo_watch_youtube"
+            data-track-event="video_demo_open_external"
+            data-track-label="home_vibesmith_demo_youtube"
+          >Watch on YouTube</a>
+          <a class="inline-link" href="/projects/vibesmith/#demo" data-i18n="home_media_cta" data-track-event="hero_cta_click" data-track-label="home_media_open_vibesmith_demo">Open the full VibeSmith demo breakdown</a>
+        </div>
       </section>
 
       <section id="contact" class="contact-panel reveal" data-reveal>
