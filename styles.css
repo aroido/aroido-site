@@ -1757,7 +1757,8 @@ html[data-theme="dark"] .route-card,
 html[data-theme="dark"] .story-card,
 html[data-theme="dark"] .focus-card,
 html[data-theme="dark"] .metric-card,
-html[data-theme="dark"] .team-person-card {
+html[data-theme="dark"] .team-person-card,
+html[data-theme="dark"] .media-card {
   border-color: rgba(141, 160, 199, 0.54);
   background: linear-gradient(155deg, rgba(19, 29, 52, 0.9), rgba(11, 18, 34, 0.92));
 }
@@ -1766,8 +1767,15 @@ html[data-theme="dark"] .route-card.highlight,
 html[data-theme="dark"] .story-card.highlight,
 html[data-theme="dark"] .focus-card.highlight,
 html[data-theme="dark"] .proof-section .metric-card,
-html[data-theme="dark"] .team-person-card-accent {
+html[data-theme="dark"] .team-person-card-accent,
+html[data-theme="dark"] .home-side-card-accent {
   background: linear-gradient(145deg, rgba(19, 30, 55, 0.94), rgba(21, 46, 92, 0.88));
+}
+
+html[data-theme="dark"] .media-card::before {
+  background:
+    radial-gradient(65rem 45rem at 110% -25%, rgba(16, 223, 251, 0.12), transparent 58%),
+    radial-gradient(50rem 42rem at -15% 120%, rgba(255, 91, 31, 0.12), transparent 52%);
 }
 
 html[data-theme="dark"] .panel-label,
