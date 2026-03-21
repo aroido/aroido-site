@@ -8,8 +8,8 @@
   <rect width="1200" height="630" fill="url(#g)"/>
   <rect x="58" y="58" width="1084" height="514" rx="26" stroke="#37506A" stroke-width="2"/>
   <text x="96" y="182" fill="#F4F8FB" font-size="58" font-family="'Space Grotesk', sans-serif" font-weight="700">VibeSmith</text>
-  <text x="96" y="246" fill="#CDE1F0" font-size="36" font-family="'Space Grotesk', sans-serif" font-weight="600">Operate AI components across repos</text>
-  <text x="96" y="298" fill="#90A3B7" font-size="25" font-family="'IBM Plex Mono', monospace">Cursor + Claude Code • scan, compare drift, release safely</text>
+  <text x="96" y="246" fill="#CDE1F0" font-size="36" font-family="'Space Grotesk', sans-serif" font-weight="600">Audit AI repo drift before it spreads</text>
+  <text x="96" y="298" fill="#90A3B7" font-size="25" font-family="'IBM Plex Mono', monospace">Cursor + Claude Code • hidden dependencies, context waste, safer reuse</text>
 
   <rect x="96" y="340" width="292" height="170" rx="16" fill="#1B2D43"/>
   <rect x="414" y="340" width="292" height="170" rx="16" fill="#1B2D43"/>

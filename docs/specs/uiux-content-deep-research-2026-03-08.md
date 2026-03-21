@@ -169,3 +169,18 @@
 - WCAG 2.2: https://www.w3.org/TR/WCAG22/
 - NN/g F-pattern: https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/
 - Toss UX writing: https://toss.tech/article/Marketing_Writing
+
+---
+
+## 7) 2026-03-21 메시지 전환 메모
+- 목표 변경: "더 힙하고 설득력 있게"보다 "VibeSmith 첫 100명 확보에 필요한 메시지 명확화"를 우선한다.
+- 홈/제품 페이지는 "component operations"보다 `AI coding repo drift / hidden dependency / context waste audit`를 먼저 말해야 한다.
+- 상단에서 `Phase 1 / Phase 2 / pricing review` 반복 비중을 줄이고, 문제 정의와 실제 제품 proof를 먼저 보여준다.
+- CTA는 "팀 소개 읽기"보다 `제품 보기 / 데모 보기 / 설치 경로 보기`를 우선한다.
+- `/ko` 정적 공개 URL은 장기적으로 유효하지만, 현재 repo 정책상 공개 런타임은 `en-only`를 유지한다. 이번 라운드에서는 카피/i18n parity만 유지하고 공개 `/ko` 라우트는 보류한다.
+
+## 8) 2026-03-21 홈 전환 2차 메모
+- 홈 첫 화면에서는 제품 외 경로를 약하게 두고, `제품 보기`와 `데모 보기`를 핵심 CTA로 유지한다.
+- 실제 제품 proof는 히어로 바로 아래에서 보여준다. 설명 카드보다 데모/스크린샷/공개 상태가 먼저 나와야 한다.
+- 공유용 메타 이미지는 일반 Aroido 브랜드보다 VibeSmith 제품 문맥을 직접 보여주는 자산으로 바꾼다.
+- 버전 문자열처럼 빠르게 낡아 보이는 표시는 홈 첫 화면에서는 최소화한다.

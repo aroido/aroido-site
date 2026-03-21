@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VibeSmith | Component Operations for Vibe Coders</title>
+    <title>VibeSmith | Audit AI Coding Repo Drift Before It Spreads</title>
     <meta
       id="metaDescription"
       name="description"
-      content="VibeSmith helps vibe coders reuse components and reduce repo drift. Phase 1 Community is public and free today while Phase 2 and Pro pricing are still taking shape."
+      content="VibeSmith helps multi-repo AI teams audit active components, hidden dependencies, context waste, and setup drift across Cursor and Claude Code workflows."
     />
     <link rel="canonical" href="https://aroido.com/projects/vibesmith/" />
     <link rel="alternate" hreflang="en" href="https://aroido.com/projects/vibesmith/?lang=en" />
@@ -15,14 +15,16 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aroido" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="VibeSmith | Component Operations for Vibe Coders" />
-    <meta property="og:description" content="VibeSmith helps vibe coders reuse components and reduce repo drift. Phase 1 Community is public and free today while Phase 2 and Pro pricing are still taking shape." />
+    <meta property="og:title" content="VibeSmith | Audit AI Coding Repo Drift Before It Spreads" />
+    <meta property="og:description" content="VibeSmith helps multi-repo AI teams audit active components, hidden dependencies, context waste, and setup drift across Cursor and Claude Code workflows." />
     <meta property="og:url" content="https://aroido.com/projects/vibesmith/" />
-    <meta property="og:image" content="https://aroido.com/assets/og/vibesmith-og.svg" />
+    <meta property="og:image" content="https://aroido.com/assets/og/vibesmith-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="VibeSmith | Component Operations for Vibe Coders" />
-    <meta name="twitter:description" content="VibeSmith helps vibe coders reuse components and reduce repo drift. Phase 1 Community is public and free today while Phase 2 and Pro pricing are still taking shape." />
-    <meta name="twitter:image" content="https://aroido.com/assets/og/vibesmith-og.svg" />
+    <meta name="twitter:title" content="VibeSmith | Audit AI Coding Repo Drift Before It Spreads" />
+    <meta name="twitter:description" content="VibeSmith helps multi-repo AI teams audit active components, hidden dependencies, context waste, and setup drift across Cursor and Claude Code workflows." />
+    <meta name="twitter:image" content="https://aroido.com/assets/og/vibesmith-og.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/vibesmith-brand/icon-192.png" />
     <script type="application/ld+json">
       {
@@ -33,12 +35,12 @@
         "operatingSystem": "Web",
         "url": "https://aroido.com/projects/vibesmith/",
         "inLanguage": "en-US",
-        "description": "A component operations layer for vibe coders. Phase 1 Community is public and free today while Phase 2 and Pro packaging are in development.",
+        "description": "An AI coding repo drift audit layer for multi-repo teams using Cursor and Claude Code workflows.",
         "featureList": [
           "Cross-project component inventory and search",
-          "Copy components across projects with dependency-aware flow",
-          "Preset preview and apply for predictable rollout",
-          "Dependency graph and conflict handling for release-risk review"
+          "Dependency and conflict review before rollout",
+          "Context-heavy setup and cleanup candidates become visible earlier",
+          "Copy components across projects with dependency-aware flow"
         ]
       }
     </script>
@@ -90,65 +92,100 @@
       </header>
 
       <section class="page-hero vibe-hero reveal" data-reveal>
-        <div class="kicker-row">
-          <img
-            class="vibe-app-icon vibe-app-icon-sm"
-            src="/assets/vibesmith-brand/icon-192.png"
-            alt=""
-            aria-hidden="true"
-            width="44"
-            height="44"
-            loading="lazy"
-            decoding="async"
-          />
-          <p class="kicker" data-i18n="vibe_kicker">VibeSmith</p>
-        </div>
-        <h1 data-i18n="vibe_title">The fastest way for vibe coders to start new projects with the right components.</h1>
-        <p data-i18n="vibe_description">
-          VibeSmith turns scattered component setup into one operating baseline across repositories. Phase 1 Community is
-          complete, public, and free today.
-        </p>
-        <p class="hero-hook" data-i18n="vibe_hero_hook">If you keep asking "what should we bring into this new repo?" every kickoff, this is for you.</p>
-        <div class="hero-actions vibe-hero-actions">
-          <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_hero_open_download">Install Community now</a>
-          <a class="btn btn-ghost" href="#demo" data-i18n="vibe_hero_demo_cta" data-track-event="hero_cta_click" data-track-label="vibe_hero_open_demo">Watch demo first</a>
-        </div>
-        <div class="hero-proof-row">
-          <span class="status-pill" data-i18n="vibe_status_pill_1">Phase 1 complete: public and free</span>
-          <span class="status-pill" data-i18n="vibe_status_pill_2">Phase 2 in development</span>
-          <span class="status-pill" data-i18n="vibe_status_pill_3">Pro pricing under review</span>
+        <div class="page-hero-grid">
+          <div class="page-hero-copy">
+            <div class="kicker-row">
+              <img
+                class="vibe-app-icon vibe-app-icon-sm"
+                src="/assets/vibesmith-brand/icon-192.png"
+                alt=""
+                aria-hidden="true"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
+              <p class="kicker" data-i18n="vibe_kicker">VibeSmith</p>
+            </div>
+            <h1 data-i18n="vibe_title">Audit AI coding repo drift before it spreads.</h1>
+            <p data-i18n="vibe_description">
+              VibeSmith gives multi-repo teams one place to review active components, dependency risk, and context-heavy
+              reuse across Cursor and Claude Code workflows. Community is public and free today.
+            </p>
+            <p class="hero-hook" data-i18n="vibe_hero_hook">If kickoff quality drops after repo three, start here.</p>
+            <div class="hero-actions vibe-hero-actions">
+              <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_hero_open_download">Open Community download</a>
+              <a class="btn btn-ghost" href="#demo" data-i18n="vibe_hero_demo_cta" data-track-event="hero_cta_click" data-track-label="vibe_hero_open_demo">Watch the audit demo</a>
+            </div>
+            <div class="hero-proof-row">
+              <span class="status-pill" data-i18n="vibe_status_pill_1">Live dashboard and walkthrough</span>
+              <span class="status-pill" data-i18n="vibe_status_pill_2">Community build is public</span>
+              <span class="status-pill" data-i18n="vibe_status_pill_3">Built for multi-repo AI teams</span>
+            </div>
+          </div>
+          <aside class="page-hero-proof" aria-label="VibeSmith dashboard preview" data-i18n-aria-label="aria_vibe_hero_visual">
+            <p class="mini-label" data-i18n="vibe_hero_visual_eyebrow">FIRST SCREEN</p>
+            <h2 data-i18n="vibe_hero_visual_title">Open one dashboard and know what needs review first</h2>
+            <p data-i18n="vibe_hero_visual_desc">
+              The opening view turns active component volume, project scope, and early conflict signals into a baseline
+              before you decide what to copy, clean, or standardize.
+            </p>
+            <div class="page-hero-proof-media">
+              <img
+                class="page-hero-proof-image"
+                src="/assets/vibesmith-community/01-dashboard-en-light.png"
+                alt=""
+                data-media-src-en-light="/assets/vibesmith-community/01-dashboard-en-light.png"
+                data-media-src-en-dark="/assets/vibesmith-community/01-dashboard-en-dark.png"
+                data-media-src-ko-light="/assets/vibesmith-community/01-dashboard-ko-light.png"
+                data-media-src-ko-dark="/assets/vibesmith-community/01-dashboard-ko-dark.png"
+                width="1400"
+                height="1555"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <ul class="page-hero-proof-list">
+              <li data-i18n="vibe_hero_visual_point_1">Operational baseline across skills, rules, commands, and hooks</li>
+              <li data-i18n="vibe_hero_visual_point_2">Conflict and dependency signals before reuse spreads them</li>
+              <li data-i18n="vibe_hero_visual_point_3">Project breakdown to target cleanup before the next kickoff</li>
+            </ul>
+            <p class="page-hero-proof-caption" data-i18n="vibe_hero_visual_caption">Current public community build, dashboard view.</p>
+          </aside>
         </div>
       </section>
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="vibe_status_eyebrow">STAGE NOW</p>
-          <h2 data-i18n="vibe_status_title">Where VibeSmith stands right now</h2>
+          <p class="section-eyebrow" data-i18n="vibe_status_eyebrow">WHAT SURFACES FIRST</p>
+          <h2 data-i18n="vibe_status_title">See the problems teams usually discover too late</h2>
           <p data-i18n="vibe_status_desc">
-            Phase 1 is complete and public. The next step is broader public validation before Phase 2 scope and Pro
-            packaging are locked.
+            VibeSmith is most useful when your team needs one visible layer for setup drift, reuse risk, and
+            context-heavy sprawl across repositories.
           </p>
         </div>
         <div class="split-grid">
           <article class="story-card highlight">
-            <p class="mini-label" data-i18n="vibe_status_card_1_label">PHASE 1</p>
-            <h3 data-i18n="vibe_status_1">Community is complete and public</h3>
+            <p class="mini-label" data-i18n="vibe_status_card_1_label">DRIFT</p>
+            <h3 data-i18n="vibe_status_1">Context-heavy setup</h3>
             <p data-i18n="vibe_status_1_body">
-              General users can install the completed Phase 1 build free today and test it in real repos.
+              See which repo layers are carrying too much memory, instruction weight, or setup noise before new
+              projects inherit the same sprawl.
             </p>
           </article>
           <article class="story-card">
-            <p class="mini-label" data-i18n="vibe_status_card_2_label">PHASE 2</p>
-            <h3 data-i18n="vibe_status_2">Shared workflow features are in development</h3>
+            <p class="mini-label" data-i18n="vibe_status_card_2_label">REUSE</p>
+            <h3 data-i18n="vibe_status_2">Hidden reuse risk</h3>
             <p data-i18n="vibe_status_2_body">
-              Managed rollout, broader governance, and next-step collaboration features are already being built.
+              Review what needs to move with a component so copy-paste bootstrap stops failing in partial, expensive
+              ways.
             </p>
           </article>
           <article class="story-card">
-            <p class="mini-label" data-i18n="vibe_status_card_3_label">PRO</p>
-            <h3 data-i18n="vibe_status_3">Pricing and packaging are still under review</h3>
+            <p class="mini-label" data-i18n="vibe_status_card_3_label">RELEASE</p>
+            <h3 data-i18n="vibe_status_3">Dependency and conflict surprises</h3>
             <p data-i18n="vibe_status_3_body">
-              We are shaping the Pro model through public usage and demand signals instead of locking pricing too early.
+              Surface linked risk earlier so release-week review is not the first time your team sees the coupling.
             </p>
           </article>
         </div>
@@ -156,32 +193,33 @@
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="vibe_need_eyebrow">USER NEED SIGNALS</p>
-          <h2 data-i18n="vibe_need_title">What vibe coders repeatedly ask for</h2>
+          <p class="section-eyebrow" data-i18n="vibe_need_eyebrow">FIRST-WEEK PAIN</p>
+          <h2 data-i18n="vibe_need_title">What teams want from the first real audit</h2>
           <p data-i18n="vibe_need_desc">
-            Across official docs, forum threads, and vibe coder discussions, the same needs keep surfacing.
+            The common request is not another AI feature. It is a clearer operating view across repos.
           </p>
         </div>
         <div class="split-grid">
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_need_1_tag">Need 01</p>
-            <h3 data-i18n="vibe_need_1_title">Keep standards consistent across repos</h3>
+            <h3 data-i18n="vibe_need_1_title">Know which standards are actually active</h3>
             <p data-i18n="vibe_need_1_body">
-              Vibe coders report rule duplication, sync overhead, and out-of-date project guidance as repository count grows.
+              Teams lose time when rules, commands, and guidance look similar but differ just enough across repos to
+              change behavior.
             </p>
           </article>
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_need_2_tag">Need 02</p>
-            <h3 data-i18n="vibe_need_2_title">Reuse safely when starting a new project</h3>
+            <h3 data-i18n="vibe_need_2_title">Reuse without losing linked context</h3>
             <p data-i18n="vibe_need_2_body">
-              Users struggle to decide what to bring from previous projects and miss linked dependencies during manual copy.
+              Users want to copy safe baselines, not half-working fragments that hide dependencies until later.
             </p>
           </article>
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_need_3_tag">Need 03</p>
-            <h3 data-i18n="vibe_need_3_title">Reduce context confusion and token waste</h3>
+            <h3 data-i18n="vibe_need_3_title">Reduce context waste before it becomes review waste</h3>
             <p data-i18n="vibe_need_3_body">
-              Multi-scope memory and mixed instructions can pollute context, creating rework and unnecessary review loops.
+              Mixed memory layers and stale assets create token waste, noisy prompts, and longer review loops.
             </p>
           </article>
         </div>
@@ -282,7 +320,7 @@
                 Check status, conflicts, and coverage in one screen.
               </p>
             </div>
-            <figcaption data-i18n="vibe_media_gif_caption">Screenshot from v0.5.3 community build (operations dashboard).</figcaption>
+            <figcaption data-i18n="vibe_media_gif_caption">Screenshot from the current public community build (operations dashboard).</figcaption>
           </figure>
           <figure class="media-card media-live" role="img" aria-label="Inventory screenshot" data-i18n-aria-label="aria_media_vibe_inventory">
             <img
@@ -369,41 +407,43 @@
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="vibe_cap_eyebrow">Capabilities</p>
-          <h2 data-i18n="vibe_cap_title">Need-to-Feature Mapping</h2>
+          <p class="section-eyebrow" data-i18n="vibe_cap_eyebrow">DRIFT REDUCTION</p>
+          <h2 data-i18n="vibe_cap_title">How VibeSmith reduces drift</h2>
         </div>
         <div class="split-grid">
           <article class="story-card">
-            <h3 data-i18n="vibe_cap_1_title">Find what already exists</h3>
-            <p data-i18n="vibe_cap_1_body">Unified inventory + search helps vibe coders discover reusable Skills, Agents, Commands, Hooks, and Rules across projects.</p>
+            <h3 data-i18n="vibe_cap_1_title">Find the active baseline</h3>
+            <p data-i18n="vibe_cap_1_body">Unified inventory + search shows which Skills, Agents, Commands, Hooks, and Rules are still active across projects.</p>
           </article>
           <article class="story-card">
-            <h3 data-i18n="vibe_cap_2_title">Reuse without missing dependencies</h3>
-            <p data-i18n="vibe_cap_2_body">Copy components into another project with dependency-aware flow, so project bootstrap is faster and safer.</p>
+            <h3 data-i18n="vibe_cap_2_title">Reuse without dropping linked pieces</h3>
+            <p data-i18n="vibe_cap_2_body">Copy components with dependency-aware flow so bootstrap stays coherent instead of breaking in partial ways.</p>
           </article>
           <article class="story-card">
-            <h3 data-i18n="vibe_cap_3_title">Apply standards without surprises</h3>
-            <p data-i18n="vibe_cap_3_body">Preset preview/apply with conflict policy helps vibe coders review impact before writing changes.</p>
+            <h3 data-i18n="vibe_cap_3_title">Review rollout impact before writing changes</h3>
+            <p data-i18n="vibe_cap_3_body">Preview and apply with conflict policy so teams can judge the blast radius before updating shared setup.</p>
           </article>
           <article class="story-card">
-            <h3 data-i18n="vibe_cap_4_title">Review risk in one place</h3>
-            <p data-i18n="vibe_cap_4_body">Dependency graph and conflict handling surface hidden coupling before release-week firefighting.</p>
+            <h3 data-i18n="vibe_cap_4_title">See risk before release week</h3>
+            <p data-i18n="vibe_cap_4_body">Dependency graph, conflict review, and project scope views make hidden coupling easier to catch earlier.</p>
           </article>
         </div>
       </section>
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="vibe_signal_eyebrow">Why Now</p>
-          <h2 data-i18n="vibe_signal_title">Evidence From Real Tool Behavior</h2>
+          <p class="section-eyebrow" data-i18n="vibe_signal_eyebrow">WHY THE PROBLEM GROWS</p>
+          <h2 data-i18n="vibe_signal_title">AI coding tools speed up one repo before they explain many</h2>
           <p data-i18n="vibe_signal_desc">
-            The demand is not hype-driven. It comes from how vibe coders use Cursor, Claude Code, and MCP in production.
+            Cursor, Claude Code, and MCP are strong local tools. The systems gap appears when teams need the same
+            operating clarity across multiple repos.
           </p>
         </div>
         <div class="split-grid">
           <article class="story-card">
             <p data-i18n="vibe_signal_1">
-              Session-scoped context in Cursor pushes vibe coders to externalize reusable standards.
+              Cursor's session-scoped context pushes teams to externalize reusable standards instead of relying on chat
+              memory.
             </p>
           </article>
           <article class="story-card">
@@ -421,72 +461,73 @@
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="vibe_metrics_eyebrow">PUBLIC VALIDATION</p>
-          <h2 data-i18n="vibe_metrics_title">What we are validating now</h2>
+          <p class="section-eyebrow" data-i18n="vibe_metrics_eyebrow">FIRST-WEEK METRICS</p>
+          <h2 data-i18n="vibe_metrics_title">What to measure in week one</h2>
           <p data-i18n="vibe_metrics_desc">
-            Phase 1 is already shipped. These are the signals we are watching as broader public usage starts.
+            You can judge early value from one repo. The question is whether the baseline becomes clearer, not whether a
+            big rollout already happened.
           </p>
         </div>
         <div class="metric-grid">
           <article class="metric-card">
-            <p class="mini-label" data-i18n="vibe_metric_1_label">Metric 01</p>
-            <h3 data-i18n="vibe_metric_1_title">First stable setup</h3>
-            <p data-i18n="vibe_metric_1_body">How quickly a general user gets to a usable baseline in one live repo.</p>
+            <p class="mini-label" data-i18n="vibe_metric_1_label">Outcome 01</p>
+            <h3 data-i18n="vibe_metric_1_title">Faster first stable setup</h3>
+            <p data-i18n="vibe_metric_1_body">Time from install to a baseline your team would actually keep.</p>
           </article>
           <article class="metric-card">
-            <p class="mini-label" data-i18n="vibe_metric_2_label">Metric 02</p>
-            <h3 data-i18n="vibe_metric_2_title">Repo-to-repo consistency</h3>
-            <p data-i18n="vibe_metric_2_body">Where shared rules, components, and settings still drift after first use.</p>
+            <p class="mini-label" data-i18n="vibe_metric_2_label">Outcome 02</p>
+            <h3 data-i18n="vibe_metric_2_title">Fewer repo-to-repo surprises</h3>
+            <p data-i18n="vibe_metric_2_body">Whether copied rules, commands, and components stay coherent after the first reuse.</p>
           </article>
           <article class="metric-card">
-            <p class="mini-label" data-i18n="vibe_metric_3_label">Metric 03</p>
-            <h3 data-i18n="vibe_metric_3_title">Dependency clarity</h3>
-            <p data-i18n="vibe_metric_3_body">Whether users catch linked component risk earlier instead of near release.</p>
+            <p class="mini-label" data-i18n="vibe_metric_3_label">Outcome 03</p>
+            <h3 data-i18n="vibe_metric_3_title">Clearer cleanup targets</h3>
+            <p data-i18n="vibe_metric_3_body">Which stale, conflicting, or overgrown assets you can remove before context quality degrades.</p>
           </article>
         </div>
       </section>
 
       <section id="rollout" class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="vibe_rollout_eyebrow">VALIDATION PLAN</p>
-          <h2 data-i18n="vibe_rollout_title">Public validation before Phase 2 scale</h2>
+          <p class="section-eyebrow" data-i18n="vibe_rollout_eyebrow">ADOPTION PATH</p>
+          <h2 data-i18n="vibe_rollout_title">Get to proof with one repo first</h2>
           <p data-i18n="vibe_rollout_desc">
-            The next cycle is about real usage, not broad claims. We want evidence before locking Phase 2 scope or Pro
-            packaging.
+            You do not need an org-wide migration. Start small, measure drift, then expand only if the baseline
+            improves.
           </p>
         </div>
         <div class="split-grid">
           <article class="story-card highlight">
-            <p class="mini-label" data-i18n="vibe_rollout_1_tag">Week 1</p>
-            <h3 data-i18n="vibe_rollout_1_title">Install and first live repo</h3>
+            <p class="mini-label" data-i18n="vibe_rollout_1_tag">Step 1</p>
+            <h3 data-i18n="vibe_rollout_1_title">Connect one live repo</h3>
             <p data-i18n="vibe_rollout_1_body">
-              General users install Community and try it in one active repo.
+              Install Community and scan the repo that keeps reopening the same setup questions.
             </p>
             <ul class="stack-list compact">
-              <li data-i18n="vibe_rollout_1_item1">Deliverable: install friction log</li>
-              <li data-i18n="vibe_rollout_1_item2">Deliverable: first-run baseline notes</li>
+              <li data-i18n="vibe_rollout_1_item1">Output: first baseline of active components and drift points</li>
+              <li data-i18n="vibe_rollout_1_item2">Output: install friction notes</li>
             </ul>
           </article>
           <article class="story-card">
-            <p class="mini-label" data-i18n="vibe_rollout_2_tag">Week 2-3</p>
-            <h3 data-i18n="vibe_rollout_2_title">Live workflow feedback</h3>
+            <p class="mini-label" data-i18n="vibe_rollout_2_tag">Step 2</p>
+            <h3 data-i18n="vibe_rollout_2_title">Review reuse and dependency risk</h3>
             <p data-i18n="vibe_rollout_2_body">
-              Observe where search, reuse, and dependency review reduce confusion or still break.
+              Use inventory, detail, and dependency views to see what breaks when setup is copied by memory.
             </p>
             <ul class="stack-list compact">
-              <li data-i18n="vibe_rollout_2_item1">Deliverable: repeated pain map</li>
-              <li data-i18n="vibe_rollout_2_item2">Deliverable: Phase 2 priority list</li>
+              <li data-i18n="vibe_rollout_2_item1">Output: cleanup candidates</li>
+              <li data-i18n="vibe_rollout_2_item2">Output: linked dependency risks</li>
             </ul>
           </article>
           <article class="story-card">
-            <p class="mini-label" data-i18n="vibe_rollout_3_tag">Week 4</p>
-            <h3 data-i18n="vibe_rollout_3_title">Phase 2 and Pro decision</h3>
+            <p class="mini-label" data-i18n="vibe_rollout_3_tag">Step 3</p>
+            <h3 data-i18n="vibe_rollout_3_title">Expand only after one workflow feels cleaner</h3>
             <p data-i18n="vibe_rollout_3_body">
-              Use public validation signals to sequence Phase 2 work and decide what belongs in the Pro package.
+              Decide whether another repo should adopt the same baseline after one team can explain the setup clearly.
             </p>
             <ul class="stack-list compact">
-              <li data-i18n="vibe_rollout_3_item1">Deliverable: public validation summary</li>
-              <li data-i18n="vibe_rollout_3_item2">Deliverable: packaging and pricing inputs</li>
+              <li data-i18n="vibe_rollout_3_item1">Output: keep / fix / expand decision</li>
+              <li data-i18n="vibe_rollout_3_item2">Output: shortlist for deeper collaboration or Pro</li>
             </ul>
           </article>
         </div>
@@ -496,7 +537,7 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="vibe_fit_eyebrow">Fit & Boundary</p>
           <h2 data-i18n="vibe_fit_title">Use it when component drift is already costing delivery speed.</h2>
-          <p data-i18n="vibe_fit_desc">Adoption boundaries are explicit so vibe coders can decide quickly.</p>
+          <p data-i18n="vibe_fit_desc">Clear boundaries help multi-repo teams decide quickly without overcommitting.</p>
         </div>
         <div class="split-grid">
           <article class="story-card">
@@ -517,11 +558,11 @@
           </article>
           <article class="story-card highlight">
             <h3 data-i18n="vibe_limits_title">What is intentionally out of scope in this phase</h3>
-            <p data-i18n="vibe_limits_desc">Phase 1 prioritizes clear public validation before wider automation promises.</p>
+            <p data-i18n="vibe_limits_desc">Current scope stays narrow on purpose. The goal is visible proof before wider automation promises.</p>
             <ul class="stack-list compact">
               <li data-i18n="vibe_limits_1">No forced repository rewrite. Existing structure is mapped first.</li>
               <li data-i18n="vibe_limits_2">Cloud-wide policy automation is a later phase, not a day-one requirement.</li>
-              <li data-i18n="vibe_limits_3">Phase 2 and Pro scope expand only after public validation shows repeatable value.</li>
+              <li data-i18n="vibe_limits_3">Shared rollout layers expand only after repeated evidence from real repo audits.</li>
             </ul>
           </article>
         </div>
@@ -634,12 +675,12 @@ brew upgrade --cask --greedy aroido/vibesmith/vibesmith</code></pre>
       </section>
 
       <section id="contact" class="contact-panel reveal" data-reveal>
-        <h2 data-i18n="vibe_cta_title">Phase 1 is public. Start with Community.</h2>
-        <p data-i18n="vibe_cta_description">Community is the completed free release. Phase 2 is in development, and Pro pricing is still under review while we learn from broader public usage.</p>
+        <h2 data-i18n="vibe_cta_title">Start with one repo. Make drift visible first.</h2>
+        <p data-i18n="vibe_cta_description">Community is the fastest way to see whether component sprawl, hidden dependencies, and context-heavy setup are already slowing your team. If you want outside eyes on one live repo, request an audit after the demo or install pass.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_contact_open_download">Open download options</a>
-          <a class="btn btn-ghost" href="#docs" data-i18n="vibe_cta_secondary" data-track-event="hero_cta_click" data-track-label="vibe_open_docs">Read adoption docs</a>
-          <a class="btn btn-ghost" href="https://tally.so/r/RG484l?intent=waitlist&source=vibesmith_waitlist" data-i18n="vibe_cta_waitlist" data-track-event="contact_cta_click" data-track-label="vibe_pro_waitlist" data-tally-popup="waitlist" data-tally-source="vibesmith_waitlist">Get Pro updates</a>
+          <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_contact_open_download">Open Community download</a>
+          <a class="btn btn-ghost" href="#docs" data-i18n="vibe_cta_secondary" data-track-event="hero_cta_click" data-track-label="vibe_open_docs">Read fit and adoption guide</a>
+          <a class="btn btn-ghost" href="https://tally.so/r/RG484l?intent=audit&source=vibesmith_audit" data-i18n="vibe_cta_audit" data-track-event="contact_cta_click" data-track-label="vibe_open_audit" data-tally-popup="audit" data-tally-source="vibesmith_audit">Request repo audit</a>
         </div>
       </section>
     </main>

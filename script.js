@@ -23,18 +23,18 @@
 
   const fallbackTranslations = {
     en: {
-      page_title: "Aroido | AI Product Systems for Multi-Repo Teams",
+      page_title: "Aroido | Reduce AI Coding Repo Drift Across Teams",
       meta_description:
-        "Aroido builds AI product systems for teams running multiple coding repos. Start with VibeSmith to reduce setup drift, dependency misses, and context loss across repos.",
-      home_seo_title: "Aroido | AI Product Systems for Multi-Repo Teams",
+        "Aroido builds AI coding systems for teams running multiple repos. Start with VibeSmith to audit repo drift, hidden dependencies, and context waste before they slow delivery.",
+      home_seo_title: "Aroido | Reduce AI Coding Repo Drift Across Teams",
       home_meta_description:
-        "Aroido builds AI product systems for teams running multiple coding repos. Start with VibeSmith to reduce setup drift, dependency misses, and context loss across repos.",
-      projects_seo_title: "Aroido Product | Current Public Product: VibeSmith",
+        "Aroido builds AI coding systems for teams running multiple repos. Start with VibeSmith to audit repo drift, hidden dependencies, and context waste before they slow delivery.",
+      projects_seo_title: "Aroido Product | VibeSmith for Multi-Repo AI Teams",
       projects_meta_description:
-        "Aroido currently ships one public product, VibeSmith. Phase 1 is complete and free today, while Phase 2 is in development and broader public validation is beginning now.",
-      vibe_seo_title: "VibeSmith | Component Operations for Vibe Coders",
+        "VibeSmith is Aroido's current public product for multi-repo AI teams. Audit repo drift, hidden dependencies, and context-heavy setup before they slow delivery.",
+      vibe_seo_title: "VibeSmith | Audit AI Coding Repo Drift Before It Spreads",
       vibe_meta_description:
-        "VibeSmith helps vibe coders reuse components and reduce repo drift. Phase 1 Community is public and free today while Phase 2 and Pro pricing are still taking shape.",
+        "VibeSmith helps multi-repo AI teams audit active components, hidden dependencies, context waste, and setup drift across Cursor and Claude Code workflows.",
       team_seo_title: "Aroido Team | Beliefs, Builders, and Current Focus",
       team_meta_description:
         "Meet the team behind Aroido and VibeSmith: why we exist, what we believe, and what we are building now.",
@@ -67,18 +67,18 @@
       blog_posts_empty: "No posts published yet.",
     },
     ko: {
-      page_title: "Aroido | 멀티 레포 팀을 위한 AI 제품 시스템",
+      page_title: "Aroido | AI 코딩 레포 드리프트를 줄이는 팀용 시스템",
       meta_description:
-        "Aroido는 여러 AI 코딩 레포를 운영하는 팀을 위한 제품 시스템을 만듭니다. 세팅 드리프트, 종속성 누락, 컨텍스트 손실을 줄이려면 VibeSmith부터 시작하세요.",
-      home_seo_title: "Aroido | 멀티 레포 팀을 위한 AI 제품 시스템",
+        "Aroido는 여러 AI 코딩 레포를 운영하는 팀을 위한 시스템을 만듭니다. VibeSmith로 레포 드리프트, 숨은 종속성, 컨텍스트 낭비를 딜리버리 전에 먼저 진단하세요.",
+      home_seo_title: "Aroido | AI 코딩 레포 드리프트를 줄이는 팀용 시스템",
       home_meta_description:
-        "Aroido는 여러 AI 코딩 레포를 운영하는 팀을 위한 제품 시스템을 만듭니다. 세팅 드리프트, 종속성 누락, 컨텍스트 손실을 줄이려면 VibeSmith부터 시작하세요.",
-      projects_seo_title: "Aroido 프로덕트 | 현재 공개 제품: VibeSmith",
+        "Aroido는 여러 AI 코딩 레포를 운영하는 팀을 위한 시스템을 만듭니다. VibeSmith로 레포 드리프트, 숨은 종속성, 컨텍스트 낭비를 딜리버리 전에 먼저 진단하세요.",
+      projects_seo_title: "Aroido 프로덕트 | 멀티 레포 AI 팀용 VibeSmith",
       projects_meta_description:
-        "Aroido의 현재 공개 제품은 VibeSmith 하나입니다. 1단계는 이미 완료되어 무료 공개 상태이며, 2단계는 개발 중이고 더 넓은 공개 검증이 지금 시작됩니다.",
-      vibe_seo_title: "VibeSmith | 바이브코더를 위한 컴포넌트 운영",
+        "VibeSmith는 멀티 레포 AI 팀을 위한 Aroido의 현재 공개 제품입니다. 레포 드리프트, 숨은 종속성, 컨텍스트가 무거운 세팅을 딜리버리 전에 먼저 진단하세요.",
+      vibe_seo_title: "VibeSmith | AI 코딩 레포 드리프트를 번지기 전에 진단",
       vibe_meta_description:
-        "VibeSmith는 바이브코더가 컴포넌트를 재사용하고 레포 드리프트를 줄이도록 돕습니다. Community 1단계는 무료 공개 상태이며, 2단계와 Pro 요금제는 아직 정리 중입니다.",
+        "VibeSmith는 멀티 레포 AI 팀이 Cursor·Claude Code 워크플로우에서 활성 컴포넌트, 숨은 종속성, 컨텍스트 낭비, 세팅 드리프트를 진단하도록 돕습니다.",
       team_seo_title: "Aroido 팀 | 믿음, 빌더, 현재 공개 포커스",
       team_meta_description:
         "Aroido와 VibeSmith를 만드는 팀을 소개합니다. 왜 존재하는지, 무엇을 믿는지, 지금 무엇을 만들고 있는지 확인할 수 있습니다.",
