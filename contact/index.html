@@ -106,16 +106,25 @@
         <span aria-current="page" data-i18n="crumb_contact">Contact</span>
       </nav>
 
-      <section class="page-hero reveal" data-reveal>
+      <section class="page-hero contact-hero reveal" data-reveal>
         <p class="kicker" data-i18n="contact_page_kicker">Contact</p>
-        <h1 data-i18n="contact_page_title">Open the shared form for product questions or Pro updates.</h1>
+        <h1 data-i18n="contact_page_title">Request a one-repo audit.</h1>
         <p class="hero-description" data-i18n="contact_page_description">
-          Use the shared Tally form to route general inquiries and requests for Pro updates. If you need to bypass the form,
-          direct builder inboxes are still listed below.
+          If you are running multiple AI coding repos, the fastest path is a short audit request. Tell us repo count,
+          toolchain, and where drift shows up first. Use the general form only if the question is not about a repo audit.
         </p>
         <div class="hero-actions">
           <a
             class="btn btn-primary"
+            href="https://tally.so/r/RG484l?intent=audit&source=contact_hero_audit"
+            data-i18n="contact_audit_cta"
+            data-track-event="contact_cta_click"
+            data-track-label="contact_hero_open_audit_form"
+            data-tally-popup="audit"
+            data-tally-source="contact_hero_audit"
+          >Request repo audit</a>
+          <a
+            class="btn btn-ghost"
             href="https://tally.so/r/RG484l?intent=general&source=contact_hero_general"
             data-i18n="contact_general_cta"
             data-track-event="contact_cta_click"
@@ -123,15 +132,6 @@
             data-tally-popup="general"
             data-tally-source="contact_hero_general"
           >Open contact form</a>
-          <a
-            class="btn btn-ghost"
-            href="https://tally.so/r/RG484l?intent=waitlist&source=contact_hero_waitlist"
-            data-i18n="contact_waitlist_cta"
-            data-track-event="contact_cta_click"
-            data-track-label="contact_hero_open_waitlist_form"
-            data-tally-popup="waitlist"
-            data-tally-source="contact_hero_waitlist"
-          >Open Pro updates form</a>
         </div>
       </section>
 
@@ -181,35 +181,36 @@
           <p class="section-eyebrow" data-i18n="contact_options_eyebrow">Paths</p>
           <h2 data-i18n="contact_options_title">Choose the shortest path.</h2>
           <p data-i18n="contact_options_description">
-            These routes open the same shared form and attach the route context automatically.
+            These routes open the same shared form with either audit or general intent, and attach the route context
+            automatically.
           </p>
         </div>
         <div class="compare-grid">
-          <article id="waitlist" class="route-card highlight">
-            <p class="mini-label" data-i18n="contact_waitlist_eyebrow">Pro updates</p>
-            <h3 data-i18n="contact_waitlist_title">Get VibeSmith Pro updates</h3>
-            <p data-i18n="contact_waitlist_description">
-              Use this when you want updates on shared governance, managed rollout, or whether Pro may fit your
-              workflow.
+          <article id="audit" class="route-card highlight">
+            <p class="mini-label" data-i18n="contact_audit_eyebrow">Repo audit</p>
+            <h3 data-i18n="contact_audit_title">Request a one-repo VibeSmith audit</h3>
+            <p data-i18n="contact_audit_description">
+              Use this when repo three feels worse than repo one, reuse keeps breaking in partial ways, or setup debates
+              keep reopening.
             </p>
-            <p class="mini-label" data-i18n="contact_waitlist_subject_label">Suggested subject</p>
-            <p class="download-path" data-i18n="contact_waitlist_subject">VibeSmith Pro Updates</p>
+            <p class="mini-label" data-i18n="contact_audit_subject_label">Suggested subject</p>
+            <p class="download-path" data-i18n="contact_audit_subject">VibeSmith Repo Audit</p>
             <div class="hero-actions">
               <a
                 class="btn btn-primary"
-                href="https://tally.so/r/RG484l?intent=waitlist&source=contact_section_waitlist"
-                data-i18n="contact_waitlist_cta"
+                href="https://tally.so/r/RG484l?intent=audit&source=contact_section_audit"
+                data-i18n="contact_audit_cta"
                 data-track-event="contact_cta_click"
-                data-track-label="contact_waitlist_open_form"
-                data-tally-popup="waitlist"
-                data-tally-source="contact_section_waitlist"
-              >Open Pro updates form</a>
+                data-track-label="contact_audit_open_form"
+                data-tally-popup="audit"
+                data-tally-source="contact_section_audit"
+              >Request repo audit</a>
               <a
                 class="btn btn-ghost"
                 href="/projects/vibesmith/"
-                data-i18n="contact_waitlist_product_cta"
+                data-i18n="contact_audit_product_cta"
                 data-track-event="hero_cta_click"
-                data-track-label="contact_waitlist_open_vibesmith"
+                data-track-label="contact_audit_open_vibesmith"
               >Review VibeSmith first</a>
             </div>
           </article>
