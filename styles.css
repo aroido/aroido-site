@@ -24,7 +24,7 @@ html[data-theme="dark"] {
   --surface: rgba(12, 18, 34, 0.78);
   --surface-strong: rgba(14, 22, 40, 0.94);
   --ink: #edf3ff;
-  --ink-soft: #a7b5d4;
+  --ink-soft: #bcc9e3;
   --line: #8da0c7;
   --shadow: 0 20px 44px rgba(2, 5, 12, 0.56);
   color-scheme: dark;
@@ -1768,6 +1768,27 @@ html[data-theme="dark"] .focus-card.highlight,
 html[data-theme="dark"] .proof-section .metric-card,
 html[data-theme="dark"] .team-person-card-accent {
   background: linear-gradient(145deg, rgba(19, 30, 55, 0.94), rgba(21, 46, 92, 0.88));
+}
+
+html[data-theme="dark"] .panel-label,
+html[data-theme="dark"] .section-eyebrow,
+html[data-theme="dark"] .mini-label {
+  color: #d4ddf0;
+}
+
+html[data-theme="dark"] .hero-description,
+html[data-theme="dark"] .page-hero p,
+html[data-theme="dark"] .route-card p,
+html[data-theme="dark"] .story-card p,
+html[data-theme="dark"] .metric-card p,
+html[data-theme="dark"] .faq-item p,
+html[data-theme="dark"] .voice-solution,
+html[data-theme="dark"] .voice-footnote,
+html[data-theme="dark"] .video-note,
+html[data-theme="dark"] .download-note,
+html[data-theme="dark"] .download-path,
+html[data-theme="dark"] .inline-link {
+  color: #c7d3ea;
 }
 
 html[data-theme="dark"] .article-hero {
