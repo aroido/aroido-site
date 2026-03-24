@@ -3,6 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const ROOT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -163,6 +164,28 @@ function formatRssDate(date) {
 
 function formatIsoDate(date) {
   return date.toISOString();
+}
+
+function getGitLastModifiedIso(relativePath) {
+  try {
+    const isoDate = execFileSync(
+      "git",
+      ["log", "-1", "--format=%cI", "--", relativePath],
+      {
+        cwd: ROOT_DIR,
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"],
+      }
+    ).trim();
+
+    if (isoDate) {
+      return isoDate;
+    }
+  } catch (_error) {
+    // Fall back to the filesystem timestamp outside of a git checkout.
+  }
+
+  return formatIsoDate(fs.statSync(path.join(ROOT_DIR, relativePath)).mtime);
 }
 
 function validateAndNormalizePost(filePath) {
@@ -858,7 +881,7 @@ ${items}
 }
 
 function getFileLastModifiedIso(relativePath) {
-  return formatIsoDate(fs.statSync(path.join(ROOT_DIR, relativePath)).mtime);
+  return getGitLastModifiedIso(relativePath);
 }
 
 function renderSitemap(posts, archivePages) {
