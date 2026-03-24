@@ -51,12 +51,12 @@ draft: false
 
 ## VibeSmith DMG 배포 링크 규칙
 
-사이트의 다운로드 버튼은 GitHub `aroido/vibesmith` 최신 릴리즈를 기준으로 동작합니다. GitLab은 mirror 전용입니다.
+사이트의 다운로드 버튼은 GitHub `aroido/vibesmith`의 최신 공개 릴리즈를 기준으로 동작합니다. 현재는 prerelease도 포함해서 가장 최근 릴리즈를 선택하며, GitLab은 mirror 전용입니다.
 
-- 최신 릴리즈 페이지:
-  - `https://github.com/aroido/vibesmith/releases/latest`
-- 사이트 스크립트는 GitHub Releases API(`https://api.github.com/repos/aroido/vibesmith/releases/latest`)로
-  최신 릴리즈를 조회해 `.dmg` 자산 링크를 자동으로 채웁니다.
+- 릴리즈 목록 페이지:
+  - `https://github.com/aroido/vibesmith/releases`
+- 사이트 스크립트는 GitHub Releases API(`https://api.github.com/repos/aroido/vibesmith/releases?per_page=10`)로
+  최신 non-draft 릴리즈를 조회해 `.dmg` 자산 링크를 자동으로 채웁니다.
 
 Homebrew 가이드:
 
