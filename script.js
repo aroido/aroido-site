@@ -9,13 +9,12 @@
   const DEFAULT_THEME_MODE = "auto";
   const SUPPORTED_THEME_MODES = ["auto", "light", "dark"];
   const SUPPORTED_LANGUAGES = ["en", "ko"];
-  const COMMUNITY_RELEASE_PERMALINK =
-    "https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest";
-  const COMMUNITY_RELEASE_API_URL =
-    "https://gitlab.com/api/v4/projects/aroido%2Fvibesmith-community/releases/permalink/latest";
-  const COMMUNITY_ARCHIVE_URL = COMMUNITY_RELEASE_PERMALINK;
-  const COMMUNITY_REPOSITORY_URL = "https://gitlab.com/aroido/vibesmith-community";
-  const COMMUNITY_LINK_CACHE_KEY = "aroido:community-links";
+  const COMMUNITY_RELEASE_PERMALINK = "https://github.com/aroido/vibesmith/releases/latest";
+  const COMMUNITY_RELEASE_API_URL = "https://api.github.com/repos/aroido/vibesmith/releases/latest";
+  const COMMUNITY_ARCHIVE_URL =
+    "https://github.com/aroido/vibesmith/releases/latest/download/VibeSmith.dmg";
+  const COMMUNITY_REPOSITORY_URL = "https://github.com/aroido/vibesmith";
+  const COMMUNITY_LINK_CACHE_KEY = "aroido:release-links:v2";
   const COMMUNITY_LINK_CACHE_TTL_MS = 30 * 60 * 1000;
   const COPY_FEEDBACK_DURATION_MS = 1800;
   const TALLY_POPUP_FORM_ID = "RG484l";
@@ -815,7 +814,7 @@
     applyCommunityLinks(COMMUNITY_RELEASE_PERMALINK, COMMUNITY_ARCHIVE_URL);
   }
 
-  function normalizeGitLabUrl(url) {
+  function normalizeReleaseUrl(url) {
     if (!isNonEmptyString(url)) {
       return null;
     }
@@ -824,27 +823,22 @@
       return url;
     }
 
-    if (url.startsWith("/")) {
-      return `https://gitlab.com${url}`;
-    }
-
     return null;
   }
 
   function getLatestPackageUrl(payload) {
-    const links = payload?.assets?.links;
-    if (!Array.isArray(links) || links.length === 0) {
+    const assets = payload?.assets;
+    if (!Array.isArray(assets) || assets.length === 0) {
       return null;
     }
 
-    const candidates = links
-      .map((link) => {
-        const name = String(link?.name || "");
-        const direct = normalizeGitLabUrl(link?.direct_asset_url);
-        const fallback = normalizeGitLabUrl(link?.url);
+    const candidates = assets
+      .map((asset) => {
+        const name = String(asset?.name || "");
+        const url = normalizeReleaseUrl(asset?.browser_download_url);
         return {
           name,
-          url: direct || fallback,
+          url,
         };
       })
       .filter((link) => isNonEmptyString(link.url) && isNonEmptyString(link.name));
@@ -877,7 +871,7 @@
       return null;
     }
 
-    const releaseUrl = normalizeGitLabUrl(payload?._links?.self) || COMMUNITY_RELEASE_PERMALINK;
+    const releaseUrl = normalizeReleaseUrl(payload?.html_url) || COMMUNITY_RELEASE_PERMALINK;
     const packageUrl = getLatestPackageUrl(payload) || COMMUNITY_ARCHIVE_URL;
 
     applyCommunityLinks(releaseUrl, packageUrl);
