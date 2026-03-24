@@ -166,6 +166,10 @@ function formatIsoDate(date) {
   return date.toISOString();
 }
 
+function formatSitemapDate(value) {
+  return String(value).slice(0, 10);
+}
+
 function getGitLastModifiedIso(relativePath) {
   try {
     const isoDate = execFileSync(
@@ -179,13 +183,13 @@ function getGitLastModifiedIso(relativePath) {
     ).trim();
 
     if (isoDate) {
-      return isoDate;
+      return formatSitemapDate(isoDate);
     }
   } catch (_error) {
     // Fall back to the filesystem timestamp outside of a git checkout.
   }
 
-  return formatIsoDate(fs.statSync(path.join(ROOT_DIR, relativePath)).mtime);
+  return formatSitemapDate(formatIsoDate(fs.statSync(path.join(ROOT_DIR, relativePath)).mtime));
 }
 
 function validateAndNormalizePost(filePath) {
