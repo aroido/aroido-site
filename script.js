@@ -9,10 +9,10 @@
   const DEFAULT_THEME_MODE = "auto";
   const SUPPORTED_THEME_MODES = ["auto", "light", "dark"];
   const SUPPORTED_LANGUAGES = ["en", "ko"];
-  const COMMUNITY_RELEASE_PERMALINK = "https://github.com/aroido/vibesmith/releases/latest";
-  const COMMUNITY_RELEASE_API_URL = "https://api.github.com/repos/aroido/vibesmith/releases/latest";
-  const COMMUNITY_ARCHIVE_URL =
-    "https://github.com/aroido/vibesmith/releases/latest/download/VibeSmith.dmg";
+  const COMMUNITY_RELEASE_PERMALINK = "https://github.com/aroido/vibesmith/releases";
+  const COMMUNITY_RELEASE_API_URL =
+    "https://api.github.com/repos/aroido/vibesmith/releases?per_page=10";
+  const COMMUNITY_ARCHIVE_URL = COMMUNITY_RELEASE_PERMALINK;
   const COMMUNITY_REPOSITORY_URL = "https://github.com/aroido/vibesmith";
   const COMMUNITY_LINK_CACHE_KEY = "aroido:release-links:v2";
   const COMMUNITY_LINK_CACHE_TTL_MS = 30 * 60 * 1000;
@@ -826,8 +826,16 @@
     return null;
   }
 
-  function getLatestPackageUrl(payload) {
-    const assets = payload?.assets;
+  function getLatestRelease(payload) {
+    if (Array.isArray(payload)) {
+      return payload.find((release) => isPlainObject(release) && release.draft !== true) || null;
+    }
+
+    return isPlainObject(payload) ? payload : null;
+  }
+
+  function getLatestPackageUrl(release) {
+    const assets = release?.assets;
     if (!Array.isArray(assets) || assets.length === 0) {
       return null;
     }
@@ -867,12 +875,13 @@
   }
 
   function applyLatestCommunityReleaseLinks(payload) {
-    if (!isPlainObject(payload)) {
+    const release = getLatestRelease(payload);
+    if (!release) {
       return null;
     }
 
-    const releaseUrl = normalizeReleaseUrl(payload?.html_url) || COMMUNITY_RELEASE_PERMALINK;
-    const packageUrl = getLatestPackageUrl(payload) || COMMUNITY_ARCHIVE_URL;
+    const releaseUrl = normalizeReleaseUrl(release?.html_url) || COMMUNITY_RELEASE_PERMALINK;
+    const packageUrl = getLatestPackageUrl(release) || releaseUrl;
 
     applyCommunityLinks(releaseUrl, packageUrl);
     return { releaseUrl, packageUrl };
@@ -885,7 +894,7 @@
         return null;
       }
       const payload = await response.json();
-      return isPlainObject(payload) ? payload : null;
+      return Array.isArray(payload) || isPlainObject(payload) ? payload : null;
     } catch (_error) {
       return null;
     }
