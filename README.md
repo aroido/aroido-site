@@ -51,22 +51,20 @@ draft: false
 
 ## VibeSmith DMG 배포 링크 규칙
 
-사이트의 다운로드 버튼은 `vibesmith-community` 최신 릴리즈를 기준으로 동작합니다.
+사이트의 다운로드 버튼은 GitHub `aroido/vibesmith` 최신 릴리즈를 기준으로 동작합니다. GitLab은 mirror 전용입니다.
 
 - 최신 릴리즈 페이지:
-  - `https://gitlab.com/aroido/vibesmith-community/-/releases/permalink/latest`
-- 사이트 스크립트는 GitLab API(`.../projects/aroido%2Fvibesmith-community/releases?per_page=1`)로
-  최신 릴리즈를 조회해 `.dmg`, `SHA256SUMS.txt` 자산 링크를 자동으로 채웁니다.
+  - `https://github.com/aroido/vibesmith/releases/latest`
+- 사이트 스크립트는 GitHub Releases API(`https://api.github.com/repos/aroido/vibesmith/releases/latest`)로
+  최신 릴리즈를 조회해 `.dmg` 자산 링크를 자동으로 채웁니다.
 
 Homebrew 가이드:
 
 ```bash
-brew tap aroido/vibesmith-community https://gitlab.com/aroido/vibesmith-community.git
-brew search --casks vibesmith
-brew install --cask vibesmith-community
+brew update
+brew tap aroido/vibesmith https://github.com/aroido/vibesmith
+brew install --cask aroido/vibesmith/vibesmith
 ```
-
-- 아직 cask가 없으면 Community Releases 경로로 설치합니다.
 
 ## 자동화 모드 분리
 
