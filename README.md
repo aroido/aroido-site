@@ -62,8 +62,16 @@ Homebrew 가이드:
 
 ```bash
 brew update
-brew tap aroido/vibesmith https://github.com/aroido/vibesmith
+brew tap aroido/vibesmith https://github.com/aroido/homebrew-vibesmith.git
 brew install --cask aroido/vibesmith/vibesmith
+```
+
+레거시 GitLab tap을 쓰던 환경은 먼저 아래처럼 retap 한다.
+
+```bash
+brew untap aroido/vibesmith
+brew tap aroido/vibesmith https://github.com/aroido/homebrew-vibesmith.git
+brew upgrade --cask --greedy aroido/vibesmith/vibesmith
 ```
 
 ## 자동화 모드 분리

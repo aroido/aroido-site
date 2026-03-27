@@ -125,6 +125,7 @@
     communityReleaseUrlNode: document.querySelector("[data-community-release-url]"),
     communityArchiveUrlNode: document.querySelector("[data-community-archive-url]"),
     communityRepositoryUrlNode: document.querySelector("[data-community-repository-url]"),
+    communityReleaseStatusNode: document.querySelector("[data-community-release-status]"),
     localizedMediaNodes: Array.from(
       document.querySelectorAll("[data-media-src-en], [data-media-src-en-light]")
     ),
@@ -152,6 +153,7 @@
     translations: fallbackTranslations,
     currentThemeMode: DEFAULT_THEME_MODE,
     debugLanguage: null,
+    communityReleaseMeta: null,
   };
   const copyFeedbackTimers = new WeakMap();
 
@@ -553,6 +555,9 @@
 
       const releaseUrl = parsed.releaseUrl;
       const packageUrl = parsed.packageUrl;
+      const tagName = isNonEmptyString(parsed.tagName) ? parsed.tagName : null;
+      const prerelease =
+        typeof parsed.prerelease === "boolean" ? parsed.prerelease : null;
       const fetchedAt = Number(parsed.fetchedAt);
 
       if (!isNonEmptyString(releaseUrl) || !isNonEmptyString(packageUrl)) {
@@ -567,13 +572,13 @@
         return null;
       }
 
-      return { releaseUrl, packageUrl };
+      return { releaseUrl, packageUrl, tagName, prerelease };
     } catch (_error) {
       return null;
     }
   }
 
-  function setCachedCommunityLinks(releaseUrl, packageUrl) {
+  function setCachedCommunityLinks(releaseUrl, packageUrl, tagName, prerelease) {
     try {
       if (!isNonEmptyString(releaseUrl) || !isNonEmptyString(packageUrl)) {
         return;
@@ -584,6 +589,8 @@
         JSON.stringify({
           releaseUrl,
           packageUrl,
+          tagName: isNonEmptyString(tagName) ? tagName : null,
+          prerelease: typeof prerelease === "boolean" ? prerelease : null,
           fetchedAt: Date.now(),
         })
       );
@@ -598,6 +605,22 @@
 
   function getCurrentLanguage() {
     return state.currentLanguage;
+  }
+
+  function setCommunityReleaseMeta(meta) {
+    if (!meta || !isNonEmptyString(meta.tagName)) {
+      state.communityReleaseMeta = null;
+      return;
+    }
+
+    state.communityReleaseMeta = {
+      tagName: meta.tagName,
+      prerelease: meta.prerelease === true,
+    };
+  }
+
+  function getCommunityReleaseMeta() {
+    return state.communityReleaseMeta;
   }
 
   function setCurrentThemeMode(themeMode) {
@@ -715,6 +738,41 @@
         node.textContent = value;
       }
     });
+  }
+
+  function formatCommunityReleaseStatus(language, meta) {
+    if (!meta || !isNonEmptyString(meta.tagName)) {
+      return (
+        getTranslation(language, "vibe_download_release_status_fallback") ||
+        "Latest public build: GitHub release channel, including prereleases."
+      );
+    }
+
+    const template = getTranslation(
+      language,
+      meta.prerelease
+        ? "vibe_download_release_status_prerelease"
+        : "vibe_download_release_status_release"
+    );
+
+    if (isNonEmptyString(template)) {
+      return template.replace("{tag}", meta.tagName);
+    }
+
+    return meta.prerelease
+      ? `Latest public build: ${meta.tagName} prerelease.`
+      : `Latest public build: ${meta.tagName}.`;
+  }
+
+  function updateCommunityReleaseStatus(meta = getCommunityReleaseMeta()) {
+    if (!dom.communityReleaseStatusNode) {
+      return;
+    }
+
+    dom.communityReleaseStatusNode.textContent = formatCommunityReleaseStatus(
+      getCurrentLanguage(),
+      meta
+    );
   }
 
   function updateAriaLabelNodes(language) {
@@ -882,9 +940,13 @@
 
     const releaseUrl = normalizeReleaseUrl(release?.html_url) || COMMUNITY_RELEASE_PERMALINK;
     const packageUrl = getLatestPackageUrl(release) || releaseUrl;
+    const tagName = isNonEmptyString(release?.tag_name) ? release.tag_name : null;
+    const prerelease = release?.prerelease === true;
 
     applyCommunityLinks(releaseUrl, packageUrl);
-    return { releaseUrl, packageUrl };
+    setCommunityReleaseMeta({ tagName, prerelease });
+    updateCommunityReleaseStatus();
+    return { releaseUrl, packageUrl, tagName, prerelease };
   }
 
   async function fetchLatestCommunityReleasePayload() {
@@ -908,6 +970,11 @@
     const cached = getCachedCommunityLinks();
     if (cached) {
       applyCommunityLinks(cached.releaseUrl, cached.packageUrl);
+      setCommunityReleaseMeta({
+        tagName: cached.tagName,
+        prerelease: cached.prerelease === true,
+      });
+      updateCommunityReleaseStatus();
       return;
     }
 
@@ -915,7 +982,12 @@
     if (payload) {
       const latestLinks = applyLatestCommunityReleaseLinks(payload);
       if (latestLinks) {
-        setCachedCommunityLinks(latestLinks.releaseUrl, latestLinks.packageUrl);
+        setCachedCommunityLinks(
+          latestLinks.releaseUrl,
+          latestLinks.packageUrl,
+          latestLinks.tagName,
+          latestLinks.prerelease
+        );
       }
     }
   }
@@ -1360,6 +1432,7 @@
 
   function reapplyCurrentLanguage() {
     applyLanguage(getCurrentLanguage(), { syncQuery: false });
+    updateCommunityReleaseStatus();
   }
 
   function runSynchronousBootstrap() {
