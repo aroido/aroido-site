@@ -112,7 +112,7 @@
             <h1 data-i18n="vibe_title">Audit AI coding repo drift before it spreads.</h1>
             <p data-i18n="vibe_description">
               VibeSmith gives multi-repo teams one place to review active components, dependency risk, and context-heavy
-              reuse across Cursor and Claude Code workflows. It is open-source on GitHub and free to install today.
+              reuse across Cursor and Claude Code workflows. It is open-source on GitHub, with prerelease installs available today.
             </p>
             <p class="hero-hook" data-i18n="vibe_hero_hook">If kickoff quality drops after repo three, start here.</p>
             <div class="hero-actions vibe-hero-actions">
@@ -630,7 +630,7 @@
                 data-track-event="download_cta_click"
                 data-track-label="vibe_download_archive"
               >
-                Download VibeSmith.dmg
+                Download latest GitHub DMG
               </a>
               <a
                 class="btn btn-ghost"
@@ -643,13 +643,16 @@
                 Open GitHub repository
               </a>
             </div>
+            <p class="download-note" data-community-release-status>
+              Latest public build: GitHub release channel, including prereleases.
+            </p>
             <p class="download-note" data-i18n="vibe_download_note">
-              GitHub is the canonical public release channel. GitLab is maintained as a mirror only.
+              GitHub is the canonical public release channel. GitLab remains a legacy mirror only.
             </p>
           </article>
           <article class="route-card">
             <h3 data-i18n="vibe_download_brew_title">Option B. Homebrew Guide</h3>
-            <p data-i18n="vibe_download_brew_desc">The Homebrew tap and cask are live on GitHub. Install with Homebrew, or use the greedy upgrade path if VibeSmith is already on this Mac.</p>
+            <p data-i18n="vibe_download_brew_desc">The GitHub Homebrew tap tracks the same public release channel. Install with Homebrew, or retap first if you used the old GitLab path.</p>
             <div class="download-command-head">
               <p class="mini-label" data-i18n="vibe_download_brew_label">Install and upgrade</p>
               <button
@@ -664,14 +667,14 @@
               </button>
             </div>
             <pre id="vibe-brew-command" class="download-command"><code data-i18n="vibe_download_brew_command">brew update
-brew tap aroido/vibesmith https://github.com/aroido/vibesmith
+brew tap aroido/vibesmith https://github.com/aroido/homebrew-vibesmith.git
 brew install --cask aroido/vibesmith/vibesmith
 
 # If an older version is already installed:
 brew update
 brew upgrade --cask --greedy aroido/vibesmith/vibesmith</code></pre>
             <p class="download-note" data-i18n="vibe_download_brew_note">
-              Prefer this path for Homebrew installs and upgrades. GitHub Releases stay available if you want the direct package instead.
+              Prefer this path for Homebrew installs and upgrades. If you used the legacy GitLab tap, run `brew untap aroido/vibesmith` before retapping.
             </p>
           </article>
         </div>
