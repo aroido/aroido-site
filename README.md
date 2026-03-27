@@ -53,6 +53,14 @@ draft: false
 
 사이트의 다운로드 버튼은 GitHub `aroido/vibesmith`의 최신 공개 릴리즈를 기준으로 동작합니다. 현재는 prerelease도 포함해서 가장 최근 릴리즈를 선택하며, GitLab은 mirror 전용입니다.
 
+## Vercel 배포 기준
+
+`aroido-site`의 Vercel 프로덕션 배포 source of truth는 GitHub `aroido/aroido-site`의 `main` 브랜치입니다.
+
+- GitHub `main` 머지 -> Vercel 프로덕션 배포 기준
+- GitLab remote는 필요하면 mirror 또는 내부 워크플로우용으로 유지
+- 라이브 배포 이슈를 볼 때는 Vercel 프로젝트의 최신 배포가 GitHub `main` 커밋을 가리키는지 확인
+
 - 릴리즈 목록 페이지:
   - `https://github.com/aroido/vibesmith/releases`
 - 사이트 스크립트는 GitHub Releases API(`https://api.github.com/repos/aroido/vibesmith/releases?per_page=10`)로
