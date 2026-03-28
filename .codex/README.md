@@ -6,7 +6,8 @@
 
 - 웹 개발을 `Spec-Driven`으로 일관되게 수행한다.
 - Work Session 기반으로 여러 이슈를 안전하게 연속 처리한다.
-- GitLab + `glab` + 로컬 검증(`./scripts/ai-verify`)을 표준 파이프라인으로 고정한다.
+- GitHub + `gh` + 로컬 검증(`./scripts/ai-verify`)을 기본 파이프라인으로 고정한다.
+- GitLab + `glab`는 mirror 상태 확인 또는 내부 워크플로우가 필요할 때만 보조로 사용한다.
 
 ## 구성 요소
 
@@ -20,7 +21,7 @@
 ## 브랜치 원칙
 
 - 모든 태스크는 `1 task = 1 branch/worktree`를 따른다.
-- 완료 경로는 `branch -> commit -> push -> MR -> merge` 순서를 강제한다.
+- 완료 경로는 `branch -> commit -> push -> GitHub PR -> merge` 순서를 기본으로 강제한다.
 - 보호 브랜치 직접 push는 금지한다.
 
 ## 현재 활성 컴포넌트
