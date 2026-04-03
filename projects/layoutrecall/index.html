@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" data-title-key="layout_seo_title" data-description-key="layout_meta_description">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LayoutRecall | Restore Scrambled macOS Monitor Layouts</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="LayoutRecall is the macOS menu bar app for restoring saved monitor layouts after sleep, wake, or dock reconnect sends them back wrong."
+    />
+    <link rel="canonical" href="https://aroido.com/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/layoutrecall/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/layoutrecall/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="LayoutRecall | Restore Scrambled macOS Monitor Layouts" />
+    <meta
+      property="og:description"
+      content="LayoutRecall is the macOS menu bar app for restoring saved monitor layouts after sleep, wake, or dock reconnect sends them back wrong."
+    />
+    <meta property="og:url" content="https://aroido.com/projects/layoutrecall/" />
+    <meta property="og:image" content="https://aroido.com/assets/layoutrecall/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LayoutRecall | Restore Scrambled macOS Monitor Layouts" />
+    <meta
+      name="twitter:description"
+      content="LayoutRecall is the macOS menu bar app for restoring saved monitor layouts after sleep, wake, or dock reconnect sends them back wrong."
+    />
+    <meta name="twitter:image" content="https://aroido.com/assets/layoutrecall/social-card.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LayoutRecall",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "macOS",
+        "url": "https://aroido.com/projects/layoutrecall/",
+        "codeRepository": "https://github.com/aroido/layoutrecall",
+        "downloadUrl": "https://github.com/aroido/layoutrecall/releases",
+        "inLanguage": "en-US",
+        "description": "A macOS menu bar app that restores saved monitor layouts after sleep, wake, or reconnect when the display match is confident enough.",
+        "featureList": [
+          "Save one or more monitor layout profiles",
+          "Restore automatically only on strong matches",
+          "Use manual recovery controls when confidence is low",
+          "See diagnostics and dependency state from the menu bar"
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">Skip to content</a>
+    <main id="main-content" class="site-shell">
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="aria_main_nav">
+          <a href="/" data-i18n="nav_home">Home</a>
+          <a href="/projects/" data-nav-parent-current="true" data-i18n="nav_projects">Products</a>
+          <a href="/blog/" data-i18n="nav_blog">Blog</a>
+          <a href="/team/" data-i18n="nav_team">Team</a>
+          <a href="/contact/" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">Contact</a>
+        </nav>
+        <div class="header-controls">
+          <nav class="header-context" aria-label="Breadcrumb" data-i18n-aria-label="aria_breadcrumb">
+            <span class="header-context-mark" aria-hidden="true"></span>
+            <a href="/projects/" data-i18n="crumb_product">Products</a>
+            <span class="header-context-sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="crumb_layoutrecall">LayoutRecall detail</span>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">Dark</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="page-hero reveal" data-reveal>
+        <div class="page-hero-grid">
+          <div class="page-hero-copy">
+            <p class="kicker" data-i18n="layout_kicker">LayoutRecall</p>
+            <h1 data-i18n="layout_title">Restore the monitor layout macOS keeps scrambling.</h1>
+            <p data-i18n="layout_description">
+              LayoutRecall is the open-source macOS menu bar app for MacBook + dock + multi-display desks. Save a
+              known-good layout once, then bring it back after sleep, wake, or reconnect.
+            </p>
+            <p class="hero-hook" data-i18n="layout_hook">Automatic restore stays conservative. Lower-confidence cases remain manual on purpose.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#download" data-i18n="layout_cta_primary" data-track-event="download_cta_click" data-track-label="layout_open_download">Open release and install</a>
+              <a class="btn btn-ghost" href="#proof" data-i18n="layout_cta_secondary" data-track-event="hero_cta_click" data-track-label="layout_open_proof">See visual proof</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/layoutrecall" target="_blank" rel="noreferrer" data-i18n="layout_cta_github" data-track-event="hero_cta_click" data-track-label="layout_open_github">Open the GitHub repository</a>
+            </div>
+            <div class="hero-proof-row">
+              <span class="status-pill" data-i18n="layout_status_pill_1">macOS menu bar app</span>
+              <span class="status-pill" data-i18n="layout_status_pill_2">GitHub releases + Homebrew</span>
+              <span class="status-pill" data-i18n="layout_status_pill_3">Confidence-aware restore</span>
+            </div>
+          </div>
+          <aside class="page-hero-proof" aria-label="LayoutRecall preview" data-i18n-aria-label="aria_layout_hero_visual">
+            <p class="mini-label" data-i18n="layout_hero_visual_eyebrow">KNOWN-GOOD DESK</p>
+            <h2 data-i18n="layout_hero_visual_title">Save one desk you trust, then bring it back safely</h2>
+            <p data-i18n="layout_hero_visual_desc">
+              LayoutRecall is built for the narrow problem of getting a familiar multi-display desk back after macOS
+              returns it in the wrong order or position.
+            </p>
+            <div class="page-hero-proof-media">
+              <img
+                class="page-hero-proof-image"
+                src="/assets/layoutrecall/readme-hero.png"
+                alt=""
+                width="1714"
+                height="1214"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <ul class="page-hero-proof-list">
+              <li data-i18n="layout_hero_visual_point_1">Save a known-good layout profile from the current desk</li>
+              <li data-i18n="layout_hero_visual_point_2">Restore automatically only when the live display match is strong</li>
+              <li data-i18n="layout_hero_visual_point_3">Keep manual recovery controls visible when the app refuses to guess</li>
+            </ul>
+            <p class="page-hero-proof-caption" data-i18n="layout_hero_visual_caption">Current public product screen from the open-source build.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_problem_eyebrow">WHEN MACOS GETS IT WRONG</p>
+          <h2 data-i18n="layout_problem_title">What LayoutRecall is meant to fix</h2>
+          <p data-i18n="layout_problem_desc">The app is intentionally narrow: restore a desk you already trust instead of pretending to be a full display-management suite.</p>
+        </div>
+        <div class="metric-grid proof-strip-grid">
+          <article class="metric-card proof-strip-card">
+            <p class="mini-label" data-i18n="layout_problem_1_label">SLEEP / WAKE</p>
+            <h3 data-i18n="layout_problem_1_title">Identical monitors return in the wrong order</h3>
+            <p data-i18n="layout_problem_1_body">Restore a saved profile when the connected display set strongly matches what you saved before.</p>
+          </article>
+          <article class="metric-card proof-strip-card proof-strip-card-accent">
+            <p class="mini-label" data-i18n="layout_problem_2_label">RECONNECT</p>
+            <h3 data-i18n="layout_problem_2_title">Dock reconnect changes the main display or origin</h3>
+            <p data-i18n="layout_problem_2_body">Bring back the known arrangement instead of rebuilding the desk by hand after every reconnect.</p>
+          </article>
+          <article class="metric-card proof-strip-card">
+            <p class="mini-label" data-i18n="layout_problem_3_label">LOW CONFIDENCE</p>
+            <h3 data-i18n="layout_problem_3_title">Automatic restore would be risky</h3>
+            <p data-i18n="layout_problem_3_body">The app stops short, shows diagnostics, and keeps recovery manual when the match is not strong enough.</p>
+          </article>
+          <article class="metric-card proof-strip-card proof-strip-card-accent">
+            <p class="mini-label" data-i18n="layout_problem_4_label">RIGHT NOW</p>
+            <h3 data-i18n="layout_problem_4_title">You want direct recovery controls</h3>
+            <p data-i18n="layout_problem_4_body">Use Restore Now, Apply Layout, Show Numbers, and related controls from the menu bar when you want control.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_fit_eyebrow">FIT</p>
+          <h2 data-i18n="layout_fit_title">Who this product is for</h2>
+          <p data-i18n="layout_fit_desc">LayoutRecall is strongest for people who already know the exact monitor layout they want back.</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <p class="mini-label" data-i18n="layout_fit_1_label">DESK SETUP</p>
+            <h3 data-i18n="layout_fit_1_title">MacBook + dock + 2+ external displays</h3>
+            <p data-i18n="layout_fit_1_body">It is built for repeat desks where the arrangement is stable but macOS keeps bringing displays back in the wrong place.</p>
+          </article>
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="layout_fit_2_label">TRUST</p>
+            <h3 data-i18n="layout_fit_2_title">People who want recovery without blind guesses</h3>
+            <p data-i18n="layout_fit_2_body">Automatic restore only runs on confident matches. When confidence is weak, the app stays transparent and leaves the final move to you.</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="layout_fit_3_label">BOUNDARY</p>
+            <h3 data-i18n="layout_fit_3_title">Not a giant display-management suite</h3>
+            <p data-i18n="layout_fit_3_body">If you want a magical answer for every four-plus-display edge case, this product is intentionally narrower than that promise.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="proof" class="section section-media reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_media_eyebrow">VISUAL PROOF</p>
+          <h2 data-i18n="layout_media_title">Real UI proof, not a vague utility claim</h2>
+          <p data-i18n="layout_media_desc">The current public build shows diagnostics, profiles, and recovery controls directly in the product instead of hiding them behind guesswork.</p>
+          <ul class="proof-chip-row" aria-label="LayoutRecall proof signals" data-i18n-aria-label="aria_layout_media_proof">
+            <li class="proof-chip" data-i18n="layout_media_chip_1">Confidence-aware restore</li>
+            <li class="proof-chip" data-i18n="layout_media_chip_2">Diagnostics kept visible</li>
+            <li class="proof-chip" data-i18n="layout_media_chip_3">Profiles and manual fallback</li>
+          </ul>
+        </div>
+        <div class="media-proof-grid">
+          <figure class="media-card media-card-hero media-live media-proof-hero">
+            <img
+              class="media-visual"
+              src="/assets/layoutrecall/layoutrecall-demo.gif"
+              alt=""
+              width="1548"
+              height="966"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-overlay media-placeholder">
+              <span class="media-tag" data-i18n="layout_media_demo_tag">Short demo</span>
+              <strong data-i18n="layout_media_demo_title">Watch the product move through restore, diagnostics, and fallback controls</strong>
+              <p data-i18n="layout_media_demo_desc">The demo follows the real product story: a desk drifts, a profile matches, and the app either restores safely or leaves recovery manual on purpose.</p>
+            </div>
+            <figcaption data-i18n="layout_media_demo_caption">Current public demo from the LayoutRecall release asset set.</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              class="media-visual"
+              src="/assets/layoutrecall/readme-feature-trust.png"
+              alt=""
+              width="1714"
+              height="1214"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder">
+              <span class="media-tag" data-i18n="layout_media_trust_tag">Trust before restore</span>
+              <strong data-i18n="layout_media_trust_title">See confidence, dependency state, and restore evidence first</strong>
+            </div>
+            <figcaption data-i18n="layout_media_trust_caption">The menu bar UI keeps diagnostics close so users can see what happened or why the app refused to act.</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              class="media-visual"
+              src="/assets/layoutrecall/readme-feature-profiles.png"
+              alt=""
+              width="1714"
+              height="1214"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder">
+              <span class="media-tag" data-i18n="layout_media_profiles_tag">Profiles</span>
+              <strong data-i18n="layout_media_profiles_title">Save multiple desks and keep manual recovery close by</strong>
+            </div>
+            <figcaption data-i18n="layout_media_profiles_caption">Profiles, startup behavior, and manual actions stay together so fallback remains predictable.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="download" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_download_eyebrow">INSTALL</p>
+          <h2 data-i18n="layout_download_title">Try the signed app or install with Homebrew</h2>
+          <p data-i18n="layout_download_desc">GitHub Releases and the Homebrew cask are the fastest public paths. The product stays honest about its dependency on displayplacer for actual restore commands.</p>
+        </div>
+        <div class="download-grid">
+          <article class="route-card highlight">
+            <h3 data-i18n="layout_download_release_title">Option A. GitHub Releases</h3>
+            <p data-i18n="layout_download_release_desc">Download the signed DMG, drag LayoutRecall into Applications, then save a baseline layout from the menu bar.</p>
+            <a class="download-path" href="https://github.com/aroido/layoutrecall/releases" target="_blank" rel="noreferrer">https://github.com/aroido/layoutrecall/releases</a>
+            <div class="hero-actions download-actions">
+              <a class="btn btn-primary" href="https://github.com/aroido/layoutrecall/releases" target="_blank" rel="noreferrer" data-i18n="layout_download_release_cta" data-track-event="download_cta_click" data-track-label="layout_download_release_page">Open latest GitHub release</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/layoutrecall" target="_blank" rel="noreferrer" data-i18n="layout_download_repo_cta" data-track-event="hero_cta_click" data-track-label="layout_download_repo">Open GitHub repository</a>
+            </div>
+            <p class="download-note" data-i18n="layout_download_release_note">If displayplacer is missing, LayoutRecall can surface that dependency state and guide the install flow before restore commands run.</p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="layout_download_brew_title">Option B. Homebrew</h3>
+            <p data-i18n="layout_download_brew_desc">Install from the public cask if you prefer the Homebrew path.</p>
+            <div class="download-command-head">
+              <p class="mini-label" data-i18n="layout_download_brew_label">Install command</p>
+              <button
+                class="copy-command-btn"
+                type="button"
+                data-copy-target="layout-brew-command"
+                data-i18n="copy_command"
+                data-track-event="copy_command_click"
+                data-track-label="layout_copy_brew_command"
+              >
+                Copy command
+              </button>
+            </div>
+            <pre id="layout-brew-command" class="download-command"><code data-i18n="layout_download_brew_command">brew install --cask aroido/layoutrecall/layoutrecall</code></pre>
+            <p class="download-note" data-i18n="layout_download_brew_note">Restoring a saved layout still depends on displayplacer being available on PATH.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-panel reveal" data-reveal>
+        <h2 data-i18n="layout_contact_title">Start with one desk you want back.</h2>
+        <p data-i18n="layout_contact_desc">LayoutRecall is most convincing when you already have a known-good desk layout and want a safer way to recover it after macOS drifts.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download" data-i18n="layout_cta_primary" data-track-event="download_cta_click" data-track-label="layout_contact_open_download">Open release and install</a>
+          <a class="btn btn-ghost" href="https://github.com/aroido/layoutrecall" target="_blank" rel="noreferrer" data-i18n="layout_cta_github" data-track-event="hero_cta_click" data-track-label="layout_contact_open_github">Open the GitHub repository</a>
+          <a class="btn btn-ghost" href="/projects/" data-i18n="layout_contact_secondary" data-track-event="hero_cta_click" data-track-label="layout_contact_open_products">Back to products</a>
+        </div>
+      </section>
+    </main>
+    <script src="../../script.js"></script>
+  </body>
+</html>

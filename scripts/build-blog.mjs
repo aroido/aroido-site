@@ -497,7 +497,7 @@ function renderTopbar(currentSection) {
         </a>
         <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="aria_main_nav">
           <a href="/" data-i18n="nav_home">Home</a>
-          <a href="/projects/" data-i18n="nav_projects">Product</a>
+          <a href="/projects/" data-i18n="nav_projects">Products</a>
           <a href="/blog/" data-i18n="nav_blog"${blogCurrent}>Blog</a>
           <a href="/team/" data-i18n="nav_team">Team</a>
           <a href="/contact/" data-i18n="nav_contact">Contact</a>
@@ -721,10 +721,10 @@ ${renderPagination(pageNumber, totalPages)}
       <section class="contact-panel">
         <h2 data-i18n="blog_footer_title">Need product context before you read deeper?</h2>
         <p data-i18n="blog_footer_description">
-          Start with the current public product page, then come back here for the reasoning and release notes behind the work.
+          Start with the products overview or a specific public product page, then come back here for the reasoning and release notes behind the work.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/projects/vibesmith/" data-i18n="blog_footer_primary">See VibeSmith</a>
+          <a class="btn btn-primary" href="/projects/" data-i18n="blog_footer_primary">See products</a>
           <a class="btn btn-ghost" href="/contact/" data-i18n="blog_footer_secondary">Contact Aroido</a>
         </div>
       </section>`;
@@ -907,6 +907,10 @@ function renderSitemap(posts, archivePages) {
     {
       loc: "/projects/vibesmith/",
       lastmod: getFileLastModifiedIso(path.join("projects", "vibesmith", "index.html")),
+    },
+    {
+      loc: "/projects/layoutrecall/",
+      lastmod: getFileLastModifiedIso(path.join("projects", "layoutrecall", "index.html")),
     },
     { loc: "/team/", lastmod: getFileLastModifiedIso(path.join("team", "index.html")) },
     { loc: "/contact/", lastmod: getFileLastModifiedIso(path.join("contact", "index.html")) },

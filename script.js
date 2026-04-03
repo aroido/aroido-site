@@ -22,24 +22,27 @@
 
   const fallbackTranslations = {
     en: {
-      page_title: "Aroido | Reduce AI Coding Repo Drift Across Teams",
+      page_title: "Aroido | AI-Native Software Across Work, Desktop, and Play",
       meta_description:
-        "Aroido builds AI coding systems for teams running multiple repos. Start with VibeSmith to audit repo drift, hidden dependencies, and context waste before they slow delivery.",
-      home_seo_title: "Aroido | Reduce AI Coding Repo Drift Across Teams",
+        "Aroido is an AI-native product studio shipping focused software across developer workflows, desktop utilities, and experimental play. Public now: VibeSmith and LayoutRecall.",
+      home_seo_title: "Aroido | AI-Native Software Across Work, Desktop, and Play",
       home_meta_description:
-        "Aroido builds AI coding systems for teams running multiple repos. Start with VibeSmith to audit repo drift, hidden dependencies, and context waste before they slow delivery.",
-      projects_seo_title: "Aroido Product | VibeSmith for Multi-Repo AI Teams",
+        "Aroido is an AI-native product studio shipping focused software across developer workflows, desktop utilities, and experimental play. Public now: VibeSmith and LayoutRecall.",
+      projects_seo_title: "Aroido Products | Public Software and Labs in Motion",
       projects_meta_description:
-        "VibeSmith is Aroido's current public product for multi-repo AI teams. Audit repo drift, hidden dependencies, and context-heavy setup before they slow delivery.",
+        "Browse Aroido's public products and labs. Public now: VibeSmith for AI coding repo drift and LayoutRecall for scrambled macOS monitor desks.",
       vibe_seo_title: "VibeSmith | Audit AI Coding Repo Drift Before It Spreads",
       vibe_meta_description:
         "VibeSmith helps multi-repo AI teams audit active components, hidden dependencies, context waste, and setup drift across Cursor and Claude Code workflows.",
-      team_seo_title: "Aroido Team | Beliefs, Builders, and Current Focus",
+      team_seo_title: "Aroido Team | Beliefs, Builders, and Product Direction",
       team_meta_description:
-        "Meet the team behind Aroido and VibeSmith: why we exist, what we believe, and what we are building now.",
-      contact_seo_title: "Contact Aroido | Shared Inquiry and Pro Updates",
+        "Meet the team behind Aroido: why we build this way, what we believe, and how we ship products across multiple categories.",
+      contact_seo_title: "Contact Aroido | Products, Labs, and Collaboration",
       contact_meta_description:
-        "Use Aroido's shared inquiry form for product questions and VibeSmith Pro updates, with direct builder inboxes as fallback.",
+        "Use Aroido's shared inquiry form for product questions, lab discussions, and collaboration requests, with direct builder inboxes as fallback.",
+      layout_seo_title: "LayoutRecall | Restore Scrambled macOS Monitor Layouts",
+      layout_meta_description:
+        "LayoutRecall is the macOS menu bar app for restoring saved monitor layouts after sleep, wake, or dock reconnect sends them back wrong.",
       hello_alert: "Aroido readiness check is complete.",
       nav_blog: "Blog",
       theme_auto: "Auto",
@@ -66,24 +69,27 @@
       blog_posts_empty: "No posts published yet.",
     },
     ko: {
-      page_title: "Aroido | AI 코딩 레포 드리프트를 줄이는 팀용 시스템",
+      page_title: "Aroido | 일, 데스크톱, 놀이를 가로지르는 AI-네이티브 소프트웨어",
       meta_description:
-        "Aroido는 여러 AI 코딩 레포를 운영하는 팀을 위한 시스템을 만듭니다. VibeSmith로 레포 드리프트, 숨은 종속성, 컨텍스트 낭비를 딜리버리 전에 먼저 진단하세요.",
-      home_seo_title: "Aroido | AI 코딩 레포 드리프트를 줄이는 팀용 시스템",
+        "Aroido는 개발 워크플로우, 데스크톱 유틸리티, 실험적 놀이를 가로질러 집중도 높은 소프트웨어를 만드는 AI-네이티브 프로덕트 스튜디오입니다. 현재 공개 제품은 VibeSmith와 LayoutRecall입니다.",
+      home_seo_title: "Aroido | 일, 데스크톱, 놀이를 가로지르는 AI-네이티브 소프트웨어",
       home_meta_description:
-        "Aroido는 여러 AI 코딩 레포를 운영하는 팀을 위한 시스템을 만듭니다. VibeSmith로 레포 드리프트, 숨은 종속성, 컨텍스트 낭비를 딜리버리 전에 먼저 진단하세요.",
-      projects_seo_title: "Aroido 프로덕트 | 멀티 레포 AI 팀용 VibeSmith",
+        "Aroido는 개발 워크플로우, 데스크톱 유틸리티, 실험적 놀이를 가로질러 집중도 높은 소프트웨어를 만드는 AI-네이티브 프로덕트 스튜디오입니다. 현재 공개 제품은 VibeSmith와 LayoutRecall입니다.",
+      projects_seo_title: "Aroido 제품 | 공개 소프트웨어와 움직이는 Labs",
       projects_meta_description:
-        "VibeSmith는 멀티 레포 AI 팀을 위한 Aroido의 현재 공개 제품입니다. 레포 드리프트, 숨은 종속성, 컨텍스트가 무거운 세팅을 딜리버리 전에 먼저 진단하세요.",
+        "Aroido의 공개 제품과 Labs를 둘러보세요. 현재 공개 제품은 AI 코딩 레포 드리프트용 VibeSmith와 macOS 모니터 데스크 복구용 LayoutRecall입니다.",
       vibe_seo_title: "VibeSmith | AI 코딩 레포 드리프트를 번지기 전에 진단",
       vibe_meta_description:
         "VibeSmith는 멀티 레포 AI 팀이 Cursor·Claude Code 워크플로우에서 활성 컴포넌트, 숨은 종속성, 컨텍스트 낭비, 세팅 드리프트를 진단하도록 돕습니다.",
-      team_seo_title: "Aroido 팀 | 믿음, 빌더, 현재 공개 포커스",
+      team_seo_title: "Aroido 팀 | 믿음, 빌더, 제품 방향",
       team_meta_description:
-        "Aroido와 VibeSmith를 만드는 팀을 소개합니다. 왜 존재하는지, 무엇을 믿는지, 지금 무엇을 만들고 있는지 확인할 수 있습니다.",
-      contact_seo_title: "Aroido 문의 | 공유 문의 및 Pro 업데이트",
+        "Aroido 팀을 소개합니다. 왜 이런 방식으로 만드는지, 무엇을 믿는지, 여러 카테고리의 제품을 어떻게 출하하는지 확인할 수 있습니다.",
+      contact_seo_title: "Aroido 문의 | 제품, Labs, 협업",
       contact_meta_description:
-        "제품 문의와 VibeSmith Pro 업데이트 요청은 Aroido 공유 폼으로 받고, 필요할 때만 Bigcat/Kkachi 직접 메일을 사용하세요.",
+        "제품 질문, Labs 논의, 협업 요청은 Aroido 공용 폼으로 받고, 필요할 때만 빌더 개인 메일을 fallback으로 사용합니다.",
+      layout_seo_title: "LayoutRecall | 흐트러진 macOS 모니터 레이아웃 복구",
+      layout_meta_description:
+        "LayoutRecall은 슬립, 웨이크, 도크 재연결 뒤에 잘못 돌아온 저장된 모니터 레이아웃을 복구하는 macOS 메뉴바 앱입니다.",
       hello_alert: "Aroido 준비 상태 점검이 완료되었습니다.",
       nav_blog: "블로그",
       theme_auto: "시스템",
