@@ -912,6 +912,10 @@ function renderSitemap(posts, archivePages) {
       loc: "/projects/layoutrecall/",
       lastmod: getFileLastModifiedIso(path.join("projects", "layoutrecall", "index.html")),
     },
+    {
+      loc: "/projects/tokenmon/",
+      lastmod: getFileLastModifiedIso(path.join("projects", "tokenmon", "index.html")),
+    },
     { loc: "/team/", lastmod: getFileLastModifiedIso(path.join("team", "index.html")) },
     { loc: "/contact/", lastmod: getFileLastModifiedIso(path.join("contact", "index.html")) },
     { loc: "/blog/", lastmod: archivePages[0]?.pagePosts[0]?.isoDate || latestPostIso },

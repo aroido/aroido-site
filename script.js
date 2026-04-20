@@ -24,13 +24,13 @@
     en: {
       page_title: "Aroido | AI-Native Software Across Work, Desktop, and Play",
       meta_description:
-        "Aroido is an AI-native product studio shipping focused software across developer workflows, desktop utilities, and experimental play. Public now: VibeSmith and LayoutRecall.",
+        "Aroido is an AI-native product studio shipping focused software across developer workflows, desktop utilities, and experimental play. Public now: VibeSmith, LayoutRecall, and Tokenmon.",
       home_seo_title: "Aroido | AI-Native Software Across Work, Desktop, and Play",
       home_meta_description:
-        "Aroido is an AI-native product studio shipping focused software across developer workflows, desktop utilities, and experimental play. Public now: VibeSmith and LayoutRecall.",
+        "Aroido is an AI-native product studio shipping focused software across developer workflows, desktop utilities, and experimental play. Public now: VibeSmith, LayoutRecall, and Tokenmon.",
       projects_seo_title: "Aroido Products | Public Software and Labs in Motion",
       projects_meta_description:
-        "Browse Aroido's public products and labs. Public now: VibeSmith for AI coding repo drift and LayoutRecall for scrambled macOS monitor desks.",
+        "Browse Aroido's public products and labs. Public now: VibeSmith for AI coding repo drift, LayoutRecall for scrambled macOS monitor desks, and Tokenmon for quiet AI coding collection loops.",
       vibe_seo_title: "VibeSmith | Audit AI Coding Repo Drift Before It Spreads",
       vibe_meta_description:
         "VibeSmith helps multi-repo AI teams audit active components, hidden dependencies, context waste, and setup drift across Cursor and Claude Code workflows.",
@@ -43,6 +43,9 @@
       layout_seo_title: "LayoutRecall | Restore Scrambled macOS Monitor Layouts",
       layout_meta_description:
         "LayoutRecall is the macOS menu bar app for restoring saved monitor layouts after sleep, wake, or dock reconnect sends them back wrong.",
+      tokenmon_seo_title: "Tokenmon | AI Coding Creature Encounters in the Mac Menu Bar",
+      tokenmon_meta_description:
+        "Tokenmon is a local-first macOS menu bar companion that turns Claude Code and Codex usage into quiet creature encounters and a local Dex.",
       hello_alert: "Aroido readiness check is complete.",
       nav_blog: "Blog",
       theme_auto: "Auto",
@@ -71,13 +74,13 @@
     ko: {
       page_title: "Aroido | 일, 데스크톱, 놀이를 가로지르는 AI-네이티브 소프트웨어",
       meta_description:
-        "Aroido는 개발 워크플로우, 데스크톱 유틸리티, 실험적 놀이를 가로질러 집중도 높은 소프트웨어를 만드는 AI-네이티브 프로덕트 스튜디오입니다. 현재 공개 제품은 VibeSmith와 LayoutRecall입니다.",
+        "Aroido는 개발 워크플로우, 데스크톱 유틸리티, 실험적 놀이를 가로질러 집중도 높은 소프트웨어를 만드는 AI-네이티브 프로덕트 스튜디오입니다. 현재 공개 제품은 VibeSmith, LayoutRecall, Tokenmon입니다.",
       home_seo_title: "Aroido | 일, 데스크톱, 놀이를 가로지르는 AI-네이티브 소프트웨어",
       home_meta_description:
-        "Aroido는 개발 워크플로우, 데스크톱 유틸리티, 실험적 놀이를 가로질러 집중도 높은 소프트웨어를 만드는 AI-네이티브 프로덕트 스튜디오입니다. 현재 공개 제품은 VibeSmith와 LayoutRecall입니다.",
+        "Aroido는 개발 워크플로우, 데스크톱 유틸리티, 실험적 놀이를 가로질러 집중도 높은 소프트웨어를 만드는 AI-네이티브 프로덕트 스튜디오입니다. 현재 공개 제품은 VibeSmith, LayoutRecall, Tokenmon입니다.",
       projects_seo_title: "Aroido 제품 | 공개 소프트웨어와 움직이는 Labs",
       projects_meta_description:
-        "Aroido의 공개 제품과 Labs를 둘러보세요. 현재 공개 제품은 AI 코딩 레포 드리프트용 VibeSmith와 macOS 모니터 데스크 복구용 LayoutRecall입니다.",
+        "Aroido의 공개 제품과 Labs를 둘러보세요. 현재 공개 제품은 AI 코딩 레포 드리프트용 VibeSmith, macOS 모니터 데스크 복구용 LayoutRecall, 조용한 AI 코딩 수집 루프용 Tokenmon입니다.",
       vibe_seo_title: "VibeSmith | AI 코딩 레포 드리프트를 번지기 전에 진단",
       vibe_meta_description:
         "VibeSmith는 멀티 레포 AI 팀이 Cursor·Claude Code 워크플로우에서 활성 컴포넌트, 숨은 종속성, 컨텍스트 낭비, 세팅 드리프트를 진단하도록 돕습니다.",
@@ -90,6 +93,9 @@
       layout_seo_title: "LayoutRecall | 흐트러진 macOS 모니터 레이아웃 복구",
       layout_meta_description:
         "LayoutRecall은 슬립, 웨이크, 도크 재연결 뒤에 잘못 돌아온 저장된 모니터 레이아웃을 복구하는 macOS 메뉴바 앱입니다.",
+      tokenmon_seo_title: "Tokenmon | Mac 메뉴 막대의 AI 코딩 생물 조우",
+      tokenmon_meta_description:
+        "Tokenmon은 Claude Code와 Codex 사용을 조용한 생물 조우와 로컬 Dex로 바꿔주는 로컬 우선 macOS 메뉴 막대 companion입니다.",
       hello_alert: "Aroido 준비 상태 점검이 완료되었습니다.",
       nav_blog: "블로그",
       theme_auto: "시스템",
