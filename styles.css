@@ -536,6 +536,24 @@ html:lang(ko) .page-hero h1 {
   grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.92fr);
 }
 
+.tokenmon-promo-proof {
+  padding: 0;
+  gap: 0;
+  align-content: start;
+  align-self: start;
+}
+
+.tokenmon-promo-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px 20px 0 0;
+}
+
+.tokenmon-promo-proof .page-hero-proof-caption {
+  padding: 0.78rem 1rem 0.95rem;
+}
+
 .hero-punch {
   margin: 1rem 0 0;
   padding: 0;
@@ -2251,11 +2269,21 @@ html[data-theme="dark"] .product-app-icon {
   }
 
   .header-controls {
-    width: auto;
-    justify-self: end;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .header-context {
+    min-width: 0;
+    overflow: hidden;
+    justify-content: center;
   }
 
   .theme-switch {
+    width: 100%;
     padding: 0.16rem;
   }
 
@@ -2279,6 +2307,23 @@ html[data-theme="dark"] .product-app-icon {
   .hero-description,
   .page-hero p {
     font-size: 0.98rem;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 13rem;
+    min-width: 0;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .status-pill {
+    max-width: 100%;
+    min-width: 0;
+    white-space: normal;
   }
 
   .hero-punch li {

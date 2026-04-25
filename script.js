@@ -43,9 +43,9 @@
       layout_seo_title: "LayoutRecall | Restore Scrambled macOS Monitor Layouts",
       layout_meta_description:
         "LayoutRecall is the macOS menu bar app for restoring saved monitor layouts after sleep, wake, or dock reconnect sends them back wrong.",
-      tokenmon_seo_title: "Tokenmon | AI Coding Creature Encounters in the Mac Menu Bar",
+      tokenmon_seo_title: "Tokenmon | AI Coding Collection in the Mac Menu Bar",
       tokenmon_meta_description:
-        "Tokenmon is a local-first macOS menu bar companion that turns Claude Code and Codex usage into quiet creature encounters and a local Dex.",
+        "Tokenmon is a local-first macOS menu bar app that turns Claude Code and Codex usage into passive encounters, automatic results, and local Dex progress.",
       hello_alert: "Aroido readiness check is complete.",
       nav_blog: "Blog",
       theme_auto: "Auto",
@@ -93,9 +93,9 @@
       layout_seo_title: "LayoutRecall | 흐트러진 macOS 모니터 레이아웃 복구",
       layout_meta_description:
         "LayoutRecall은 슬립, 웨이크, 도크 재연결 뒤에 잘못 돌아온 저장된 모니터 레이아웃을 복구하는 macOS 메뉴바 앱입니다.",
-      tokenmon_seo_title: "Tokenmon | Mac 메뉴 막대의 AI 코딩 생물 조우",
+      tokenmon_seo_title: "Tokenmon | Mac 메뉴 막대의 AI 코딩 수집 루프",
       tokenmon_meta_description:
-        "Tokenmon은 Claude Code와 Codex 사용을 조용한 생물 조우와 로컬 Dex로 바꿔주는 로컬 우선 macOS 메뉴 막대 companion입니다.",
+        "Tokenmon은 Claude Code와 Codex 사용을 패시브 조우, 자동 결과, 로컬 Dex 진행으로 바꿔주는 로컬 우선 macOS 메뉴 막대 앱입니다.",
       hello_alert: "Aroido 준비 상태 점검이 완료되었습니다.",
       nav_blog: "블로그",
       theme_auto: "시스템",
