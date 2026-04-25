@@ -1819,6 +1819,12 @@ html[data-theme="dark"] .media-card::before {
     radial-gradient(50rem 42rem at -15% 120%, rgba(255, 91, 31, 0.12), transparent 52%);
 }
 
+html[data-theme="dark"] .media-card:not(.media-live) figcaption {
+  border: 1px solid rgba(177, 193, 225, 0.28);
+  background: rgba(8, 13, 24, 0.84);
+  color: #d6e2fa;
+}
+
 html[data-theme="dark"] .panel-label,
 html[data-theme="dark"] .section-eyebrow,
 html[data-theme="dark"] .mini-label {
