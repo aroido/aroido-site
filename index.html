@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-title-key="home_seo_title" data-description-key="home_meta_description">
+<html lang="en-US" data-title-key="home_seo_title" data-description-key="home_meta_description" data-locale="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,10 @@
       content="Aroido is an AI-native product studio shipping focused software across developer workflows, desktop utilities, and experimental play. Public now: VibeSmith, LayoutRecall, and Tokenmon."
     />
     <link rel="canonical" href="https://aroido.com/" />
-    <link rel="alternate" hreflang="en" href="https://aroido.com/?lang=en" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/" />
     <link rel="alternate" hreflang="x-default" href="https://aroido.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aroido" />
@@ -38,27 +41,27 @@
       {
         "@context": "https://schema.org",
         "@graph": [
-          {
-            "@type": "Organization",
-            "name": "Aroido",
-            "url": "https://aroido.com/",
-            "logo": "https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-app-icon-dark-512.png",
-            "description": "Aroido is an AI-native product studio shipping focused software across developer workflows, desktop utilities, and experimental play."
-          },
-          {
-            "@type": "WebSite",
-            "name": "Aroido",
-            "url": "https://aroido.com/",
-            "inLanguage": "en-US"
-          }
+                {
+                        "@type": "Organization",
+                        "name": "Aroido",
+                        "url": "https://aroido.com/",
+                        "logo": "https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-app-icon-dark-512.png",
+                        "description": "Aroido is an AI-native product studio shipping focused software across developer workflows, desktop utilities, and experimental play."
+                },
+                {
+                        "@type": "WebSite",
+                        "name": "Aroido",
+                        "url": "https://aroido.com/",
+                        "inLanguage": "en-US"
+                }
         ]
-      }
+}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
     />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
     <script>
@@ -97,6 +100,12 @@
           <a href="/contact/" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">Contact</a>
         </nav>
         <div class="header-controls">
+                    <nav class="lang-switch" aria-label="Language switch" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/" data-lang="en" hreflang="en" lang="en-US" aria-current="true" aria-pressed="true">EN</a>
+            <a class="lang-btn" href="/ko/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
           <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
             <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
             <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
@@ -110,10 +119,7 @@
           <div class="home-hero-copy">
             <p class="kicker" data-i18n="hero_kicker">Aroido • Seoul</p>
             <h1 data-i18n="hero_title">AI-native software across work, desktop, and play.</h1>
-            <p class="hero-description" data-i18n="hero_description">
-              Aroido is a small product studio building focused software across developer workflows, Mac desktop
-              utilities, and experiments that may grow into products later. Public now: VibeSmith, LayoutRecall, and Tokenmon.
-            </p>
+            <p class="hero-description" data-i18n="hero_description">Aroido is a small product studio building focused software across developer workflows, Mac desktop utilities, and experiments that may grow into products later. Public now: VibeSmith, LayoutRecall, and Tokenmon.</p>
             <ul class="hero-punch">
               <li data-i18n="home_hero_punch_1">Public products and labs stay in separate lanes.</li>
               <li data-i18n="home_hero_punch_2">AI-native build speed still answers to a real release bar.</li>
@@ -133,10 +139,7 @@
           <aside class="home-hero-proof" aria-label="Homepage portfolio preview" data-i18n-aria-label="aria_home_hero_visual">
             <p class="mini-label" data-i18n="home_hero_visual_eyebrow">PUBLIC NOW</p>
             <h2 data-i18n="home_hero_visual_title">Public products first, labs second.</h2>
-            <p data-i18n="home_hero_visual_desc">
-              The site keeps the lanes explicit: public products only after the release path is real, labs while the
-              idea is still changing shape.
-            </p>
+            <p data-i18n="home_hero_visual_desc">The site keeps the lanes explicit: public products only after the release path is real, labs while the idea is still changing shape.</p>
             <div class="home-hero-proof-media">
               <img
                 class="home-hero-proof-image"
@@ -200,7 +203,7 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="home_media_eyebrow">CURRENT PUBLIC PROOF</p>
           <h2 data-i18n="media_home_title">Start with the deepest workflow walkthrough</h2>
-          <p data-i18n="media_home_desc">VibeSmith remains the clearest long-form demo of Aroido's release bar: real UI, visible workflow, and a direct install path.</p>
+          <p data-i18n="media_home_desc">VibeSmith remains the clearest long-form demo of Aroido&#39;s release bar: real UI, visible workflow, and a direct install path.</p>
           <ul class="proof-chip-row" aria-label="Visual proof signals" data-i18n-aria-label="aria_visual_proof">
             <li class="proof-chip" data-i18n="home_media_chip_1">Current public walkthrough</li>
             <li class="proof-chip" data-i18n="home_media_chip_2">Open-source product page</li>
@@ -235,9 +238,7 @@
               <span class="video-embed-content">
                 <span class="media-tag" data-i18n="video_demo_tag">Live product walkthrough</span>
                 <strong data-i18n="home_video_title">Watch the VibeSmith audit flow without leaving the homepage</strong>
-                <span class="video-embed-copy" data-i18n="home_video_desc">
-                  Play the current public demo inline, then open the product page for fit, install, and workflow details.
-                </span>
+                <span class="video-embed-copy" data-i18n="home_video_desc">Play the current public demo inline, then open the product page for fit, install, and workflow details.</span>
                 <span class="video-embed-cta" data-i18n="video_demo_cta">Play demo</span>
               </span>
             </button>
@@ -256,7 +257,7 @@
           <div class="media-stack home-media-stack">
             <article class="media-card home-side-card">
               <p class="mini-label" data-i18n="home_demo_panel_eyebrow">WHY IT MATTERS</p>
-              <h3 data-i18n="home_demo_panel_title">One public walkthrough makes the studio's release bar visible</h3>
+              <h3 data-i18n="home_demo_panel_title">One public walkthrough makes the studio&#39;s release bar visible</h3>
               <ul class="stack-list compact home-side-list">
                 <li data-i18n="home_demo_panel_item_1">The product is real enough to show its working UI, not just a pitch deck</li>
                 <li data-i18n="home_demo_panel_item_2">The fit story is narrow enough to understand in one pass</li>
@@ -274,9 +275,7 @@
             </article>
           </div>
         </div>
-        <p class="video-note" data-i18n="home_video_note">
-          The player loads only after you press play, so the homepage stays light while still showing the real demo.
-        </p>
+        <p class="video-note" data-i18n="home_video_note">The player loads only after you press play, so the homepage stays light while still showing the real demo.</p>
         <div class="media-inline-actions">
           <a
             class="inline-link"
@@ -370,7 +369,7 @@
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="home_outcome_eyebrow">WHERE WE'RE SHIPPING</p>
+          <p class="section-eyebrow" data-i18n="home_outcome_eyebrow">WHERE WE&#39;RE SHIPPING</p>
           <h2 data-i18n="impact_title">Three clear product lanes across the studio.</h2>
         </div>
         <div class="route-grid">

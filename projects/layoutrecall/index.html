@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-title-key="layout_seo_title" data-description-key="layout_meta_description">
+<html lang="en-US" data-title-key="layout_seo_title" data-description-key="layout_meta_description" data-locale="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,10 @@
       content="LayoutRecall is the macOS menu bar app for restoring saved monitor layouts after sleep, wake, or dock reconnect sends them back wrong."
     />
     <link rel="canonical" href="https://aroido.com/projects/layoutrecall/" />
-    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/layoutrecall/?lang=en" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/projects/layoutrecall/" />
     <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/layoutrecall/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aroido" />
@@ -47,18 +50,18 @@
         "inLanguage": "en-US",
         "description": "A macOS menu bar app that restores saved monitor layouts after sleep, wake, or reconnect when the display match is confident enough.",
         "featureList": [
-          "Save one or more monitor layout profiles",
-          "Restore automatically only on strong matches",
-          "Use manual recovery controls when confidence is low",
-          "See diagnostics and dependency state from the menu bar"
+                "Save one or more monitor layout profiles",
+                "Restore automatically only on strong matches",
+                "Use manual recovery controls when confidence is low",
+                "See diagnostics and dependency state from the menu bar"
         ]
-      }
+}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
     />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
     <script>
@@ -103,6 +106,12 @@
             <span class="header-context-sep" aria-hidden="true">/</span>
             <span aria-current="page" data-i18n="crumb_layoutrecall">LayoutRecall detail</span>
           </nav>
+                    <nav class="lang-switch" aria-label="Language switch" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/projects/layoutrecall/" data-lang="en" hreflang="en" lang="en-US" aria-current="true" aria-pressed="true">EN</a>
+            <a class="lang-btn" href="/ko/projects/layoutrecall/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/projects/layoutrecall/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/projects/layoutrecall/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
           <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
             <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
             <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
@@ -116,10 +125,7 @@
           <div class="page-hero-copy">
             <p class="kicker" data-i18n="layout_kicker">LayoutRecall</p>
             <h1 data-i18n="layout_title">Restore the monitor layout macOS keeps scrambling.</h1>
-            <p data-i18n="layout_description">
-              LayoutRecall is the open-source macOS menu bar app for MacBook + dock + multi-display desks. Save a
-              known-good layout once, then bring it back after sleep, wake, or reconnect.
-            </p>
+            <p data-i18n="layout_description">LayoutRecall is the open-source macOS menu bar app for MacBook + dock + multi-display desks. Save a known-good layout once, then bring it back after sleep, wake, or reconnect.</p>
             <p class="hero-hook" data-i18n="layout_hook">Automatic restore stays conservative. Lower-confidence cases remain manual on purpose.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#download" data-i18n="layout_cta_primary" data-track-event="download_cta_click" data-track-label="layout_open_download">Open release and install</a>
@@ -132,13 +138,10 @@
               <span class="status-pill" data-i18n="layout_status_pill_3">Confidence-aware restore</span>
             </div>
           </div>
-          <aside class="page-hero-proof" aria-label="LayoutRecall preview" data-i18n-aria-label="aria_layout_hero_visual">
+          <aside class="page-hero-proof" aria-label="LayoutRecall product preview" data-i18n-aria-label="aria_layout_hero_visual">
             <p class="mini-label" data-i18n="layout_hero_visual_eyebrow">KNOWN-GOOD DESK</p>
             <h2 data-i18n="layout_hero_visual_title">Save one desk you trust, then bring it back safely</h2>
-            <p data-i18n="layout_hero_visual_desc">
-              LayoutRecall is built for the narrow problem of getting a familiar multi-display desk back after macOS
-              returns it in the wrong order or position.
-            </p>
+            <p data-i18n="layout_hero_visual_desc">LayoutRecall is built for the narrow problem of getting a familiar multi-display desk back after macOS returns it in the wrong order or position.</p>
             <div class="page-hero-proof-media">
               <img
                 class="page-hero-proof-image"
@@ -308,9 +311,7 @@
                 data-i18n="copy_command"
                 data-track-event="copy_command_click"
                 data-track-label="layout_copy_brew_command"
-              >
-                Copy command
-              </button>
+              >Copy command</button>
             </div>
             <pre id="layout-brew-command" class="download-command"><code data-i18n="layout_download_brew_command">brew install --cask aroido/layoutrecall/layoutrecall</code></pre>
             <p class="download-note" data-i18n="layout_download_brew_note">Restoring a saved layout still depends on displayplacer being available on PATH.</p>

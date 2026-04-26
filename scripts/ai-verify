@@ -89,6 +89,9 @@ fi
 if [[ -f scripts/build-blog.mjs ]]; then
   add_check "static:blog-generated" "node scripts/build-blog.mjs --check"
 fi
+if [[ -f scripts/generate-localized-pages.mjs ]]; then
+  add_check "static:localized-generated" "node scripts/generate-localized-pages.mjs --check"
+fi
 add_check "static:required-files" "test -f index.html && test -f styles.css"
 if [[ -f i18n/messages.json && -f scripts/i18n-audit.sh ]]; then
   add_check "i18n:key-parity" "./scripts/i18n-audit.sh"
@@ -99,6 +102,9 @@ fi
 
 if [[ "$MODE" == "full" ]]; then
   add_check "static:smoke-content" "grep -q '<!doctype html' index.html || grep -qi '<html' index.html"
+  if [[ -f scripts/verify-localized-output.mjs ]]; then
+    add_check "static:localized-output" "node scripts/verify-localized-output.mjs"
+  fi
 fi
 
 # optional npm checks if project evolves

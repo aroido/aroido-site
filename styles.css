@@ -248,6 +248,9 @@ body::before {
 .theme-btn,
 .lang-btn {
   min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: 999px;
   background: transparent;
@@ -257,10 +260,12 @@ body::before {
   font-size: 0.74rem;
   letter-spacing: 0.02em;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .theme-btn[aria-pressed="true"],
-.lang-btn[aria-pressed="true"] {
+.lang-btn[aria-pressed="true"],
+.lang-btn[aria-current="true"] {
   background: var(--ink);
   color: #fff;
 }
@@ -1758,7 +1763,8 @@ html[data-theme="dark"] .lang-btn {
 }
 
 html[data-theme="dark"] .theme-btn[aria-pressed="true"],
-html[data-theme="dark"] .lang-btn[aria-pressed="true"] {
+html[data-theme="dark"] .lang-btn[aria-pressed="true"],
+html[data-theme="dark"] .lang-btn[aria-current="true"] {
   background: rgba(237, 243, 255, 0.92);
   color: #0f1628;
 }

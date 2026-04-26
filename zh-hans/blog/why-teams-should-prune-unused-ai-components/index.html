@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-Hans" data-static-meta="true" data-locale="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why Teams Should Prune Unused AI Components Before They Pollute Context | Aroido Blog</title>
+    <meta id="metaDescription" name="description" content="Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately." />
+    <link rel="canonical" href="https://aroido.com/zh-hans/blog/why-teams-should-prune-unused-ai-components/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/blog/why-teams-should-prune-unused-ai-components/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/blog/why-teams-should-prune-unused-ai-components/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/blog/why-teams-should-prune-unused-ai-components/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/blog/why-teams-should-prune-unused-ai-components/" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/blog/why-teams-should-prune-unused-ai-components/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content="Why Teams Should Prune Unused AI Components Before They Pollute Context | Aroido Blog" />
+    <meta property="og:description" content="Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately." />
+    <meta property="og:url" content="https://aroido.com/zh-hans/blog/why-teams-should-prune-unused-ai-components/" />
+    <meta property="og:image" content="https://aroido.com/assets/vibesmith-community/01-dashboard-en-light.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Why Teams Should Prune Unused AI Components Before They Pollute Context | Aroido Blog" />
+    <meta name="twitter:description" content="Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately." />
+    <meta name="twitter:image" content="https://aroido.com/assets/vibesmith-community/01-dashboard-en-light.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Teams Should Prune Unused AI Components Before They Pollute Context",
+  "description": "Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately.",
+  "datePublished": "2026-03-11T09:40:00.000Z",
+  "dateModified": "2026-03-11T14:04:14.110Z",
+  "inLanguage": "zh-Hans",
+  "mainEntityOfPage": "https://aroido.com/zh-hans/blog/why-teams-should-prune-unused-ai-components/",
+  "url": "https://aroido.com/zh-hans/blog/why-teams-should-prune-unused-ai-components/",
+  "keywords": [
+    "vibesmith",
+    "ai-coding",
+    "component-operations"
+  ],
+  "image": [
+    "https://aroido.com/assets/vibesmith-community/01-dashboard-en-light.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Aroido",
+    "url": "https://aroido.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aroido",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-app-icon-dark-512.png"
+    }
+  }
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <link rel="stylesheet" href="../../../styles.css" />
+  </head>
+  <body>
+    <!-- Generated by scripts/build-blog.mjs. Do not edit directly. -->
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">跳至内容</a>
+    <main id="main-content" class="site-shell">
+
+
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/zh-hans/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="aria_main_nav">
+          <a href="/zh-hans/" data-i18n="nav_home">家</a>
+          <a href="/zh-hans/projects/" data-i18n="nav_projects">产品</a>
+          <a href="/zh-hans/blog/" data-i18n="nav_blog" aria-current="page">博客</a>
+          <a href="/zh-hans/team/" data-i18n="nav_team">团队</a>
+          <a href="/zh-hans/contact/" data-i18n="nav_contact">接触</a>
+        </nav>
+        <div class="header-controls">
+
+          <nav class="lang-switch" aria-label="语言切换" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/blog/why-teams-should-prune-unused-ai-components/" data-lang="en" hreflang="en" lang="en-US">EN</a>
+            <a class="lang-btn" href="/ko/blog/why-teams-should-prune-unused-ai-components/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/blog/why-teams-should-prune-unused-ai-components/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/blog/why-teams-should-prune-unused-ai-components/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans" aria-current="true" aria-pressed="true">中文</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">汽车</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">光</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">黑暗的</button>
+          </div>
+        </div>
+      </header>
+      <article class="article-shell">
+        <section class="article-hero reveal" data-reveal>
+          <p class="kicker" data-i18n="blog_post_label">博客文章</p>
+          <a class="inline-link article-back-link" href="/zh-hans/blog/" data-i18n="blog_back_to_blog">返回博客</a>
+          <h1>Why Teams Should Prune Unused AI Components Before They Pollute Context</h1>
+          <p class="article-excerpt">Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately.</p>
+          <div class="article-meta">
+            <span>2026年3月11日</span>
+            <span>7 最小读取值</span>
+            <span>1332 字</span>
+          </div>
+          <ul class="tag-list" aria-label="Post tags"><li>vibesmith</li><li>ai-coding</li><li>component-operations</li></ul>
+        </section>
+
+        <div class="article-layout">
+          <section class="article-body">
+            <div class="article-prose">
+<p>If your team has been accumulating <code>skills</code>, <code>agents</code>, <code>commands</code>, <code>hooks</code>, and <code>rules</code> across Cursor and Claude Code projects, the messy part usually does not start when you create the tenth component. It starts when no one can tell which five are still alive.</p>
+<p>That is the moment when &quot;component reuse&quot; quietly turns into context pollution.</p>
+<p>Unused AI components are not harmless just because they still live in Git. They start showing up in search results. They stay available for copy-paste into the next repository. They survive in presets long after the team has moved on. In the worst case, they become stale instructions that an agent or operator mistakes for the current baseline.</p>
+<p>This is why usage-based cleanup matters.</p>
+<h2>Quick takeaways</h2>
+<ul><li>Unused AI components create operational cost before they create visible bugs.</li><li>The real problem is not storage. It is search noise, context ambiguity, and unsafe reuse.</li><li>Recent research suggests repository context files can help or hurt AI coding performance depending on how relevant and minimal they are.</li><li>VibeSmith is useful here because usage signals, inventory, and dependency views let teams prune components with more discipline than ad hoc file deletion.</li></ul>
+<p><img src="/assets/vibesmith-community/01-dashboard-en-light.png" alt="VibeSmith dashboard showing repo-wide status, conflicts, and coverage" title="VibeSmith dashboard overview" loading="lazy" decoding="async" /></p>
+<p><em>Cleanup gets easier when the team can see status, conflicts, and component coverage in one place instead of reconstructing the current baseline from memory.</em></p>
+<h2>Unused components are not passive clutter</h2>
+<p>In AI coding workflows, instructions do not just sit on disk. They often participate in context assembly.</p>
+<p>Cursor documents Rules as reusable instructions that can be included in model context. Anthropic documents Claude Code memory as a layered system where global and project memory files are read automatically. Anthropic also documents subagents as separate specialists with their own prompts and context windows.</p>
+<p>That means an old component is not merely &quot;extra documentation.&quot; It can become an instruction candidate.</p>
+<p>To be precise, unused components do <strong>not</strong> increase token cost simply because they exist in a repository. The cost appears when your workflow retrieves them into model context, search results, onboarding checklists, or reuse decisions. That distinction matters, but it does not make the cleanup problem smaller. It makes the cleanup target clearer: prune what keeps entering real decision flows.</p>
+<h2>The research case for pruning irrelevant context</h2>
+<p>Anthropic&#39;s long-context guidance recommends quoting the most relevant parts of long material so the model has less noise to sort through. Google Research&#39;s work on semantic code queries similarly found that model performance suffers as code context grows and irrelevant code is mixed in.</p>
+<p>The newest evidence is even more direct. Two February 2026 <code>AGENTS.md</code> preprints reached different topline outcomes, but they point to the same operational lesson:</p>
+<ul><li>one study reported that well-scoped <code>AGENTS.md</code> files improved efficiency and reduced runtime or output-token cost in several settings</li><li>another study found that unnecessary or poorly aligned <code>AGENTS.md</code> files could reduce task success and raise inference cost by more than twenty percent</li></ul>
+<p>Those are not contradictory product messages. They are a warning about context quality.</p>
+<p>The point is not &quot;add more standards files.&quot; The point is &quot;keep the active context set relevant, minimal, and legible.&quot;</p>
+<p>That is exactly why usage-based pruning belongs in the operating model instead of sitting as a quarterly cleanup chore no one owns.</p>
+<h2>Search noise is a human cost too</h2>
+<p>This is not only an LLM problem.</p>
+<p>Google&#39;s case study on how developers search for code reported that developers averaged multiple code-search sessions and around a dozen queries per day. In a multi-repo environment, every dead component increases the chance that a search result looks plausible while pointing to something obsolete.</p>
+<p>That does two kinds of damage:</p>
+<ul><li>humans waste time deciding which component is current</li><li>AI agents and operators are more likely to reuse the wrong file because it still looks official</li></ul>
+<p>The larger the component inventory gets, the more expensive ambiguity becomes.</p>
+<p><img src="/assets/vibesmith-community/02-components-en-light.png" alt="VibeSmith component inventory showing cross-project search and ownership metadata" title="VibeSmith component inventory" loading="lazy" decoding="async" /></p>
+<p><em>A cleanup project usually begins in the inventory view, because the first question is not &quot;what should we delete?&quot; but &quot;what is actually active?&quot;</em></p>
+<h2>Why usage should lead the cleanup</h2>
+<p>Blind deletion is risky. Blind retention is also risky.</p>
+<p>The practical answer is to start with usage, then verify dependencies.</p>
+<p>Usage gives you the shortlist:</p>
+<ul><li>components that have not been touched in a long time</li><li>components that never show up in current workflows</li><li>duplicate components with the same purpose but different names</li><li>components that only survive because no one wants to be the person who deletes them</li></ul>
+<p>Dependencies give you the safety check:</p>
+<ul><li>which components are still linked to active ones</li><li>which stale-looking files are actually supporting a live preset or command flow</li><li>where a &quot;small cleanup&quot; would break reuse in another project</li></ul>
+<p>Google&#39;s work on monolithic codebases emphasizes the value of visibility and centralized dependency management. Google Research&#39;s Smart Paste work also shows why copy-paste is not a neutral action: pasted code frequently needs context-aware adjustment. The same logic applies to AI components. When a stale rule or command is still available for cross-project reuse, the team is one copy action away from reproducing old mistakes in a new repository.</p>
+<p>That is why a useful cleanup loop is:</p>
+<ol><li>usage to find suspects</li><li>dependency review to avoid accidental breakage</li><li>archive or delete to reduce future ambiguity</li></ol>
+<h2>What teams gain after cleanup</h2>
+<p>If the cleanup is done carefully, the gains are not cosmetic.</p>
+<h3>1. Cleaner search and faster decisions</h3>
+<p>The first win is that operators and reviewers stop sorting through dead options. Search results get sharper. The &quot;which one is current?&quot; question gets shorter.</p>
+<h3>2. Lower context pollution</h3>
+<p>Fewer irrelevant components means fewer chances for stale instructions to enter prompts, onboarding docs, or preset bundles. This is not a claim that every cleanup automatically lowers token spend. It is a claim that you reduce the surface area for irrelevant context to be loaded at all.</p>
+<h3>3. Safer reuse across repositories</h3>
+<p>The less dead inventory you carry, the lower the chance that a team copies an obsolete rule set, hook, or agent into a new repo.</p>
+<h3>4. More credible standards</h3>
+<p>A standard only works when people can tell what is active. Cleanup makes the baseline visible again.</p>
+<h3>5. Better release review</h3>
+<p>When dead components are removed or clearly archived, reviewers spend less time untangling whether a change is using the intended operating model or a historical leftover.</p>
+<p><img src="/assets/vibesmith-community/03-dependencies-en-light.png" alt="VibeSmith dependency graph showing linked components and coupling paths" title="VibeSmith dependency graph" loading="lazy" decoding="async" /></p>
+<p><em>Usage tells you what to inspect first. Dependency visibility tells you what can be safely archived, merged, or removed.</em></p>
+<h2>A practical VibeSmith cleanup loop</h2>
+<p>If you are already using VibeSmith, a strong cleanup workflow looks like this:</p>
+<ol><li>Start from the dashboard and component inventory to find low-signal or clearly duplicated components.</li><li>Check which components are still active in current projects instead of relying on gut feel.</li><li>Open the dependency graph before deleting anything that might still support a live preset, hook chain, or reusable command path.</li><li>Archive or remove components that are unused, superseded, or ownerless.</li><li>Update the baseline preset or shared component bundle so the next repo does not inherit the old clutter.</li><li>Measure whether search, onboarding, and reuse decisions get simpler after the cleanup.</li></ol>
+<p>The operational idea is simple:</p>
+<blockquote><p>usage is the shortlist, dependency review is the guardrail</p></blockquote>
+<p>That is a much more durable policy than &quot;delete whatever looks old.&quot;</p>
+<h2>The point is not minimalism for its own sake</h2>
+<p>Teams do not win because they have fewer files. They win because the live system becomes easier to trust.</p>
+<p>The more AI coding components you operate across repositories, the more important it becomes to distinguish:</p>
+<ul><li>active vs historical</li><li>reusable vs obsolete</li><li>canonical vs local experiment</li></ul>
+<p>If that boundary is still fuzzy, cleanup is not housekeeping. It is systems maintenance.</p>
+<p>That is also the argument for using VibeSmith in the first place. The product is not valuable because it stores more components. It is valuable because it helps teams see which components are alive, linked, and worth carrying forward.</p>
+<p>If you want that broader framing first, start with the <a href="/zh-hans/projects/vibesmith/">VibeSmith product page</a> and our earlier post on <a href="/zh-hans/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">why multi-repo AI coding gets messy after the third repository</a>.</p>
+<h2>Related reads</h2>
+<ul><li><a href="/zh-hans/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a></li><li><a href="/zh-hans/blog/cursor-rules-vs-agents-md/">Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</a></li><li><a href="/zh-hans/blog/what-mcp-changes-for-ai-coding-workflows/">What MCP Changes for AI Coding Workflows, and What It Does Not</a></li></ul>
+<h2>Official references</h2>
+<ul><li><a href="https://docs.cursor.com/context/rules-for-ai" rel="noreferrer" target="_blank">Cursor Rules for AI</a></li><li><a href="https://docs.anthropic.com/en/docs/claude-code/memory" rel="noreferrer" target="_blank">Claude Code Memory</a></li><li><a href="https://docs.anthropic.com/en/docs/claude-code/sub-agents" rel="noreferrer" target="_blank">Claude Code Subagents</a></li><li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/long-context-tips" rel="noreferrer" target="_blank">Anthropic Long Context Tips</a></li><li><a href="https://research.google/pubs/how-developers-search-for-code-a-case-study/" rel="noreferrer" target="_blank">How Developers Search for Code: A Case Study</a></li><li><a href="https://research.google/pubs/advantages-and-disadvantages-of-a-monolithic-codebase/" rel="noreferrer" target="_blank">Advantages and Disadvantages of a Monolithic Codebase</a></li><li><a href="https://research.google/blog/smart-paste-for-context-aware-adjustments-to-pasted-code/" rel="noreferrer" target="_blank">Smart Paste for Context-Aware Adjustments to Pasted Code</a></li><li><a href="https://research.google/pubs/learning-to-answer-semantic-queries-over-code/" rel="noreferrer" target="_blank">Learning to Answer Semantic Queries Over Code</a></li><li><a href="https://arxiv.org/abs/2602.16903" rel="noreferrer" target="_blank">Evaluating AGENTS.md&#39;s Effectiveness in Enhancing AI-Assisted Software Engineering</a></li><li><a href="https://arxiv.org/abs/2602.11252" rel="noreferrer" target="_blank">On the Impact of AGENTS.md Files on the Efficiency of AI Coding Agents</a></li></ul>
+            </div>
+
+          <nav class="article-nav" aria-label="Article navigation">
+            <div class="article-nav-card is-empty" aria-hidden="true"></div>
+            <a class="article-nav-card" href="/zh-hans/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">
+                    <span class="mini-label" data-i18n="blog_article_nav_next">下一篇</span>
+                    <strong>Why Multi-Repo AI Coding Gets Messy After the Third Repository</strong>
+                  </a>
+          </nav>
+          </section>
+
+          <aside class="article-aside">
+            <div class="article-aside-card">
+              <p class="section-eyebrow" data-i18n="blog_related_reads">相关阅读</p>
+              <ul class="article-recent-list">
+                
+                      <li>
+                        <a href="/zh-hans/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a>
+                        <span>Cursor, Claude Code, MCP, and GitLab Duo can accelerate one repo quickly. The real systems problem begins when standards, dependencies, and context have to survive across many repos.</span>
+                      </li>
+                      <li>
+                        <a href="/zh-hans/blog/cursor-rules-vs-agents-md/">Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</a>
+                        <span>Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories.</span>
+                      </li>
+                      <li>
+                        <a href="/zh-hans/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/">Claude Code Hooks and Slash Commands for Multi-Repo Teams</a>
+                        <span>Claude Code is increasingly powerful, but multi-repo teams get the most leverage from shared hooks, project commands, and durable review gates rather than one-off prompts.</span>
+                      </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+    <script src="../../../script.js"></script>
+  </body>
+</html>

@@ -32,7 +32,7 @@ alwaysApply: true
 
 ## Internationalization
 
-- 기본 사용자 노출 언어는 `ko`/`en`을 MUST 지원한다.
+- 기본 사용자 노출 언어는 `en`/`ko`/`ja`/`zh-Hans`를 MUST 지원한다.
 - 언어 전환 시 `html[lang]`와 문서 title은 MUST 동기화한다.
 - 미지원 언어 진입 시 `en` fallback을 MUST 제공한다.
 
