@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-title-key="contact_seo_title" data-description-key="contact_meta_description">
+<html lang="en-US" data-title-key="contact_seo_title" data-description-key="contact_meta_description" data-locale="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,10 +7,13 @@
     <meta
       id="metaDescription"
       name="description"
-      content="Use Aroido's shared inquiry form for product questions, lab discussions, and collaboration requests, with direct builder inboxes as fallback."
+      content="Use Aroido&#39;s shared inquiry form for product questions, lab discussions, and collaboration requests, with direct builder inboxes as fallback."
     />
     <link rel="canonical" href="https://aroido.com/contact/" />
-    <link rel="alternate" hreflang="en" href="https://aroido.com/contact/?lang=en" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/contact/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/contact/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/contact/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/contact/" />
     <link rel="alternate" hreflang="x-default" href="https://aroido.com/contact/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aroido" />
@@ -18,7 +21,7 @@
     <meta property="og:title" content="Contact Aroido | Products, Labs, and Collaboration" />
     <meta
       property="og:description"
-      content="Use Aroido's shared inquiry form for product questions, lab discussions, and collaboration requests, with direct builder inboxes as fallback."
+      content="Use Aroido&#39;s shared inquiry form for product questions, lab discussions, and collaboration requests, with direct builder inboxes as fallback."
     />
     <meta property="og:url" content="https://aroido.com/contact/" />
     <meta property="og:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
@@ -26,7 +29,7 @@
     <meta name="twitter:title" content="Contact Aroido | Products, Labs, and Collaboration" />
     <meta
       name="twitter:description"
-      content="Use Aroido's shared inquiry form for product questions, lab discussions, and collaboration requests, with direct builder inboxes as fallback."
+      content="Use Aroido&#39;s shared inquiry form for product questions, lab discussions, and collaboration requests, with direct builder inboxes as fallback."
     />
     <meta name="twitter:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
@@ -41,29 +44,29 @@
         "inLanguage": "en-US",
         "description": "Use Aroido's shared inquiry form for product questions, lab discussions, and collaboration requests, with direct builder inboxes as fallback.",
         "mainEntity": {
-          "@type": "Organization",
-          "name": "Aroido",
-          "url": "https://aroido.com/",
-          "contactPoint": [
-            {
-              "@type": "ContactPoint",
-              "contactType": "product inquiries",
-              "email": "bigcat@aroido.com"
-            },
-            {
-              "@type": "ContactPoint",
-              "contactType": "product inquiries",
-              "email": "kkachi@aroido.com"
-            }
-          ]
+                "@type": "Organization",
+                "name": "Aroido",
+                "url": "https://aroido.com/",
+                "contactPoint": [
+                        {
+                                "@type": "ContactPoint",
+                                "contactType": "product inquiries",
+                                "email": "bigcat@aroido.com"
+                        },
+                        {
+                                "@type": "ContactPoint",
+                                "contactType": "product inquiries",
+                                "email": "kkachi@aroido.com"
+                        }
+                ]
         }
-      }
+}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
     />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
     <script>
@@ -102,6 +105,12 @@
           <a href="/contact/" aria-current="page" data-i18n="nav_contact">Contact</a>
         </nav>
         <div class="header-controls">
+                    <nav class="lang-switch" aria-label="Language switch" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/contact/" data-lang="en" hreflang="en" lang="en-US" aria-current="true" aria-pressed="true">EN</a>
+            <a class="lang-btn" href="/ko/contact/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/contact/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/contact/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
           <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
             <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
             <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
@@ -118,15 +127,12 @@
 
       <section class="page-hero contact-hero reveal" data-reveal>
         <p class="kicker" data-i18n="contact_page_kicker">Contact</p>
-        <h1 data-i18n="contact_page_title">Request a one-repo audit.</h1>
-        <p class="hero-description" data-i18n="contact_page_description">
-          If you are running multiple AI coding repos, the fastest path is a short audit request. Tell us repo count,
-          toolchain, and where drift shows up first. Use the general form only if the question is not about a repo audit.
-        </p>
+        <h1 data-i18n="contact_page_title">Ask about a product, lab, or collaboration.</h1>
+        <p class="hero-description" data-i18n="contact_page_description">Use the audit path for VibeSmith-specific repo help. For everything else, including product questions, lab discussions, or collaboration requests, use the general Aroido contact form.</p>
         <div class="hero-actions">
           <a
             class="btn btn-primary"
-            href="https://tally.so/r/RG484l?intent=audit&source=contact_hero_audit"
+            href="https://tally.so/r/RG484l?intent=audit&amp;source=contact_hero_audit"
             data-i18n="contact_audit_cta"
             data-track-event="contact_cta_click"
             data-track-label="contact_hero_open_audit_form"
@@ -135,7 +141,7 @@
           >Request repo audit</a>
           <a
             class="btn btn-ghost"
-            href="https://tally.so/r/RG484l?intent=general&source=contact_hero_general"
+            href="https://tally.so/r/RG484l?intent=general&amp;source=contact_hero_general"
             data-i18n="contact_general_cta"
             data-track-event="contact_cta_click"
             data-track-label="contact_hero_open_general_form"
@@ -149,10 +155,7 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="contact_email_eyebrow">Direct Inbox Fallback</p>
           <h2 data-i18n="contact_email_title">Use direct email only if you need to bypass the form.</h2>
-          <p data-i18n="contact_email_description">
-            The form is now the primary intake for Pro updates and contact requests. If you need to bypass it, copy one
-            of the direct builder addresses below.
-          </p>
+          <p data-i18n="contact_email_description">The form is now the primary intake for Pro updates and contact requests. If you need to bypass it, copy one of the direct builder addresses below.</p>
         </div>
         <div class="compare-grid">
           <article class="route-card">
@@ -190,25 +193,19 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="contact_options_eyebrow">Paths</p>
           <h2 data-i18n="contact_options_title">Choose the shortest path.</h2>
-          <p data-i18n="contact_options_description">
-            These routes open the same shared form with either audit or general intent, and attach the route context
-            automatically.
-          </p>
+          <p data-i18n="contact_options_description">These routes open the same shared form with either audit or general intent, and attach the route context automatically.</p>
         </div>
         <div class="compare-grid">
           <article id="audit" class="route-card highlight">
             <p class="mini-label" data-i18n="contact_audit_eyebrow">Repo audit</p>
             <h3 data-i18n="contact_audit_title">Request a one-repo VibeSmith audit</h3>
-            <p data-i18n="contact_audit_description">
-              Use this when repo three feels worse than repo one, reuse keeps breaking in partial ways, or setup debates
-              keep reopening.
-            </p>
+            <p data-i18n="contact_audit_description">Use this when repo three feels worse than repo one, reuse keeps breaking in partial ways, or setup debates keep reopening.</p>
             <p class="mini-label" data-i18n="contact_audit_subject_label">Suggested subject</p>
             <p class="download-path" data-i18n="contact_audit_subject">VibeSmith Repo Audit</p>
             <div class="hero-actions">
               <a
                 class="btn btn-primary"
-                href="https://tally.so/r/RG484l?intent=audit&source=contact_section_audit"
+                href="https://tally.so/r/RG484l?intent=audit&amp;source=contact_section_audit"
                 data-i18n="contact_audit_cta"
                 data-track-event="contact_cta_click"
                 data-track-label="contact_audit_open_form"
@@ -228,15 +225,13 @@
           <article id="general" class="route-card">
             <p class="mini-label" data-i18n="contact_general_eyebrow">General</p>
             <h3 data-i18n="contact_general_title">Contact the Aroido team</h3>
-            <p data-i18n="contact_general_description">
-              Use this for collaboration requests, product questions, or a short working-session intro.
-            </p>
+            <p data-i18n="contact_general_description">Use this for product questions, lab discussions, collaboration requests, or a short working-session intro.</p>
             <p class="mini-label" data-i18n="contact_general_subject_label">Suggested subject</p>
             <p class="download-path" data-i18n="contact_general_subject">Aroido Product / Lab Inquiry</p>
             <div class="hero-actions">
               <a
                 class="btn btn-primary"
-                href="https://tally.so/r/RG484l?intent=general&source=contact_section_general"
+                href="https://tally.so/r/RG484l?intent=general&amp;source=contact_section_general"
                 data-i18n="contact_general_cta"
                 data-track-event="contact_cta_click"
                 data-track-label="contact_general_open_form"

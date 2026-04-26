@@ -1,27 +1,46 @@
-# Web i18n Spec (KO/EN)
+# Public Web i18n Spec
 
-Updated: 2026-03-07
+Updated: 2026-04-26
 
 ## Scope
 
-- `aroido-site`의 기본 웹페이지에서 한국어/영어 전환을 지원한다.
+- `aroido-site` public pages MUST support `en`, `ko`, `ja`, and `zh-Hans`.
+- English remains the default canonical URL set with unprefixed paths.
+- Localized public URLs use `/ko/`, `/ja/`, and `/zh-hans/` prefixes.
+- v1 localized scope includes home, products overview, product detail pages, team, contact, and blog chrome.
+- Blog article bodies remain English for v1, while navigation, metadata, archive UI, article navigation, and shared chrome are localized.
 
-## Non-goals
+## Locale Metadata
 
-- 번역 관리 SaaS 연동
-- 3개 이상 언어 확장
+| Locale | Path prefix | HTML lang | OG locale | JSON-LD inLanguage | hreflang |
+| --- | --- | --- | --- | --- | --- |
+| `en` | none | `en-US` | `en_US` | `en-US` | `en` |
+| `ko` | `/ko` | `ko-KR` | `ko_KR` | `ko-KR` | `ko` |
+| `ja` | `/ja` | `ja-JP` | `ja_JP` | `ja-JP` | `ja` |
+| `zh-Hans` | `/zh-hans` | `zh-Hans` | `zh_CN` | `zh-Hans` | `zh-Hans` |
 
 ## Requirements
 
-1. UI 텍스트는 MUST `ko`와 `en` 번역을 제공한다.
-2. 언어 전환 컨트롤은 MUST 즉시 반영된다.
-3. 선택 언어는 SHOULD 로컬에 저장되어 재방문 시 유지된다.
-4. 문서 루트 `lang` 속성은 MUST 현재 언어와 일치한다.
-5. 기본 언어는 브라우저 선호를 따르되 미지원 언어는 MUST `en` fallback 한다.
+1. UI text MUST provide matching keys for all four locales in `i18n/messages.json`.
+2. Public localized pages MUST render static localized copy without requiring JavaScript.
+3. Language controls MUST be visible, keyboard-accessible, and expose the active language with `aria-current` or equivalent state.
+4. Language switching MUST preserve the equivalent page path and hash.
+5. Internal site links on localized pages MUST stay within the same locale prefix, while asset links remain root-safe.
+6. Each localized page MUST emit correct `html[lang]`, title, description, canonical, `hreflang`, OG locale, and JSON-LD `inLanguage`.
+7. `sitemap.xml` MUST include all public localized URLs.
+8. `/debug/ko/` MUST remain `noindex` and noncanonical.
+
+## Non-goals
+
+- Blog article body translation.
+- Translation management SaaS integration.
+- Server-side locale negotiation.
 
 ## Acceptance Criteria
 
-- 초기 로드 시 `ko` 또는 `en` 중 하나로 화면이 렌더링된다.
-- 언어 버튼 클릭 시 제목/본문/버튼 문구가 전환된다.
-- 새로고침 후 마지막 선택 언어가 유지된다.
-- `./scripts/ai-verify --mode full` 통과.
+- `node --check script.js` passes.
+- `node scripts/build-blog.mjs --check` passes.
+- `node scripts/generate-localized-pages.mjs --check` passes.
+- `./scripts/i18n-audit.sh` passes for all four locales.
+- `./scripts/run-ai-verify --mode full` passes.
+- Browser QA confirms no missing localized chrome, broken language switch URLs, horizontal overflow, or clipped first-viewport controls on desktop and mobile.

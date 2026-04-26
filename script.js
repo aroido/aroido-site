@@ -8,7 +8,44 @@
   const THEME_MODE_KEY = "aroido:theme-mode";
   const DEFAULT_THEME_MODE = "auto";
   const SUPPORTED_THEME_MODES = ["auto", "light", "dark"];
-  const SUPPORTED_LANGUAGES = ["en", "ko"];
+  const SUPPORTED_LANGUAGES = ["en", "ko", "ja", "zh-Hans"];
+  const LOCALE_METADATA = {
+    en: {
+      prefix: "",
+      pathSegment: "",
+      htmlLang: "en-US",
+      ogLocale: "en_US",
+      mediaKey: "en",
+    },
+    ko: {
+      prefix: "/ko",
+      pathSegment: "ko",
+      htmlLang: "ko-KR",
+      ogLocale: "ko_KR",
+      mediaKey: "ko",
+    },
+    ja: {
+      prefix: "/ja",
+      pathSegment: "ja",
+      htmlLang: "ja-JP",
+      ogLocale: "ja_JP",
+      mediaKey: "ja",
+    },
+    "zh-Hans": {
+      prefix: "/zh-hans",
+      pathSegment: "zh-hans",
+      htmlLang: "zh-Hans",
+      ogLocale: "zh_CN",
+      mediaKey: "zh-hans",
+    },
+  };
+  const PATH_SEGMENT_TO_LANGUAGE = SUPPORTED_LANGUAGES.reduce((segments, language) => {
+    const segment = LOCALE_METADATA[language]?.pathSegment;
+    if (segment) {
+      segments[segment] = language;
+    }
+    return segments;
+  }, {});
   const COMMUNITY_RELEASE_PERMALINK = "https://github.com/aroido/vibesmith/releases";
   const COMMUNITY_RELEASE_API_URL =
     "https://api.github.com/repos/aroido/vibesmith/releases?per_page=10";
@@ -411,9 +448,20 @@
       return DEFAULT_LANGUAGE;
     }
 
-    const lower = value.toLowerCase();
-    const detected = SUPPORTED_LANGUAGES.find((language) => lower.startsWith(language));
-    return detected || DEFAULT_LANGUAGE;
+    const lower = value.toLowerCase().replace("_", "-");
+    if (lower === "zh" || lower.startsWith("zh-hans") || lower.startsWith("zh-cn")) {
+      return "zh-Hans";
+    }
+    if (lower.startsWith("ja")) {
+      return "ja";
+    }
+    if (lower.startsWith("ko")) {
+      return "ko";
+    }
+    if (lower.startsWith("en")) {
+      return "en";
+    }
+    return DEFAULT_LANGUAGE;
   }
 
   function normalizeDebugLanguage(value) {
@@ -454,12 +502,70 @@
         return null;
       }
 
-      const lower = raw.toLowerCase();
-      const match = SUPPORTED_LANGUAGES.find((language) => lower.startsWith(language));
-      return match || null;
+      const normalized = normalizeLanguage(raw);
+      return SUPPORTED_LANGUAGES.includes(normalized) ? normalized : null;
     } catch (_error) {
       return null;
     }
+  }
+
+  function getLocaleMetadata(language) {
+    return LOCALE_METADATA[normalizeLanguage(language)] || LOCALE_METADATA[DEFAULT_LANGUAGE];
+  }
+
+  function getPathLanguage(pathname = window.location.pathname) {
+    const firstSegment = pathname.split("/").filter(Boolean)[0]?.toLowerCase() || "";
+    return PATH_SEGMENT_TO_LANGUAGE[firstSegment] || null;
+  }
+
+  function stripLocalePrefix(pathname) {
+    const normalizedPathname = typeof pathname === "string" && pathname ? pathname : "/";
+    const segments = normalizedPathname.split("/").filter(Boolean);
+    if (segments.length > 0 && PATH_SEGMENT_TO_LANGUAGE[segments[0].toLowerCase()]) {
+      const stripped = `/${segments.slice(1).join("/")}`;
+      return stripped === "/" ? "/" : `${stripped}/`.replace(/\/+$/, "/");
+    }
+    return normalizedPathname;
+  }
+
+  function localizePath(pathname, language) {
+    const metadata = getLocaleMetadata(language);
+    const strippedPath = stripLocalePrefix(pathname);
+    const pathWithSlash = strippedPath.endsWith("/") ? strippedPath : `${strippedPath}/`;
+
+    if (!metadata.prefix) {
+      return pathWithSlash;
+    }
+
+    return pathWithSlash === "/" ? `${metadata.prefix}/` : `${metadata.prefix}${pathWithSlash}`;
+  }
+
+  function getPreferredHomeLanguage() {
+    const storedLanguage = normalizeLanguage(getStoredLanguage());
+    if (storedLanguage !== DEFAULT_LANGUAGE) {
+      return storedLanguage;
+    }
+
+    const browserLanguages = Array.isArray(navigator.languages) && navigator.languages.length > 0
+      ? navigator.languages
+      : [navigator.language];
+    const matchedLanguage = browserLanguages
+      .map((language) => normalizeLanguage(language))
+      .find((language) => SUPPORTED_LANGUAGES.includes(language));
+    return matchedLanguage || DEFAULT_LANGUAGE;
+  }
+
+  function resolveInitialLanguage() {
+    const pathLanguage = getPathLanguage();
+    if (pathLanguage) {
+      return pathLanguage;
+    }
+
+    if (window.location.pathname === "/" || window.location.pathname === "") {
+      return getQueryLanguage() || getPreferredHomeLanguage();
+    }
+
+    return DEFAULT_LANGUAGE;
   }
 
   function getQueryDebugLanguageDirective() {
@@ -677,13 +783,17 @@
     return state.translations;
   }
 
+  function hasTranslationTable(language) {
+    return isValidTranslationTable(getTranslationsState()[normalizeLanguage(language)]);
+  }
+
   function getTranslationsForLanguage(language) {
     const translations = getTranslationsState();
     return translations[language] || {};
   }
 
   function getLocaleForLanguage(language) {
-    return language === "ko" ? "ko_KR" : "en_US";
+    return getLocaleMetadata(language).ogLocale;
   }
 
   function getTranslation(language, key) {
@@ -703,6 +813,9 @@
 
   function updateHeadMetadata(language) {
     if (document.documentElement.getAttribute("data-static-meta") === "true") {
+      return;
+    }
+    if (language !== DEFAULT_LANGUAGE && !hasTranslationTable(language)) {
       return;
     }
 
@@ -739,6 +852,10 @@
   }
 
   function updateTextNodes(language) {
+    if (language !== DEFAULT_LANGUAGE && !hasTranslationTable(language)) {
+      return;
+    }
+
     dom.translatableNodes.forEach((node) => {
       const key = node.getAttribute("data-i18n");
       if (!key) {
@@ -788,6 +905,10 @@
   }
 
   function updateAriaLabelNodes(language) {
+    if (language !== DEFAULT_LANGUAGE && !hasTranslationTable(language)) {
+      return;
+    }
+
     dom.translatableAriaLabelNodes.forEach((node) => {
       const key = node.getAttribute("data-i18n-aria-label");
       if (!key) {
@@ -806,6 +927,21 @@
       const buttonLanguage = button.getAttribute("data-lang");
       const isActive = buttonLanguage === language;
       button.setAttribute("aria-pressed", String(isActive));
+      if (isActive) {
+        button.setAttribute("aria-current", "true");
+      } else {
+        button.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  function updateLanguageSwitchLinks() {
+    const basePath = stripLocalePrefix(window.location.pathname);
+    dom.langButtons.forEach((button) => {
+      const buttonLanguage = normalizeLanguage(button.getAttribute("data-lang"));
+      const nextPath = localizePath(basePath, buttonLanguage);
+      const nextUrl = `${nextPath}${window.location.search}${window.location.hash}`;
+      button.setAttribute("href", nextUrl);
     });
   }
 
@@ -1010,13 +1146,14 @@
     }
 
     const nextLanguage = normalizeLanguage(language);
+    const mediaLanguage = getLocaleMetadata(nextLanguage).mediaKey || DEFAULT_LANGUAGE;
     const resolvedTheme =
       document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
 
     dom.localizedMediaNodes.forEach((node) => {
       const nextSrc =
-        node.getAttribute(`data-media-src-${nextLanguage}-${resolvedTheme}`) ||
-        node.getAttribute(`data-media-src-${nextLanguage}`) ||
+        node.getAttribute(`data-media-src-${mediaLanguage}-${resolvedTheme}`) ||
+        node.getAttribute(`data-media-src-${mediaLanguage}`) ||
         node.getAttribute(`data-media-src-${DEFAULT_LANGUAGE}-${resolvedTheme}`) ||
         node.getAttribute(`data-media-src-${DEFAULT_LANGUAGE}`) ||
         "";
@@ -1027,45 +1164,47 @@
   }
 
   function applyLanguage(language, options = {}) {
-    const { syncQuery = true } = options;
-    const requestedLanguage = normalizeLanguage(language);
-    // Public runtime stays en-only. ko remains available for internal debug review.
-    const nextLanguage = isDebugLanguageEnabled() ? requestedLanguage : DEFAULT_LANGUAGE;
+    const { updateLinks = true } = options;
+    const nextLanguage = normalizeLanguage(language);
 
-    document.documentElement.lang = nextLanguage;
+    document.documentElement.lang = getLocaleMetadata(nextLanguage).htmlLang;
+    document.documentElement.setAttribute("data-locale", nextLanguage);
     updateHeadMetadata(nextLanguage);
     updateTextNodes(nextLanguage);
     updateAriaLabelNodes(nextLanguage);
     updateLanguageButtons(nextLanguage);
+    if (updateLinks) {
+      updateLanguageSwitchLinks();
+    }
     applyLocalizedMedia(nextLanguage);
 
     setCurrentLanguage(nextLanguage);
     setStoredLanguage(nextLanguage);
-
-    if (syncQuery) {
-      syncLanguageQuery(nextLanguage);
-    }
   }
 
   function initializeLanguage() {
-    const preferred = isDebugLanguageEnabled()
-      ? getQueryLanguage() || getDebugLanguage() || getStoredLanguage() || DEFAULT_LANGUAGE
-      : DEFAULT_LANGUAGE;
-    applyLanguage(preferred);
+    applyLanguage(resolveInitialLanguage());
   }
 
   function initializeLanguageSwitch() {
-    const isVisible = isDebugLanguageEnabled();
-    updateLanguageSwitchVisibility(isVisible);
-
-    if (!isVisible) {
-      return;
-    }
+    updateLanguageSwitchVisibility(true);
+    updateLanguageSwitchLinks();
 
     dom.langButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const nextLanguage = button.getAttribute("data-lang");
-        applyLanguage(nextLanguage);
+      button.addEventListener("click", (event) => {
+        const nextLanguage = normalizeLanguage(button.getAttribute("data-lang"));
+        const targetPath = localizePath(stripLocalePrefix(window.location.pathname), nextLanguage);
+        const nextUrl = `${targetPath}${window.location.search}${window.location.hash}`;
+        if (button.getAttribute("href") !== nextUrl) {
+          button.setAttribute("href", nextUrl);
+        }
+        setStoredLanguage(nextLanguage);
+        trackEvent("language_change", { language: nextLanguage });
+
+        if (targetPath === window.location.pathname) {
+          event.preventDefault();
+          applyLanguage(nextLanguage);
+        }
       });
     });
   }
@@ -1443,7 +1582,7 @@
   }
 
   function reapplyCurrentLanguage() {
-    applyLanguage(getCurrentLanguage(), { syncQuery: false });
+    applyLanguage(getCurrentLanguage(), { updateLinks: true });
     updateCommunityReleaseStatus();
   }
 

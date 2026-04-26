@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-title-key="tokenmon_seo_title" data-description-key="tokenmon_meta_description">
+<html lang="en-US" data-title-key="tokenmon_seo_title" data-description-key="tokenmon_meta_description" data-locale="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,10 @@
       content="Tokenmon is a local-first macOS menu bar app that turns Claude Code and Codex usage into passive encounters, automatic results, and local Dex progress."
     />
     <link rel="canonical" href="https://aroido.com/projects/tokenmon/" />
-    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/tokenmon/?lang=en" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/tokenmon/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/projects/tokenmon/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/projects/tokenmon/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/projects/tokenmon/" />
     <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/tokenmon/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aroido" />
@@ -46,18 +49,18 @@
         "inLanguage": "en-US",
         "description": "A local-first macOS menu bar app that turns Claude Code and Codex usage into passive encounters, automatic results, and local Dex progress.",
         "featureList": [
-          "Passive creature encounters from normal AI coding usage",
-          "Automatic capture or escape resolution",
-          "Local Seen and Captured Dex state",
-          "Gameplay designed to work without storing prompt or response text"
+                "Passive creature encounters from normal AI coding usage",
+                "Automatic capture or escape resolution",
+                "Local Seen and Captured Dex state",
+                "Gameplay designed to work without storing prompt or response text"
         ]
-      }
+}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
     />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
     <script>
@@ -102,6 +105,12 @@
             <span class="header-context-sep" aria-hidden="true">/</span>
             <span aria-current="page" data-i18n="crumb_tokenmon">Tokenmon detail</span>
           </nav>
+                    <nav class="lang-switch" aria-label="Language switch" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/projects/tokenmon/" data-lang="en" hreflang="en" lang="en-US" aria-current="true" aria-pressed="true">EN</a>
+            <a class="lang-btn" href="/ko/projects/tokenmon/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/projects/tokenmon/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/projects/tokenmon/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
           <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
             <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
             <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
@@ -127,10 +136,7 @@
               <p class="kicker" data-i18n="tokenmon_kicker">Tokenmon</p>
             </div>
             <h1 data-i18n="tokenmon_title">Keep coding. Tokenmon collects quietly.</h1>
-            <p data-i18n="tokenmon_description">
-              Claude Code and Codex usage becomes passive encounters, automatic results, and local Dex progress in your
-              Mac menu bar.
-            </p>
+            <p data-i18n="tokenmon_description">Claude Code and Codex usage becomes passive encounters, automatic results, and local Dex progress in your Mac menu bar.</p>
             <p class="hero-hook" data-i18n="tokenmon_hook">No account, local-first, and no prompt text needed for gameplay.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="https://github.com/aroido/tokenmon/releases/latest" target="_blank" rel="noreferrer" data-i18n="tokenmon_cta_primary" data-track-event="download_cta_click" data-track-label="tokenmon_open_download">Download DMG</a>
@@ -343,9 +349,7 @@
                 data-i18n="copy_command"
                 data-track-event="copy_command_click"
                 data-track-label="tokenmon_copy_brew_command"
-              >
-                Copy command
-              </button>
+              >Copy command</button>
             </div>
             <pre id="tokenmon-brew-command" class="download-command"><code data-i18n="tokenmon_download_brew_command">brew install --cask aroido/tokenmon/tokenmon</code></pre>
             <p class="download-note" data-i18n="tokenmon_download_brew_note">Release builds can update in-app, so the Homebrew path is mainly for initial install and terminal-driven upgrades.</p>

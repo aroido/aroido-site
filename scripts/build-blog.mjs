@@ -5,13 +5,24 @@ import path from "node:path";
 import process from "node:process";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import {
+  DEFAULT_LOCALE,
+  PUBLIC_LOCALES,
+  SITE_URL,
+  STATIC_I18N_ROUTES,
+  buildHreflangLinks,
+  getLocale,
+  localizeHref,
+  localizePath,
+  localizeUrl,
+} from "./i18n-locales.mjs";
 
 const ROOT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = path.join(ROOT_DIR, "content", "blog");
 const BLOG_DIR = path.join(ROOT_DIR, "blog");
+const MESSAGES_PATH = path.join(ROOT_DIR, "i18n", "messages.json");
 const RSS_PATH = path.join(ROOT_DIR, "rss.xml");
 const SITEMAP_PATH = path.join(ROOT_DIR, "sitemap.xml");
-const SITE_URL = "https://aroido.com";
 const POSTS_PER_PAGE = 5;
 const DEFAULT_OG_IMAGE =
   "https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png";
@@ -26,6 +37,28 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function readMessages() {
+  return JSON.parse(fs.readFileSync(MESSAGES_PATH, "utf8"));
+}
+
+function getMessage(messages, localeCode, key) {
+  const localeTable = messages[localeCode] || {};
+  const defaultTable = messages[DEFAULT_LOCALE] || {};
+  const value = Object.prototype.hasOwnProperty.call(localeTable, key)
+    ? localeTable[key]
+    : defaultTable[key];
+
+  return typeof value === "string" ? value : "";
+}
+
+function formatMessage(messages, localeCode, key, replacements = {}) {
+  let value = getMessage(messages, localeCode, key);
+  for (const [replacementKey, replacementValue] of Object.entries(replacements)) {
+    value = value.replaceAll(`{${replacementKey}}`, String(replacementValue));
+  }
+  return value;
 }
 
 function ensureDirectory(targetPath) {
@@ -151,8 +184,12 @@ function calculateReadingTime(markdownBody) {
   return { words, minutes };
 }
 
-function formatDisplayDate(date) {
-  return new Intl.DateTimeFormat("en-US", {
+function getIntlLocale(localeCode) {
+  return getLocale(localeCode).htmlLang;
+}
+
+function formatDisplayDate(date, localeCode = DEFAULT_LOCALE) {
+  return new Intl.DateTimeFormat(getIntlLocale(localeCode), {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -479,11 +516,33 @@ function getAssetPrefix(routePath) {
   return "../".repeat(segments.length);
 }
 
-function renderTopbar(currentSection) {
+function renderLanguageSwitch(messages, localeCode, routePath) {
+  const activeLocale = getLocale(localeCode);
+  const ariaLabel = getMessage(messages, localeCode, "aria_language_switch") || "Language switch";
+  const links = PUBLIC_LOCALES.map((locale) => {
+    const activeAttributes =
+      locale.code === activeLocale.code ? ' aria-current="true" aria-pressed="true"' : "";
+    return `            <a class="lang-btn" href="${escapeHtml(
+      localizePath(routePath, locale.code)
+    )}" data-lang="${escapeHtml(locale.code)}" hreflang="${escapeHtml(
+      locale.hreflang
+    )}" lang="${escapeHtml(locale.htmlLang)}"${activeAttributes}>${escapeHtml(locale.label)}</a>`;
+  }).join("\n");
+
+  return `
+          <nav class="lang-switch" aria-label="${escapeHtml(
+            ariaLabel
+          )}" data-i18n-aria-label="aria_language_switch">
+${links}
+          </nav>`;
+}
+
+function renderTopbar(currentSection, localeCode, routePath, messages) {
   const blogCurrent = currentSection === "blog" ? ' aria-current="page"' : "";
+  const navHref = (pathValue) => localizePath(pathValue, localeCode);
   return `
       <header class="topbar reveal" data-reveal>
-        <a class="brand brand-link brand-with-mark" href="/">
+        <a class="brand brand-link brand-with-mark" href="${escapeHtml(navHref("/"))}">
           <img
             class="brand-mark"
             src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
@@ -496,17 +555,18 @@ function renderTopbar(currentSection) {
           />
         </a>
         <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="aria_main_nav">
-          <a href="/" data-i18n="nav_home">Home</a>
-          <a href="/projects/" data-i18n="nav_projects">Products</a>
-          <a href="/blog/" data-i18n="nav_blog"${blogCurrent}>Blog</a>
-          <a href="/team/" data-i18n="nav_team">Team</a>
-          <a href="/contact/" data-i18n="nav_contact">Contact</a>
+          <a href="${escapeHtml(navHref("/"))}" data-i18n="nav_home">${escapeHtml(getMessage(messages, localeCode, "nav_home"))}</a>
+          <a href="${escapeHtml(navHref("/projects/"))}" data-i18n="nav_projects">${escapeHtml(getMessage(messages, localeCode, "nav_projects"))}</a>
+          <a href="${escapeHtml(navHref("/blog/"))}" data-i18n="nav_blog"${blogCurrent}>${escapeHtml(getMessage(messages, localeCode, "nav_blog"))}</a>
+          <a href="${escapeHtml(navHref("/team/"))}" data-i18n="nav_team">${escapeHtml(getMessage(messages, localeCode, "nav_team"))}</a>
+          <a href="${escapeHtml(navHref("/contact/"))}" data-i18n="nav_contact">${escapeHtml(getMessage(messages, localeCode, "nav_contact"))}</a>
         </nav>
         <div class="header-controls">
+${renderLanguageSwitch(messages, localeCode, routePath)}
           <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
-            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
-            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
-            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">Dark</button>
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">${escapeHtml(getMessage(messages, localeCode, "theme_auto"))}</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">${escapeHtml(getMessage(messages, localeCode, "theme_light"))}</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">${escapeHtml(getMessage(messages, localeCode, "theme_dark"))}</button>
           </div>
         </div>
       </header>`;
@@ -514,33 +574,45 @@ function renderTopbar(currentSection) {
 
 function renderDocument({
   routePath,
+  localeCode = DEFAULT_LOCALE,
   title,
   description,
-  canonicalPath,
+  canonicalPath = routePath,
   ogType = "website",
   ogImage = DEFAULT_OG_IMAGE,
   mainContent,
   structuredData,
+  messages,
 }) {
-  const assetPrefix = getAssetPrefix(routePath);
+  const locale = getLocale(localeCode);
+  const localizedPath = localizePath(canonicalPath, localeCode);
+  const assetPrefix = getAssetPrefix(localizedPath);
   const cssHref = `${assetPrefix}styles.css`;
   const scriptSrc = `${assetPrefix}script.js`;
-  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
+  const canonicalUrl = localizeUrl(canonicalPath, localeCode);
+  const alternateLinks = buildHreflangLinks(canonicalPath)
+    .map(
+      (link) =>
+        `    <link rel="alternate" hreflang="${escapeHtml(link.hreflang)}" href="${escapeHtml(
+          link.href
+        )}" />`
+    )
+    .join("\n");
   const jsonLd = JSON.stringify(structuredData, null, 2);
+  const skipLabel = getMessage(messages || {}, localeCode, "skip_to_content") || "Skip to content";
 
   return `<!doctype html>
-<html lang="en" data-static-meta="true">
+<html lang="${escapeHtml(locale.htmlLang)}" data-static-meta="true" data-locale="${escapeHtml(locale.code)}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${escapeHtml(title)}</title>
     <meta id="metaDescription" name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
-    <link rel="alternate" hreflang="en" href="${escapeHtml(`${canonicalUrl}?lang=en`)}" />
-    <link rel="alternate" hreflang="x-default" href="${escapeHtml(canonicalUrl)}" />
+${alternateLinks}
     <meta property="og:type" content="${escapeHtml(ogType)}" />
     <meta property="og:site_name" content="Aroido" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="${escapeHtml(locale.ogLocale)}" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
@@ -575,7 +647,7 @@ ${jsonLd}
   </head>
   <body>
     ${GENERATED_NOTICE}
-    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">Skip to content</a>
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">${escapeHtml(skipLabel)}</a>
     <main id="main-content" class="site-shell">
 ${mainContent}
     </main>
@@ -595,14 +667,31 @@ function renderTagList(post) {
     .join("")}</ul>`;
 }
 
-function formatPostCountLabel(count) {
-  return `${count} ${count === 1 ? "post" : "posts"} on this page`;
+function rewriteHtmlHrefs(html, localeCode) {
+  return html.replace(/\shref="([^"]+)"/g, (match, href) => {
+    const nextHref = localizeHref(href, localeCode);
+    return ` href="${escapeHtml(nextHref)}"`;
+  });
 }
 
-function renderPostCard(post) {
+function formatPostCountLabel(messages, localeCode, count) {
+  const key = count === 1 ? "blog_post_count_one" : "blog_post_count_other";
+  return formatMessage(messages, localeCode, key, { count });
+}
+
+function formatReadingTime(messages, localeCode, minutes) {
+  return formatMessage(messages, localeCode, "blog_reading_minutes", { count: minutes });
+}
+
+function formatWordCount(messages, localeCode, words) {
+  return formatMessage(messages, localeCode, "blog_word_count", { count: words });
+}
+
+function renderPostCard(post, localeCode, messages) {
+  const postPath = localizePath(post.path, localeCode);
   const coverMarkup = post.coverImage
     ? `
-            <a class="blog-card-cover" href="${escapeHtml(post.path)}" aria-hidden="true" tabindex="-1">
+            <a class="blog-card-cover" href="${escapeHtml(postPath)}" aria-hidden="true" tabindex="-1">
               <img src="${escapeHtml(post.coverImage)}" alt="" loading="eager" decoding="async" />
             </a>`
     : "";
@@ -610,15 +699,15 @@ function renderPostCard(post) {
   return `
           <article class="blog-card">
             ${coverMarkup}
-            <p class="mini-label">${escapeHtml(post.displayDate)} · ${post.readingMinutes} min read</p>
-            <h2><a href="${escapeHtml(post.path)}">${escapeHtml(post.title)}</a></h2>
+            <p class="mini-label">${escapeHtml(formatDisplayDate(post.date, localeCode))} · ${escapeHtml(formatReadingTime(messages, localeCode, post.readingMinutes))}</p>
+            <h2><a href="${escapeHtml(postPath)}">${escapeHtml(post.title)}</a></h2>
             <p>${escapeHtml(post.excerpt)}</p>
             ${renderTagList(post)}
-            <a class="inline-link" href="${escapeHtml(post.path)}" data-i18n="blog_read_more">Read article</a>
+            <a class="inline-link" href="${escapeHtml(postPath)}" data-i18n="blog_read_more">${escapeHtml(getMessage(messages, localeCode, "blog_read_more"))}</a>
           </article>`;
 }
 
-function renderPagination(currentPage, totalPages) {
+function renderPagination(currentPage, totalPages, localeCode, messages) {
   if (totalPages <= 1) {
     return "";
   }
@@ -630,7 +719,7 @@ function renderPagination(currentPage, totalPages) {
     const pageNumber = offset + 1;
     const pagePath = pageNumber === 1 ? "/blog/" : `/blog/page/${pageNumber}/`;
     const current = pageNumber === currentPage ? ' aria-current="page"' : "";
-    return `<a href="${pagePath}"${current}>${pageNumber}</a>`;
+    return `<a href="${escapeHtml(localizePath(pagePath, localeCode))}"${current}>${pageNumber}</a>`;
   }).join("");
 
   return `
@@ -638,105 +727,127 @@ function renderPagination(currentPage, totalPages) {
         <div class="pagination-edge">
           ${
             previousPath
-              ? `<a class="pagination-link" href="${previousPath}" data-i18n="blog_pagination_prev">Previous</a>`
-              : `<span class="pagination-link is-disabled" data-i18n="blog_pagination_prev">Previous</span>`
+              ? `<a class="pagination-link" href="${escapeHtml(localizePath(previousPath, localeCode))}" data-i18n="blog_pagination_prev">${escapeHtml(getMessage(messages, localeCode, "blog_pagination_prev"))}</a>`
+              : `<span class="pagination-link is-disabled" data-i18n="blog_pagination_prev">${escapeHtml(getMessage(messages, localeCode, "blog_pagination_prev"))}</span>`
           }
         </div>
         <div class="pagination-pages">${pageLinks}</div>
         <div class="pagination-edge">
           ${
             nextPath
-              ? `<a class="pagination-link" href="${nextPath}" data-i18n="blog_pagination_next">Next</a>`
-              : `<span class="pagination-link is-disabled" data-i18n="blog_pagination_next">Next</span>`
+              ? `<a class="pagination-link" href="${escapeHtml(localizePath(nextPath, localeCode))}" data-i18n="blog_pagination_next">${escapeHtml(getMessage(messages, localeCode, "blog_pagination_next"))}</a>`
+              : `<span class="pagination-link is-disabled" data-i18n="blog_pagination_next">${escapeHtml(getMessage(messages, localeCode, "blog_pagination_next"))}</span>`
           }
         </div>
       </nav>`;
 }
 
-function renderBlogIndexPage(posts, pageNumber, totalPages) {
+function renderBlogIndexPage(posts, pageNumber, totalPages, localeCode, messages) {
   const archiveTitle =
     pageNumber === 1
-      ? "AI Coding Workflows Blog for Multi-Repo Teams | Cursor, Claude Code, MCP, GitLab Duo"
-      : `AI Coding Workflow Archive Page ${pageNumber} | Multi-Repo Team Blog`;
+      ? getMessage(messages, localeCode, "blog_archive_seo_title")
+      : formatMessage(messages, localeCode, "blog_archive_seo_title_page", {
+          page: pageNumber,
+        });
   const archiveDescription =
     pageNumber === 1
-      ? "Aroido blog covering multi-repo AI coding standards, Cursor Rules, Claude Code, MCP, GitLab Duo, hidden dependencies, and team governance."
-      : `Archive page ${pageNumber} for Aroido articles about multi-repo AI coding systems, MCP, Cursor, Claude Code, and team governance.`;
+      ? getMessage(messages, localeCode, "blog_archive_meta_description")
+      : formatMessage(messages, localeCode, "blog_archive_meta_description_page", {
+          page: pageNumber,
+        });
   const routePath = pageNumber === 1 ? "/blog/" : `/blog/page/${pageNumber}/`;
   const canonicalPath = routePath;
   const listMarkup = posts.length
-    ? posts.map(renderPostCard).join("\n")
-    : '<p class="blog-empty" data-i18n="blog_posts_empty">No posts published yet.</p>';
+    ? posts.map((post) => renderPostCard(post, localeCode, messages)).join("\n")
+    : `<p class="blog-empty" data-i18n="blog_posts_empty">${escapeHtml(
+        getMessage(messages, localeCode, "blog_posts_empty")
+      )}</p>`;
+  const locale = getLocale(localeCode);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name:
       pageNumber === 1
-        ? "AI Coding Workflow Blog for Multi-Repo Teams"
-        : `AI Coding Workflow Archive Page ${pageNumber}`,
-    url: `${SITE_URL}${canonicalPath}`,
-    inLanguage: "en-US",
+        ? getMessage(messages, localeCode, "blog_archive_structured_name")
+        : formatMessage(messages, localeCode, "blog_archive_structured_name_page", {
+            page: pageNumber,
+          }),
+    url: localizeUrl(canonicalPath, localeCode),
+    inLanguage: locale.jsonLdLanguage,
     isPartOf: {
       "@type": "Blog",
       name: "Aroido Blog",
-      url: `${SITE_URL}/blog/`,
+      url: localizeUrl("/blog/", localeCode),
     },
     mainEntity: {
       "@type": "ItemList",
       itemListElement: posts.map((post, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: post.canonicalUrl,
+        url: localizeUrl(post.path, localeCode),
         name: post.title,
       })),
     },
   };
 
   const mainContent = `
-${renderTopbar("blog")}
+${renderTopbar("blog", localeCode, routePath, messages)}
       <section class="page-hero blog-hero reveal" data-reveal>
-        <p class="kicker" data-i18n="blog_eyebrow">Journal</p>
-        <h1>AI coding workflows for multi-repo teams.</h1>
+        <p class="kicker" data-i18n="blog_eyebrow">${escapeHtml(getMessage(messages, localeCode, "blog_eyebrow"))}</p>
+        <h1 data-i18n="blog_archive_h1">${escapeHtml(getMessage(messages, localeCode, "blog_archive_h1"))}</h1>
         <p class="blog-hero-copy">
-          Search-focused articles on Cursor Rules, AGENTS.md, Claude Code, MCP, GitLab Duo Agent Platform, hidden dependencies, and standards drift across repositories.
+          ${escapeHtml(getMessage(messages, localeCode, "blog_archive_copy"))}
         </p>
         <div class="blog-hero-meta">
-          <span class="blog-pill">${formatPostCountLabel(posts.length)}</span>
-          <span class="blog-pill">Page ${pageNumber} of ${totalPages}</span>
-          <span class="blog-pill">Cursor · Claude Code · MCP · GitLab Duo</span>
+          <span class="blog-pill">${escapeHtml(formatPostCountLabel(messages, localeCode, posts.length))}</span>
+          <span class="blog-pill">${escapeHtml(
+            formatMessage(messages, localeCode, "blog_page_count", {
+              page: pageNumber,
+              total: totalPages,
+            })
+          )}</span>
+          <span class="blog-pill">${escapeHtml(getMessage(messages, localeCode, "blog_topic_pill"))}</span>
         </div>
       </section>
 
       <section class="section">
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="blog_archive_label">Archive</p>
-          <h2>${pageNumber === 1 ? "Latest entries" : `Archive page ${pageNumber}`}</h2>
-          <p>Each article is written around the concrete problems VibeSmith is trying to solve: setup drift, context handoff, hidden dependencies, and governance across multiple AI coding repositories.</p>
+          <p class="section-eyebrow" data-i18n="blog_archive_label">${escapeHtml(getMessage(messages, localeCode, "blog_archive_label"))}</p>
+          <h2>${escapeHtml(
+            pageNumber === 1
+              ? getMessage(messages, localeCode, "blog_archive_latest_entries")
+              : formatMessage(messages, localeCode, "blog_archive_page_heading", {
+                  page: pageNumber,
+                })
+          )}</h2>
+          <p>${escapeHtml(getMessage(messages, localeCode, "blog_archive_intro"))}</p>
         </div>
         <div class="blog-grid">
 ${listMarkup}
         </div>
       </section>
-${renderPagination(pageNumber, totalPages)}
+${renderPagination(pageNumber, totalPages, localeCode, messages)}
       <section class="contact-panel">
-        <h2 data-i18n="blog_footer_title">Need product context before you read deeper?</h2>
+        <h2 data-i18n="blog_footer_title">${escapeHtml(getMessage(messages, localeCode, "blog_footer_title"))}</h2>
         <p data-i18n="blog_footer_description">
-          Start with the products overview or a specific public product page, then come back here for the reasoning and release notes behind the work.
+          ${escapeHtml(getMessage(messages, localeCode, "blog_footer_description"))}
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/projects/" data-i18n="blog_footer_primary">See products</a>
-          <a class="btn btn-ghost" href="/contact/" data-i18n="blog_footer_secondary">Contact Aroido</a>
+          <a class="btn btn-primary" href="${escapeHtml(localizePath("/projects/", localeCode))}" data-i18n="blog_footer_primary">${escapeHtml(getMessage(messages, localeCode, "blog_footer_primary"))}</a>
+          <a class="btn btn-ghost" href="${escapeHtml(localizePath("/contact/", localeCode))}" data-i18n="blog_footer_secondary">${escapeHtml(getMessage(messages, localeCode, "blog_footer_secondary"))}</a>
         </div>
       </section>`;
 
   return renderDocument({
     routePath,
+    localeCode,
     title: archiveTitle,
     description: archiveDescription,
     canonicalPath,
     ogImage: DEFAULT_OG_IMAGE,
     mainContent,
     structuredData,
+    messages,
   });
 }
 
@@ -757,10 +868,12 @@ function getRelatedPosts(post, allPosts, limit = 3) {
     .map((entry) => entry.candidate);
 }
 
-function renderPostPage(post, index, allPosts) {
+function renderPostPage(post, index, allPosts, localeCode, messages) {
   const previousPost = allPosts[index - 1] || null;
   const nextPost = allPosts[index + 1] || null;
   const relatedPosts = getRelatedPosts(post, allPosts);
+  const locale = getLocale(localeCode);
+  const postUrl = localizeUrl(post.path, localeCode);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -768,9 +881,9 @@ function renderPostPage(post, index, allPosts) {
     description: post.excerpt,
     datePublished: post.isoDate,
     dateModified: post.modifiedIsoDate,
-    inLanguage: "en-US",
-    mainEntityOfPage: post.canonicalUrl,
-    url: post.canonicalUrl,
+    inLanguage: locale.jsonLdLanguage,
+    mainEntityOfPage: postUrl,
+    url: postUrl,
     keywords: post.tags,
     image: [post.socialImageUrl],
     author: {
@@ -793,16 +906,16 @@ function renderPostPage(post, index, allPosts) {
           <nav class="article-nav" aria-label="Article navigation">
             ${
               previousPost
-                ? `<a class="article-nav-card" href="${previousPost.path}">
-                    <span class="mini-label" data-i18n="blog_article_nav_prev">Previous article</span>
+                ? `<a class="article-nav-card" href="${escapeHtml(localizePath(previousPost.path, localeCode))}">
+                    <span class="mini-label" data-i18n="blog_article_nav_prev">${escapeHtml(getMessage(messages, localeCode, "blog_article_nav_prev"))}</span>
                     <strong>${escapeHtml(previousPost.title)}</strong>
                   </a>`
                 : '<div class="article-nav-card is-empty" aria-hidden="true"></div>'
             }
             ${
               nextPost
-                ? `<a class="article-nav-card" href="${nextPost.path}">
-                    <span class="mini-label" data-i18n="blog_article_nav_next">Next article</span>
+                ? `<a class="article-nav-card" href="${escapeHtml(localizePath(nextPost.path, localeCode))}">
+                    <span class="mini-label" data-i18n="blog_article_nav_next">${escapeHtml(getMessage(messages, localeCode, "blog_article_nav_next"))}</span>
                     <strong>${escapeHtml(nextPost.title)}</strong>
                   </a>`
                 : '<div class="article-nav-card is-empty" aria-hidden="true"></div>'
@@ -814,13 +927,13 @@ function renderPostPage(post, index, allPosts) {
     ? `
           <aside class="article-aside">
             <div class="article-aside-card">
-              <p class="section-eyebrow">Related reads</p>
+              <p class="section-eyebrow" data-i18n="blog_related_reads">${escapeHtml(getMessage(messages, localeCode, "blog_related_reads"))}</p>
               <ul class="article-recent-list">
                 ${relatedPosts
                   .map(
                     (relatedPost) => `
                       <li>
-                        <a href="${relatedPost.path}">${escapeHtml(relatedPost.title)}</a>
+                        <a href="${escapeHtml(localizePath(relatedPost.path, localeCode))}">${escapeHtml(relatedPost.title)}</a>
                         <span>${escapeHtml(relatedPost.excerpt)}</span>
                       </li>`
                   )
@@ -831,17 +944,17 @@ function renderPostPage(post, index, allPosts) {
     : "";
 
   const mainContent = `
-${renderTopbar("blog")}
+${renderTopbar("blog", localeCode, post.path, messages)}
       <article class="article-shell">
         <section class="article-hero reveal" data-reveal>
-          <p class="kicker" data-i18n="blog_post_label">Blog post</p>
-          <a class="inline-link article-back-link" href="/blog/" data-i18n="blog_back_to_blog">Back to blog</a>
+          <p class="kicker" data-i18n="blog_post_label">${escapeHtml(getMessage(messages, localeCode, "blog_post_label"))}</p>
+          <a class="inline-link article-back-link" href="${escapeHtml(localizePath("/blog/", localeCode))}" data-i18n="blog_back_to_blog">${escapeHtml(getMessage(messages, localeCode, "blog_back_to_blog"))}</a>
           <h1>${escapeHtml(post.title)}</h1>
           <p class="article-excerpt">${escapeHtml(post.excerpt)}</p>
           <div class="article-meta">
-            <span>${escapeHtml(post.displayDate)}</span>
-            <span>${post.readingMinutes} min read</span>
-            <span>${post.wordCount} words</span>
+            <span>${escapeHtml(formatDisplayDate(post.date, localeCode))}</span>
+            <span>${escapeHtml(formatReadingTime(messages, localeCode, post.readingMinutes))}</span>
+            <span>${escapeHtml(formatWordCount(messages, localeCode, post.wordCount))}</span>
           </div>
           ${renderTagList(post)}
         </section>
@@ -849,7 +962,7 @@ ${renderTopbar("blog")}
         <div class="article-layout">
           <section class="article-body">
             <div class="article-prose">
-${post.html}
+${rewriteHtmlHrefs(post.html, localeCode)}
             </div>
 ${articleNav}
           </section>
@@ -859,6 +972,7 @@ ${asideMarkup}
 
   return renderDocument({
     routePath: post.path,
+    localeCode,
     title: `${post.title} | Aroido Blog`,
     description: post.excerpt,
     canonicalPath: post.path,
@@ -866,6 +980,7 @@ ${asideMarkup}
     ogImage: post.socialImageUrl,
     mainContent,
     structuredData,
+    messages,
   });
 }
 
@@ -901,30 +1016,24 @@ function getFileLastModifiedIso(relativePath) {
 
 function renderSitemap(posts, archivePages) {
   const latestPostIso = posts[0]?.isoDate || getFileLastModifiedIso("index.html");
-  const entries = [
-    { loc: "/", lastmod: getFileLastModifiedIso("index.html") },
-    { loc: "/projects/", lastmod: getFileLastModifiedIso(path.join("projects", "index.html")) },
-    {
-      loc: "/projects/vibesmith/",
-      lastmod: getFileLastModifiedIso(path.join("projects", "vibesmith", "index.html")),
-    },
-    {
-      loc: "/projects/layoutrecall/",
-      lastmod: getFileLastModifiedIso(path.join("projects", "layoutrecall", "index.html")),
-    },
-    {
-      loc: "/projects/tokenmon/",
-      lastmod: getFileLastModifiedIso(path.join("projects", "tokenmon", "index.html")),
-    },
-    { loc: "/team/", lastmod: getFileLastModifiedIso(path.join("team", "index.html")) },
-    { loc: "/contact/", lastmod: getFileLastModifiedIso(path.join("contact", "index.html")) },
+  const canonicalEntries = [
+    ...STATIC_I18N_ROUTES.map((route) => ({
+      loc: route.routePath,
+      lastmod: getFileLastModifiedIso(route.sourcePath),
+    })),
     { loc: "/blog/", lastmod: archivePages[0]?.pagePosts[0]?.isoDate || latestPostIso },
     ...archivePages.slice(1).map((page) => ({
       loc: `/blog/page/${page.pageNumber}/`,
       lastmod: page.pagePosts[0]?.isoDate || latestPostIso,
     })),
     ...posts.map((post) => ({ loc: post.path, lastmod: post.isoDate })),
-  ]
+  ];
+  const entries = PUBLIC_LOCALES.flatMap((locale) =>
+    canonicalEntries.map((entry) => ({
+      loc: localizePath(entry.loc, locale.code),
+      lastmod: entry.lastmod,
+    }))
+  )
     .map(
       (entry) => `  <url>
     <loc>${escapeHtml(`${SITE_URL}${entry.loc}`)}</loc>
@@ -941,6 +1050,7 @@ ${entries}
 }
 
 function buildOutputMap(posts) {
+  const messages = readMessages();
   const output = new Map();
   const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
   const archivePages = [];
@@ -949,15 +1059,34 @@ function buildOutputMap(posts) {
     const startIndex = (pageNumber - 1) * POSTS_PER_PAGE;
     const pagePosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
     archivePages.push({ pageNumber, pagePosts });
-    const relativeOutputPath =
-      pageNumber === 1
-        ? path.join("blog", "index.html")
-        : path.join("blog", "page", String(pageNumber), "index.html");
-    output.set(relativeOutputPath, renderBlogIndexPage(pagePosts, pageNumber, totalPages));
+    for (const locale of PUBLIC_LOCALES) {
+      const localizedPath = localizePath(
+        pageNumber === 1 ? "/blog/" : `/blog/page/${pageNumber}/`,
+        locale.code
+      );
+      const relativeOutputPath = path.join(
+        localizedPath.replace(/^\/|\/$/g, ""),
+        "index.html"
+      );
+      output.set(
+        relativeOutputPath,
+        renderBlogIndexPage(pagePosts, pageNumber, totalPages, locale.code, messages)
+      );
+    }
   }
 
   posts.forEach((post, index) => {
-    output.set(path.join("blog", post.slug, "index.html"), renderPostPage(post, index, posts));
+    for (const locale of PUBLIC_LOCALES) {
+      const localizedPath = localizePath(post.path, locale.code);
+      const relativeOutputPath = path.join(
+        localizedPath.replace(/^\/|\/$/g, ""),
+        "index.html"
+      );
+      output.set(
+        relativeOutputPath,
+        renderPostPage(post, index, posts, locale.code, messages)
+      );
+    }
   });
 
   output.set("rss.xml", renderRss(posts));
@@ -967,6 +1096,9 @@ function buildOutputMap(posts) {
 
 function writeOutputs(outputMap) {
   fs.rmSync(BLOG_DIR, { recursive: true, force: true });
+  for (const locale of PUBLIC_LOCALES.filter((entry) => entry.code !== DEFAULT_LOCALE)) {
+    fs.rmSync(path.join(ROOT_DIR, locale.pathSegment, "blog"), { recursive: true, force: true });
+  }
 
   for (const [relativePath, content] of outputMap.entries()) {
     const absolutePath = path.join(ROOT_DIR, relativePath);
@@ -995,11 +1127,35 @@ function compareOutputs(outputMap) {
     const actualBlogHtmlFiles = listFilesRecursively(BLOG_DIR)
       .filter((entry) => entry.endsWith(".html"))
       .map((entry) => path.relative(ROOT_DIR, entry));
-    const expectedBlogHtmlFiles = Array.from(outputMap.keys()).filter((entry) => entry.startsWith("blog/"));
+    const expectedBlogHtmlFiles = Array.from(outputMap.keys()).filter((entry) =>
+      entry.startsWith("blog/")
+    );
     const expectedSet = new Set(expectedBlogHtmlFiles);
 
     for (const filePath of actualBlogHtmlFiles) {
       if (!expectedSet.has(filePath)) {
+        differences.push(`Unexpected generated file: ${filePath}`);
+      }
+    }
+  }
+
+  for (const locale of PUBLIC_LOCALES.filter((entry) => entry.code !== DEFAULT_LOCALE)) {
+    const localeBlogDir = path.join(ROOT_DIR, locale.pathSegment, "blog");
+    if (!fs.existsSync(localeBlogDir)) {
+      continue;
+    }
+
+    const actualLocalizedBlogHtmlFiles = listFilesRecursively(localeBlogDir)
+      .filter((entry) => entry.endsWith(".html"))
+      .map((entry) => path.relative(ROOT_DIR, entry));
+    const expectedLocalizedSet = new Set(
+      Array.from(outputMap.keys()).filter((entry) =>
+        entry.startsWith(`${locale.pathSegment}/blog/`)
+      )
+    );
+
+    for (const filePath of actualLocalizedBlogHtmlFiles) {
+      if (!expectedLocalizedSet.has(filePath)) {
         differences.push(`Unexpected generated file: ${filePath}`);
       }
     }

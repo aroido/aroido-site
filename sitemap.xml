@@ -2,31 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aroido.com/</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-04-26</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/projects/</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-04-26</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/projects/vibesmith/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-26</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/projects/layoutrecall/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-26</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/projects/tokenmon/</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-04-26</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/team/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-26</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/contact/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-26</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/blog/</loc>
@@ -62,6 +62,198 @@
   </url>
   <url>
     <loc>https://aroido.com/blog/gitlab-duo-agent-platform-for-multi-repo-teams/</loc>
+    <lastmod>2026-03-06T00:30:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/projects/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/projects/vibesmith/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/projects/layoutrecall/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/projects/tokenmon/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/team/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/contact/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/blog/</loc>
+    <lastmod>2026-03-11T09:40:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/blog/page/2/</loc>
+    <lastmod>2026-03-07T01:45:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/blog/why-teams-should-prune-unused-ai-components/</loc>
+    <lastmod>2026-03-11T09:40:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/</loc>
+    <lastmod>2026-03-11T02:30:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/blog/cursor-rules-vs-agents-md/</loc>
+    <lastmod>2026-03-10T01:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/</loc>
+    <lastmod>2026-03-09T00:15:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/blog/what-mcp-changes-for-ai-coding-workflows/</loc>
+    <lastmod>2026-03-08T06:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/blog/cursor-background-agents-for-teams/</loc>
+    <lastmod>2026-03-07T01:45:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/blog/gitlab-duo-agent-platform-for-multi-repo-teams/</loc>
+    <lastmod>2026-03-06T00:30:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/projects/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/projects/vibesmith/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/projects/layoutrecall/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/projects/tokenmon/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/team/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/contact/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/blog/</loc>
+    <lastmod>2026-03-11T09:40:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/blog/page/2/</loc>
+    <lastmod>2026-03-07T01:45:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/blog/why-teams-should-prune-unused-ai-components/</loc>
+    <lastmod>2026-03-11T09:40:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/</loc>
+    <lastmod>2026-03-11T02:30:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/blog/cursor-rules-vs-agents-md/</loc>
+    <lastmod>2026-03-10T01:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/</loc>
+    <lastmod>2026-03-09T00:15:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/blog/what-mcp-changes-for-ai-coding-workflows/</loc>
+    <lastmod>2026-03-08T06:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/blog/cursor-background-agents-for-teams/</loc>
+    <lastmod>2026-03-07T01:45:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/blog/gitlab-duo-agent-platform-for-multi-repo-teams/</loc>
+    <lastmod>2026-03-06T00:30:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/projects/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/projects/vibesmith/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/projects/layoutrecall/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/projects/tokenmon/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/team/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/contact/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/blog/</loc>
+    <lastmod>2026-03-11T09:40:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/blog/page/2/</loc>
+    <lastmod>2026-03-07T01:45:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/blog/why-teams-should-prune-unused-ai-components/</loc>
+    <lastmod>2026-03-11T09:40:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/</loc>
+    <lastmod>2026-03-11T02:30:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/blog/cursor-rules-vs-agents-md/</loc>
+    <lastmod>2026-03-10T01:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/</loc>
+    <lastmod>2026-03-09T00:15:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/blog/what-mcp-changes-for-ai-coding-workflows/</loc>
+    <lastmod>2026-03-08T06:00:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/blog/cursor-background-agents-for-teams/</loc>
+    <lastmod>2026-03-07T01:45:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/blog/gitlab-duo-agent-platform-for-multi-repo-teams/</loc>
     <lastmod>2026-03-06T00:30:00.000Z</lastmod>
   </url>
 </urlset>

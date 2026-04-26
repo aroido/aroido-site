@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="zh-Hans" data-title-key="vibe_seo_title" data-description-key="vibe_meta_description" data-locale="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VibeSmith |在 AI 编码存储库漂移蔓延之前对其进行审计</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="VibeSmith 帮助多存储库 AI 团队审核 Cursor 和 Claude Code 工作流程中的活动组件、隐藏依赖项、上下文浪费和设置偏差。"
+    />
+    <link rel="canonical" href="https://aroido.com/zh-hans/projects/vibesmith/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/vibesmith/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/projects/vibesmith/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/projects/vibesmith/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/projects/vibesmith/" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/vibesmith/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content="VibeSmith |在 AI 编码存储库漂移蔓延之前对其进行审计" />
+    <meta property="og:description" content="VibeSmith 帮助多存储库 AI 团队审核 Cursor 和 Claude Code 工作流程中的活动组件、隐藏依赖项、上下文浪费和设置偏差。" />
+    <meta property="og:url" content="https://aroido.com/zh-hans/projects/vibesmith/" />
+    <meta property="og:image" content="https://aroido.com/assets/og/vibesmith-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VibeSmith |在 AI 编码存储库漂移蔓延之前对其进行审计" />
+    <meta name="twitter:description" content="VibeSmith 帮助多存储库 AI 团队审核 Cursor 和 Claude Code 工作流程中的活动组件、隐藏依赖项、上下文浪费和设置偏差。" />
+    <meta name="twitter:image" content="https://aroido.com/assets/og/vibesmith-og.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/vibesmith-brand/icon-192.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "VibeSmith",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "url": "https://aroido.com/zh-hans/projects/vibesmith/",
+        "codeRepository": "https://github.com/aroido/vibesmith",
+        "license": "https://github.com/aroido/vibesmith/blob/main/LICENSE",
+        "inLanguage": "zh-Hans",
+        "description": "An AI coding repo drift audit layer for multi-repo teams using Cursor and Claude Code workflows.",
+        "featureList": [
+                "Cross-project component inventory and search",
+                "Dependency and conflict review before rollout",
+                "Context-heavy setup and cleanup candidates become visible earlier",
+                "Copy components across projects with dependency-aware flow"
+        ]
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">跳至内容</a>
+    <main id="main-content" class="site-shell">
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/zh-hans/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="主导航" data-i18n-aria-label="aria_main_nav">
+          <a href="/zh-hans/" data-i18n="nav_home">家</a>
+          <a href="/zh-hans/projects/" data-nav-parent-current="true" data-i18n="nav_projects">产品</a>
+          <a href="/zh-hans/blog/" data-i18n="nav_blog">博客</a>
+          <a href="/zh-hans/team/" data-i18n="nav_team">团队</a>
+          <a href="/zh-hans/contact/" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">接触</a>
+        </nav>
+        <div class="header-controls">
+          <nav class="header-context" aria-label="面包屑" data-i18n-aria-label="aria_breadcrumb">
+            <span class="header-context-mark" aria-hidden="true"></span>
+            <a href="/zh-hans/projects/" data-i18n="crumb_product">产品</a>
+            <span class="header-context-sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="crumb_vibesmith">VibeSmith 详细信息</span>
+          </nav>
+                    <nav class="lang-switch" aria-label="语言切换" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/projects/vibesmith/" data-lang="en" hreflang="en" lang="en-US">EN</a>
+            <a class="lang-btn" href="/ko/projects/vibesmith/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/projects/vibesmith/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/projects/vibesmith/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans" aria-current="true" aria-pressed="true">中文</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="主题切换" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">汽车</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">光</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">黑暗的</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="page-hero vibe-hero reveal" data-reveal>
+        <div class="page-hero-grid">
+          <div class="page-hero-copy">
+            <div class="kicker-row">
+              <img
+                class="vibe-app-icon vibe-app-icon-sm"
+                src="/assets/vibesmith-brand/icon-192.png"
+                alt=""
+                aria-hidden="true"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
+              <p class="kicker" data-i18n="vibe_kicker">VibeSmith</p>
+            </div>
+            <h1 data-i18n="vibe_title">在 AI 编码仓库漂移扩散之前完成审计。</h1>
+            <p data-i18n="vibe_description">VibeSmith 为多存储库团队提供了一个地方来审查 Cursor 和 Claude Code 工作流程中的活动组件、依赖性风险和上下文重用。它在 GitHub 上开源，现已提供预发行安装。</p>
+            <p class="hero-hook" data-i18n="vibe_hero_hook">如果在回购三之后启动质量下降，请从这里开始。</p>
+            <div class="hero-actions vibe-hero-actions">
+              <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_hero_open_download">打开发布并安装</a>
+              <a class="btn btn-ghost" href="#demo" data-i18n="vibe_hero_demo_cta" data-track-event="hero_cta_click" data-track-label="vibe_hero_open_demo">观看审核演示</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/vibesmith" target="_blank" rel="noreferrer" data-i18n="vibe_cta_github" data-track-event="hero_cta_click" data-track-label="vibe_hero_open_github">打开 GitHub 存储库</a>
+            </div>
+            <div class="hero-proof-row">
+              <span class="status-pill" data-i18n="vibe_status_pill_1">实时仪表板和演练</span>
+              <span class="status-pill" data-i18n="vibe_status_pill_2">在 GitHub 上开源</span>
+              <span class="status-pill" data-i18n="vibe_status_pill_3">专为多存储库 AI 团队而构建</span>
+            </div>
+          </div>
+          <aside class="page-hero-proof" aria-label="VibeSmith 仪表板预览" data-i18n-aria-label="aria_vibe_hero_visual">
+            <p class="mini-label" data-i18n="vibe_hero_visual_eyebrow">第一屏</p>
+            <h2 data-i18n="vibe_hero_visual_title">打开一个仪表板并了解首先需要检查哪些内容</h2>
+            <p data-i18n="vibe_hero_visual_desc">在您决定复制、清理或标准化哪些内容之前，打开的视图将活动组件数量、项目范围和早期冲突信号转换为基线。</p>
+            <div class="page-hero-proof-media">
+              <img
+                class="page-hero-proof-image"
+                src="/assets/vibesmith-community/01-dashboard-en-light.png"
+                alt=""
+                data-media-src-en-light="/assets/vibesmith-community/01-dashboard-en-light.png"
+                data-media-src-en-dark="/assets/vibesmith-community/01-dashboard-en-dark.png"
+                data-media-src-ko-light="/assets/vibesmith-community/01-dashboard-ko-light.png"
+                data-media-src-ko-dark="/assets/vibesmith-community/01-dashboard-ko-dark.png"
+                width="1400"
+                height="1555"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <ul class="page-hero-proof-list">
+              <li data-i18n="vibe_hero_visual_point_1">跨技能、规则、命令和挂钩的操作基线</li>
+              <li data-i18n="vibe_hero_visual_point_2">冲突和依赖信号在重用传播之前出现</li>
+              <li data-i18n="vibe_hero_visual_point_3">Project 故障以在下一次开始之前进行目标清理</li>
+            </ul>
+            <p class="page-hero-proof-caption" data-i18n="vibe_hero_visual_caption">当前公共开源构建，仪表板视图。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_status_eyebrow">首先呈现什么</p>
+          <h2 data-i18n="vibe_status_title">查看团队通常发现得太晚的问题</h2>
+          <p data-i18n="vibe_status_desc">当您的团队需要一个可见层来解决设置偏差、重用风险和跨存储库的上下文繁杂蔓延时，VibeSmith 最有用。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="vibe_status_card_1_label">漂移</p>
+            <h3 data-i18n="vibe_status_1">上下文密集的设置</h3>
+            <p data-i18n="vibe_status_1_body">在新项目继承相同的蔓延之前，查看哪些存储库层携带过多的内存、指令重量或设置噪音。</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_status_card_2_label">重复利用</p>
+            <h3 data-i18n="vibe_status_2">隐藏的重用风险</h3>
+            <p data-i18n="vibe_status_2_body">检查需要与组件一起移动的内容，以便复制粘贴引导程序停止以部分且昂贵的方式失败。</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_status_card_3_label">发布</p>
+            <h3 data-i18n="vibe_status_3">依赖性和冲突的意外</h3>
+            <p data-i18n="vibe_status_3_body">更早地暴露相关风险，因此发布周审查并不是您的团队第一次看到这种耦合。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_need_eyebrow">第一周疼痛</p>
+          <h2 data-i18n="vibe_need_title">团队希望从第一次真正的审核中得到什么</h2>
+          <p data-i18n="vibe_need_desc">共同的要求不是另一个人工智能功能。这是跨回购的更清晰的操作视图。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_need_1_tag">需要01</p>
+            <h3 data-i18n="vibe_need_1_title">了解哪些标准实际上是有效的</h3>
+            <p data-i18n="vibe_need_1_body">当规则、命令和指导看起来相似但在存储库之间的差异足以改变行为时，团队就会浪费时间。</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_need_2_tag">需要02</p>
+            <h3 data-i18n="vibe_need_2_title">重用而不丢失链接的上下文</h3>
+            <p data-i18n="vibe_need_2_body">用户希望复制安全基线，而不是隐藏依赖关系的半工作片段。</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_need_3_tag">需要03</p>
+            <h3 data-i18n="vibe_need_3_title">在上下文浪费变成审查浪费之前减少它</h3>
+            <p data-i18n="vibe_need_3_body">混合内存层和过时的资产会造成令牌浪费、嘈杂的提示和更长的审查循环。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="demo" class="section section-media reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_media_eyebrow">视觉 Proof</p>
+          <h2 data-i18n="vibe_media_title">来自真实多存储库 AI 团队痛苦的工作流程证明</h2>
+          <p data-i18n="vibe_media_desc">从内联演练开始，然后检查下面的每个决策屏幕。</p>
+          <ul class="proof-chip-row" aria-label="视觉证明信号" data-i18n-aria-label="aria_visual_proof">
+            <li class="proof-chip" data-i18n="vibe_media_chip_1">此页面上的可玩演练</li>
+            <li class="proof-chip" data-i18n="vibe_media_chip_2">以决策为中心的屏幕</li>
+            <li class="proof-chip" data-i18n="vibe_media_chip_3">回购规模可见性</li>
+          </ul>
+        </div>
+        <div class="single-grid">
+          <div class="media-card media-card-hero media-live media-video" data-video-embed data-video-id="Nt6I_bM_gx8">
+            <button
+              class="video-embed-trigger"
+              type="button"
+              data-video-trigger
+              aria-label="在此页面上播放 VibeSmith 演练"
+              data-i18n-aria-label="aria_video_vibe_play"
+              data-track-event="video_demo_play"
+              data-track-label="vibesmith_detail_demo_inline"
+            >
+              <img
+                class="video-embed-poster"
+                src="/assets/vibesmith-community/01-dashboard-en-light.png"
+                alt=""
+                data-media-src-en-light="/assets/vibesmith-community/01-dashboard-en-light.png"
+                data-media-src-en-dark="/assets/vibesmith-community/01-dashboard-en-dark.png"
+                data-media-src-ko-light="/assets/vibesmith-community/01-dashboard-ko-light.png"
+                data-media-src-ko-dark="/assets/vibesmith-community/01-dashboard-ko-dark.png"
+                width="1400"
+                height="1555"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="video-embed-scrim" aria-hidden="true"></span>
+              <span class="video-embed-content">
+                <span class="media-tag" data-i18n="video_demo_tag">现场产品演练</span>
+                <strong data-i18n="vibe_video_title">在逐屏校样之前观看产品演练</strong>
+                <span class="video-embed-copy" data-i18n="vibe_video_desc">这使用公共演示视频，以便访问者可以在浏览下面的决策屏幕之前看到真实的流程。</span>
+                <span class="video-embed-cta" data-i18n="video_demo_cta">播放演示</span>
+              </span>
+            </button>
+            <noscript>
+              <iframe
+                class="video-embed-frame"
+                src="https://www.youtube-nocookie.com/embed/Nt6I_bM_gx8?rel=0"
+                title="VibeSmith product walkthrough video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </noscript>
+          </div>
+        </div>
+        <p class="video-note" data-i18n="vibe_video_note">使用内联演练了解整体流程，然后检查下面的静态屏幕以了解特定的决策点。</p>
+        <div class="media-inline-actions">
+          <a
+            class="inline-link"
+            href="https://youtu.be/Nt6I_bM_gx8?si=QA0Ib9a6SlO2pVTS"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="video_demo_watch_youtube"
+            data-track-event="video_demo_open_external"
+            data-track-label="vibesmith_detail_demo_youtube"
+          >在 YouTube 上观看</a>
+          <a class="inline-link" href="#download" data-i18n="vibe_video_cta_secondary" data-track-event="hero_cta_click" data-track-label="vibesmith_detail_open_download">转到安装和文档</a>
+        </div>
+        <div class="media-proof-grid media-proof-grid-secondary">
+          <figure class="media-card media-live" role="img" aria-label="操作仪表板截图" data-i18n-aria-label="aria_media_vibe_hero_dashboard">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/01-dashboard-en-light.png"
+              alt="VibeSmith operations dashboard screenshot"
+              data-media-src-en-light="/assets/vibesmith-community/01-dashboard-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/01-dashboard-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/01-dashboard-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/01-dashboard-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_gif_tag">工作流程捕获</span>
+              <strong data-i18n="vibe_media_gif_title">操作仪表板视图</strong>
+              <p data-i18n="vibe_media_gif_desc">在一个屏幕中检查状态、冲突和覆盖范围。</p>
+            </div>
+            <figcaption data-i18n="vibe_media_gif_caption">当前公共开源构建的屏幕截图（操作仪表板）。</figcaption>
+          </figure>
+          <figure class="media-card media-live" role="img" aria-label="库存截图" data-i18n-aria-label="aria_media_vibe_inventory">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/02-components-en-light.png"
+              alt="VibeSmith component inventory"
+              data-media-src-en-light="/assets/vibesmith-community/02-components-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/02-components-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/02-components-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/02-components-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_card1_tag">决定01</span>
+              <strong data-i18n="vibe_media_card1_title">元件库存</strong>
+            </div>
+            <figcaption data-i18n="vibe_media_card1_caption">确认活动组件和所有权边界。</figcaption>
+          </figure>
+          <figure class="media-card media-live" role="img" aria-label="依赖关系图面板屏幕截图" data-i18n-aria-label="aria_media_vibe_dependency">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/03-dependencies-en-light.png"
+              alt="VibeSmith dependency graph panel"
+              data-media-src-en-light="/assets/vibesmith-community/03-dependencies-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/03-dependencies-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/03-dependencies-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/03-dependencies-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_card2_tag">决定02</span>
+              <strong data-i18n="vibe_media_card2_title">依赖关系图面板</strong>
+            </div>
+            <figcaption data-i18n="vibe_media_card2_caption">在有风险的变更发布之前追踪耦合路径。</figcaption>
+          </figure>
+          <figure class="media-card media-live" role="img" aria-label="组件细节截图" data-i18n-aria-label="aria_media_vibe_component">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/05-component-detail-en-light.png"
+              alt="VibeSmith component detail panel"
+              data-media-src-en-light="/assets/vibesmith-community/05-component-detail-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/05-component-detail-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/05-component-detail-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/05-component-detail-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_card3_tag">决定03</span>
+              <strong data-i18n="vibe_media_card3_title">组件详细信息面板</strong>
+            </div>
+            <figcaption data-i18n="vibe_media_card3_caption">检查元数据、链接命令和所有者。</figcaption>
+          </figure>
+          <figure class="media-card media-live" role="img" aria-label="Projects 和范围屏幕截图" data-i18n-aria-label="aria_media_vibe_projects_scope">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/06-projects-en-light.png"
+              alt="VibeSmith projects and scope panel"
+              data-media-src-en-light="/assets/vibesmith-community/06-projects-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/06-projects-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/06-projects-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/06-projects-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_card4_tag">决定04</span>
+              <strong data-i18n="vibe_media_card4_title">Project 范围面板</strong>
+            </div>
+            <figcaption data-i18n="vibe_media_card4_caption">比较存储库范围和组件分布。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_cap_eyebrow">核心工作流程</p>
+          <h2 data-i18n="vibe_cap_title">VibeSmith 如何减少漂移</h2>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <h3 data-i18n="vibe_cap_1_title">查找活动基线</h3>
+            <p data-i18n="vibe_cap_1_body">统一清单+搜索显示哪些技能、代理、命令、挂钩和规则在项目中仍然处于活动状态。</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="vibe_cap_2_title">重复使用而不丢失链接的片段</h3>
+            <p data-i18n="vibe_cap_2_body">使用依赖项感知流程复制组件，使引导程序保持一致，而不是部分破坏。</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="vibe_cap_3_title">在编写更改之前检查部署影响</h3>
+            <p data-i18n="vibe_cap_3_body">预览并应用冲突策略，以便团队可以在更新共享设置之前判断爆炸半径。</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="vibe_cap_4_title">在发布周前查看风险</h3>
+            <p data-i18n="vibe_cap_4_body">依赖关系图、冲突审查和项目范围视图使隐藏的耦合更容易更早地被发现。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_signal_eyebrow">为什么这很重要</p>
+          <h2 data-i18n="vibe_signal_title">AI 编码 工具在解释许多内容之前先加速一个存储库</h2>
+          <p data-i18n="vibe_signal_desc">Cursor、Claude Code 和 MCP 是强大的本地工具。当团队需要跨多个存储库具有相同的操作清晰度时，系统差距就会出现。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <p data-i18n="vibe_signal_1">Cursor 的会话范围上下文促使团队将可重用标准具体化，而不是依赖聊天内存。</p>
+          </article>
+          <article class="story-card">
+            <p data-i18n="vibe_signal_2">Claude Code 中的多范围内存/设置会增加一致性开销，而无需共享操作层。</p>
+          </article>
+          <article class="story-card">
+            <p data-i18n="vibe_signal_3">MCP 扩展了功能，但服务器范围和权限边界需要明确的审查规则。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_metrics_eyebrow">第一周指标</p>
+          <h2 data-i18n="vibe_metrics_title">第一周要测量什么</h2>
+          <p data-i18n="vibe_metrics_desc">您可以从一个回购来判断早期价值。问题在于基线是否变得更加清晰，而不是大规模的推出是否已经发生。</p>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <p class="mini-label" data-i18n="vibe_metric_1_label">结果01</p>
+            <h3 data-i18n="vibe_metric_1_title">更快的首次稳定设置</h3>
+            <p data-i18n="vibe_metric_1_body">从安装到您的团队实际保留的基线的时间。</p>
+          </article>
+          <article class="metric-card">
+            <p class="mini-label" data-i18n="vibe_metric_2_label">结果02</p>
+            <h3 data-i18n="vibe_metric_2_title">减少回购之间的意外</h3>
+            <p data-i18n="vibe_metric_2_body">复制的规则、命令和组件在第一次重用后是否保持一致。</p>
+          </article>
+          <article class="metric-card">
+            <p class="mini-label" data-i18n="vibe_metric_3_label">结果03</p>
+            <h3 data-i18n="vibe_metric_3_title">清理目标更明确</h3>
+            <p data-i18n="vibe_metric_3_body">您可以在上下文质量下降之前删除哪些陈旧、冲突或过度增长的资产。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="rollout" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_rollout_eyebrow">收养途径</p>
+          <h2 data-i18n="vibe_rollout_title">首先通过一个存储库进行证明</h2>
+          <p data-i18n="vibe_rollout_desc">您不需要组织范围内的迁移。从小处开始，测量漂移，然后只有在基线改善时才进行扩展。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="vibe_rollout_1_tag">步骤1</p>
+            <h3 data-i18n="vibe_rollout_1_title">连接一个实时存储库</h3>
+            <p data-i18n="vibe_rollout_1_body">安装开源版本并扫描不断重新打开相同设置问题的存储库。</p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_rollout_1_item1">输出：有源成分和漂移点的第一基线</li>
+              <li data-i18n="vibe_rollout_1_item2">输出：安装摩擦音符</li>
+            </ul>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_rollout_2_tag">步骤2</p>
+            <h3 data-i18n="vibe_rollout_2_title">审查重用和依赖风险</h3>
+            <p data-i18n="vibe_rollout_2_body">使用清单、详细信息和依赖关系视图来查看通过内存复制安装程序时出现的问题。</p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_rollout_2_item1">输出：清理候选者</li>
+              <li data-i18n="vibe_rollout_2_item2">输出：相关依赖风险</li>
+            </ul>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_rollout_3_tag">步骤3</p>
+            <h3 data-i18n="vibe_rollout_3_title">仅在一个工作流程感觉更清晰后才进行扩展</h3>
+            <p data-i18n="vibe_rollout_3_body">在一个团队可以清楚地解释设置后，决定另一个存储库是否应该采用相同的基线。</p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_rollout_3_item1">输出：保留/修复/扩展决策</li>
+              <li data-i18n="vibe_rollout_3_item2">输出：更深层次合作的候选名单或 Pro</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="docs" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_fit_eyebrow">收养边界</p>
+          <h2 data-i18n="vibe_fit_title">当偏差已经损害交付速度时采用。</h2>
+          <p data-i18n="vibe_fit_desc">清晰的边界有助于多存储库团队快速做出决定，而不会过度投入。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <h3 data-i18n="vibe_fit_good_title">牢固贴合</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_fit_good_1">三个或更多活跃仓库共享一个交付计划。</li>
+              <li data-i18n="vibe_fit_good_2">由于规则是手动传递的，开球质量下降。</li>
+              <li data-i18n="vibe_fit_good_3">发布审查反复发现较晚的依赖性问题。</li>
+            </ul>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="vibe_fit_not_title">还不理想</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_fit_not_1">具有稳定标准和低更改频率的单一存储库设置。</li>
+              <li data-i18n="vibe_fit_not_2">工作流程尚未准备好为组件审核决策定义明确的标准。</li>
+              <li data-i18n="vibe_fit_not_3">工作流程期望一键式自动化，无需部署规则。</li>
+            </ul>
+          </article>
+          <article class="story-card highlight">
+            <h3 data-i18n="vibe_limits_title">当前范围（有意）</h3>
+            <p data-i18n="vibe_limits_desc">目前的范围有意保持狭窄。这一目标是更广泛的自动化承诺之前的明显证据。</p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_limits_1">没有强制存储库重写。首先映射现有结构。</li>
+              <li data-i18n="vibe_limits_2">云范围内的策略自动化是后期阶段，而不是第一阶段。</li>
+              <li data-i18n="vibe_limits_3">仅在来自真实回购审计的重复证据后，共享推出层才会扩展。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="download" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_download_eyebrow">下载</p>
+          <h2 data-i18n="vibe_download_title">安装开源 VibeSmith 版本</h2>
+          <p data-i18n="vibe_download_desc">选择 GitHub 发布页面、直接 DMG 下载或 Homebrew 安装路径。</p>
+        </div>
+        <div class="download-grid">
+          <article class="route-card highlight">
+            <h3 data-i18n="vibe_download_card_title">选项 A. GitHub 发布</h3>
+            <p data-i18n="vibe_download_card_desc">打开最新的发行说明，下载签名的 DMG，或检查开源存储库。</p>
+            <p class="mini-label" data-i18n="vibe_download_release_page_label">最新 GitHub 版本</p>
+            <a
+              class="download-path"
+              data-community-release-url
+              href="https://github.com/aroido/vibesmith/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/aroido/vibesmith/releases
+            </a>
+            <p class="mini-label" data-i18n="vibe_download_path_label">最新安装包</p>
+            <a
+              class="download-path"
+              data-community-archive-url
+              href="https://github.com/aroido/vibesmith/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/aroido/vibesmith/releases
+            </a>
+            <p class="mini-label" data-i18n="vibe_download_sha_label">GitHub 存储库</p>
+            <a
+              class="download-path"
+              data-community-repository-url
+              href="https://github.com/aroido/vibesmith"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/aroido/vibesmith
+            </a>
+            <div class="hero-actions download-actions">
+              <a
+                class="btn btn-primary"
+                href="https://github.com/aroido/vibesmith/releases"
+                data-community-link="release"
+                data-i18n="vibe_download_cta"
+                data-track-event="download_cta_click"
+                data-track-label="vibe_download_release_page"
+              >打开最新的 GitHub 版本</a>
+              <a
+                class="btn btn-ghost"
+                href="https://github.com/aroido/vibesmith/releases"
+                data-community-link="archive"
+                data-i18n="vibe_download_checksum_cta"
+                data-track-event="download_cta_click"
+                data-track-label="vibe_download_archive"
+              >下载最新的 GitHub DMG</a>
+              <a
+                class="btn btn-ghost"
+                href="https://github.com/aroido/vibesmith"
+                data-community-link="repository"
+                data-i18n="vibe_download_notes_cta"
+                data-track-event="download_cta_click"
+                data-track-label="vibe_download_repo"
+              >打开 GitHub 存储库</a>
+            </div>
+            <p class="download-note" data-community-release-status>
+              Latest public build: GitHub release channel, including prereleases.
+            </p>
+            <p class="download-note" data-i18n="vibe_download_note">GitHub 是规范的公开发布渠道。 GitLab 仍然只是一个遗留镜像。</p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="vibe_download_brew_title">选项 B.Homebrew 指南</h3>
+            <p data-i18n="vibe_download_brew_desc">GitHub Homebrew Tap 跟踪相同的公开发布渠道。使用 Homebrew 安装，或者如果您使用旧的 GitLab 路径，请先重新安装。</p>
+            <div class="download-command-head">
+              <p class="mini-label" data-i18n="vibe_download_brew_label">安装和升级</p>
+              <button
+                class="copy-command-btn"
+                type="button"
+                data-copy-target="vibe-brew-command"
+                data-i18n="copy_command"
+                data-track-event="copy_command_click"
+                data-track-label="vibe_copy_brew_command"
+              >复制命令</button>
+            </div>
+            <pre id="vibe-brew-command" class="download-command"><code data-i18n="vibe_download_brew_command">brew update
+brew tap aroido/vibesmith https://github.com/aroido/homebrew-vibesmith.git
+brew install --cask aroido/vibesmith/vibesmith
+
+# If an older version is already installed:
+brew update
+brew upgrade --cask --greedy aroido/vibesmith/vibesmith</code></pre>
+            <p class="download-note" data-i18n="vibe_download_brew_note">首选此路径进行 Homebrew 安装和升级。如果您使用旧版 GitLab Tap，请在重新 Tap 之前运行 `brew untap aroido/vibesmith`。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-panel reveal" data-reveal>
+        <h2 data-i18n="vibe_cta_title">从一个存储库开始。首先让漂移可见。</h2>
+        <p data-i18n="vibe_cta_description">开源构建是查看组件蔓延、隐藏依赖项和上下文密集型设置是否已经拖慢团队速度的最快方法。如果您希望外界关注某个实时存储库，请在演示或安装通过后请求审核。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_contact_open_download">打开发布并安装</a>
+          <a class="btn btn-ghost" href="#docs" data-i18n="vibe_cta_secondary" data-track-event="hero_cta_click" data-track-label="vibe_open_docs">阅读适合和采用指南</a>
+          <a class="btn btn-ghost" href="https://github.com/aroido/vibesmith" target="_blank" rel="noreferrer" data-i18n="vibe_cta_github" data-track-event="hero_cta_click" data-track-label="vibe_contact_open_github">打开 GitHub 存储库</a>
+          <a class="btn btn-ghost" href="https://tally.so/r/RG484l?intent=audit&amp;source=vibesmith_audit" data-i18n="vibe_cta_audit" data-track-event="contact_cta_click" data-track-label="vibe_open_audit" data-tally-popup="audit" data-tally-source="vibesmith_audit">请求回购审核</a>
+        </div>
+      </section>
+    </main>
+    <script src="/script.js"></script>
+  </body>
+</html>

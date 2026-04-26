@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ja-JP" data-title-key="tokenmon_seo_title" data-description-key="tokenmon_meta_description" data-locale="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tokenmon | Mac メニュー バーの AI コーディング コレクション</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="Tokenmon は、Claude Code および Codex の使用を受動的遭遇、自動結果、ローカル Dex 進行に変える ローカルファースト macOS メニュー バー アプリです。"
+    />
+    <link rel="canonical" href="https://aroido.com/ja/projects/tokenmon/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/tokenmon/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/projects/tokenmon/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/projects/tokenmon/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/projects/tokenmon/" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/tokenmon/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content="Tokenmon | Mac メニュー バーの AI コーディング コレクション" />
+    <meta
+      property="og:description"
+      content="Tokenmon は、Claude Code および Codex の使用を受動的遭遇、自動結果、ローカル Dex 進行に変える ローカルファースト macOS メニュー バー アプリです。"
+    />
+    <meta property="og:url" content="https://aroido.com/ja/projects/tokenmon/" />
+    <meta property="og:image" content="https://aroido.com/assets/og/tokenmon-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tokenmon | Mac メニュー バーの AI コーディング コレクション" />
+    <meta
+      name="twitter:description"
+      content="Tokenmon は、Claude Code および Codex の使用を受動的遭遇、自動結果、ローカル Dex 進行に変える ローカルファースト macOS メニュー バー アプリです。"
+    />
+    <meta name="twitter:image" content="https://aroido.com/assets/og/tokenmon-og.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/tokenmon/tokenmon-icon-1024.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tokenmon",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS",
+        "url": "https://aroido.com/ja/projects/tokenmon/",
+        "codeRepository": "https://github.com/aroido/tokenmon",
+        "downloadUrl": "https://github.com/aroido/tokenmon/releases/latest",
+        "inLanguage": "ja-JP",
+        "description": "A local-first macOS menu bar app that turns Claude Code and Codex usage into passive encounters, automatic results, and local Dex progress.",
+        "featureList": [
+                "Passive creature encounters from normal AI coding usage",
+                "Automatic capture or escape resolution",
+                "Local Seen and Captured Dex state",
+                "Gameplay designed to work without storing prompt or response text"
+        ]
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">コンテンツにスキップ</a>
+    <main id="main-content" class="site-shell">
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/ja/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="メインナビゲーション" data-i18n-aria-label="aria_main_nav">
+          <a href="/ja/" data-i18n="nav_home">家</a>
+          <a href="/ja/projects/" data-nav-parent-current="true" data-i18n="nav_projects">プロダクト</a>
+          <a href="/ja/blog/" data-i18n="nav_blog">ブログ</a>
+          <a href="/ja/team/" data-i18n="nav_team">チーム</a>
+          <a href="/ja/contact/" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">接触</a>
+        </nav>
+        <div class="header-controls">
+          <nav class="header-context" aria-label="ブレッドクラム" data-i18n-aria-label="aria_breadcrumb">
+            <span class="header-context-mark" aria-hidden="true"></span>
+            <a href="/ja/projects/" data-i18n="crumb_product">プロダクト</a>
+            <span class="header-context-sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="crumb_tokenmon">Tokenmonの詳細</span>
+          </nav>
+                    <nav class="lang-switch" aria-label="言語切り替え" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/projects/tokenmon/" data-lang="en" hreflang="en" lang="en-US">EN</a>
+            <a class="lang-btn" href="/ko/projects/tokenmon/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/projects/tokenmon/" data-lang="ja" hreflang="ja" lang="ja-JP" aria-current="true" aria-pressed="true">JA</a>
+            <a class="lang-btn" href="/zh-hans/projects/tokenmon/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="テーマスイッチ" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">自動</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">ライト</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">暗い</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="page-hero tokenmon-hero reveal" data-reveal>
+        <div class="page-hero-grid">
+          <div class="page-hero-copy">
+            <div class="kicker-row">
+              <img
+                class="product-app-icon product-app-icon-sm"
+                src="/assets/tokenmon/tokenmon-icon-1024.png"
+                alt=""
+                aria-hidden="true"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
+              <p class="kicker" data-i18n="tokenmon_kicker">Tokenmon</p>
+            </div>
+            <h1 data-i18n="tokenmon_title">コーディングを続けるだけ。Tokenmonが静かに集めます。</h1>
+            <p data-i18n="tokenmon_description">Claude Code および Codex の使用は、Mac メニュー バーでの受動的な検出、自動結果、およびローカル Dex の進行状況になります。</p>
+            <p class="hero-hook" data-i18n="tokenmon_hook">ゲームプレイにアカウント、ローカルファースト、プロンプト テキストは必要ありません。</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://github.com/aroido/tokenmon/releases/latest" target="_blank" rel="noreferrer" data-i18n="tokenmon_cta_primary" data-track-event="download_cta_click" data-track-label="tokenmon_open_download">DMGをダウンロード</a>
+              <a class="btn btn-ghost" href="#download" data-i18n="tokenmon_cta_secondary" data-track-event="download_cta_click" data-track-label="tokenmon_open_homebrew">Homebrewでインストール</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/tokenmon" target="_blank" rel="noreferrer" data-i18n="tokenmon_cta_github" data-track-event="hero_cta_click" data-track-label="tokenmon_open_github">GitHub を表示</a>
+            </div>
+            <div class="hero-proof-row">
+              <span class="status-pill" data-i18n="tokenmon_status_pill_1">アカウントがありません</span>
+              <span class="status-pill" data-i18n="tokenmon_status_pill_2">ローカルファースト デックス</span>
+              <span class="status-pill" data-i18n="tokenmon_status_pill_3">ゲームプレイのプロンプトテキストはありません</span>
+            </div>
+          </div>
+          <aside class="page-hero-proof tokenmon-promo-proof" aria-label="Tokenmon インストール プレビュー" data-i18n-aria-label="aria_tokenmon_hero_visual">
+            <img
+              class="tokenmon-promo-hero-image"
+              src="/assets/tokenmon/tokenmon-site-hero.png"
+              alt=""
+              width="2400"
+              height="1350"
+              loading="eager"
+              decoding="async"
+            />
+            <p class="page-hero-proof-caption" data-i18n="tokenmon_hero_visual_caption">インストール経路 とコレクション ループのスクリーンショット ベースのパブリック プレビュー。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="tokenmon_keep_eyebrow">なぜ人々はそれをオープンにしておくのか</p>
+          <h2 data-i18n="tokenmon_keep_title">邪魔にならない遊び心のある相棒</h2>
+          <p data-i18n="tokenmon_keep_desc">Tokenmon は、すでに発生している作業をバックグラウンドでの小さな報酬ループに変える場合に最も強力です。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <p class="mini-label" data-i18n="tokenmon_keep_1_label">受け身</p>
+            <h3 data-i18n="tokenmon_keep_1_title">手動の戦闘フローはありません</h3>
+            <p data-i18n="tokenmon_keep_1_body">このアプリは、コーディングをやめて出会いをタップするように要求しません。それらは自動的に解決されます。</p>
+          </article>
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="tokenmon_keep_2_label">アンビエント</p>
+            <h3 data-i18n="tokenmon_keep_2_title">メニューバーは一目瞭然です</h3>
+            <p data-i18n="tokenmon_keep_2_body">作業をダッシュ​​ボード セッションに変えることなく、現在の状態、進行状況、最近の出会い、または Dex ビューが必要なときに開きます。</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="tokenmon_keep_3_label">地元</p>
+            <h3 data-i18n="tokenmon_keep_3_title">コレクション状態は Mac 上に存在します</h3>
+            <p data-i18n="tokenmon_keep_3_body">現在のパブリック ビルドにはアカウントやクラウド同期は必要ありません。製品のストーリーは、ローカルな状態と低摩擦の インストール経路 から始まります。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="tokenmon_loop_eyebrow">コアループ</p>
+          <h2 data-i18n="tokenmon_loop_title">コレクションループの感じ方</h2>
+          <p data-i18n="tokenmon_loop_desc">この製品は、AIコーディング アクティビティを探索に変え、アプリに遭遇結果を処理させます。</p>
+        </div>
+        <div class="metric-grid proof-strip-grid">
+          <article class="metric-card proof-strip-card">
+            <p class="mini-label" data-i18n="tokenmon_loop_1_label">ステップ01</p>
+            <h3 data-i18n="tokenmon_loop_1_title">通常どおり Claude Code または Codex を使用します</h3>
+            <p data-i18n="tokenmon_loop_1_body">Tokenmon は、個別の再生セッションではなく、既存のコーディング フローを中心に設計されています。</p>
+          </article>
+          <article class="metric-card proof-strip-card proof-strip-card-accent">
+            <p class="mini-label" data-i18n="tokenmon_loop_2_label">ステップ02</p>
+            <h3 data-i18n="tokenmon_loop_2_title">探索の進行状況のビルド</h3>
+            <p data-i18n="tokenmon_loop_2_body">通常の使用法では、ゲームプレイのプロンプトや応答テキストを必要とせずに、次の遭遇に向けて進みます。</p>
+          </article>
+          <article class="metric-card proof-strip-card">
+            <p class="mini-label" data-i18n="tokenmon_loop_3_label">ステップ03</p>
+            <h3 data-i18n="tokenmon_loop_3_title">クリーチャーが現れて解決される</h3>
+            <p data-i18n="tokenmon_loop_3_body">各遭遇は捕らえられるか逃げると自動的に終了し、インタラクションは軽量に保たれます。</p>
+          </article>
+          <article class="metric-card proof-strip-card proof-strip-card-accent">
+            <p class="mini-label" data-i18n="tokenmon_loop_4_label">ステップ04</p>
+            <h3 data-i18n="tokenmon_loop_4_title">Dex はローカルで満たされます</h3>
+            <p data-i18n="tokenmon_loop_4_body">表示およびキャプチャされた進行状況は Mac に蓄積されるため、時間の経過とともにコレクションが増加する可能性があります。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="tokenmon_privacy_eyebrow">信頼の境界線</p>
+          <h2 data-i18n="tokenmon_privacy_title">遊び心は侵略を意味するものではありません</h2>
+          <p data-i18n="tokenmon_privacy_desc">現在公開されているストーリーは意図的に狭く、ローカルファースト コレクション、アカウント要件なし、ゲームプレイに必要なプロンプト テキストなしです。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="tokenmon_privacy_1_label">プロンプト</p>
+            <h3 data-i18n="tokenmon_privacy_1_title">ゲームプレイではプロンプトテキストを保存する必要はありません</h3>
+            <p data-i18n="tokenmon_privacy_1_body">Tokenmon は、入力した内容を読み取ったりランク付けしたりするツールではなく、アンビエント コンパニオンとして判断されるべきです。</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="tokenmon_privacy_2_label">アカウント</p>
+            <h3 data-i18n="tokenmon_privacy_2_title">今日はアカウントは必要ありません</h3>
+            <p data-i18n="tokenmon_privacy_2_body">アプリの試用は、ホストされたダッシュボードやサインアップ フローではなく、Mac インストール経路 から始まります。</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="tokenmon_privacy_3_label">ソース</p>
+            <h3 data-i18n="tokenmon_privacy_3_title">ソースが利用可能なパブリックミラー</h3>
+            <p data-i18n="tokenmon_privacy_3_body">パブリック リポジトリには、出荷されたスナップショット、リリース アセット、およびインストール チャネルが含まれますが、日常のメンテナのワークフローは分離されたままになります。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="proof" class="section section-media reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="tokenmon_media_eyebrow">視覚的証拠</p>
+          <h2 data-i18n="tokenmon_media_title">実際の製品の表面は小さく、視認可能で、検査可能です</h2>
+          <p data-i18n="tokenmon_media_desc">メニュー バー ループから始めて、コレクションとセットアップを表示する Dex ビューと設定ビューを調べます。</p>
+          <ul class="proof-chip-row" aria-label="Tokenmon プルーフ信号" data-i18n-aria-label="aria_tokenmon_media_proof">
+            <li class="proof-chip" data-i18n="tokenmon_media_chip_1">アニメーションメニューバーストリップ</li>
+            <li class="proof-chip" data-i18n="tokenmon_media_chip_2">目撃され捕獲されたデックス</li>
+            <li class="proof-chip" data-i18n="tokenmon_media_chip_3">設定とプロバイダーのセットアップ</li>
+          </ul>
+        </div>
+        <div class="media-proof-grid">
+          <figure class="media-card media-card-hero media-live media-proof-hero">
+            <img
+              class="media-visual media-pixel-preview"
+              src="/assets/tokenmon/menu-hero-en-dark.gif"
+              alt=""
+              data-media-src-en-light="/assets/tokenmon/menu-hero-en-light.gif"
+              data-media-src-en-dark="/assets/tokenmon/menu-hero-en-dark.gif"
+              data-media-src-ko-light="/assets/tokenmon/menu-hero-ko-light.gif"
+              data-media-src-ko-dark="/assets/tokenmon/menu-hero-ko-dark.gif"
+              width="88"
+              height="44"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-overlay media-placeholder">
+              <span class="media-tag" data-i18n="tokenmon_media_demo_tag">メニューバーループ</span>
+              <strong data-i18n="tokenmon_media_demo_title">小さなストリップには、作業中のフィールドの動きとエンカウントの状態が表示されます</strong>
+              <p data-i18n="tokenmon_media_demo_desc">ループは意図的に小さくなっています。新しいコマンド センターではなく、コーディングの傍らにあるコンパニオンのように感じられるようにする必要があります。</p>
+            </div>
+            <figcaption data-i18n="tokenmon_media_demo_caption">現在公開されている Tokenmon メニュー バー アニメーション。</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              class="media-visual"
+              src="/assets/tokenmon/seen-dex-en-dark.png"
+              alt=""
+              data-media-src-en-light="/assets/tokenmon/seen-dex-en-light.png"
+              data-media-src-en-dark="/assets/tokenmon/seen-dex-en-dark.png"
+              data-media-src-ko-light="/assets/tokenmon/seen-dex-ko-light.png"
+              data-media-src-ko-dark="/assets/tokenmon/seen-dex-ko-dark.png"
+              width="2240"
+              height="1942"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder">
+              <span class="media-tag" data-i18n="tokenmon_media_dex_tag">デックス</span>
+              <strong data-i18n="tokenmon_media_dex_title">見られた状態とキャプチャされた状態により、進捗が具体化されます</strong>
+            </div>
+            <figcaption data-i18n="tokenmon_media_dex_caption">Dex ビューは、パッシブ ループを後で検査できるコレクションに変換します。</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              class="media-visual"
+              src="/assets/tokenmon/settings-en-dark.png"
+              alt=""
+              data-media-src-en-light="/assets/tokenmon/settings-en-light.png"
+              data-media-src-en-dark="/assets/tokenmon/settings-en-dark.png"
+              data-media-src-ko-light="/assets/tokenmon/settings-ko-light.png"
+              data-media-src-ko-dark="/assets/tokenmon/settings-ko-dark.png"
+              width="1520"
+              height="1688"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder">
+              <span class="media-tag" data-i18n="tokenmon_media_settings_tag">設定</span>
+              <strong data-i18n="tokenmon_media_settings_title">Provider のセットアップと設定は表示されたままになります</strong>
+            </div>
+            <figcaption data-i18n="tokenmon_media_settings_caption">設定とプレゼンテーションの選択を魔法の陰に隠すのではなく、検査可能な状態に保ちます。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="download" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="tokenmon_download_eyebrow">インストール</p>
+          <h2 data-i18n="tokenmon_download_title">パブリック Tokenmon ビルドをインストールする</h2>
+          <p data-i18n="tokenmon_download_desc">GitHub Releases および Homebrew が現在のパブリック パスです。 Tokenmon には macOS Sequoia 以降が必要です。</p>
+        </div>
+        <div class="download-grid">
+          <article class="route-card highlight">
+            <h3 data-i18n="tokenmon_download_release_title">オプション A. DMG をダウンロードする</h3>
+            <p data-i18n="tokenmon_download_release_desc">DMG、リリース ノート、チェックサム、および Sparkle 更新メタデータの最新の GitHub リリースを開きます。</p>
+            <a class="download-path" href="https://github.com/aroido/tokenmon/releases/latest" target="_blank" rel="noreferrer">https://github.com/aroido/tokenmon/releases/latest</a>
+            <div class="hero-actions download-actions">
+              <a class="btn btn-primary" href="https://github.com/aroido/tokenmon/releases/latest" target="_blank" rel="noreferrer" data-i18n="tokenmon_download_release_cta" data-track-event="download_cta_click" data-track-label="tokenmon_download_release_page">GitHub Releases から DMG をダウンロード</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/tokenmon" target="_blank" rel="noreferrer" data-i18n="tokenmon_download_repo_cta" data-track-event="hero_cta_click" data-track-label="tokenmon_download_repo">GitHub を表示</a>
+            </div>
+            <p class="download-note" data-i18n="tokenmon_download_release_note">パブリック リポジトリはソースから利用でき、出荷されたスナップショットのリリース ミラーとして機能します。</p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="tokenmon_download_brew_title">オプション B. Homebrew を使用してインストールする</h3>
+            <p data-i18n="tokenmon_download_brew_desc">ターミナルからインストールおよびアップグレードする場合は、cask パスを使用します。</p>
+            <div class="download-command-head">
+              <p class="mini-label" data-i18n="tokenmon_download_brew_label">インストールコマンド</p>
+              <button
+                class="copy-command-btn"
+                type="button"
+                data-copy-target="tokenmon-brew-command"
+                data-i18n="copy_command"
+                data-track-event="copy_command_click"
+                data-track-label="tokenmon_copy_brew_command"
+              >コピーコマンド</button>
+            </div>
+            <pre id="tokenmon-brew-command" class="download-command"><code data-i18n="tokenmon_download_brew_command">brew install --cask aroido/tokenmon/tokenmon</code></pre>
+            <p class="download-note" data-i18n="tokenmon_download_brew_note">リリース ビルドはアプリ内で更新できるため、Homebrew パスは主に初期インストールとターミナル駆動のアップグレード用です。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-panel reveal" data-reveal>
+        <h2 data-i18n="tokenmon_contact_title">まず、通常の AIコーディング セッション中に開いたままにしておきます。</h2>
+        <p data-i18n="tokenmon_contact_desc">Tokenmon は、ループが仕事の傍らで生活できるほど静かに感じられる場合に意味があります。セッションを 1 回試してから、コレクションを保持する価値があるかどうかを判断してください。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/aroido/tokenmon/releases/latest" target="_blank" rel="noreferrer" data-i18n="tokenmon_cta_primary" data-track-event="download_cta_click" data-track-label="tokenmon_contact_open_download">DMGをダウンロード</a>
+          <a class="btn btn-ghost" href="https://github.com/aroido/tokenmon" target="_blank" rel="noreferrer" data-i18n="tokenmon_cta_github" data-track-event="hero_cta_click" data-track-label="tokenmon_contact_open_github">GitHub を表示</a>
+          <a class="btn btn-ghost" href="/ja/projects/" data-i18n="tokenmon_contact_secondary" data-track-event="hero_cta_click" data-track-label="tokenmon_contact_open_products">製品に戻る</a>
+        </div>
+      </section>
+    </main>
+    <script src="/script.js"></script>
+  </body>
+</html>

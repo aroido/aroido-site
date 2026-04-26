@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="ko-KR" data-title-key="vibe_seo_title" data-description-key="vibe_meta_description" data-locale="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VibeSmith | AI 코딩 레포 드리프트를 번지기 전에 진단</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="VibeSmith는 멀티 레포 AI 팀이 Cursor·Claude Code 워크플로우에서 활성 컴포넌트, 숨은 종속성, 컨텍스트 낭비, 세팅 드리프트를 진단하도록 돕습니다."
+    />
+    <link rel="canonical" href="https://aroido.com/ko/projects/vibesmith/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/vibesmith/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/projects/vibesmith/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/projects/vibesmith/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/projects/vibesmith/" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/vibesmith/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content="VibeSmith | AI 코딩 레포 드리프트를 번지기 전에 진단" />
+    <meta property="og:description" content="VibeSmith는 멀티 레포 AI 팀이 Cursor·Claude Code 워크플로우에서 활성 컴포넌트, 숨은 종속성, 컨텍스트 낭비, 세팅 드리프트를 진단하도록 돕습니다." />
+    <meta property="og:url" content="https://aroido.com/ko/projects/vibesmith/" />
+    <meta property="og:image" content="https://aroido.com/assets/og/vibesmith-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VibeSmith | AI 코딩 레포 드리프트를 번지기 전에 진단" />
+    <meta name="twitter:description" content="VibeSmith는 멀티 레포 AI 팀이 Cursor·Claude Code 워크플로우에서 활성 컴포넌트, 숨은 종속성, 컨텍스트 낭비, 세팅 드리프트를 진단하도록 돕습니다." />
+    <meta name="twitter:image" content="https://aroido.com/assets/og/vibesmith-og.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/vibesmith-brand/icon-192.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "VibeSmith",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "url": "https://aroido.com/ko/projects/vibesmith/",
+        "codeRepository": "https://github.com/aroido/vibesmith",
+        "license": "https://github.com/aroido/vibesmith/blob/main/LICENSE",
+        "inLanguage": "ko-KR",
+        "description": "An AI coding repo drift audit layer for multi-repo teams using Cursor and Claude Code workflows.",
+        "featureList": [
+                "Cross-project component inventory and search",
+                "Dependency and conflict review before rollout",
+                "Context-heavy setup and cleanup candidates become visible earlier",
+                "Copy components across projects with dependency-aware flow"
+        ]
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">본문으로 건너뛰기</a>
+    <main id="main-content" class="site-shell">
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/ko/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="메인 내비게이션" data-i18n-aria-label="aria_main_nav">
+          <a href="/ko/" data-i18n="nav_home">홈</a>
+          <a href="/ko/projects/" data-nav-parent-current="true" data-i18n="nav_projects">제품</a>
+          <a href="/ko/blog/" data-i18n="nav_blog">블로그</a>
+          <a href="/ko/team/" data-i18n="nav_team">팀</a>
+          <a href="/ko/contact/" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">문의</a>
+        </nav>
+        <div class="header-controls">
+          <nav class="header-context" aria-label="이동 경로" data-i18n-aria-label="aria_breadcrumb">
+            <span class="header-context-mark" aria-hidden="true"></span>
+            <a href="/ko/projects/" data-i18n="crumb_product">제품</a>
+            <span class="header-context-sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="crumb_vibesmith">VibeSmith 상세</span>
+          </nav>
+                    <nav class="lang-switch" aria-label="언어 전환" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/projects/vibesmith/" data-lang="en" hreflang="en" lang="en-US">EN</a>
+            <a class="lang-btn" href="/ko/projects/vibesmith/" data-lang="ko" hreflang="ko" lang="ko-KR" aria-current="true" aria-pressed="true">KO</a>
+            <a class="lang-btn" href="/ja/projects/vibesmith/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/projects/vibesmith/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="테마 전환" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">시스템</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">라이트</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">다크</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="page-hero vibe-hero reveal" data-reveal>
+        <div class="page-hero-grid">
+          <div class="page-hero-copy">
+            <div class="kicker-row">
+              <img
+                class="vibe-app-icon vibe-app-icon-sm"
+                src="/assets/vibesmith-brand/icon-192.png"
+                alt=""
+                aria-hidden="true"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
+              <p class="kicker" data-i18n="vibe_kicker">VibeSmith</p>
+            </div>
+            <h1 data-i18n="vibe_title">AI 코딩 레포 드리프트를 번지기 전에 진단하세요.</h1>
+            <p data-i18n="vibe_description">VibeSmith는 멀티 레포 팀이 Cursor·Claude Code 워크플로우 전반에서 활성 컴포넌트, 종속성 리스크, 컨텍스트가 무거운 재사용 패턴을 한 곳에서 검토할 수 있게 합니다. 지금 GitHub 오픈소스로 공개되어 있으며 무료로 설치할 수 있습니다.</p>
+            <p class="hero-hook" data-i18n="vibe_hero_hook">세 번째 레포부터 킥오프 품질이 떨어진다면 여기서 시작하세요.</p>
+            <div class="hero-actions vibe-hero-actions">
+              <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_hero_open_download">릴리즈와 설치 열기</a>
+              <a class="btn btn-ghost" href="#demo" data-i18n="vibe_hero_demo_cta" data-track-event="hero_cta_click" data-track-label="vibe_hero_open_demo">진단 데모 보기</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/vibesmith" target="_blank" rel="noreferrer" data-i18n="vibe_cta_github" data-track-event="hero_cta_click" data-track-label="vibe_hero_open_github">GitHub 저장소 열기</a>
+            </div>
+            <div class="hero-proof-row">
+              <span class="status-pill" data-i18n="vibe_status_pill_1">라이브 대시보드와 워크스루</span>
+              <span class="status-pill" data-i18n="vibe_status_pill_2">GitHub 오픈소스 공개 중</span>
+              <span class="status-pill" data-i18n="vibe_status_pill_3">멀티 레포 AI 팀용</span>
+            </div>
+          </div>
+          <aside class="page-hero-proof" aria-label="VibeSmith 대시보드 미리보기" data-i18n-aria-label="aria_vibe_hero_visual">
+            <p class="mini-label" data-i18n="vibe_hero_visual_eyebrow">첫 화면</p>
+            <h2 data-i18n="vibe_hero_visual_title">대시보드 한 화면으로 무엇부터 검토할지 바로 파악하세요</h2>
+            <p data-i18n="vibe_hero_visual_desc">첫 화면에서 활성 컴포넌트 규모, 프로젝트 범위, 초기 충돌 신호를 기준선으로 보여주기 때문에 무엇을 복사하고 정리하고 표준화할지 먼저 결정할 수 있습니다.</p>
+            <div class="page-hero-proof-media">
+              <img
+                class="page-hero-proof-image"
+                src="/assets/vibesmith-community/01-dashboard-en-light.png"
+                alt=""
+                data-media-src-en-light="/assets/vibesmith-community/01-dashboard-en-light.png"
+                data-media-src-en-dark="/assets/vibesmith-community/01-dashboard-en-dark.png"
+                data-media-src-ko-light="/assets/vibesmith-community/01-dashboard-ko-light.png"
+                data-media-src-ko-dark="/assets/vibesmith-community/01-dashboard-ko-dark.png"
+                width="1400"
+                height="1555"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <ul class="page-hero-proof-list">
+              <li data-i18n="vibe_hero_visual_point_1">skills, rules, commands, hooks 전반의 운영 기준선</li>
+              <li data-i18n="vibe_hero_visual_point_2">재사용이 퍼지기 전에 보는 충돌·종속성 신호</li>
+              <li data-i18n="vibe_hero_visual_point_3">다음 킥오프 전에 정리 대상을 잡는 프로젝트별 분해</li>
+            </ul>
+            <p class="page-hero-proof-caption" data-i18n="vibe_hero_visual_caption">현재 공개 오픈소스 빌드의 대시보드 화면입니다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_status_eyebrow">먼저 보이는 것</p>
+          <h2 data-i18n="vibe_status_title">팀이 대개 너무 늦게 발견하는 문제를 먼저 보세요</h2>
+          <p data-i18n="vibe_status_desc">VibeSmith는 여러 레포에 걸친 세팅 드리프트, 재사용 리스크, 컨텍스트가 무거운 스프롤을 한 레이어에서 보이게 할 때 가장 유용합니다.</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="vibe_status_card_1_label">드리프트</p>
+            <h3 data-i18n="vibe_status_1">컨텍스트가 무거운 세팅</h3>
+            <p data-i18n="vibe_status_1_body">새 프로젝트가 같은 스프롤을 물려받기 전에 어떤 레포 레이어가 메모리, 지시문, 세팅 노이즈를 과하게 떠안고 있는지 먼저 확인합니다.</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_status_card_2_label">재사용</p>
+            <h3 data-i18n="vibe_status_2">숨은 재사용 리스크</h3>
+            <p data-i18n="vibe_status_2_body">컴포넌트와 함께 무엇이 같이 움직여야 하는지 검토해, 복붙 부트스트랩이 부분적으로만 성공하는 상황을 줄입니다.</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_status_card_3_label">릴리즈</p>
+            <h3 data-i18n="vibe_status_3">종속성과 충돌 깜짝 이슈</h3>
+            <p data-i18n="vibe_status_3_body">연결된 리스크를 더 이른 시점에 드러내어 릴리즈 주간 리뷰가 첫 발견 지점이 되지 않게 합니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_need_eyebrow">첫 진단에서 필요한 것</p>
+          <h2 data-i18n="vibe_need_title">팀이 첫 실사용 진단에서 보고 싶어 하는 것</h2>
+          <p data-i18n="vibe_need_desc">반복되는 요구는 또 다른 AI 기능이 아니라 여러 레포를 가로지르는 더 선명한 운영 시야입니다.</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_need_1_tag">니즈 01</p>
+            <h3 data-i18n="vibe_need_1_title">실제로 활성인 기준을 알고 싶다</h3>
+            <p data-i18n="vibe_need_1_body">비슷해 보이지만 동작은 다른 룰, 명령, 가이드가 레포마다 섞이면 팀은 금방 시간을 잃습니다.</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_need_2_tag">니즈 02</p>
+            <h3 data-i18n="vibe_need_2_title">연결된 맥락을 잃지 않고 재사용하고 싶다</h3>
+            <p data-i18n="vibe_need_2_body">팀은 반쯤 작동하는 조각이 아니라, 종속성까지 포함된 안전한 기준선을 가져가고 싶어 합니다.</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_need_3_tag">니즈 03</p>
+            <h3 data-i18n="vibe_need_3_title">컨텍스트 낭비가 리뷰 낭비로 커지기 전에 줄이고 싶다</h3>
+            <p data-i18n="vibe_need_3_body">섞인 메모리 레이어와 오래된 자산은 토큰 낭비, 시끄러운 프롬프트, 긴 리뷰 루프를 만듭니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="demo" class="section section-media reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_media_eyebrow">화면 증거</p>
+          <h2 data-i18n="vibe_media_title">멀티 레포 AI 팀의 실제 고통에서 나온 워크플로우 증거</h2>
+          <p data-i18n="vibe_media_desc">먼저 인라인 워크스루로 전체 흐름을 보고, 아래에서 판단 화면을 단계별로 확인하세요.</p>
+          <ul class="proof-chip-row" aria-label="시각 증거 신호" data-i18n-aria-label="aria_visual_proof">
+            <li class="proof-chip" data-i18n="vibe_media_chip_1">이 페이지에서 바로 재생 가능한 워크스루</li>
+            <li class="proof-chip" data-i18n="vibe_media_chip_2">의사결정 중심 화면</li>
+            <li class="proof-chip" data-i18n="vibe_media_chip_3">레포 규모 가시성</li>
+          </ul>
+        </div>
+        <div class="single-grid">
+          <div class="media-card media-card-hero media-live media-video" data-video-embed data-video-id="Nt6I_bM_gx8">
+            <button
+              class="video-embed-trigger"
+              type="button"
+              data-video-trigger
+              aria-label="이 페이지에서 VibeSmith 워크스루 재생"
+              data-i18n-aria-label="aria_video_vibe_play"
+              data-track-event="video_demo_play"
+              data-track-label="vibesmith_detail_demo_inline"
+            >
+              <img
+                class="video-embed-poster"
+                src="/assets/vibesmith-community/01-dashboard-en-light.png"
+                alt=""
+                data-media-src-en-light="/assets/vibesmith-community/01-dashboard-en-light.png"
+                data-media-src-en-dark="/assets/vibesmith-community/01-dashboard-en-dark.png"
+                data-media-src-ko-light="/assets/vibesmith-community/01-dashboard-ko-light.png"
+                data-media-src-ko-dark="/assets/vibesmith-community/01-dashboard-ko-dark.png"
+                width="1400"
+                height="1555"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="video-embed-scrim" aria-hidden="true"></span>
+              <span class="video-embed-content">
+                <span class="media-tag" data-i18n="video_demo_tag">실제 제품 워크스루</span>
+                <strong data-i18n="vibe_video_title">화면별 증거를 보기 전에 제품 워크스루 먼저 보기</strong>
+                <span class="video-embed-copy" data-i18n="vibe_video_desc">공개 데모 영상을 그대로 사용해, 아래 판단 화면을 보기 전에 실제 흐름을 먼저 확인할 수 있습니다.</span>
+                <span class="video-embed-cta" data-i18n="video_demo_cta">데모 재생</span>
+              </span>
+            </button>
+            <noscript>
+              <iframe
+                class="video-embed-frame"
+                src="https://www.youtube-nocookie.com/embed/Nt6I_bM_gx8?rel=0"
+                title="VibeSmith product walkthrough video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </noscript>
+          </div>
+        </div>
+        <p class="video-note" data-i18n="vibe_video_note">먼저 인라인 워크스루로 전체 흐름을 본 뒤, 아래 정지 화면으로 판단 포인트를 개별 확인하세요.</p>
+        <div class="media-inline-actions">
+          <a
+            class="inline-link"
+            href="https://youtu.be/Nt6I_bM_gx8?si=QA0Ib9a6SlO2pVTS"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="video_demo_watch_youtube"
+            data-track-event="video_demo_open_external"
+            data-track-label="vibesmith_detail_demo_youtube"
+          >YouTube에서 보기</a>
+          <a class="inline-link" href="#download" data-i18n="vibe_video_cta_secondary" data-track-event="hero_cta_click" data-track-label="vibesmith_detail_open_download">설치와 문서로 이동</a>
+        </div>
+        <div class="media-proof-grid media-proof-grid-secondary">
+          <figure class="media-card media-live" role="img" aria-label="운영 대시보드 스크린샷" data-i18n-aria-label="aria_media_vibe_hero_dashboard">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/01-dashboard-en-light.png"
+              alt="VibeSmith operations dashboard screenshot"
+              data-media-src-en-light="/assets/vibesmith-community/01-dashboard-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/01-dashboard-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/01-dashboard-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/01-dashboard-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_gif_tag">워크플로우 캡처</span>
+              <strong data-i18n="vibe_media_gif_title">운영 대시보드 뷰</strong>
+              <p data-i18n="vibe_media_gif_desc">한 화면에서 상태, 충돌, 커버리지를 확인합니다.</p>
+            </div>
+            <figcaption data-i18n="vibe_media_gif_caption">현재 공개 오픈소스 빌드 캡처 이미지(운영 대시보드).</figcaption>
+          </figure>
+          <figure class="media-card media-live" role="img" aria-label="인벤토리 스크린샷" data-i18n-aria-label="aria_media_vibe_inventory">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/02-components-en-light.png"
+              alt="VibeSmith component inventory"
+              data-media-src-en-light="/assets/vibesmith-community/02-components-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/02-components-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/02-components-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/02-components-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_card1_tag">판단 01</span>
+              <strong data-i18n="vibe_media_card1_title">컴포넌트 인벤토리</strong>
+            </div>
+            <figcaption data-i18n="vibe_media_card1_caption">활성 컴포넌트와 오너 경계를 빠르게 확인합니다.</figcaption>
+          </figure>
+          <figure class="media-card media-live" role="img" aria-label="의존성 그래프 패널 스크린샷" data-i18n-aria-label="aria_media_vibe_dependency">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/03-dependencies-en-light.png"
+              alt="VibeSmith dependency graph panel"
+              data-media-src-en-light="/assets/vibesmith-community/03-dependencies-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/03-dependencies-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/03-dependencies-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/03-dependencies-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_card2_tag">판단 02</span>
+              <strong data-i18n="vibe_media_card2_title">종속성 그래프 패널</strong>
+            </div>
+            <figcaption data-i18n="vibe_media_card2_caption">배포 전 결합 경로 리스크를 추적합니다.</figcaption>
+          </figure>
+          <figure class="media-card media-live" role="img" aria-label="컴포넌트 상세 스크린샷" data-i18n-aria-label="aria_media_vibe_component">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/05-component-detail-en-light.png"
+              alt="VibeSmith component detail panel"
+              data-media-src-en-light="/assets/vibesmith-community/05-component-detail-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/05-component-detail-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/05-component-detail-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/05-component-detail-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_card3_tag">판단 03</span>
+              <strong data-i18n="vibe_media_card3_title">컴포넌트 상세 패널</strong>
+            </div>
+            <figcaption data-i18n="vibe_media_card3_caption">메타데이터, 연결 명령, 오너 정보를 확인합니다.</figcaption>
+          </figure>
+          <figure class="media-card media-live" role="img" aria-label="프로젝트 범위 스크린샷" data-i18n-aria-label="aria_media_vibe_projects_scope">
+            <img
+              class="media-visual"
+              src="/assets/vibesmith-community/06-projects-en-light.png"
+              alt="VibeSmith projects and scope panel"
+              data-media-src-en-light="/assets/vibesmith-community/06-projects-en-light.png"
+              data-media-src-en-dark="/assets/vibesmith-community/06-projects-en-dark.png"
+              data-media-src-ko-light="/assets/vibesmith-community/06-projects-ko-light.png"
+              data-media-src-ko-dark="/assets/vibesmith-community/06-projects-ko-dark.png"
+              width="1400"
+              height="1555"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder media-overlay">
+              <span class="media-tag" data-i18n="vibe_media_card4_tag">판단 04</span>
+              <strong data-i18n="vibe_media_card4_title">프로젝트 스코프 패널</strong>
+            </div>
+            <figcaption data-i18n="vibe_media_card4_caption">레포별 범위와 컴포넌트 분포를 비교합니다.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_cap_eyebrow">핵심 워크플로우</p>
+          <h2 data-i18n="vibe_cap_title">VibeSmith가 드리프트를 줄이는 방식</h2>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <h3 data-i18n="vibe_cap_1_title">활성 기준선을 찾기</h3>
+            <p data-i18n="vibe_cap_1_body">통합 인벤토리와 검색으로 프로젝트 전반에서 어떤 Skills, Agents, Commands, Hooks, Rules가 실제로 활성인지 확인합니다.</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="vibe_cap_2_title">연결 조각을 놓치지 않고 재사용</h3>
+            <p data-i18n="vibe_cap_2_body">종속성을 함께 검토하며 복사해 부트스트랩이 중간에 깨지지 않도록 만듭니다.</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="vibe_cap_3_title">쓰기 전에 롤아웃 영향을 검토</h3>
+            <p data-i18n="vibe_cap_3_body">충돌 정책과 함께 미리보기/적용을 거쳐 공유 세팅 변경의 영향 범위를 먼저 판단할 수 있습니다.</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="vibe_cap_4_title">릴리즈 주간 전에 리스크 보기</h3>
+            <p data-i18n="vibe_cap_4_body">종속성 그래프, 충돌 리뷰, 프로젝트 범위 뷰로 숨은 결합을 더 빨리 찾아냅니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_signal_eyebrow">왜 지금</p>
+          <h2 data-i18n="vibe_signal_title">AI 코딩 툴은 한 레포를 빨리 만들지만, 여러 레포를 설명해주진 않습니다</h2>
+          <p data-i18n="vibe_signal_desc">Cursor, Claude Code, MCP는 강한 로컬 도구입니다. 팀이 여러 레포에 같은 운영 명확성을 유지해야 할 때 시스템 갭이 드러납니다.</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <p data-i18n="vibe_signal_1">Cursor의 세션 단위 컨텍스트는 팀이 채팅 기억 대신 재사용 기준을 바깥 레이어로 꺼내게 만듭니다.</p>
+          </article>
+          <article class="story-card">
+            <p data-i18n="vibe_signal_2">Claude Code의 다중 스코프 메모리/설정은 공유 운영 레이어가 없으면 정합성 비용을 키웁니다.</p>
+          </article>
+          <article class="story-card">
+            <p data-i18n="vibe_signal_3">MCP 확장 시 서버 스코프와 권한 경계를 사전 검토하는 운영 규율이 필수입니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_metrics_eyebrow">첫 주 지표</p>
+          <h2 data-i18n="vibe_metrics_title">첫 주에 실제로 봐야 할 것</h2>
+          <p data-i18n="vibe_metrics_desc">제품 가치가 있는지는 거대한 롤아웃이 아니라 레포 하나의 기준선이 더 명확해졌는지로 먼저 판단할 수 있습니다.</p>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <p class="mini-label" data-i18n="vibe_metric_1_label">결과 01</p>
+            <h3 data-i18n="vibe_metric_1_title">더 빠른 첫 안정 세팅</h3>
+            <p data-i18n="vibe_metric_1_body">설치부터 팀이 유지하고 싶은 기준선에 도달하기까지 걸리는 시간.</p>
+          </article>
+          <article class="metric-card">
+            <p class="mini-label" data-i18n="vibe_metric_2_label">결과 02</p>
+            <h3 data-i18n="vibe_metric_2_title">레포 간 깜짝 이슈 감소</h3>
+            <p data-i18n="vibe_metric_2_body">첫 재사용 이후에도 복사한 룰, 명령, 컴포넌트가 얼마나 일관되게 남는지.</p>
+          </article>
+          <article class="metric-card">
+            <p class="mini-label" data-i18n="vibe_metric_3_label">결과 03</p>
+            <h3 data-i18n="vibe_metric_3_title">더 선명한 정리 대상</h3>
+            <p data-i18n="vibe_metric_3_body">컨텍스트 품질이 무너지기 전에 무엇을 지우고, 정리하고, 분리해야 하는지.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="rollout" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_rollout_eyebrow">도입 경로</p>
+          <h2 data-i18n="vibe_rollout_title">레포 하나로 먼저 증명하세요</h2>
+          <p data-i18n="vibe_rollout_desc">전사 마이그레이션은 필요 없습니다. 작게 시작해 드리프트를 측정하고, 기준선이 개선될 때만 확장하세요.</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="vibe_rollout_1_tag">1단계</p>
+            <h3 data-i18n="vibe_rollout_1_title">실사용 레포 하나 연결</h3>
+            <p data-i18n="vibe_rollout_1_body">같은 세팅 질문이 반복되는 레포에 오픈소스 빌드를 설치하고 먼저 스캔합니다.</p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_rollout_1_item1">산출물: 활성 컴포넌트와 드리프트 지점의 첫 기준선</li>
+              <li data-i18n="vibe_rollout_1_item2">산출물: 설치 마찰 노트</li>
+            </ul>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_rollout_2_tag">2단계</p>
+            <h3 data-i18n="vibe_rollout_2_title">재사용과 종속성 리스크 검토</h3>
+            <p data-i18n="vibe_rollout_2_body">인벤토리, 상세, 종속성 뷰로 기억에 의존한 세팅 복사에서 어디가 깨지는지 확인합니다.</p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_rollout_2_item1">산출물: 정리 후보 목록</li>
+              <li data-i18n="vibe_rollout_2_item2">산출물: 연결된 종속성 리스크</li>
+            </ul>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="vibe_rollout_3_tag">3단계</p>
+            <h3 data-i18n="vibe_rollout_3_title">워크플로우 하나가 더 명확해진 뒤 확장</h3>
+            <p data-i18n="vibe_rollout_3_body">한 팀이 세팅을 더 명확히 설명할 수 있게 된 뒤에만 다른 레포 확장을 결정합니다.</p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_rollout_3_item1">산출물: 유지 / 수정 / 확장 결정</li>
+              <li data-i18n="vibe_rollout_3_item2">산출물: 더 깊은 협업 또는 Pro 검토 목록</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="docs" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_fit_eyebrow">도입 경계</p>
+          <h2 data-i18n="vibe_fit_title">설정 드리프트가 이미 딜리버리 속도를 늦추고 있다면 효과가 큽니다.</h2>
+          <p data-i18n="vibe_fit_desc">명확한 경계가 있어야 멀티 레포 팀이 과투입 없이 빠르게 판단할 수 있습니다.</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <h3 data-i18n="vibe_fit_good_title">적합한 경우</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_fit_good_1">활성 레포 3개 이상이 하나의 릴리즈 일정으로 묶여 있을 때</li>
+              <li data-i18n="vibe_fit_good_2">규칙 전달이 수동이라 킥오프 품질이 흔들릴 때</li>
+              <li data-i18n="vibe_fit_good_3">릴리즈 리뷰에서 종속성 이슈가 반복적으로 늦게 발견될 때</li>
+            </ul>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="vibe_fit_not_title">아직 이른 경우</h3>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_fit_not_1">단일 레포 중심이고 세팅 기준 변경이 거의 없는 경우</li>
+              <li data-i18n="vibe_fit_not_2">컴포넌트 리뷰 기준을 명확히 정의하기 어려운 워크플로우</li>
+              <li data-i18n="vibe_fit_not_3">롤아웃 설계 없이 즉시 완전 자동화를 기대하는 워크플로우</li>
+            </ul>
+          </article>
+          <article class="story-card highlight">
+            <h3 data-i18n="vibe_limits_title">현재 단계의 의도적 범위</h3>
+            <p data-i18n="vibe_limits_desc">현재 범위를 좁게 두는 건 의도적입니다. 더 넓은 자동화 약속보다 눈에 보이는 증거를 먼저 만듭니다.</p>
+            <ul class="stack-list compact">
+              <li data-i18n="vibe_limits_1">레포 구조를 강제로 바꾸지 않습니다. 기존 구조를 먼저 맵핑합니다.</li>
+              <li data-i18n="vibe_limits_2">클라우드 전역 정책 자동화는 후속 단계이며 1단계 필수 조건이 아닙니다.</li>
+              <li data-i18n="vibe_limits_3">공유 롤아웃 레이어는 실제 레포 진단에서 반복 근거가 쌓인 뒤에만 확장합니다.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="download" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="vibe_download_eyebrow">설치</p>
+          <h2 data-i18n="vibe_download_title">오픈소스 VibeSmith 설치 가이드</h2>
+          <p data-i18n="vibe_download_desc">GitHub 릴리즈 페이지, 직접 DMG 다운로드, Homebrew 설치 경로 중 현재 워크플로우에 맞게 선택하세요.</p>
+        </div>
+        <div class="download-grid">
+          <article class="route-card highlight">
+            <h3 data-i18n="vibe_download_card_title">옵션 A. GitHub Release</h3>
+            <p data-i18n="vibe_download_card_desc">최신 릴리즈 노트를 확인하고, 서명된 DMG를 내려받고, 오픈소스 저장소를 바로 열 수 있습니다.</p>
+            <p class="mini-label" data-i18n="vibe_download_release_page_label">최신 GitHub 릴리즈</p>
+            <a
+              class="download-path"
+              data-community-release-url
+              href="https://github.com/aroido/vibesmith/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/aroido/vibesmith/releases
+            </a>
+            <p class="mini-label" data-i18n="vibe_download_path_label">최신 설치 패키지</p>
+            <a
+              class="download-path"
+              data-community-archive-url
+              href="https://github.com/aroido/vibesmith/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/aroido/vibesmith/releases
+            </a>
+            <p class="mini-label" data-i18n="vibe_download_sha_label">GitHub 저장소</p>
+            <a
+              class="download-path"
+              data-community-repository-url
+              href="https://github.com/aroido/vibesmith"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/aroido/vibesmith
+            </a>
+            <div class="hero-actions download-actions">
+              <a
+                class="btn btn-primary"
+                href="https://github.com/aroido/vibesmith/releases"
+                data-community-link="release"
+                data-i18n="vibe_download_cta"
+                data-track-event="download_cta_click"
+                data-track-label="vibe_download_release_page"
+              >최신 GitHub 릴리즈 열기</a>
+              <a
+                class="btn btn-ghost"
+                href="https://github.com/aroido/vibesmith/releases"
+                data-community-link="archive"
+                data-i18n="vibe_download_checksum_cta"
+                data-track-event="download_cta_click"
+                data-track-label="vibe_download_archive"
+              >최신 GitHub DMG 다운로드</a>
+              <a
+                class="btn btn-ghost"
+                href="https://github.com/aroido/vibesmith"
+                data-community-link="repository"
+                data-i18n="vibe_download_notes_cta"
+                data-track-event="download_cta_click"
+                data-track-label="vibe_download_repo"
+              >GitHub 저장소 열기</a>
+            </div>
+            <p class="download-note" data-community-release-status>
+              Latest public build: GitHub release channel, including prereleases.
+            </p>
+            <p class="download-note" data-i18n="vibe_download_note">GitHub가 정식 공개 릴리즈 채널입니다. GitLab은 레거시 미러로만 유지됩니다.</p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="vibe_download_brew_title">옵션 B. Homebrew 가이드</h3>
+            <p data-i18n="vibe_download_brew_desc">GitHub Homebrew tap이 같은 공개 릴리즈 채널을 추적합니다. Homebrew로 바로 설치하고, 예전 GitLab 경로를 썼다면 먼저 retap 하세요.</p>
+            <div class="download-command-head">
+              <p class="mini-label" data-i18n="vibe_download_brew_label">설치 및 업그레이드</p>
+              <button
+                class="copy-command-btn"
+                type="button"
+                data-copy-target="vibe-brew-command"
+                data-i18n="copy_command"
+                data-track-event="copy_command_click"
+                data-track-label="vibe_copy_brew_command"
+              >명령 복사</button>
+            </div>
+            <pre id="vibe-brew-command" class="download-command"><code data-i18n="vibe_download_brew_command">brew update
+brew tap aroido/vibesmith https://github.com/aroido/homebrew-vibesmith.git
+brew install --cask aroido/vibesmith/vibesmith
+
+# 이미 구버전이 설치되어 있다면:
+brew update
+brew upgrade --cask --greedy aroido/vibesmith/vibesmith</code></pre>
+            <p class="download-note" data-i18n="vibe_download_brew_note">Homebrew 설치와 업그레이드는 이 경로를 우선 사용하세요. 레거시 GitLab tap을 썼다면 `brew untap aroido/vibesmith` 후 다시 tap 하세요.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-panel reveal" data-reveal>
+        <h2 data-i18n="vibe_cta_title">레포 하나부터 드리프트를 보이게 하세요.</h2>
+        <p data-i18n="vibe_cta_description">오픈소스 빌드는 팀의 컴포넌트 스프롤, 숨은 종속성, 컨텍스트가 무거운 세팅이 이미 딜리버리를 늦추고 있는지 가장 빠르게 확인하는 경로입니다. 데모나 설치 후 실사용 레포 하나를 함께 보고 싶다면 audit 요청으로 이어가세요.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_contact_open_download">릴리즈와 설치 열기</a>
+          <a class="btn btn-ghost" href="#docs" data-i18n="vibe_cta_secondary" data-track-event="hero_cta_click" data-track-label="vibe_open_docs">적합성과 도입 가이드 보기</a>
+          <a class="btn btn-ghost" href="https://github.com/aroido/vibesmith" target="_blank" rel="noreferrer" data-i18n="vibe_cta_github" data-track-event="hero_cta_click" data-track-label="vibe_contact_open_github">GitHub 저장소 열기</a>
+          <a class="btn btn-ghost" href="https://tally.so/r/RG484l?intent=audit&amp;source=vibesmith_audit" data-i18n="vibe_cta_audit" data-track-event="contact_cta_click" data-track-label="vibe_open_audit" data-tally-popup="audit" data-tally-source="vibesmith_audit">레포 audit 요청하기</a>
+        </div>
+      </section>
+    </main>
+    <script src="/script.js"></script>
+  </body>
+</html>

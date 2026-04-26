@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ja-JP" data-title-key="layout_seo_title" data-description-key="layout_meta_description" data-locale="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LayoutRecall |スクランブルされた macOS モニターのレイアウトを復元する</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="LayoutRecall は、スリープ、スリープ解除、またはドックの再接続によって保存されたモニター レイアウトが間違って返された後に、保存されたモニター レイアウトを復元するための macOS メニュー バー アプリです。"
+    />
+    <link rel="canonical" href="https://aroido.com/ja/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/layoutrecall/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content="LayoutRecall |スクランブルされた macOS モニターのレイアウトを復元する" />
+    <meta
+      property="og:description"
+      content="LayoutRecall は、スリープ、スリープ解除、またはドックの再接続によって保存されたモニター レイアウトが間違って返された後に、保存されたモニター レイアウトを復元するための macOS メニュー バー アプリです。"
+    />
+    <meta property="og:url" content="https://aroido.com/ja/projects/layoutrecall/" />
+    <meta property="og:image" content="https://aroido.com/assets/layoutrecall/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LayoutRecall |スクランブルされた macOS モニターのレイアウトを復元する" />
+    <meta
+      name="twitter:description"
+      content="LayoutRecall は、スリープ、スリープ解除、またはドックの再接続によって保存されたモニター レイアウトが間違って返された後に、保存されたモニター レイアウトを復元するための macOS メニュー バー アプリです。"
+    />
+    <meta name="twitter:image" content="https://aroido.com/assets/layoutrecall/social-card.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LayoutRecall",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "macOS",
+        "url": "https://aroido.com/ja/projects/layoutrecall/",
+        "codeRepository": "https://github.com/aroido/layoutrecall",
+        "downloadUrl": "https://github.com/aroido/layoutrecall/releases",
+        "inLanguage": "ja-JP",
+        "description": "A macOS menu bar app that restores saved monitor layouts after sleep, wake, or reconnect when the display match is confident enough.",
+        "featureList": [
+                "Save one or more monitor layout profiles",
+                "Restore automatically only on strong matches",
+                "Use manual recovery controls when confidence is low",
+                "See diagnostics and dependency state from the menu bar"
+        ]
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">コンテンツにスキップ</a>
+    <main id="main-content" class="site-shell">
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/ja/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="メインナビゲーション" data-i18n-aria-label="aria_main_nav">
+          <a href="/ja/" data-i18n="nav_home">家</a>
+          <a href="/ja/projects/" data-nav-parent-current="true" data-i18n="nav_projects">プロダクト</a>
+          <a href="/ja/blog/" data-i18n="nav_blog">ブログ</a>
+          <a href="/ja/team/" data-i18n="nav_team">チーム</a>
+          <a href="/ja/contact/" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">接触</a>
+        </nav>
+        <div class="header-controls">
+          <nav class="header-context" aria-label="ブレッドクラム" data-i18n-aria-label="aria_breadcrumb">
+            <span class="header-context-mark" aria-hidden="true"></span>
+            <a href="/ja/projects/" data-i18n="crumb_product">プロダクト</a>
+            <span class="header-context-sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="crumb_layoutrecall">LayoutRecallの詳細</span>
+          </nav>
+                    <nav class="lang-switch" aria-label="言語切り替え" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/projects/layoutrecall/" data-lang="en" hreflang="en" lang="en-US">EN</a>
+            <a class="lang-btn" href="/ko/projects/layoutrecall/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/projects/layoutrecall/" data-lang="ja" hreflang="ja" lang="ja-JP" aria-current="true" aria-pressed="true">JA</a>
+            <a class="lang-btn" href="/zh-hans/projects/layoutrecall/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="テーマスイッチ" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">自動</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">ライト</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">暗い</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="page-hero reveal" data-reveal>
+        <div class="page-hero-grid">
+          <div class="page-hero-copy">
+            <p class="kicker" data-i18n="layout_kicker">LayoutRecall</p>
+            <h1 data-i18n="layout_title">macOSが乱すモニターレイアウトを復元。</h1>
+            <p data-i18n="layout_description">LayoutRecall は、MacBook + ドック + マルチディスプレイ デスク用のオープンソース macOS メニュー バー アプリです。正常であることがわかっているレイアウトを一度保存​​し、スリープ、スリープ解除、または再接続後に元に戻します。</p>
+            <p class="hero-hook" data-i18n="layout_hook">自動復元は保守的なままです。信頼性の低いケースは、意図的に手動のままになります。</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#download" data-i18n="layout_cta_primary" data-track-event="download_cta_click" data-track-label="layout_open_download">リリースを開いてインストールする</a>
+              <a class="btn btn-ghost" href="#proof" data-i18n="layout_cta_secondary" data-track-event="hero_cta_click" data-track-label="layout_open_proof">視覚的な証拠を見る</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/layoutrecall" target="_blank" rel="noreferrer" data-i18n="layout_cta_github" data-track-event="hero_cta_click" data-track-label="layout_open_github">GitHub リポジトリを開きます</a>
+            </div>
+            <div class="hero-proof-row">
+              <span class="status-pill" data-i18n="layout_status_pill_1">macOS メニュー バー アプリ</span>
+              <span class="status-pill" data-i18n="layout_status_pill_2">GitHub リリース + Homebrew</span>
+              <span class="status-pill" data-i18n="layout_status_pill_3">信頼性を意識した復元</span>
+            </div>
+          </div>
+          <aside class="page-hero-proof" aria-label="LayoutRecall 製品プレビュー" data-i18n-aria-label="aria_layout_hero_visual">
+            <p class="mini-label" data-i18n="layout_hero_visual_eyebrow">評判の良いデスク</p>
+            <h2 data-i18n="layout_hero_visual_title">信頼できるデスクを 1 つ保存し、安全に持ち帰ってください</h2>
+            <p data-i18n="layout_hero_visual_desc">LayoutRecall は、macOS が間違った順序や位置でマルチディスプレイ デスクを返した後に、使い慣れたマルチディスプレイ デスクを取り戻すという狭い問題向けに構築されています。</p>
+            <div class="page-hero-proof-media">
+              <img
+                class="page-hero-proof-image"
+                src="/assets/layoutrecall/readme-hero.png"
+                alt=""
+                width="1714"
+                height="1214"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <ul class="page-hero-proof-list">
+              <li data-i18n="layout_hero_visual_point_1">現在のデスクから正常なレイアウト プロファイルを保存する</li>
+              <li data-i18n="layout_hero_visual_point_2">ライブディスプレイの一致が強い場合にのみ自動的に復元します</li>
+              <li data-i18n="layout_hero_visual_point_3">アプリが推測を拒否した場合でも手動回復コントロールを表示しておきます</li>
+            </ul>
+            <p class="page-hero-proof-caption" data-i18n="layout_hero_visual_caption">オープンソース ビルドからの現在の公開製品画面。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_problem_eyebrow">マコスが間違ったとき</p>
+          <h2 data-i18n="layout_problem_title">LayoutRecall が修正するもの</h2>
+          <p data-i18n="layout_problem_desc">このアプリは意図的に範囲を狭めています。完全なディスプレイ管理スイートを装うのではなく、すでに信頼しているデスクを復元します。</p>
+        </div>
+        <div class="metric-grid proof-strip-grid">
+          <article class="metric-card proof-strip-card">
+            <p class="mini-label" data-i18n="layout_problem_1_label">睡眠/覚醒</p>
+            <h3 data-i18n="layout_problem_1_title">同じモニターが間違った順序で返される</h3>
+            <p data-i18n="layout_problem_1_body">接続されたディスプレイ セットが以前に保存したものと強く一致する場合、保存されたプロファイルを復元します。</p>
+          </article>
+          <article class="metric-card proof-strip-card proof-strip-card-accent">
+            <p class="mini-label" data-i18n="layout_problem_2_label">再接続</p>
+            <h3 data-i18n="layout_problem_2_title">ドックの再接続によりメインディスプレイまたは原点が変更されます</h3>
+            <p data-i18n="layout_problem_2_body">再接続するたびにデスクを手動で再構築するのではなく、既知の配置に戻します。</p>
+          </article>
+          <article class="metric-card proof-strip-card">
+            <p class="mini-label" data-i18n="layout_problem_3_label">信頼性が低い</p>
+            <h3 data-i18n="layout_problem_3_title">自動復元は危険です</h3>
+            <p data-i18n="layout_problem_3_body">マッチングが十分に強力でない場合、アプリはすぐに停止し、診断を表示し、手動で回復し続けます。</p>
+          </article>
+          <article class="metric-card proof-strip-card proof-strip-card-accent">
+            <p class="mini-label" data-i18n="layout_problem_4_label">今すぐ</p>
+            <h3 data-i18n="layout_problem_4_title">直接的な回復制御が必要な場合</h3>
+            <p data-i18n="layout_problem_4_body">制御が必要な場合は、メニュー バーから [今すぐ復元]、[レイアウトの適用]、[番号の表示]、および関連するコントロールを使用します。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_fit_eyebrow">フィット</p>
+          <h2 data-i18n="layout_fit_title">この製品の対象者</h2>
+          <p data-i18n="layout_fit_desc">LayoutRecall は、元に戻したい正確なモニター レイアウトをすでに知っている人にとっては最も強力です。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <p class="mini-label" data-i18n="layout_fit_1_label">デスクのセットアップ</p>
+            <h3 data-i18n="layout_fit_1_title">MacBook + ドック + 2 台以上の外部ディスプレイ</h3>
+            <p data-i18n="layout_fit_1_body">これは、配置が安定しているにもかかわらず、macOS がディスプレイを間違った場所に戻し続けるリピートデスク向けに構築されています。</p>
+          </article>
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="layout_fit_2_label">信頼</p>
+            <h3 data-i18n="layout_fit_2_title">盲目的な推測をせずに回復したい人</h3>
+            <p data-i18n="layout_fit_2_body">自動復元は、信頼性の高い一致に対してのみ実行されます。自信が弱い場合、アプリは透明性を保ち、最終的な動きはユーザーに委ねられます。</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="layout_fit_3_label">境界</p>
+            <h3 data-i18n="layout_fit_3_title">巨大なディスプレイ管理スイートではない</h3>
+            <p data-i18n="layout_fit_3_body">4 つ以上のディスプレイを備えたすべてのエッジ ケースに魔法の答えが必要な場合、この製品は意図的にその約束よりも狭いものになっています。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="proof" class="section section-media reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_media_eyebrow">視覚的証拠</p>
+          <h2 data-i18n="layout_media_title">曖昧な有用性の主張ではなく、実際の UI の証拠</h2>
+          <p data-i18n="layout_media_desc">現在のパブリック ビルドでは、診断、プロファイル、リカバリ コントロールを推測に隠すのではなく、製品内に直接表示します。</p>
+          <ul class="proof-chip-row" aria-label="LayoutRecall プルーフ信号" data-i18n-aria-label="aria_layout_media_proof">
+            <li class="proof-chip" data-i18n="layout_media_chip_1">信頼性を意識した復元</li>
+            <li class="proof-chip" data-i18n="layout_media_chip_2">診断を常に表示できるようにする</li>
+            <li class="proof-chip" data-i18n="layout_media_chip_3">Proファイルと手動フォールバック</li>
+          </ul>
+        </div>
+        <div class="media-proof-grid">
+          <figure class="media-card media-card-hero media-live media-proof-hero">
+            <img
+              class="media-visual"
+              src="/assets/layoutrecall/layoutrecall-demo.gif"
+              alt=""
+              width="1548"
+              height="966"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-overlay media-placeholder">
+              <span class="media-tag" data-i18n="layout_media_demo_tag">短いデモ</span>
+              <strong data-i18n="layout_media_demo_title">復元、診断、フォールバック制御を通じて製品が移行する様子を観察します。</strong>
+              <p data-i18n="layout_media_demo_desc">デモは実際の製品のストーリーに従っています。デスクが移動し、プロファイルが一致し、アプリが安全に復元するか、意図的に復元マニュアルを残します。</p>
+            </div>
+            <figcaption data-i18n="layout_media_demo_caption">LayoutRecall リリース アセット セットからの現在の公開デモ。</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              class="media-visual"
+              src="/assets/layoutrecall/readme-feature-trust.png"
+              alt=""
+              width="1714"
+              height="1214"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder">
+              <span class="media-tag" data-i18n="layout_media_trust_tag">復元する前に信頼する</span>
+              <strong data-i18n="layout_media_trust_title">信頼性、依存関係の状態を確認し、最初に証拠を復元します</strong>
+            </div>
+            <figcaption data-i18n="layout_media_trust_caption">メニュー バー UI は診断を閉じたままにするため、ユーザーは何が起こったのか、アプリが動作を拒否した理由を確認できます。</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              class="media-visual"
+              src="/assets/layoutrecall/readme-feature-profiles.png"
+              alt=""
+              width="1714"
+              height="1214"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder">
+              <span class="media-tag" data-i18n="layout_media_profiles_tag">Proファイル</span>
+              <strong data-i18n="layout_media_profiles_title">複数のデスクを保存し、手動リカバリを近くに置いておきます</strong>
+            </div>
+            <figcaption data-i18n="layout_media_profiles_caption">Pro ファイル、起動動作、および手動アクションは一緒に維持されるため、フォールバックは予測可能です。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="download" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_download_eyebrow">インストール</p>
+          <h2 data-i18n="layout_download_title">署名付きアプリを試すか、Homebrew を使用してインストールします</h2>
+          <p data-i18n="layout_download_desc">GitHub Releases および Homebrew カスクは、最速のパブリック パスです。この製品は、実際の復元コマンドの displayplacer への依存関係について正直に保ちます。</p>
+        </div>
+        <div class="download-grid">
+          <article class="route-card highlight">
+            <h3 data-i18n="layout_download_release_title">オプション A. GitHub Releases</h3>
+            <p data-i18n="layout_download_release_desc">署名された DMG をダウンロードし、LayoutRecall をアプリケーションにドラッグし、メニュー バーからベースライン レイアウトを保存します。</p>
+            <a class="download-path" href="https://github.com/aroido/layoutrecall/releases" target="_blank" rel="noreferrer">https://github.com/aroido/layoutrecall/releases</a>
+            <div class="hero-actions download-actions">
+              <a class="btn btn-primary" href="https://github.com/aroido/layoutrecall/releases" target="_blank" rel="noreferrer" data-i18n="layout_download_release_cta" data-track-event="download_cta_click" data-track-label="layout_download_release_page">最新の GitHub リリースを開く</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/layoutrecall" target="_blank" rel="noreferrer" data-i18n="layout_download_repo_cta" data-track-event="hero_cta_click" data-track-label="layout_download_repo">GitHub リポジトリを開く</a>
+            </div>
+            <p class="download-note" data-i18n="layout_download_release_note">displayplacer が見つからない場合、LayoutRecall はその依存関係の状態を明らかにし、復元コマンドを実行する前にインストール フローをガイドできます。</p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="layout_download_brew_title">オプション B. Homebrew</h3>
+            <p data-i18n="layout_download_brew_desc">Homebrew パスを使用する場合は、パブリック カスクからインストールします。</p>
+            <div class="download-command-head">
+              <p class="mini-label" data-i18n="layout_download_brew_label">インストールコマンド</p>
+              <button
+                class="copy-command-btn"
+                type="button"
+                data-copy-target="layout-brew-command"
+                data-i18n="copy_command"
+                data-track-event="copy_command_click"
+                data-track-label="layout_copy_brew_command"
+              >コピーコマンド</button>
+            </div>
+            <pre id="layout-brew-command" class="download-command"><code data-i18n="layout_download_brew_command">brew install --cask aroido/layoutrecall/layoutrecall</code></pre>
+            <p class="download-note" data-i18n="layout_download_brew_note">保存されたレイアウトの復元は、PATH で使用できる displayplacer に依存します。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-panel reveal" data-reveal>
+        <h2 data-i18n="layout_contact_title">取り戻したいデスクを 1 つから始めます。</h2>
+        <p data-i18n="layout_contact_desc">LayoutRecall は、既知の正常なデスク レイアウトがすでにあり、macOS のドリフト後にそれを復元するためのより安全な方法が必要な場合に最も説得力があります。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download" data-i18n="layout_cta_primary" data-track-event="download_cta_click" data-track-label="layout_contact_open_download">リリースを開いてインストールする</a>
+          <a class="btn btn-ghost" href="https://github.com/aroido/layoutrecall" target="_blank" rel="noreferrer" data-i18n="layout_cta_github" data-track-event="hero_cta_click" data-track-label="layout_contact_open_github">GitHub リポジトリを開きます</a>
+          <a class="btn btn-ghost" href="/ja/projects/" data-i18n="layout_contact_secondary" data-track-event="hero_cta_click" data-track-label="layout_contact_open_products">製品に戻る</a>
+        </div>
+      </section>
+    </main>
+    <script src="/script.js"></script>
+  </body>
+</html>

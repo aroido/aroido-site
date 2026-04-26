@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko-KR" data-static-meta="true" data-locale="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursor Background Agents for Teams: Speed, Security, and Handoffs | Aroido Blog</title>
+    <meta id="metaDescription" name="description" content="Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter." />
+    <link rel="canonical" href="https://aroido.com/ko/blog/cursor-background-agents-for-teams/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/blog/cursor-background-agents-for-teams/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/blog/cursor-background-agents-for-teams/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/blog/cursor-background-agents-for-teams/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/blog/cursor-background-agents-for-teams/" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/blog/cursor-background-agents-for-teams/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content="Cursor Background Agents for Teams: Speed, Security, and Handoffs | Aroido Blog" />
+    <meta property="og:description" content="Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter." />
+    <meta property="og:url" content="https://aroido.com/ko/blog/cursor-background-agents-for-teams/" />
+    <meta property="og:image" content="https://aroido.com/assets/vibesmith-community/06-projects-en-light.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cursor Background Agents for Teams: Speed, Security, and Handoffs | Aroido Blog" />
+    <meta name="twitter:description" content="Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter." />
+    <meta name="twitter:image" content="https://aroido.com/assets/vibesmith-community/06-projects-en-light.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cursor Background Agents for Teams: Speed, Security, and Handoffs",
+  "description": "Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter.",
+  "datePublished": "2026-03-07T01:45:00.000Z",
+  "dateModified": "2026-03-11T11:52:45.870Z",
+  "inLanguage": "ko-KR",
+  "mainEntityOfPage": "https://aroido.com/ko/blog/cursor-background-agents-for-teams/",
+  "url": "https://aroido.com/ko/blog/cursor-background-agents-for-teams/",
+  "keywords": [
+    "cursor",
+    "background-agents",
+    "governance"
+  ],
+  "image": [
+    "https://aroido.com/assets/vibesmith-community/06-projects-en-light.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Aroido",
+    "url": "https://aroido.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aroido",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-app-icon-dark-512.png"
+    }
+  }
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <link rel="stylesheet" href="../../../styles.css" />
+  </head>
+  <body>
+    <!-- Generated by scripts/build-blog.mjs. Do not edit directly. -->
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">본문으로 건너뛰기</a>
+    <main id="main-content" class="site-shell">
+
+
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/ko/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="aria_main_nav">
+          <a href="/ko/" data-i18n="nav_home">홈</a>
+          <a href="/ko/projects/" data-i18n="nav_projects">제품</a>
+          <a href="/ko/blog/" data-i18n="nav_blog" aria-current="page">블로그</a>
+          <a href="/ko/team/" data-i18n="nav_team">팀</a>
+          <a href="/ko/contact/" data-i18n="nav_contact">문의</a>
+        </nav>
+        <div class="header-controls">
+
+          <nav class="lang-switch" aria-label="언어 전환" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/blog/cursor-background-agents-for-teams/" data-lang="en" hreflang="en" lang="en-US">EN</a>
+            <a class="lang-btn" href="/ko/blog/cursor-background-agents-for-teams/" data-lang="ko" hreflang="ko" lang="ko-KR" aria-current="true" aria-pressed="true">KO</a>
+            <a class="lang-btn" href="/ja/blog/cursor-background-agents-for-teams/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/blog/cursor-background-agents-for-teams/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">시스템</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">라이트</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">다크</button>
+          </div>
+        </div>
+      </header>
+      <article class="article-shell">
+        <section class="article-hero reveal" data-reveal>
+          <p class="kicker" data-i18n="blog_post_label">블로그 글</p>
+          <a class="inline-link article-back-link" href="/ko/blog/" data-i18n="blog_back_to_blog">블로그로 돌아가기</a>
+          <h1>Cursor Background Agents for Teams: Speed, Security, and Handoffs</h1>
+          <p class="article-excerpt">Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter.</p>
+          <div class="article-meta">
+            <span>2026년 3월 7일</span>
+            <span>읽는 시간 4분</span>
+            <span>708단어</span>
+          </div>
+          <ul class="tag-list" aria-label="Post tags"><li>cursor</li><li>background-agents</li><li>governance</li></ul>
+        </section>
+
+        <div class="article-layout">
+          <section class="article-body">
+            <div class="article-prose">
+<p>Cursor Background Agents are one of the clearest examples of where AI coding is heading. The promise is obvious: start an asynchronous remote agent, let it edit and run code in a remote environment, check in later, and keep your foreground work moving.</p>
+<p>For teams, that can be a real speed advantage. It can also become a governance mess surprisingly quickly.</p>
+<p>Cursor&#39;s official docs do not hide the tradeoffs. Background Agents run in an isolated Ubuntu-based machine, require repo access through a GitHub app, retain data for a few days, have internet access, and auto-run terminal commands. The docs explicitly call out prompt-injection and data exfiltration risk.</p>
+<h2>Quick takeaways</h2>
+<ul><li>Background Agents are real leverage for parallel work, not just a novelty feature.</li><li>The main production risks are approval boundaries, internet access, and weak handoff quality.</li><li>Multi-repo teams need explicit policy before they scale asynchronous agent work.</li></ul>
+<p>That is exactly why we think teams need a stronger operating model around them.</p>
+<p><img src="/assets/vibesmith-community/06-projects-en-light.png" alt="VibeSmith projects view showing cross-project scope and inventory" title="VibeSmith projects view" loading="lazy" decoding="async" /></p>
+<p><em>When work can happen asynchronously away from the main editor, teams need a better view of scope, ownership, and reusable standards.</em></p>
+<h2>What Background Agents are good at</h2>
+<p>Background Agents are especially useful when:</p>
+<ul><li>a task is long-running</li><li>the repo is large</li><li>the agent needs time to iterate on tests</li><li>the developer wants parallel work instead of blocking the main session</li></ul>
+<p>This makes them attractive for repetitive engineering work:</p>
+<ul><li>fixing broad lint or test issues</li><li>drafting larger refactors</li><li>trying migration paths</li><li>exploring code changes while the main developer keeps moving</li></ul>
+<p>That speed is real. But speed is not the same thing as control.</p>
+<h2>The risks are not theoretical</h2>
+<p>Cursor&#39;s own docs are very explicit about the tradeoffs. Teams should pay attention to them.</p>
+<h3>The agent has repository access</h3>
+<p>You grant read-write privileges through a GitHub app. That is not inherently bad, but it changes the trust model. The agent is no longer just editing local files under direct supervision.</p>
+<h3>The agent has internet access</h3>
+<p>This changes what prompt injection can do. The risk is not only bad code. The risk is data leaving the environment.</p>
+<h3>Terminal commands auto-run</h3>
+<p>This is one of the biggest operational differences from foreground agent flows. In the foreground, a human can often approve commands step by step. In the background, that friction is intentionally reduced for speed.</p>
+<h3>Privacy mode has to be understood precisely</h3>
+<p>The docs also note that privacy behavior depends on how the run is started. Teams need to know the difference between their desired policy and the actual runtime policy.</p>
+<h2>Why multi-repo teams feel the pain faster</h2>
+<p>A single-repo team can often absorb these risks through habit and close communication.</p>
+<p>A multi-repo team usually cannot.</p>
+<p>The reasons are familiar:</p>
+<ul><li>the safe workflow in one repo is missing in the next repo</li><li>one repo has better review gates than the others</li><li>secrets, generated files, or deployment directories are not classified the same way everywhere</li><li>reviewers cannot immediately tell whether a remote agent followed the expected policy</li></ul>
+<p>This is where handoff quality becomes the actual product problem.</p>
+<h2>The handoff problem matters as much as the code</h2>
+<p>A background agent does not only create diffs. It creates uncertainty if the surrounding workflow is weak.</p>
+<p>Teams need to know:</p>
+<ul><li>what the agent was allowed to touch</li><li>what checks ran automatically</li><li>what external systems were reachable</li><li>what commands were executed without human approval</li><li>whether the repo-specific standards were actually applied</li></ul>
+<p>If your current process cannot answer those questions quickly, then faster execution just means faster ambiguity.</p>
+<h2>The operating policy we think teams need</h2>
+<p>We would not treat Background Agents as a casual default for every repo. We would treat them as a capability that needs clear boundaries.</p>
+<p>A healthy team policy usually includes:</p>
+<ul><li>explicit repo allowlists</li><li>repo-local instruction files with approval expectations</li><li>clear branch and merge-review gates</li><li>restrictions for secret-bearing or deployment-sensitive paths</li><li>a required summary of commands, files changed, and unresolved risks</li><li>a way to compare workflow differences across repositories</li></ul>
+<p>That last point is where the problem usually comes back to VibeSmith. Teams do not just need faster agents. They need coherent operating standards across repos so handoffs remain legible when the work gets more asynchronous.</p>
+<h2>Related reads</h2>
+<ul><li><a href="/ko/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a></li><li><a href="/ko/blog/cursor-rules-vs-agents-md/">Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</a></li><li><a href="/ko/blog/what-mcp-changes-for-ai-coding-workflows/">What MCP Changes for AI Coding Workflows, and What It Does Not</a></li></ul>
+<h2>Official references</h2>
+<ul><li><a href="https://docs.cursor.com/background-agents" rel="noreferrer" target="_blank">Cursor Background Agents</a></li><li><a href="https://docs.cursor.com/en/context/rules" rel="noreferrer" target="_blank">Cursor Rules</a></li><li><a href="https://agents.md/" rel="noreferrer" target="_blank">AGENTS.md official project</a></li><li><a href="/ko/projects/vibesmith/">VibeSmith product page</a></li></ul>
+            </div>
+
+          <nav class="article-nav" aria-label="Article navigation">
+            <a class="article-nav-card" href="/ko/blog/what-mcp-changes-for-ai-coding-workflows/">
+                    <span class="mini-label" data-i18n="blog_article_nav_prev">이전 글</span>
+                    <strong>What MCP Changes for AI Coding Workflows, and What It Does Not</strong>
+                  </a>
+            <a class="article-nav-card" href="/ko/blog/gitlab-duo-agent-platform-for-multi-repo-teams/">
+                    <span class="mini-label" data-i18n="blog_article_nav_next">다음 글</span>
+                    <strong>GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts</strong>
+                  </a>
+          </nav>
+          </section>
+
+          <aside class="article-aside">
+            <div class="article-aside-card">
+              <p class="section-eyebrow" data-i18n="blog_related_reads">관련 글</p>
+              <ul class="article-recent-list">
+                
+                      <li>
+                        <a href="/ko/blog/cursor-rules-vs-agents-md/">Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</a>
+                        <span>Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories.</span>
+                      </li>
+                      <li>
+                        <a href="/ko/blog/gitlab-duo-agent-platform-for-multi-repo-teams/">GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts</a>
+                        <span>GitLab Duo Agent Platform brings agents, flows, AGENTS.md customization, MCP, and lifecycle integration closer together. For multi-repo teams, that is the start of governance, not the end of it.</span>
+                      </li>
+                      <li>
+                        <a href="/ko/blog/why-teams-should-prune-unused-ai-components/">Why Teams Should Prune Unused AI Components Before They Pollute Context</a>
+                        <span>Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately.</span>
+                      </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+    <script src="../../../script.js"></script>
+  </body>
+</html>

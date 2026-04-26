@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-Hans" data-title-key="layout_seo_title" data-description-key="layout_meta_description" data-locale="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LayoutRecall |恢复混乱的 macOS 显示器布局</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="LayoutRecall 是 macOS 菜单栏应用程序，用于在睡眠、唤醒或扩展坞重新连接发回错误后恢复保存的显示器布局。"
+    />
+    <link rel="canonical" href="https://aroido.com/zh-hans/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/projects/layoutrecall/" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/layoutrecall/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content="LayoutRecall |恢复混乱的 macOS 显示器布局" />
+    <meta
+      property="og:description"
+      content="LayoutRecall 是 macOS 菜单栏应用程序，用于在睡眠、唤醒或扩展坞重新连接发回错误后恢复保存的显示器布局。"
+    />
+    <meta property="og:url" content="https://aroido.com/zh-hans/projects/layoutrecall/" />
+    <meta property="og:image" content="https://aroido.com/assets/layoutrecall/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LayoutRecall |恢复混乱的 macOS 显示器布局" />
+    <meta
+      name="twitter:description"
+      content="LayoutRecall 是 macOS 菜单栏应用程序，用于在睡眠、唤醒或扩展坞重新连接发回错误后恢复保存的显示器布局。"
+    />
+    <meta name="twitter:image" content="https://aroido.com/assets/layoutrecall/social-card.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LayoutRecall",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "macOS",
+        "url": "https://aroido.com/zh-hans/projects/layoutrecall/",
+        "codeRepository": "https://github.com/aroido/layoutrecall",
+        "downloadUrl": "https://github.com/aroido/layoutrecall/releases",
+        "inLanguage": "zh-Hans",
+        "description": "A macOS menu bar app that restores saved monitor layouts after sleep, wake, or reconnect when the display match is confident enough.",
+        "featureList": [
+                "Save one or more monitor layout profiles",
+                "Restore automatically only on strong matches",
+                "Use manual recovery controls when confidence is low",
+                "See diagnostics and dependency state from the menu bar"
+        ]
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">跳至内容</a>
+    <main id="main-content" class="site-shell">
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/zh-hans/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="主导航" data-i18n-aria-label="aria_main_nav">
+          <a href="/zh-hans/" data-i18n="nav_home">家</a>
+          <a href="/zh-hans/projects/" data-nav-parent-current="true" data-i18n="nav_projects">产品</a>
+          <a href="/zh-hans/blog/" data-i18n="nav_blog">博客</a>
+          <a href="/zh-hans/team/" data-i18n="nav_team">团队</a>
+          <a href="/zh-hans/contact/" data-i18n="nav_contact" data-track-event="contact_cta_click" data-track-label="nav_open_contact_hub">接触</a>
+        </nav>
+        <div class="header-controls">
+          <nav class="header-context" aria-label="面包屑" data-i18n-aria-label="aria_breadcrumb">
+            <span class="header-context-mark" aria-hidden="true"></span>
+            <a href="/zh-hans/projects/" data-i18n="crumb_product">产品</a>
+            <span class="header-context-sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="crumb_layoutrecall">LayoutRecall 详细信息</span>
+          </nav>
+                    <nav class="lang-switch" aria-label="语言切换" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/projects/layoutrecall/" data-lang="en" hreflang="en" lang="en-US">EN</a>
+            <a class="lang-btn" href="/ko/projects/layoutrecall/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/projects/layoutrecall/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/projects/layoutrecall/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans" aria-current="true" aria-pressed="true">中文</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="主题切换" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">汽车</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">光</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">黑暗的</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="page-hero reveal" data-reveal>
+        <div class="page-hero-grid">
+          <div class="page-hero-copy">
+            <p class="kicker" data-i18n="layout_kicker">LayoutRecall</p>
+            <h1 data-i18n="layout_title">恢复 macOS 反复打乱的显示器布局。</h1>
+            <p data-i18n="layout_description">LayoutRecall 是适用于 MacBook + 扩展坞 + 多显示器办公桌的开源 macOS 菜单栏应用程序。保存一次已知良好的布局，然后在睡眠、唤醒或重新连接后将其恢复。</p>
+            <p class="hero-hook" data-i18n="layout_hook">自动恢复保持保守。置信度较低的案例仍故意采用手动方式。</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#download" data-i18n="layout_cta_primary" data-track-event="download_cta_click" data-track-label="layout_open_download">打开发布并安装</a>
+              <a class="btn btn-ghost" href="#proof" data-i18n="layout_cta_secondary" data-track-event="hero_cta_click" data-track-label="layout_open_proof">查看视觉证据</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/layoutrecall" target="_blank" rel="noreferrer" data-i18n="layout_cta_github" data-track-event="hero_cta_click" data-track-label="layout_open_github">打开 GitHub 存储库</a>
+            </div>
+            <div class="hero-proof-row">
+              <span class="status-pill" data-i18n="layout_status_pill_1">macOS 菜单栏应用</span>
+              <span class="status-pill" data-i18n="layout_status_pill_2">GitHub 发布 + Homebrew</span>
+              <span class="status-pill" data-i18n="layout_status_pill_3">信心感知恢复</span>
+            </div>
+          </div>
+          <aside class="page-hero-proof" aria-label="LayoutRecall 产品预览" data-i18n-aria-label="aria_layout_hero_visual">
+            <p class="mini-label" data-i18n="layout_hero_visual_eyebrow">知名办公桌</p>
+            <h2 data-i18n="layout_hero_visual_title">保存一张您信任的办公桌，然后将其安全带回来</h2>
+            <p data-i18n="layout_hero_visual_desc">LayoutRecall 专为解决 macOS 以错误的顺序或位置返回熟悉的多显示器桌面后找回它的狭隘问题而设计。</p>
+            <div class="page-hero-proof-media">
+              <img
+                class="page-hero-proof-image"
+                src="/assets/layoutrecall/readme-hero.png"
+                alt=""
+                width="1714"
+                height="1214"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <ul class="page-hero-proof-list">
+              <li data-i18n="layout_hero_visual_point_1">从当前桌面保存已知良好的布局配置文件</li>
+              <li data-i18n="layout_hero_visual_point_2">仅当实时显示匹配度强时自动恢复</li>
+              <li data-i18n="layout_hero_visual_point_3">当应用拒绝猜测时，保持手动恢复控件可见</li>
+            </ul>
+            <p class="page-hero-proof-caption" data-i18n="layout_hero_visual_caption">开源版本的当前公共产品屏幕。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_problem_eyebrow">当 MACOS 出错时</p>
+          <h2 data-i18n="layout_problem_title">LayoutRecall 旨在修复什么</h2>
+          <p data-i18n="layout_problem_desc">该应用程序有意缩小范围：恢复您已经信任的桌面，而不是假装是完整的显示管理套件。</p>
+        </div>
+        <div class="metric-grid proof-strip-grid">
+          <article class="metric-card proof-strip-card">
+            <p class="mini-label" data-i18n="layout_problem_1_label">睡眠/唤醒</p>
+            <h3 data-i18n="layout_problem_1_title">相同的监视器以错误的顺序返回</h3>
+            <p data-i18n="layout_problem_1_body">当连接的显示器组与您之前保存的配置文件高度匹配时，恢复保存的配置文件。</p>
+          </article>
+          <article class="metric-card proof-strip-card proof-strip-card-accent">
+            <p class="mini-label" data-i18n="layout_problem_2_label">重新连接</p>
+            <h3 data-i18n="layout_problem_2_title">Dock 重新连接更改主显示或原点</h3>
+            <p data-i18n="layout_problem_2_body">每次重新连接后，恢复已知的布置，而不是手动重建桌子。</p>
+          </article>
+          <article class="metric-card proof-strip-card">
+            <p class="mini-label" data-i18n="layout_problem_3_label">信心不足</p>
+            <h3 data-i18n="layout_problem_3_title">自动恢复会有风险</h3>
+            <p data-i18n="layout_problem_3_body">该应用程序会短暂停止，显示诊断信息，并在匹配不够强时保持恢复手动。</p>
+          </article>
+          <article class="metric-card proof-strip-card proof-strip-card-accent">
+            <p class="mini-label" data-i18n="layout_problem_4_label">现在</p>
+            <h3 data-i18n="layout_problem_4_title">您需要直接恢复控制</h3>
+            <p data-i18n="layout_problem_4_body">当您需要控制时，请使用菜单栏中的“立即恢复”、“应用布局”、“显示数字”和相关控件。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_fit_eyebrow">合身</p>
+          <h2 data-i18n="layout_fit_title">该产品适合谁</h2>
+          <p data-i18n="layout_fit_desc">LayoutRecall 对于那些已经知道他们想要恢复的确切显示器布局的人来说是最强的。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card">
+            <p class="mini-label" data-i18n="layout_fit_1_label">办公桌设置</p>
+            <h3 data-i18n="layout_fit_1_title">MacBook + 扩展坞 + 2 个以上外接显示器</h3>
+            <p data-i18n="layout_fit_1_body">它专为重复办公桌而设计，其排列稳定，但 macOS 总是将显示器放回错误的位置。</p>
+          </article>
+          <article class="story-card highlight">
+            <p class="mini-label" data-i18n="layout_fit_2_label">相信</p>
+            <h3 data-i18n="layout_fit_2_title">想要康复而不盲目猜测的人</h3>
+            <p data-i18n="layout_fit_2_body">自动恢复仅在有信心的匹配上运行。当信心减弱时，应用程序会保持透明，并将最后的行动留给您。</p>
+          </article>
+          <article class="story-card">
+            <p class="mini-label" data-i18n="layout_fit_3_label">边界</p>
+            <h3 data-i18n="layout_fit_3_title">不是一个巨大的显示管理套件</h3>
+            <p data-i18n="layout_fit_3_body">如果您想为每个四屏以上的边缘情况提供一个神奇的答案，那么该产品故意比这个承诺更窄。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="proof" class="section section-media reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_media_eyebrow">目视证明</p>
+          <h2 data-i18n="layout_media_title">真实的 UI 证明，而不是模糊的实用声明</h2>
+          <p data-i18n="layout_media_desc">当前的公共版本直接在产品中显示诊断、配置文件和恢复控制，而不是将它们隐藏在猜测后面。</p>
+          <ul class="proof-chip-row" aria-label="LayoutRecall 证明信号" data-i18n-aria-label="aria_layout_media_proof">
+            <li class="proof-chip" data-i18n="layout_media_chip_1">信心感知恢复</li>
+            <li class="proof-chip" data-i18n="layout_media_chip_2">诊断保持可见</li>
+            <li class="proof-chip" data-i18n="layout_media_chip_3">Pro 文件和手动回退</li>
+          </ul>
+        </div>
+        <div class="media-proof-grid">
+          <figure class="media-card media-card-hero media-live media-proof-hero">
+            <img
+              class="media-visual"
+              src="/assets/layoutrecall/layoutrecall-demo.gif"
+              alt=""
+              width="1548"
+              height="966"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-overlay media-placeholder">
+              <span class="media-tag" data-i18n="layout_media_demo_tag">简短演示</span>
+              <strong data-i18n="layout_media_demo_title">观察产品的恢复、诊断和回退控制过程</strong>
+              <p data-i18n="layout_media_demo_desc">该演示遵循真实的产品故事：桌子漂移，配置文件匹配，应用程序要么安全恢复，要么故意留下恢复手册。</p>
+            </div>
+            <figcaption data-i18n="layout_media_demo_caption">LayoutRecall 发布资产集的当前公开演示。</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              class="media-visual"
+              src="/assets/layoutrecall/readme-feature-trust.png"
+              alt=""
+              width="1714"
+              height="1214"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder">
+              <span class="media-tag" data-i18n="layout_media_trust_tag">恢复前信任</span>
+              <strong data-i18n="layout_media_trust_title">首先查看信心、依赖状态并恢复证据</strong>
+            </div>
+            <figcaption data-i18n="layout_media_trust_caption">菜单栏 UI 使诊断保持关闭状态，以便用户可以查看发生了什么或应用程序拒绝执行操作的原因。</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              class="media-visual"
+              src="/assets/layoutrecall/readme-feature-profiles.png"
+              alt=""
+              width="1714"
+              height="1214"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="media-placeholder">
+              <span class="media-tag" data-i18n="layout_media_profiles_tag">Pro文件</span>
+              <strong data-i18n="layout_media_profiles_title">节省多张办公桌并让手动恢复近在咫尺</strong>
+            </div>
+            <figcaption data-i18n="layout_media_profiles_caption">Pro 文件、启动行为和手动操作保持在一起，因此回退仍然是可预测的。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="download" class="section reveal" data-reveal>
+        <div class="section-head">
+          <p class="section-eyebrow" data-i18n="layout_download_eyebrow">安装</p>
+          <h2 data-i18n="layout_download_title">尝试签名的应用程序或使用 Homebrew 安装</h2>
+          <p data-i18n="layout_download_desc">GitHub Releases 和 Homebrew 桶是最快的公共​​路径。该产品对于实际恢复命令对 displayplacer 的依赖保持诚实。</p>
+        </div>
+        <div class="download-grid">
+          <article class="route-card highlight">
+            <h3 data-i18n="layout_download_release_title">选项 A.GitHub Releases</h3>
+            <p data-i18n="layout_download_release_desc">下载签名的 DMG，将 LayoutRecall 拖到应用程序中，然后从菜单栏保存基线布局。</p>
+            <a class="download-path" href="https://github.com/aroido/layoutrecall/releases" target="_blank" rel="noreferrer">https://github.com/aroido/layoutrecall/releases</a>
+            <div class="hero-actions download-actions">
+              <a class="btn btn-primary" href="https://github.com/aroido/layoutrecall/releases" target="_blank" rel="noreferrer" data-i18n="layout_download_release_cta" data-track-event="download_cta_click" data-track-label="layout_download_release_page">打开最新的 GitHub 版本</a>
+              <a class="btn btn-ghost" href="https://github.com/aroido/layoutrecall" target="_blank" rel="noreferrer" data-i18n="layout_download_repo_cta" data-track-event="hero_cta_click" data-track-label="layout_download_repo">打开 GitHub 存储库</a>
+            </div>
+            <p class="download-note" data-i18n="layout_download_release_note">如果缺少 displayplacer，LayoutRecall 可以显示该依赖关系状态并在恢复命令运行之前指导安装流程。</p>
+          </article>
+          <article class="route-card">
+            <h3 data-i18n="layout_download_brew_title">选项 B.Homebrew</h3>
+            <p data-i18n="layout_download_brew_desc">如果您更喜欢 Homebrew 路径，请从公共桶安装。</p>
+            <div class="download-command-head">
+              <p class="mini-label" data-i18n="layout_download_brew_label">安装命令</p>
+              <button
+                class="copy-command-btn"
+                type="button"
+                data-copy-target="layout-brew-command"
+                data-i18n="copy_command"
+                data-track-event="copy_command_click"
+                data-track-label="layout_copy_brew_command"
+              >复制命令</button>
+            </div>
+            <pre id="layout-brew-command" class="download-command"><code data-i18n="layout_download_brew_command">brew install --cask aroido/layoutrecall/layoutrecall</code></pre>
+            <p class="download-note" data-i18n="layout_download_brew_note">恢复保存的布局仍然取决于 PATH 上可用的 displayplacer。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-panel reveal" data-reveal>
+        <h2 data-i18n="layout_contact_title">从您想要收回的一张桌子开始。</h2>
+        <p data-i18n="layout_contact_desc">当您已经拥有已知良好的桌面布局并希望在 macOS 漂移后以更安全的方式恢复它时，LayoutRecall 最有说服力。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download" data-i18n="layout_cta_primary" data-track-event="download_cta_click" data-track-label="layout_contact_open_download">打开发布并安装</a>
+          <a class="btn btn-ghost" href="https://github.com/aroido/layoutrecall" target="_blank" rel="noreferrer" data-i18n="layout_cta_github" data-track-event="hero_cta_click" data-track-label="layout_contact_open_github">打开 GitHub 存储库</a>
+          <a class="btn btn-ghost" href="/zh-hans/projects/" data-i18n="layout_contact_secondary" data-track-event="hero_cta_click" data-track-label="layout_contact_open_products">返回产品</a>
+        </div>
+      </section>
+    </main>
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-title-key="vibe_seo_title" data-description-key="vibe_meta_description">
+<html lang="en-US" data-title-key="vibe_seo_title" data-description-key="vibe_meta_description" data-locale="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,10 @@
       content="VibeSmith helps multi-repo AI teams audit active components, hidden dependencies, context waste, and setup drift across Cursor and Claude Code workflows."
     />
     <link rel="canonical" href="https://aroido.com/projects/vibesmith/" />
-    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/vibesmith/?lang=en" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/projects/vibesmith/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/projects/vibesmith/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/projects/vibesmith/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/projects/vibesmith/" />
     <link rel="alternate" hreflang="x-default" href="https://aroido.com/projects/vibesmith/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aroido" />
@@ -39,18 +42,18 @@
         "inLanguage": "en-US",
         "description": "An AI coding repo drift audit layer for multi-repo teams using Cursor and Claude Code workflows.",
         "featureList": [
-          "Cross-project component inventory and search",
-          "Dependency and conflict review before rollout",
-          "Context-heavy setup and cleanup candidates become visible earlier",
-          "Copy components across projects with dependency-aware flow"
+                "Cross-project component inventory and search",
+                "Dependency and conflict review before rollout",
+                "Context-heavy setup and cleanup candidates become visible earlier",
+                "Copy components across projects with dependency-aware flow"
         ]
-      }
+}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
     />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
     <script>
@@ -95,6 +98,12 @@
             <span class="header-context-sep" aria-hidden="true">/</span>
             <span aria-current="page" data-i18n="crumb_vibesmith">VibeSmith detail</span>
           </nav>
+                    <nav class="lang-switch" aria-label="Language switch" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/projects/vibesmith/" data-lang="en" hreflang="en" lang="en-US" aria-current="true" aria-pressed="true">EN</a>
+            <a class="lang-btn" href="/ko/projects/vibesmith/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/projects/vibesmith/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/projects/vibesmith/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
           <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
             <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">Auto</button>
             <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">Light</button>
@@ -120,10 +129,7 @@
               <p class="kicker" data-i18n="vibe_kicker">VibeSmith</p>
             </div>
             <h1 data-i18n="vibe_title">Audit AI coding repo drift before it spreads.</h1>
-            <p data-i18n="vibe_description">
-              VibeSmith gives multi-repo teams one place to review active components, dependency risk, and context-heavy
-              reuse across Cursor and Claude Code workflows. It is open-source on GitHub, with prerelease installs available today.
-            </p>
+            <p data-i18n="vibe_description">VibeSmith gives multi-repo teams one place to review active components, dependency risk, and context-heavy reuse across Cursor and Claude Code workflows. It is open-source on GitHub, with prerelease installs available today.</p>
             <p class="hero-hook" data-i18n="vibe_hero_hook">If kickoff quality drops after repo three, start here.</p>
             <div class="hero-actions vibe-hero-actions">
               <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_hero_open_download">Open release and install</a>
@@ -139,10 +145,7 @@
           <aside class="page-hero-proof" aria-label="VibeSmith dashboard preview" data-i18n-aria-label="aria_vibe_hero_visual">
             <p class="mini-label" data-i18n="vibe_hero_visual_eyebrow">FIRST SCREEN</p>
             <h2 data-i18n="vibe_hero_visual_title">Open one dashboard and know what needs review first</h2>
-            <p data-i18n="vibe_hero_visual_desc">
-              The opening view turns active component volume, project scope, and early conflict signals into a baseline
-              before you decide what to copy, clean, or standardize.
-            </p>
+            <p data-i18n="vibe_hero_visual_desc">The opening view turns active component volume, project scope, and early conflict signals into a baseline before you decide what to copy, clean, or standardize.</p>
             <div class="page-hero-proof-media">
               <img
                 class="page-hero-proof-image"
@@ -172,34 +175,23 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="vibe_status_eyebrow">WHAT SURFACES FIRST</p>
           <h2 data-i18n="vibe_status_title">See the problems teams usually discover too late</h2>
-          <p data-i18n="vibe_status_desc">
-            VibeSmith is most useful when your team needs one visible layer for setup drift, reuse risk, and
-            context-heavy sprawl across repositories.
-          </p>
+          <p data-i18n="vibe_status_desc">VibeSmith is most useful when your team needs one visible layer for setup drift, reuse risk, and context-heavy sprawl across repositories.</p>
         </div>
         <div class="split-grid">
           <article class="story-card highlight">
             <p class="mini-label" data-i18n="vibe_status_card_1_label">DRIFT</p>
             <h3 data-i18n="vibe_status_1">Context-heavy setup</h3>
-            <p data-i18n="vibe_status_1_body">
-              See which repo layers are carrying too much memory, instruction weight, or setup noise before new
-              projects inherit the same sprawl.
-            </p>
+            <p data-i18n="vibe_status_1_body">See which repo layers are carrying too much memory, instruction weight, or setup noise before new projects inherit the same sprawl.</p>
           </article>
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_status_card_2_label">REUSE</p>
             <h3 data-i18n="vibe_status_2">Hidden reuse risk</h3>
-            <p data-i18n="vibe_status_2_body">
-              Review what needs to move with a component so copy-paste bootstrap stops failing in partial, expensive
-              ways.
-            </p>
+            <p data-i18n="vibe_status_2_body">Review what needs to move with a component so copy-paste bootstrap stops failing in partial, expensive ways.</p>
           </article>
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_status_card_3_label">RELEASE</p>
             <h3 data-i18n="vibe_status_3">Dependency and conflict surprises</h3>
-            <p data-i18n="vibe_status_3_body">
-              Surface linked risk earlier so release-week review is not the first time your team sees the coupling.
-            </p>
+            <p data-i18n="vibe_status_3_body">Surface linked risk earlier so release-week review is not the first time your team sees the coupling.</p>
           </article>
         </div>
       </section>
@@ -208,32 +200,23 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="vibe_need_eyebrow">FIRST-WEEK PAIN</p>
           <h2 data-i18n="vibe_need_title">What teams want from the first real audit</h2>
-          <p data-i18n="vibe_need_desc">
-            The common request is not another AI feature. It is a clearer operating view across repos.
-          </p>
+          <p data-i18n="vibe_need_desc">The common request is not another AI feature. It is a clearer operating view across repos.</p>
         </div>
         <div class="split-grid">
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_need_1_tag">Need 01</p>
             <h3 data-i18n="vibe_need_1_title">Know which standards are actually active</h3>
-            <p data-i18n="vibe_need_1_body">
-              Teams lose time when rules, commands, and guidance look similar but differ just enough across repos to
-              change behavior.
-            </p>
+            <p data-i18n="vibe_need_1_body">Teams lose time when rules, commands, and guidance look similar but differ just enough across repos to change behavior.</p>
           </article>
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_need_2_tag">Need 02</p>
             <h3 data-i18n="vibe_need_2_title">Reuse without losing linked context</h3>
-            <p data-i18n="vibe_need_2_body">
-              Users want to copy safe baselines, not half-working fragments that hide dependencies until later.
-            </p>
+            <p data-i18n="vibe_need_2_body">Users want to copy safe baselines, not half-working fragments that hide dependencies until later.</p>
           </article>
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_need_3_tag">Need 03</p>
             <h3 data-i18n="vibe_need_3_title">Reduce context waste before it becomes review waste</h3>
-            <p data-i18n="vibe_need_3_body">
-              Mixed memory layers and stale assets create token waste, noisy prompts, and longer review loops.
-            </p>
+            <p data-i18n="vibe_need_3_body">Mixed memory layers and stale assets create token waste, noisy prompts, and longer review loops.</p>
           </article>
         </div>
       </section>
@@ -241,12 +224,12 @@
       <section id="demo" class="section section-media reveal" data-reveal>
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="vibe_media_eyebrow">Visual Proof</p>
-          <h2 data-i18n="vibe_media_title">Workflow proof from real vibe coder pain</h2>
+          <h2 data-i18n="vibe_media_title">Workflow proof from real multi-repo AI team pain</h2>
           <p data-i18n="vibe_media_desc">Start with the inline walkthrough, then inspect each decision screen below.</p>
           <ul class="proof-chip-row" aria-label="Visual proof signals" data-i18n-aria-label="aria_visual_proof">
             <li class="proof-chip" data-i18n="vibe_media_chip_1">Playable walkthrough on this page</li>
             <li class="proof-chip" data-i18n="vibe_media_chip_2">Decision-focused screens</li>
-            <li class="proof-chip" data-i18n="vibe_media_chip_3">Repo-scale clarity</li>
+            <li class="proof-chip" data-i18n="vibe_media_chip_3">Repo-scale visibility</li>
           </ul>
         </div>
         <div class="single-grid">
@@ -277,9 +260,7 @@
               <span class="video-embed-content">
                 <span class="media-tag" data-i18n="video_demo_tag">Live product walkthrough</span>
                 <strong data-i18n="vibe_video_title">Watch the product walkthrough before the screen-by-screen proof</strong>
-                <span class="video-embed-copy" data-i18n="vibe_video_desc">
-                  This uses the public demo video so visitors can see the real flow before browsing the decision screens below.
-                </span>
+                <span class="video-embed-copy" data-i18n="vibe_video_desc">This uses the public demo video so visitors can see the real flow before browsing the decision screens below.</span>
                 <span class="video-embed-cta" data-i18n="video_demo_cta">Play demo</span>
               </span>
             </button>
@@ -296,9 +277,7 @@
             </noscript>
           </div>
         </div>
-        <p class="video-note" data-i18n="vibe_video_note">
-          Use the inline walkthrough for the overall flow, then inspect the still screens below for specific decision points.
-        </p>
+        <p class="video-note" data-i18n="vibe_video_note">Use the inline walkthrough for the overall flow, then inspect the still screens below for specific decision points.</p>
         <div class="media-inline-actions">
           <a
             class="inline-link"
@@ -329,9 +308,7 @@
             <div class="media-placeholder media-overlay">
               <span class="media-tag" data-i18n="vibe_media_gif_tag">Workflow capture</span>
               <strong data-i18n="vibe_media_gif_title">Operations dashboard view</strong>
-              <p data-i18n="vibe_media_gif_desc">
-                Check status, conflicts, and coverage in one screen.
-              </p>
+              <p data-i18n="vibe_media_gif_desc">Check status, conflicts, and coverage in one screen.</p>
             </div>
             <figcaption data-i18n="vibe_media_gif_caption">Screenshot from the current public open-source build (operations dashboard).</figcaption>
           </figure>
@@ -355,7 +332,7 @@
             </div>
             <figcaption data-i18n="vibe_media_card1_caption">Confirm active components and ownership boundaries.</figcaption>
           </figure>
-          <figure class="media-card media-live" role="img" aria-label="Dependency graph screenshot" data-i18n-aria-label="aria_media_vibe_dependency">
+          <figure class="media-card media-live" role="img" aria-label="Dependency graph panel screenshot" data-i18n-aria-label="aria_media_vibe_dependency">
             <img
               class="media-visual"
               src="/assets/vibesmith-community/03-dependencies-en-light.png"
@@ -411,7 +388,7 @@
             />
             <div class="media-placeholder media-overlay">
               <span class="media-tag" data-i18n="vibe_media_card4_tag">Decision 04</span>
-              <strong data-i18n="vibe_media_card4_title">Projects and scope panel</strong>
+              <strong data-i18n="vibe_media_card4_title">Project scope panel</strong>
             </div>
             <figcaption data-i18n="vibe_media_card4_caption">Compare repo scope and component distribution.</figcaption>
           </figure>
@@ -420,7 +397,7 @@
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="vibe_cap_eyebrow">DRIFT REDUCTION</p>
+          <p class="section-eyebrow" data-i18n="vibe_cap_eyebrow">Core Workflows</p>
           <h2 data-i18n="vibe_cap_title">How VibeSmith reduces drift</h2>
         </div>
         <div class="split-grid">
@@ -445,29 +422,19 @@
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="vibe_signal_eyebrow">WHY THE PROBLEM GROWS</p>
+          <p class="section-eyebrow" data-i18n="vibe_signal_eyebrow">Why This Matters</p>
           <h2 data-i18n="vibe_signal_title">AI coding tools speed up one repo before they explain many</h2>
-          <p data-i18n="vibe_signal_desc">
-            Cursor, Claude Code, and MCP are strong local tools. The systems gap appears when teams need the same
-            operating clarity across multiple repos.
-          </p>
+          <p data-i18n="vibe_signal_desc">Cursor, Claude Code, and MCP are strong local tools. The systems gap appears when teams need the same operating clarity across multiple repos.</p>
         </div>
         <div class="split-grid">
           <article class="story-card">
-            <p data-i18n="vibe_signal_1">
-              Cursor's session-scoped context pushes teams to externalize reusable standards instead of relying on chat
-              memory.
-            </p>
+            <p data-i18n="vibe_signal_1">Cursor&#39;s session-scoped context pushes teams to externalize reusable standards instead of relying on chat memory.</p>
           </article>
           <article class="story-card">
-            <p data-i18n="vibe_signal_2">
-              Multi-scope memory/settings in Claude Code increase consistency overhead without a shared operating layer.
-            </p>
+            <p data-i18n="vibe_signal_2">Multi-scope memory/settings in Claude Code increase consistency overhead without a shared operating layer.</p>
           </article>
           <article class="story-card">
-            <p data-i18n="vibe_signal_3">
-              MCP expands capability, but server scope and permission boundaries need explicit review discipline.
-            </p>
+            <p data-i18n="vibe_signal_3">MCP expands capability, but server scope and permission boundaries need explicit review discipline.</p>
           </article>
         </div>
       </section>
@@ -476,10 +443,7 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="vibe_metrics_eyebrow">FIRST-WEEK METRICS</p>
           <h2 data-i18n="vibe_metrics_title">What to measure in week one</h2>
-          <p data-i18n="vibe_metrics_desc">
-            You can judge early value from one repo. The question is whether the baseline becomes clearer, not whether a
-            big rollout already happened.
-          </p>
+          <p data-i18n="vibe_metrics_desc">You can judge early value from one repo. The question is whether the baseline becomes clearer, not whether a big rollout already happened.</p>
         </div>
         <div class="metric-grid">
           <article class="metric-card">
@@ -504,18 +468,13 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="vibe_rollout_eyebrow">ADOPTION PATH</p>
           <h2 data-i18n="vibe_rollout_title">Get to proof with one repo first</h2>
-          <p data-i18n="vibe_rollout_desc">
-            You do not need an org-wide migration. Start small, measure drift, then expand only if the baseline
-            improves.
-          </p>
+          <p data-i18n="vibe_rollout_desc">You do not need an org-wide migration. Start small, measure drift, then expand only if the baseline improves.</p>
         </div>
         <div class="split-grid">
           <article class="story-card highlight">
             <p class="mini-label" data-i18n="vibe_rollout_1_tag">Step 1</p>
             <h3 data-i18n="vibe_rollout_1_title">Connect one live repo</h3>
-            <p data-i18n="vibe_rollout_1_body">
-              Install Community and scan the repo that keeps reopening the same setup questions.
-            </p>
+            <p data-i18n="vibe_rollout_1_body">Install the open-source build and scan the repo that keeps reopening the same setup questions.</p>
             <ul class="stack-list compact">
               <li data-i18n="vibe_rollout_1_item1">Output: first baseline of active components and drift points</li>
               <li data-i18n="vibe_rollout_1_item2">Output: install friction notes</li>
@@ -524,9 +483,7 @@
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_rollout_2_tag">Step 2</p>
             <h3 data-i18n="vibe_rollout_2_title">Review reuse and dependency risk</h3>
-            <p data-i18n="vibe_rollout_2_body">
-              Use inventory, detail, and dependency views to see what breaks when setup is copied by memory.
-            </p>
+            <p data-i18n="vibe_rollout_2_body">Use inventory, detail, and dependency views to see what breaks when setup is copied by memory.</p>
             <ul class="stack-list compact">
               <li data-i18n="vibe_rollout_2_item1">Output: cleanup candidates</li>
               <li data-i18n="vibe_rollout_2_item2">Output: linked dependency risks</li>
@@ -535,9 +492,7 @@
           <article class="story-card">
             <p class="mini-label" data-i18n="vibe_rollout_3_tag">Step 3</p>
             <h3 data-i18n="vibe_rollout_3_title">Expand only after one workflow feels cleaner</h3>
-            <p data-i18n="vibe_rollout_3_body">
-              Decide whether another repo should adopt the same baseline after one team can explain the setup clearly.
-            </p>
+            <p data-i18n="vibe_rollout_3_body">Decide whether another repo should adopt the same baseline after one team can explain the setup clearly.</p>
             <ul class="stack-list compact">
               <li data-i18n="vibe_rollout_3_item1">Output: keep / fix / expand decision</li>
               <li data-i18n="vibe_rollout_3_item2">Output: shortlist for deeper collaboration or Pro</li>
@@ -548,8 +503,8 @@
 
       <section id="docs" class="section reveal" data-reveal>
         <div class="section-head">
-          <p class="section-eyebrow" data-i18n="vibe_fit_eyebrow">Fit & Boundary</p>
-          <h2 data-i18n="vibe_fit_title">Use it when component drift is already costing delivery speed.</h2>
+          <p class="section-eyebrow" data-i18n="vibe_fit_eyebrow">Adoption Boundary</p>
+          <h2 data-i18n="vibe_fit_title">Adopt when drift is already hurting delivery speed.</h2>
           <p data-i18n="vibe_fit_desc">Clear boundaries help multi-repo teams decide quickly without overcommitting.</p>
         </div>
         <div class="split-grid">
@@ -558,7 +513,7 @@
             <ul class="stack-list compact">
               <li data-i18n="vibe_fit_good_1">Three or more active repos share one delivery schedule.</li>
               <li data-i18n="vibe_fit_good_2">Kickoff quality drops because rules are handed off manually.</li>
-              <li data-i18n="vibe_fit_good_3">Release reviews often find dependency issues too late.</li>
+              <li data-i18n="vibe_fit_good_3">Release reviews repeatedly discover dependency issues late.</li>
             </ul>
           </article>
           <article class="story-card">
@@ -570,11 +525,11 @@
             </ul>
           </article>
           <article class="story-card highlight">
-            <h3 data-i18n="vibe_limits_title">What is intentionally out of scope in this phase</h3>
+            <h3 data-i18n="vibe_limits_title">Current scope (intentional)</h3>
             <p data-i18n="vibe_limits_desc">Current scope stays narrow on purpose. The goal is visible proof before wider automation promises.</p>
             <ul class="stack-list compact">
               <li data-i18n="vibe_limits_1">No forced repository rewrite. Existing structure is mapped first.</li>
-              <li data-i18n="vibe_limits_2">Cloud-wide policy automation is a later phase, not a day-one requirement.</li>
+              <li data-i18n="vibe_limits_2">Cloud-wide policy automation is a later phase, not day one.</li>
               <li data-i18n="vibe_limits_3">Shared rollout layers expand only after repeated evidence from real repo audits.</li>
             </ul>
           </article>
@@ -629,9 +584,7 @@
                 data-i18n="vibe_download_cta"
                 data-track-event="download_cta_click"
                 data-track-label="vibe_download_release_page"
-              >
-                Open latest GitHub release
-              </a>
+              >Open latest GitHub release</a>
               <a
                 class="btn btn-ghost"
                 href="https://github.com/aroido/vibesmith/releases"
@@ -639,9 +592,7 @@
                 data-i18n="vibe_download_checksum_cta"
                 data-track-event="download_cta_click"
                 data-track-label="vibe_download_archive"
-              >
-                Download latest GitHub DMG
-              </a>
+              >Download latest GitHub DMG</a>
               <a
                 class="btn btn-ghost"
                 href="https://github.com/aroido/vibesmith"
@@ -649,16 +600,12 @@
                 data-i18n="vibe_download_notes_cta"
                 data-track-event="download_cta_click"
                 data-track-label="vibe_download_repo"
-              >
-                Open GitHub repository
-              </a>
+              >Open GitHub repository</a>
             </div>
             <p class="download-note" data-community-release-status>
               Latest public build: GitHub release channel, including prereleases.
             </p>
-            <p class="download-note" data-i18n="vibe_download_note">
-              GitHub is the canonical public release channel. GitLab remains a legacy mirror only.
-            </p>
+            <p class="download-note" data-i18n="vibe_download_note">GitHub is the canonical public release channel. GitLab remains a legacy mirror only.</p>
           </article>
           <article class="route-card">
             <h3 data-i18n="vibe_download_brew_title">Option B. Homebrew Guide</h3>
@@ -672,9 +619,7 @@
                 data-i18n="copy_command"
                 data-track-event="copy_command_click"
                 data-track-label="vibe_copy_brew_command"
-              >
-                Copy command
-              </button>
+              >Copy command</button>
             </div>
             <pre id="vibe-brew-command" class="download-command"><code data-i18n="vibe_download_brew_command">brew update
 brew tap aroido/vibesmith https://github.com/aroido/homebrew-vibesmith.git
@@ -683,9 +628,7 @@ brew install --cask aroido/vibesmith/vibesmith
 # If an older version is already installed:
 brew update
 brew upgrade --cask --greedy aroido/vibesmith/vibesmith</code></pre>
-            <p class="download-note" data-i18n="vibe_download_brew_note">
-              Prefer this path for Homebrew installs and upgrades. If you used the legacy GitLab tap, run `brew untap aroido/vibesmith` before retapping.
-            </p>
+            <p class="download-note" data-i18n="vibe_download_brew_note">Prefer this path for Homebrew installs and upgrades. If you used the legacy GitLab tap, run `brew untap aroido/vibesmith` before retapping.</p>
           </article>
         </div>
       </section>
@@ -697,7 +640,7 @@ brew upgrade --cask --greedy aroido/vibesmith/vibesmith</code></pre>
           <a class="btn btn-primary" href="#download" data-i18n="vibe_cta_primary" data-track-event="download_cta_click" data-track-label="vibe_contact_open_download">Open release and install</a>
           <a class="btn btn-ghost" href="#docs" data-i18n="vibe_cta_secondary" data-track-event="hero_cta_click" data-track-label="vibe_open_docs">Read fit and adoption guide</a>
           <a class="btn btn-ghost" href="https://github.com/aroido/vibesmith" target="_blank" rel="noreferrer" data-i18n="vibe_cta_github" data-track-event="hero_cta_click" data-track-label="vibe_contact_open_github">Open the GitHub repository</a>
-          <a class="btn btn-ghost" href="https://tally.so/r/RG484l?intent=audit&source=vibesmith_audit" data-i18n="vibe_cta_audit" data-track-event="contact_cta_click" data-track-label="vibe_open_audit" data-tally-popup="audit" data-tally-source="vibesmith_audit">Request repo audit</a>
+          <a class="btn btn-ghost" href="https://tally.so/r/RG484l?intent=audit&amp;source=vibesmith_audit" data-i18n="vibe_cta_audit" data-track-event="contact_cta_click" data-track-label="vibe_open_audit" data-tally-popup="audit" data-tally-source="vibesmith_audit">Request repo audit</a>
         </div>
       </section>
     </main>

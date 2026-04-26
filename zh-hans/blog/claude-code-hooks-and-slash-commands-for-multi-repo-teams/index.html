@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-Hans" data-static-meta="true" data-locale="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Claude Code Hooks and Slash Commands for Multi-Repo Teams | Aroido Blog</title>
+    <meta id="metaDescription" name="description" content="Claude Code is increasingly powerful, but multi-repo teams get the most leverage from shared hooks, project commands, and durable review gates rather than one-off prompts." />
+    <link rel="canonical" href="https://aroido.com/zh-hans/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content="Claude Code Hooks and Slash Commands for Multi-Repo Teams | Aroido Blog" />
+    <meta property="og:description" content="Claude Code is increasingly powerful, but multi-repo teams get the most leverage from shared hooks, project commands, and durable review gates rather than one-off prompts." />
+    <meta property="og:url" content="https://aroido.com/zh-hans/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" />
+    <meta property="og:image" content="https://aroido.com/assets/vibesmith-community/02-components-en-light.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Claude Code Hooks and Slash Commands for Multi-Repo Teams | Aroido Blog" />
+    <meta name="twitter:description" content="Claude Code is increasingly powerful, but multi-repo teams get the most leverage from shared hooks, project commands, and durable review gates rather than one-off prompts." />
+    <meta name="twitter:image" content="https://aroido.com/assets/vibesmith-community/02-components-en-light.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Claude Code Hooks and Slash Commands for Multi-Repo Teams",
+  "description": "Claude Code is increasingly powerful, but multi-repo teams get the most leverage from shared hooks, project commands, and durable review gates rather than one-off prompts.",
+  "datePublished": "2026-03-09T00:15:00.000Z",
+  "dateModified": "2026-03-11T11:52:45.870Z",
+  "inLanguage": "zh-Hans",
+  "mainEntityOfPage": "https://aroido.com/zh-hans/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/",
+  "url": "https://aroido.com/zh-hans/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/",
+  "keywords": [
+    "claude-code",
+    "hooks",
+    "commands"
+  ],
+  "image": [
+    "https://aroido.com/assets/vibesmith-community/02-components-en-light.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Aroido",
+    "url": "https://aroido.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aroido",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-app-icon-dark-512.png"
+    }
+  }
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <link rel="stylesheet" href="../../../styles.css" />
+  </head>
+  <body>
+    <!-- Generated by scripts/build-blog.mjs. Do not edit directly. -->
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">跳至内容</a>
+    <main id="main-content" class="site-shell">
+
+
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/zh-hans/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="aria_main_nav">
+          <a href="/zh-hans/" data-i18n="nav_home">家</a>
+          <a href="/zh-hans/projects/" data-i18n="nav_projects">产品</a>
+          <a href="/zh-hans/blog/" data-i18n="nav_blog" aria-current="page">博客</a>
+          <a href="/zh-hans/team/" data-i18n="nav_team">团队</a>
+          <a href="/zh-hans/contact/" data-i18n="nav_contact">接触</a>
+        </nav>
+        <div class="header-controls">
+
+          <nav class="lang-switch" aria-label="语言切换" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" data-lang="en" hreflang="en" lang="en-US">EN</a>
+            <a class="lang-btn" href="/ko/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" data-lang="ja" hreflang="ja" lang="ja-JP">JA</a>
+            <a class="lang-btn" href="/zh-hans/blog/claude-code-hooks-and-slash-commands-for-multi-repo-teams/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans" aria-current="true" aria-pressed="true">中文</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">汽车</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">光</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">黑暗的</button>
+          </div>
+        </div>
+      </header>
+      <article class="article-shell">
+        <section class="article-hero reveal" data-reveal>
+          <p class="kicker" data-i18n="blog_post_label">博客文章</p>
+          <a class="inline-link article-back-link" href="/zh-hans/blog/" data-i18n="blog_back_to_blog">返回博客</a>
+          <h1>Claude Code Hooks and Slash Commands for Multi-Repo Teams</h1>
+          <p class="article-excerpt">Claude Code is increasingly powerful, but multi-repo teams get the most leverage from shared hooks, project commands, and durable review gates rather than one-off prompts.</p>
+          <div class="article-meta">
+            <span>2026年3月9日</span>
+            <span>4 最小读取值</span>
+            <span>705 字</span>
+          </div>
+          <ul class="tag-list" aria-label="Post tags"><li>claude-code</li><li>hooks</li><li>commands</li></ul>
+        </section>
+
+        <div class="article-layout">
+          <section class="article-body">
+            <div class="article-prose">
+<p>Claude Code has moved well beyond &quot;ask a model for code in the terminal.&quot; Anthropic&#39;s current docs position it as an agentic coding tool that can edit files, run commands, work with the web, and pull in external context through MCP.</p>
+<p>That is useful, but it also creates a new team problem. Once Claude Code can act, the quality of your shared operating rules matters more than the quality of your ad hoc prompt.</p>
+<p>For multi-repo teams, the highest-leverage parts of Claude Code are not the flashy one-off sessions. They are the parts you can version, reuse, and enforce: hooks, slash commands, and project memory.</p>
+<h2>Quick takeaways</h2>
+<ul><li>Claude Code gets more valuable as teams standardize hooks, commands, and project memory.</li><li>Repo-local automation without cross-repo discipline quickly turns into command drift.</li><li>The best Claude Code workflows are reusable, inspectable, and enforceable.</li></ul>
+<p><img src="/assets/vibesmith-community/01-search-demo.gif" alt="Animated VibeSmith search workflow showing reusable navigation and context" title="VibeSmith search flow" loading="lazy" decoding="async" /></p>
+<p><em>The more agentic your workflow becomes, the more expensive undocumented exceptions become.</em></p>
+<h2>What Claude Code gives teams right now</h2>
+<p>Anthropic&#39;s docs describe Claude Code as a terminal-native tool that can:</p>
+<ul><li>build features from plain-English descriptions</li><li>debug issues in context</li><li>navigate a codebase</li><li>automate tasks such as linting, merge conflict resolution, and release notes</li><li>use MCP to reach external tools and data sources</li></ul>
+<p>That baseline already matters. But the real operational gains start when the tool stops being treated as a personal assistant and starts being treated as shared infrastructure.</p>
+<h2>Hooks are where enforcement begins</h2>
+<p>Claude Code hooks are one of the clearest examples of this. The official hooks documentation shows project-level configuration in <code>.claude/settings.json</code>, matcher-based execution, and the ability to block actions through hook exit codes.</p>
+<p>That means hooks can become your first real enforcement layer for:</p>
+<ul><li>style checks after write or edit actions</li><li>secret scanning before risky operations</li><li>prompt validation before a large run starts</li><li>repo-specific constraints that should not rely on memory</li></ul>
+<p>The key point is not that hooks exist. It is that hooks let a repo turn policy into executable behavior.</p>
+<p>That is a very different category from &quot;remember to ask the model nicely.&quot;</p>
+<h2>Slash commands are not just shortcuts</h2>
+<p>Anthropic&#39;s slash command docs are also more important than they look. Custom slash commands are Markdown files stored in project or user scope, and they can include frontmatter, arguments, file references, and model preferences.</p>
+<p>For a team, that means you can package repeatable tasks such as:</p>
+<ul><li>security review prompts</li><li>release-note generation flows</li><li>migration checklists</li><li>repo bootstrap routines</li><li>review templates for specific subsystems</li></ul>
+<p>This matters because repetition is where real delivery cost hides. If every repo asks for the same investigation in a slightly different way, you do not have an AI advantage. You have prompt drift.</p>
+<h2>Project memory is only useful if it stays consistent</h2>
+<p>Claude Code also leans on project memory through <code>CLAUDE.md</code>. That is useful, but it introduces a familiar multi-repo problem: one repo has the updated project memory, another still has the old one, and no one is sure which workflow is current.</p>
+<p>The same thing happens with hooks and slash commands if teams do not manage them deliberately.</p>
+<p>Typical failure patterns:</p>
+<ul><li>a useful hook exists in only one repo</li><li>custom commands get copied without the underlying assumption that made them safe</li><li><code>CLAUDE.md</code> explains the happy path but not the blocking constraints</li><li>one repo adopts MCP-connected workflows that the others cannot reproduce</li></ul>
+<p>At that point the team is not lacking agent power. It is lacking systems discipline.</p>
+<h2>How we think about Claude Code in practice</h2>
+<p>For multi-repo teams, our preferred structure is:</p>
+<ol><li>shared repo-level context for build, review, and release expectations</li><li>project hooks for enforceable boundaries</li><li>custom slash commands for repeatable workflows</li><li>explicit inventory of which commands, dependencies, and instructions travel together across repos</li></ol>
+<p>Claude Code gives teams more leverage, but it also magnifies inconsistency. The stronger the agent, the more costly the undocumented exception becomes.</p>
+<p>That is why we keep coming back to the same question: what is standardized, where is it stored, and how can the team inspect it across repositories?</p>
+<p>This is the layer where <a href="/zh-hans/projects/vibesmith/">VibeSmith</a> becomes relevant. We are less interested in isolated prompting wins than in keeping reusable standards coherent across many repos.</p>
+<h2>Related reads</h2>
+<ul><li><a href="/zh-hans/blog/cursor-rules-vs-agents-md/">Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</a></li><li><a href="/zh-hans/blog/what-mcp-changes-for-ai-coding-workflows/">What MCP Changes for AI Coding Workflows, and What It Does Not</a></li><li><a href="/zh-hans/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a></li></ul>
+<h2>Official references</h2>
+<ul><li><a href="https://docs.anthropic.com/en/docs/claude-code/overview" rel="noreferrer" target="_blank">Claude Code overview</a></li><li><a href="https://docs.anthropic.com/en/docs/claude-code/hooks" rel="noreferrer" target="_blank">Claude Code hooks</a></li><li><a href="https://docs.anthropic.com/en/docs/claude-code/slash-commands" rel="noreferrer" target="_blank">Claude Code slash commands</a></li><li><a href="https://docs.anthropic.com/en/release-notes/claude-code" rel="noreferrer" target="_blank">Claude Code release notes</a></li></ul>
+            </div>
+
+          <nav class="article-nav" aria-label="Article navigation">
+            <a class="article-nav-card" href="/zh-hans/blog/cursor-rules-vs-agents-md/">
+                    <span class="mini-label" data-i18n="blog_article_nav_prev">上一篇文章</span>
+                    <strong>Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</strong>
+                  </a>
+            <a class="article-nav-card" href="/zh-hans/blog/what-mcp-changes-for-ai-coding-workflows/">
+                    <span class="mini-label" data-i18n="blog_article_nav_next">下一篇</span>
+                    <strong>What MCP Changes for AI Coding Workflows, and What It Does Not</strong>
+                  </a>
+          </nav>
+          </section>
+
+          <aside class="article-aside">
+            <div class="article-aside-card">
+              <p class="section-eyebrow" data-i18n="blog_related_reads">相关阅读</p>
+              <ul class="article-recent-list">
+                
+                      <li>
+                        <a href="/zh-hans/blog/why-teams-should-prune-unused-ai-components/">Why Teams Should Prune Unused AI Components Before They Pollute Context</a>
+                        <span>Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately.</span>
+                      </li>
+                      <li>
+                        <a href="/zh-hans/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a>
+                        <span>Cursor, Claude Code, MCP, and GitLab Duo can accelerate one repo quickly. The real systems problem begins when standards, dependencies, and context have to survive across many repos.</span>
+                      </li>
+                      <li>
+                        <a href="/zh-hans/blog/cursor-rules-vs-agents-md/">Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</a>
+                        <span>Cursor Rules and AGENTS.md solve different parts of the same problem. Teams that use both deliberately get more durable AI coding context across repositories.</span>
+                      </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+    <script src="../../../script.js"></script>
+  </body>
+</html>

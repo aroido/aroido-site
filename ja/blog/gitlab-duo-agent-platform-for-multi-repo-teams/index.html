@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ja-JP" data-static-meta="true" data-locale="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts | Aroido Blog</title>
+    <meta id="metaDescription" name="description" content="GitLab Duo Agent Platform brings agents, flows, AGENTS.md customization, MCP, and lifecycle integration closer together. For multi-repo teams, that is the start of governance, not the end of it." />
+    <link rel="canonical" href="https://aroido.com/ja/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="en" href="https://aroido.com/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="ko" href="https://aroido.com/ko/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="ja" href="https://aroido.com/ja/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://aroido.com/zh-hans/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" />
+    <link rel="alternate" hreflang="x-default" href="https://aroido.com/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Aroido" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content="GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts | Aroido Blog" />
+    <meta property="og:description" content="GitLab Duo Agent Platform brings agents, flows, AGENTS.md customization, MCP, and lifecycle integration closer together. For multi-repo teams, that is the start of governance, not the end of it." />
+    <meta property="og:url" content="https://aroido.com/ja/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" />
+    <meta property="og:image" content="https://aroido.com/assets/vibesmith-community/02-components-en-light.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts | Aroido Blog" />
+    <meta name="twitter:description" content="GitLab Duo Agent Platform brings agents, flows, AGENTS.md customization, MCP, and lifecycle integration closer together. For multi-repo teams, that is the start of governance, not the end of it." />
+    <meta name="twitter:image" content="https://aroido.com/assets/vibesmith-community/02-components-en-light.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/aroido-brand/flame-raster/aroido-flame-apple-touch-icon-180.png" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts",
+  "description": "GitLab Duo Agent Platform brings agents, flows, AGENTS.md customization, MCP, and lifecycle integration closer together. For multi-repo teams, that is the start of governance, not the end of it.",
+  "datePublished": "2026-03-06T00:30:00.000Z",
+  "dateModified": "2026-03-11T11:52:45.870Z",
+  "inLanguage": "ja-JP",
+  "mainEntityOfPage": "https://aroido.com/ja/blog/gitlab-duo-agent-platform-for-multi-repo-teams/",
+  "url": "https://aroido.com/ja/blog/gitlab-duo-agent-platform-for-multi-repo-teams/",
+  "keywords": [
+    "gitlab-duo",
+    "governance",
+    "multi-repo"
+  ],
+  "image": [
+    "https://aroido.com/assets/vibesmith-community/02-components-en-light.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Aroido",
+    "url": "https://aroido.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aroido",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-app-icon-dark-512.png"
+    }
+  }
+}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWH8VEQSRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = window.gtag || gtag;
+      gtag("js", new Date());
+      gtag("config", "G-WWH8VEQSRM");
+    </script>
+    <link rel="stylesheet" href="../../../styles.css" />
+  </head>
+  <body>
+    <!-- Generated by scripts/build-blog.mjs. Do not edit directly. -->
+    <a class="skip-link" href="#main-content" data-i18n="skip_to_content">コンテンツにスキップ</a>
+    <main id="main-content" class="site-shell">
+
+
+      <header class="topbar reveal" data-reveal>
+        <a class="brand brand-link brand-with-mark" href="/ja/">
+          <img
+            class="brand-mark"
+            src="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            data-mark-light="/assets/aroido-brand/flame-raster/aroido-flame-lockup-dark-transparent-1600.png"
+            data-mark-dark="/assets/aroido-brand/flame-raster/aroido-flame-lockup-light-transparent-1600.png"
+            alt="Aroido"
+            width="140"
+            height="56"
+            decoding="async"
+          />
+        </a>
+        <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="aria_main_nav">
+          <a href="/ja/" data-i18n="nav_home">家</a>
+          <a href="/ja/projects/" data-i18n="nav_projects">プロダクト</a>
+          <a href="/ja/blog/" data-i18n="nav_blog" aria-current="page">ブログ</a>
+          <a href="/ja/team/" data-i18n="nav_team">チーム</a>
+          <a href="/ja/contact/" data-i18n="nav_contact">接触</a>
+        </nav>
+        <div class="header-controls">
+
+          <nav class="lang-switch" aria-label="言語切り替え" data-i18n-aria-label="aria_language_switch">
+            <a class="lang-btn" href="/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" data-lang="en" hreflang="en" lang="en-US">EN</a>
+            <a class="lang-btn" href="/ko/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" data-lang="ko" hreflang="ko" lang="ko-KR">KO</a>
+            <a class="lang-btn" href="/ja/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" data-lang="ja" hreflang="ja" lang="ja-JP" aria-current="true" aria-pressed="true">JA</a>
+            <a class="lang-btn" href="/zh-hans/blog/gitlab-duo-agent-platform-for-multi-repo-teams/" data-lang="zh-Hans" hreflang="zh-Hans" lang="zh-Hans">中文</a>
+          </nav>
+          <div class="theme-switch" role="group" aria-label="Theme switch" data-i18n-aria-label="aria_theme_switch">
+            <button class="theme-btn" data-theme-mode="auto" type="button" data-i18n="theme_auto">自動</button>
+            <button class="theme-btn" data-theme-mode="light" type="button" data-i18n="theme_light">ライト</button>
+            <button class="theme-btn" data-theme-mode="dark" type="button" data-i18n="theme_dark">暗い</button>
+          </div>
+        </div>
+      </header>
+      <article class="article-shell">
+        <section class="article-hero reveal" data-reveal>
+          <p class="kicker" data-i18n="blog_post_label">ブログ投稿</p>
+          <a class="inline-link article-back-link" href="/ja/blog/" data-i18n="blog_back_to_blog">ブログに戻る</a>
+          <h1>GitLab Duo Agent Platform for Multi-Repo Teams: Where Governance Starts</h1>
+          <p class="article-excerpt">GitLab Duo Agent Platform brings agents, flows, AGENTS.md customization, MCP, and lifecycle integration closer together. For multi-repo teams, that is the start of governance, not the end of it.</p>
+          <div class="article-meta">
+            <span>2026年3月6日</span>
+            <span>3 分読み取り</span>
+            <span>658 ワード</span>
+          </div>
+          <ul class="tag-list" aria-label="Post tags"><li>gitlab-duo</li><li>governance</li><li>multi-repo</li></ul>
+        </section>
+
+        <div class="article-layout">
+          <section class="article-body">
+            <div class="article-prose">
+<p>GitLab&#39;s current Duo Agent Platform docs are interesting because they move the conversation away from single-chat assistance and toward a fuller operating surface: agents, flows, AI catalog, custom rules, AGENTS.md files, MCP clients, MCP server support, and knowledge graph capabilities.</p>
+<p>That matters for teams with multiple repositories because governance is usually where AI coding systems fall apart.</p>
+<p>The issue is rarely &quot;can an agent write code?&quot; The issue is whether the system around the agent can keep behavior legible across repositories, reviewers, and release paths.</p>
+<h2>Quick takeaways</h2>
+<ul><li>GitLab Duo Agent Platform is meaningful because it pulls AI behavior closer to the delivery lifecycle.</li><li>Platform governance helps, but repo-level standards still determine whether teams stay coherent.</li><li>Multi-repo teams still need inventory, dependency visibility, and cross-repo rollout discipline.</li></ul>
+<p><img src="/assets/vibesmith/release-impact.svg" alt="VibeSmith workflow illustration for reusable standards and release impact" title="VibeSmith release impact" loading="lazy" decoding="async" /></p>
+<p><em>Platform governance helps, but repository-level reality still determines whether standards actually survive implementation.</em></p>
+<h2>What GitLab is shipping now</h2>
+<p>According to GitLab&#39;s current documentation, the Duo Agent Platform is an AI-native surface that embeds multiple assistants across the software development lifecycle.</p>
+<p>The documented feature set includes:</p>
+<ul><li>Agentic chat</li><li>foundational, custom, and external agents</li><li>flows for multi-agent task execution</li><li>an AI catalog</li><li>custom rules and AGENTS.md-based project context</li><li>MCP clients for external tools</li><li>an MCP server for connecting external AI tools back into GitLab</li><li>a knowledge graph for richer code understanding</li></ul>
+<p>GitLab&#39;s docs also note that, in GitLab 18.8 and later, the Agent Platform should be turned on directly rather than relying on beta and experimental flags.</p>
+<p>That makes this more than a research demo. It is an opinionated governance surface.</p>
+<h2>Why this is a real step forward</h2>
+<p>For teams with multiple repositories, GitLab&#39;s direction matters because it brings lifecycle, permissions, and agent behavior closer together.</p>
+<p>That improves a few things immediately:</p>
+<h3>The conversation moves closer to actual delivery</h3>
+<p>Instead of treating AI coding as a separate chat product, the platform sits near issues, merge requests, CI/CD, and project context.</p>
+<h3>Team-specific behavior becomes more discussable</h3>
+<p>Custom agents, AGENTS.md support, and code review instructions all create places where teams can encode expectations more deliberately.</p>
+<h3>External context becomes less ad hoc</h3>
+<p>MCP clients and servers make it easier to connect the surrounding toolchain without inventing a separate integration story every time.</p>
+<p>These are meaningful advances.</p>
+<h2>But governance does not finish at the platform layer</h2>
+<p>This is the part we keep coming back to.</p>
+<p>A platform can provide the control plane, but it does not automatically solve:</p>
+<ul><li>which repo standard is canonical</li><li>which reusable assets belong together</li><li>which dependencies move with a copied component</li><li>which rules differ across repositories for good reasons versus accidental drift</li><li>how a reviewer quickly understands what changed across many repos and agent surfaces</li></ul>
+<p>That is why platform governance and repo-local standards have to work together.</p>
+<h2>AGENTS.md and MCP are useful, but still incomplete alone</h2>
+<p>GitLab explicitly supports AGENTS.md and MCP-related workflows inside the Agent Platform. We think that is the right direction.</p>
+<p>But those tools need a coherent inventory around them:</p>
+<ul><li>where is the repo guidance stored?</li><li>which agent instructions are portable across tools?</li><li>which MCP connections are required for specific workflows?</li><li>what is shared across every repo versus scoped to one product?</li></ul>
+<p>Without that inventory, teams still end up with local islands of correctness.</p>
+<h2>How we think about GitLab Duo in the stack</h2>
+<p>For multi-repo teams, we see the stack like this:</p>
+<ol><li>GitLab Duo Agent Platform for lifecycle integration, governance surfaces, and approval context</li><li>repo-local files such as AGENTS.md, Cursor Rules, Claude Code hooks, and commands for local behavior</li><li>a cross-repo operating layer that can show reusable assets, dependencies, and rollout expectations in one place</li></ol>
+<p>That third layer is the product problem VibeSmith is aimed at.</p>
+<p>We are interested in GitLab Duo precisely because it makes governance more concrete. But the hardest part still lives one level lower: keeping reusable standards coherent across repositories that are evolving at different speeds.</p>
+<h2>Related reads</h2>
+<ul><li><a href="/ja/blog/what-mcp-changes-for-ai-coding-workflows/">What MCP Changes for AI Coding Workflows, and What It Does Not</a></li><li><a href="/ja/blog/cursor-rules-vs-agents-md/">Cursor Rules vs AGENTS.md: What Teams Should Standardize, and Where</a></li><li><a href="/ja/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a></li></ul>
+<h2>Official references</h2>
+<ul><li><a href="https://docs.gitlab.com/user/duo_agent_platform/" rel="noreferrer" target="_blank">GitLab Duo Agent Platform</a></li><li><a href="https://docs.gitlab.com/user/duo_agent_platform/agents/" rel="noreferrer" target="_blank">GitLab Duo agents</a></li><li><a href="https://docs.gitlab.com/user/get_started/get_started_agent_platform/" rel="noreferrer" target="_blank">Get started with GitLab Duo Agent Platform</a></li><li><a href="https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/" rel="noreferrer" target="_blank">GitLab MCP overview</a></li><li><a href="https://docs.gitlab.com/user/project/repository/knowledge_graph/" rel="noreferrer" target="_blank">GitLab Knowledge Graph</a></li></ul>
+            </div>
+
+          <nav class="article-nav" aria-label="Article navigation">
+            <a class="article-nav-card" href="/ja/blog/cursor-background-agents-for-teams/">
+                    <span class="mini-label" data-i18n="blog_article_nav_prev">前の記事</span>
+                    <strong>Cursor Background Agents for Teams: Speed, Security, and Handoffs</strong>
+                  </a>
+            <div class="article-nav-card is-empty" aria-hidden="true"></div>
+          </nav>
+          </section>
+
+          <aside class="article-aside">
+            <div class="article-aside-card">
+              <p class="section-eyebrow" data-i18n="blog_related_reads">関連記事</p>
+              <ul class="article-recent-list">
+                
+                      <li>
+                        <a href="/ja/blog/why-multi-repo-ai-coding-gets-messy-after-the-third-repository/">Why Multi-Repo AI Coding Gets Messy After the Third Repository</a>
+                        <span>Cursor, Claude Code, MCP, and GitLab Duo can accelerate one repo quickly. The real systems problem begins when standards, dependencies, and context have to survive across many repos.</span>
+                      </li>
+                      <li>
+                        <a href="/ja/blog/cursor-background-agents-for-teams/">Cursor Background Agents for Teams: Speed, Security, and Handoffs</a>
+                        <span>Cursor Background Agents can accelerate work across repositories, but the official docs also make the tradeoffs clear: remote execution, auto-run commands, internet access, and review discipline all matter.</span>
+                      </li>
+                      <li>
+                        <a href="/ja/blog/why-teams-should-prune-unused-ai-components/">Why Teams Should Prune Unused AI Components Before They Pollute Context</a>
+                        <span>Unused skills, agents, commands, hooks, and rules are not passive clutter. They add search noise, distort AI context, and make cross-repo reuse riskier unless teams clean them deliberately.</span>
+                      </li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+    <script src="../../../script.js"></script>
+  </body>
+</html>
