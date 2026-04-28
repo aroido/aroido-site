@@ -55,12 +55,14 @@ This should make Tokenmon feel like an installable macOS companion rather than a
 2. The first viewport has direct DMG and Homebrew-oriented CTAs.
 3. `/projects/` and the homepage describe Tokenmon with the same collection-loop promise.
 4. `assets/og/tokenmon-og.png` remains 1200x630.
-5. `./scripts/run-ai-verify --mode full` passes.
+5. `/projects/tokenmon/` embeds the public Tokenmon intro video with a lazy inline player, a noscript fallback, and a direct YouTube link.
+6. `./scripts/run-ai-verify --mode full` passes.
 
 ## 7) Change Log
 
 - 2026-04-25: Initial spec for Tokenmon install-conversion refresh.
 - 2026-04-25: Implemented refreshed copy, generated site/OG assets, and aligned `en`/`ko` i18n keys.
+- 2026-04-28: Added the public Tokenmon intro video to the project page and localized the new video copy across all public locales.
 
 ## 8) Verification Evidence
 
@@ -70,3 +72,9 @@ This should make Tokenmon feel like an installable macOS companion rather than a
 - Generated assets:
   - `assets/tokenmon/tokenmon-site-hero.png`: 2400x1350.
   - `assets/og/tokenmon-og.png`: 1200x630.
+- 2026-04-28 video addition:
+  - `./scripts/i18n-audit.sh` passed.
+  - `node scripts/generate-localized-pages.mjs --check` passed.
+  - `node scripts/verify-localized-output.mjs` passed.
+  - Chrome CDP smoke passed at 390px with `documentScrollWidth == innerWidth`; clicking the intro trigger created `https://www.youtube-nocookie.com/embed/d49hy6cjauk?autoplay=1&playsinline=1&rel=0`.
+  - `./scripts/run-ai-verify --mode full` passed.
