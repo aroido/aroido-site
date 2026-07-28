@@ -208,7 +208,7 @@ function formatSitemapDate(value) {
   return String(value).slice(0, 10);
 }
 
-function getGitLastModifiedIso(relativePath) {
+function getSourceLastModifiedDate(relativePath) {
   try {
     const isoDate = execFileSync(
       "git",
@@ -221,13 +221,17 @@ function getGitLastModifiedIso(relativePath) {
     ).trim();
 
     if (isoDate) {
-      return formatSitemapDate(isoDate);
+      return new Date(isoDate);
     }
   } catch (_error) {
     // Fall back to the filesystem timestamp outside of a git checkout.
   }
 
-  return formatSitemapDate(formatIsoDate(fs.statSync(path.join(ROOT_DIR, relativePath)).mtime));
+  return fs.statSync(path.join(ROOT_DIR, relativePath)).mtime;
+}
+
+function getGitLastModifiedIso(relativePath) {
+  return formatSitemapDate(formatIsoDate(getSourceLastModifiedDate(relativePath)));
 }
 
 function validateAndNormalizePost(filePath) {
@@ -267,7 +271,7 @@ function validateAndNormalizePost(filePath) {
           .filter(Boolean)
       : [];
   const readingTime = calculateReadingTime(body);
-  const modifiedDate = fs.statSync(filePath).mtime;
+  const modifiedDate = getSourceLastModifiedDate(path.relative(ROOT_DIR, filePath));
   const coverImage = typeof metadata.coverImage === "string" ? metadata.coverImage.trim() : "";
   const socialImageUrl = coverImage.startsWith("/")
     ? `${SITE_URL}${coverImage}`

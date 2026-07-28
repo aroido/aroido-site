@@ -2,8 +2,13 @@
 
 Updated: 2026-07-28  
 Owner: Aroido Web  
-Issue: https://github.com/aroido/aroido-site/issues/14  
-Source request: direct maintainer request to publish the public pages required for Mongle App Store submission.
+Issues:
+
+- https://github.com/aroido/aroido-site/issues/14
+- https://github.com/aroido/aroido-site/issues/16
+
+Source request: direct maintainer requests to publish and keep the public pages
+aligned with Mongle's actual App Store data handling.
 
 ## 1) Scope
 
@@ -16,7 +21,22 @@ Source request: direct maintainer request to publish the public pages required f
 ## 2) Product Facts
 
 - Mongle Picture Diary is an iPhone-only, local-first picture diary.
-- The app has no account, Aroido server, advertising, tracking, or third-party analytics SDK.
+- The app has no account, Aroido backend, advertising, tracking, or third-party
+  analytics SDK.
+- If the user explicitly opts in, Mongle sends a fixed allowlist of anonymous
+  product interaction events directly to TelemetryDeck's v2 ingest API.
+- The app sends no diary text, photos, locations, free-form text, exact event
+  time, error text, user ID, device ID, or installation ID.
+- `clientUser` is empty. A random session ID exists only in process memory and
+  changes after relaunch, so Aroido cannot identify returning users.
+- The app sends event names; coarse source, cadence, theme, result, permission,
+  and photo-count buckets; app version, build, distribution, and OS major
+  version.
+- Before consent and after opt-out, no analytics event is stored or sent.
+  Opt-out cancels in-flight requests, and the app keeps no analytics disk queue.
+- The TelemetryDeck organization uses the no-payment free plan. Its current
+  dashboard access window is three months; TelemetryDeck documents that older
+  events may remain in cold storage under its retention policy.
 - Diary text and metadata are stored on the device with SwiftData.
 - Photos stay in Apple Photos and are referenced with PhotoKit rather than copied into the app.
 - Photo capture dates, screenshot classification, and optional embedded locations are processed on device.
@@ -29,12 +49,19 @@ Source request: direct maintainer request to publish the public pages required f
 The policy must state:
 
 1. What the app processes and why.
-2. That app data is not transmitted to or collected by Aroido.
-3. How local storage, Photos references, temporary exports, and system backup behave.
-4. How users revoke Photos and notification access or delete diary data.
-5. That support email content is received only when the user chooses to contact Aroido.
-6. How user-initiated sharing and Apple services affect data handling.
-7. The effective date and support contact.
+2. Which anonymous product interaction events are sent to TelemetryDeck only
+   after explicit consent and why.
+3. Which content and identifiers are never sent.
+4. How the in-memory session ID, empty `clientUser`, opt-out, in-flight
+   cancellation, and no-disk-queue behavior work.
+5. TelemetryDeck's role, privacy-policy link, free-plan dashboard access window,
+   and documented cold-storage boundary.
+6. How local storage, Photos references, temporary exports, and system backup behave.
+7. How users revoke Photos and notification access, opt out of analytics, or
+   delete diary data.
+8. That support email content is received only when the user chooses to contact Aroido.
+9. How user-initiated sharing and Apple services affect data handling.
+10. The effective date and support contact.
 
 ## 4) Support Page Requirements
 
@@ -42,10 +69,15 @@ The policy must state:
 - Link directly to the localized privacy policy.
 - Explain the minimum troubleshooting details a user can send without including private diary content or photos.
 - Answer basic questions about local storage, permissions, missing Photos assets, sharing, and deletion.
+- Explain where to turn anonymous usage sharing off and that all features remain
+  available without it.
+- Distinguish anonymous aggregate product events from diary content that support
+  cannot view or restore.
 
 ## 5) Non-goals
 
-- Do not add Firebase, a backend, account management, analytics, or a CMS.
+- Do not add Firebase, an Aroido backend, account management, site analytics, or
+  a CMS.
 - Do not add a custom terms of use page while the free app uses Apple’s standard EULA.
 - Do not redesign the Aroido site.
 - Do not claim that Aroido can delete data that it never receives.
@@ -59,15 +91,22 @@ The policy must state:
 5. All eight URLs are present in `sitemap.xml`.
 6. `./scripts/run-ai-verify --mode full` passes.
 7. After the PR is merged, the production URLs return HTTP 200.
+8. All locales accurately describe the opt-in TelemetryDeck event boundary and
+   do not claim that no usage activity leaves the device.
+9. The support pages explain opt-out without asking users to send diary content,
+   photos, locations, or identifiers.
 
 ## 7) Change Log
 
 - 2026-07-28: Initial spec created for issue #14.
 - 2026-07-28: Implemented the privacy and support pages across all four site locales.
+- 2026-07-28: Updated the data-handling contract for issue #16 after opt-in
+  anonymous TelemetryDeck events were added to Mongle.
 
 ## 8) Verification Evidence
 
 - `git diff --check` passed.
-- `./scripts/run-ai-verify --mode full` passed 8 checks.
 - The generated sitemap contains all eight Mongle privacy and support URLs.
-- Production HTTP evidence will be attached to issue #14 after the merged deployment.
+- Issue #16 requires `./scripts/run-ai-verify --mode full` to pass before merge.
+- The merged commit, Vercel deployment, and production URL checks will be
+  attached to issue #16.
