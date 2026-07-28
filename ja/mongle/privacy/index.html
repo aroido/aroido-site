@@ -7,7 +7,7 @@
     <meta
       id="metaDescription"
       name="description"
-      content="Mongle Picture Diary が Aroido のサーバーにアプリデータを収集せず、写真、日記、権限、共有、サポート情報を処理する方法をご案内します。"
+      content="Mongle が日記内容を iPhone 内に保持し、同意した場合に限り匿名の製品利用イベントを TelemetryDeck へ送信する仕組みを説明します。"
     />
     <link rel="canonical" href="https://aroido.com/ja/mongle/privacy/" />
     <link rel="alternate" hreflang="en" href="https://aroido.com/mongle/privacy/" />
@@ -21,7 +21,7 @@
     <meta property="og:title" content="Mongle Picture Diary プライバシーポリシー | Aroido" />
     <meta
       property="og:description"
-      content="Mongle Picture Diary が Aroido のサーバーにアプリデータを収集せず、写真、日記、権限、共有、サポート情報を処理する方法をご案内します。"
+      content="Mongle が日記内容を iPhone 内に保持し、同意した場合に限り匿名の製品利用イベントを TelemetryDeck へ送信する仕組みを説明します。"
     />
     <meta property="og:url" content="https://aroido.com/ja/mongle/privacy/" />
     <meta property="og:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="Mongle Picture Diary プライバシーポリシー | Aroido" />
     <meta
       name="twitter:description"
-      content="Mongle Picture Diary が Aroido のサーバーにアプリデータを収集せず、写真、日記、権限、共有、サポート情報を処理する方法をご案内します。"
+      content="Mongle が日記内容を iPhone 内に保持し、同意した場合に限り匿名の製品利用イベントを TelemetryDeck へ送信する仕組みを説明します。"
     />
     <meta name="twitter:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
@@ -100,7 +100,7 @@
       <section class="page-hero contact-hero reveal" data-reveal>
         <p class="kicker" data-i18n="mongle_privacy_kicker">Mongle Picture Diary</p>
         <h1 data-i18n="mongle_privacy_title">プライバシーポリシー</h1>
-        <p class="hero-description" data-i18n="mongle_privacy_intro">Mongle は写真と日記が iPhone 内に残るよう設計されています。Aroido は Mongle からアプリデータを収集しません。</p>
+        <p class="hero-description" data-i18n="mongle_privacy_intro">写真と日記は iPhone 内に残ります。匿名利用情報の共有を選んだ場合に限り、Mongle は限定された製品利用イベントを TelemetryDeck へ送信します。</p>
         <p class="mini-label" data-i18n="mongle_privacy_effective">施行日：2026年7月28日</p>
       </section>
 
@@ -108,7 +108,7 @@
         <div class="section-head">
           <p class="section-eyebrow" data-i18n="mongle_privacy_summary_eyebrow">概要</p>
           <h2 data-i18n="mongle_privacy_summary_title">ローカル処理を前提とした設計</h2>
-          <p data-i18n="mongle_privacy_summary_body">Mongle にはアカウント、Aroido サーバー、広告、追跡、第三者の分析 SDK はありません。アプリの内容は、日記の作成、表示、共有のために端末上で処理されます。</p>
+          <p data-i18n="mongle_privacy_summary_body">Mongle にはアカウント、Aroido バックエンド、広告、追跡、第三者の分析 SDK はありません。日記内容は端末上で処理され、任意の匿名製品イベントは同意後に限り TelemetryDeck へ直接送信されます。</p>
         </div>
         <div class="split-grid">
           <article class="story-card highlight">
@@ -117,17 +117,47 @@
             <p data-i18n="mongle_privacy_processed_body">許可を得た場合、Mongle は選択した写真、撮影日、スクリーンショットの分類、写真に含まれる任意の位置情報を読み取ります。日記本文、天気、テーマ、作成周期と時刻、選択した写真の参照も処理します。</p>
           </article>
           <article class="story-card">
-            <p class="mini-label" data-i18n="mongle_privacy_not_collected_label">Aroido は収集しません</p>
-            <h3 data-i18n="mongle_privacy_not_collected_title">アプリデータは当社サーバーへ送信されません</h3>
-            <p data-i18n="mongle_privacy_not_collected_body">Aroido は Mongle から写真、位置情報、日記本文、端末識別子、利用状況、診断情報を受け取りません。アプリは Aroido のバックエンドを使用しません。</p>
+            <p class="mini-label" data-i18n="mongle_privacy_not_collected_label">分析には送信しません</p>
+            <h3 data-i18n="mongle_privacy_not_collected_title">日記内容と個人を識別する情報は含めません</h3>
+            <p data-i18n="mongle_privacy_not_collected_body">Mongle は日記本文、写真、サムネイル、位置情報、ファイル名、正確な作成時刻や通知時刻、自由入力文、エラー原文、ユーザー・端末・インストール識別子を送信しません。アプリは Aroido バックエンドを使用しません。</p>
           </article>
         </div>
       </section>
 
       <section class="section reveal" data-reveal>
         <div class="section-head">
+          <p class="section-eyebrow" data-i18n="mongle_privacy_analytics_eyebrow">任意の匿名分析</p>
+          <h2 data-i18n="mongle_privacy_analytics_title">製品イベントを共有するかは利用者が決めます</h2>
+          <p data-i18n="mongle_privacy_analytics_body">Aroido は、日記フローの完了・離脱箇所や役立つテーマと操作を把握して製品を改善する目的に限り、集計イベントを使用します。広告、アプリ間追跡、個人別プロフィールには使用しません。</p>
+        </div>
+        <div class="split-grid">
+          <article class="story-card highlight">
+            <h3 data-i18n="mongle_privacy_analytics_choice_title">明示的な選択とオプトアウト</h3>
+            <p data-i18n="mongle_privacy_analytics_choice_body">初期設定で Mongle は「共有する」または「送信しない」の選択を求めます。同意前、拒否後、または Mongle の設定で共有をオフにした後は、分析イベントを作成・保存・送信しません。オフにすると進行中のリクエストも取り消します。どちらを選んでも全機能を利用できます。</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="mongle_privacy_analytics_sent_title">イベントに含まれる可能性がある情報</h3>
+            <p data-i18n="mongle_privacy_analytics_sent_body">固定の許可リストは、オンボーディング完了、アプリ起動、権限結果、下書き・表紙の手順、テーマ選択、保存・共有結果、削除、作成周期と通知設定の変更を対象とします。イベントには大まかな開始経路、周期、テーマ、結果、権限、写真枚数の区分と、アプリのバージョン・ビルド・配布方法・iOS のメジャーバージョンが含まれる場合があります。TelemetryDeck はサーバーがイベントを受信した時刻も記録します。</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="mongle_privacy_analytics_session_title">再訪ユーザーを識別しません</h3>
+            <p data-i18n="mongle_privacy_analytics_session_body">Mongle は TelemetryDeck の clientUser を空の値で送信します。ランダムなセッション ID は現在のアプリプロセスのメモリ内だけに存在し、再起動すると変わります。アカウント ID、IDFA、IDFV、端末名、インストール ID は作成せず、分析キューをディスクに保存しません。</p>
+          </article>
+          <article class="story-card">
+            <h3 data-i18n="mongle_privacy_analytics_retention_title">TelemetryDeck による処理と保持</h3>
+            <p data-i18n="mongle_privacy_analytics_retention_body">Mongle は許可されたイベントを TelemetryDeck の v2 収集サービスへ直接送信します。Aroido の現在の無料プランでは、直近 3 か月のイベントをダッシュボードで参照できます。TelemetryDeck は、それ以前のイベントがコールドストレージへ移される場合があると説明しているため、同サービスの保持条件とプライバシー条件も適用されます。イベントには再訪ユーザー識別子がないため、Aroido は特定の個人の過去イベントだけを分離できません。</p>
+          </article>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-ghost" href="https://telemetrydeck.com/privacy/" rel="external" data-i18n="mongle_privacy_analytics_provider_cta">TelemetryDeck のプライバシーポリシーを見る</a>
+          <a class="btn btn-ghost" href="https://telemetrydeck.com/faq/" rel="external" data-i18n="mongle_privacy_analytics_retention_cta">TelemetryDeck の保持に関する FAQ を見る</a>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
           <p class="section-eyebrow" data-i18n="mongle_privacy_storage_eyebrow">保存と保持</p>
-          <h2 data-i18n="mongle_privacy_storage_title">データは端末の管理下にあります</h2>
+          <h2 data-i18n="mongle_privacy_storage_title">日記内容は端末の管理下にあります</h2>
         </div>
         <div class="split-grid">
           <article class="story-card">
