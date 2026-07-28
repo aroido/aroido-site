@@ -62,6 +62,8 @@ export const STATIC_I18N_ROUTES = [
   { sourcePath: "projects/vibesmith/index.html", routePath: "/projects/vibesmith/" },
   { sourcePath: "projects/layoutrecall/index.html", routePath: "/projects/layoutrecall/" },
   { sourcePath: "projects/tokenmon/index.html", routePath: "/projects/tokenmon/" },
+  { sourcePath: "mongle/privacy/index.html", routePath: "/mongle/privacy/" },
+  { sourcePath: "mongle/support/index.html", routePath: "/mongle/support/" },
   { sourcePath: "team/index.html", routePath: "/team/" },
   { sourcePath: "contact/index.html", routePath: "/contact/" },
 ];
