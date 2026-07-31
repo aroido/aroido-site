@@ -1,11 +1,12 @@
 # Mongle App Store Pages Spec
 
-Updated: 2026-07-28  
+Updated: 2026-07-31
 Owner: Aroido Web  
 Issues:
 
 - https://github.com/aroido/aroido-site/issues/14
 - https://github.com/aroido/aroido-site/issues/16
+- https://github.com/aroido/aroido-site/issues/18
 
 Source request: direct maintainer requests to publish and keep the public pages
 aligned with Mongle's actual App Store data handling.
@@ -41,7 +42,9 @@ aligned with Mongle's actual App Store data handling.
 - Photos stay in Apple Photos and are referenced with PhotoKit rather than copied into the app.
 - Photo capture dates, screenshot classification, and optional embedded locations are processed on device.
 - MapKit and iCloud Photos are Apple services; Aroido does not receive their data.
-- Sharing starts only after an explicit user action. Exported JPEG files do not copy original EXIF, GPS, or filenames.
+- Sharing starts only after an explicit user action. Mongle creates a temporary
+  JPEG and opens the iOS share sheet without requesting add-only Photos access.
+  Exported JPEG files do not copy original EXIF, GPS, or filenames.
 - Local notifications use UserNotifications.
 
 ## 3) Privacy Page Requirements
@@ -102,11 +105,13 @@ The policy must state:
 - 2026-07-28: Implemented the privacy and support pages across all four site locales.
 - 2026-07-28: Updated the data-handling contract for issue #16 after opt-in
   anonymous TelemetryDeck events were added to Mongle.
+- 2026-07-31: Corrected the Photos permission and iOS share-sheet contract for
+  issue #18 before App Store review.
 
 ## 8) Verification Evidence
 
 - `git diff --check` passed.
 - The generated sitemap contains all eight Mongle privacy and support URLs.
-- Issue #16 requires `./scripts/run-ai-verify --mode full` to pass before merge.
+- Issue #18 requires `./scripts/run-ai-verify --mode full` to pass before merge.
 - The merged commit, Vercel deployment, and production URL checks will be
-  attached to issue #16.
+  attached to issue #18.
