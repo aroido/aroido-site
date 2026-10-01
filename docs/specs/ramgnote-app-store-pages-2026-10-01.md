@@ -16,7 +16,7 @@ App source examined: ramgnote `8baa6a8f703cd3ec4d4a11b41e1af491c9d7fb0c`.
 - Core Location compares locally for opt-in Always/precise/notification reminders, storing per-place episode/timing metadata. Siri opens foreground and requires unlock. Local notifications omit note text. Manual ActivityKit sessions can show body excerpts; place names remain visible when the body is hidden. No automatic Island relay.
 - Apple MapKit/MKLocalSearch and saved Apple place ID relookup can contact Apple. Apple place-reference notes do not support arrival reminders. Naver conditional proxy code exists but no configured Info.plist path in this baseline; no operational Naver claims.
 - No connected advertising/tracking/third-party analytics SDK found in baseline. CP-01 advertising plan is not an implemented service. Do not claim no servers or no personal data processing.
-- Requests to admin@aroido.com are separate from app storage. Support retention language needs operator confirmation before production. No placeholder policy may be published.
+- Requests to admin@aroido.com are separate from app storage. Support retention was confirmed by the operator before production. No placeholder policy may be published.
 
 ## Delivery record
 
@@ -28,4 +28,4 @@ App source examined: ramgnote `8baa6a8f703cd3ec4d4a11b41e1af491c9d7fb0c`.
 - Independent read-only review against app 8baa6a8: no P0/P1 findings. Existing translation values and Mongle HTML remain unchanged.
 - Chromium at 390 × 844: all eight locale/page combinations return local HTTP 200, no horizontal overflow, expected localized titles/headings and admin@aroido.com mail links. Korean privacy/support screenshots visually inspected.
 - Generated sitemap normalizes four existing Mongle privacy lastmod entries from 2026-07-28 to their source history date 2026-07-31; no Mongle content or routing changes.
-- Production is not deployed. Before publication the operator must confirm the proposed inquiry handling policy: delete unnecessary inquiry material without delay after resolution, except legally required retention. A question is pending; elapsed time is not approval. No external preview/push/merge was performed for these pages.
+- 2026-10-01: operator confirmed keeping inquiry emails and attachments only while needed for inquiry handling, deleting unnecessary material after the purpose is achieved, with exceptions only for legally required retention. All four locales were finalized accordingly. Production publication is authorized through the existing PR/Vercel workflow.
