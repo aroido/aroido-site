@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aroido.com/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/projects/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/projects/vibesmith/</loc>
@@ -29,12 +29,20 @@
     <lastmod>2026-07-28</lastmod>
   </url>
   <url>
+    <loc>https://aroido.com/hobocode/privacy/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/hobocode/support/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
     <loc>https://aroido.com/ramgnote/privacy/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/ramgnote/support/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/team/</loc>
@@ -82,11 +90,11 @@
   </url>
   <url>
     <loc>https://aroido.com/ko/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/ko/projects/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/ko/projects/vibesmith/</loc>
@@ -109,12 +117,20 @@
     <lastmod>2026-07-28</lastmod>
   </url>
   <url>
+    <loc>https://aroido.com/ko/hobocode/privacy/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ko/hobocode/support/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
     <loc>https://aroido.com/ko/ramgnote/privacy/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/ko/ramgnote/support/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/ko/team/</loc>
@@ -162,11 +178,11 @@
   </url>
   <url>
     <loc>https://aroido.com/ja/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/ja/projects/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/ja/projects/vibesmith/</loc>
@@ -189,12 +205,20 @@
     <lastmod>2026-07-28</lastmod>
   </url>
   <url>
+    <loc>https://aroido.com/ja/hobocode/privacy/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/ja/hobocode/support/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
     <loc>https://aroido.com/ja/ramgnote/privacy/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/ja/ramgnote/support/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/ja/team/</loc>
@@ -242,11 +266,11 @@
   </url>
   <url>
     <loc>https://aroido.com/zh-hans/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/zh-hans/projects/</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/zh-hans/projects/vibesmith/</loc>
@@ -269,12 +293,20 @@
     <lastmod>2026-07-28</lastmod>
   </url>
   <url>
+    <loc>https://aroido.com/zh-hans/hobocode/privacy/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
+    <loc>https://aroido.com/zh-hans/hobocode/support/</loc>
+    <lastmod>2026-10-11</lastmod>
+  </url>
+  <url>
     <loc>https://aroido.com/zh-hans/ramgnote/privacy/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/zh-hans/ramgnote/support/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-11</lastmod>
   </url>
   <url>
     <loc>https://aroido.com/zh-hans/team/</loc>
