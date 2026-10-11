@@ -26,7 +26,7 @@ Siri·앱 단축어는 요청한 메모 본문을 앱에 전달합니다. 앱이
 
 앱은 Apple의 iCloud·Siri·APNs 및 지도·검색 서비스, NAVER 지도·검색과 Cloudflare 중계를 사용합니다. 현재 확인한 앱 코드에는 광고·추적·외부 분석 SDK가 연결되어 있지 않습니다. AdMob은 검토 단계이며 현재 광고 데이터 수집으로 기재하지 않습니다. 앱과 별개로 이 웹사이트는 Vercel에서 제공하고 Google Fonts에서 글꼴을 불러옵니다. HTTPS 웹페이지에는 Vercel Analytics를 불러오는 코드가 있으며 페이지 방문과 일부 웹 상호작용을 분석에 사용할 수 있습니다. 웹 요청 과정에서 IP 주소와 브라우저 정보가 서비스 제공자에게 전달될 수 있습니다.
 
-근거: 앱 SDK/프로젝트 검색에서 AdMob/GoogleMobileAds/Firebase/외부 analytics 연결 미발견. 웹 `script.js:209–262,1257–1279`는 Vercel Analytics loader와 이벤트 경로를 포함. Google Analytics는 외부 gtag 함수 존재시 분기만 있어 운영을 단정하지 않음. 웹 분석 실제 수신/보관/쿠키 유무 미확인.
+근거: 앱 SDK/프로젝트 검색에서 AdMob/GoogleMobileAds/Firebase/외부 analytics 연결 미발견. 웹 `script.js:209–262,1257–1279`는 Vercel Analytics loader와 이벤트 경로를 포함. 공통 script.js만 보면 gtag 조건 분기이나 홈페이지 index.html:66–74에 Google Analytics loader/config가 직접 존재한다. 따라서 홈페이지 등 일부 웹페이지의 Google Analytics 구성도 새 고지에 포함했다. 개인정보/지원 페이지의 직접 삽입 및 실제 요청 여부는 별도 Chrome 확인 대상이다. 웹 분석 실제 수신/보관/쿠키 유무 미확인.
 
 ## 5. 지원 페이지 동시 교정
 
@@ -46,3 +46,6 @@ Siri·앱 단축어는 요청한 메모 본문을 앱에 전달합니다. 앱이
 - old Ramgnote 정책은 별도 앱의 고지로 계속 제공한다. 16개 영구 redirect 준비안을 제거하고 각 8페이지의 자체 canonical/기존 시행일/본문을 보존하며 새 앱 링크를 추가했다.
 - 새 정책 시행일은 게시 후보일 2026-10-11이며 실제 게시일이 달라지면 네 언어에서 다시 갱신한다.
 - 기존 문의 이메일 보관 문구는 확대하지 않았다. 새 법적 보관기간·국외 이전국가·즉시 삭제·복원 보장은 추가하지 않았다.
+
+## 게시 전 추가 교정
+2026-10-11: 홈페이지 Google Analytics 직접 삽입을 확인하여 네 언어 protection 문구를 교정했다. 웹 분석은 앱 SDK와 별개이며 cookie·개인별 식별·보관기간·실제 수신을 검증한 것으로 확대하지 않는다.
