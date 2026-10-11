@@ -125,7 +125,7 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_maps_title">地图与地点搜索</h2>
-          <p data-i18n="hobocode_privacy_maps_body">Hobocode使用NAVER地图和地点搜索，以及Apple搜索和逆地理编码。NAVER搜索通过Cloudflare Workers中继将您输入的搜索词发送给NAVER。该搜索请求正文只包含搜索词，不含笔记正文或设备当前坐标。根据配置、错误或限额，可能使用Apple搜索。所选结果的地点名称、地址、坐标和来源信息可以保存在记录中，并纳入可选的iCloud同步。Apple地点引用可能包含地点ID和您输入的别名。</p>
+          <p data-i18n="hobocode_privacy_maps_body">Hobocode使用NAVER地图和地点搜索，以及Apple搜索和逆地理编码。NAVER搜索通过Cloudflare Workers中继将您输入的搜索词发送给NAVER。该搜索请求正文只包含搜索词，不含笔记正文或设备当前坐标。根据配置、错误或限额，可能使用Apple搜索。所选结果的地点名称、地址、坐标和来源信息可以保存在记录中，并纳入可选的iCloud同步。Apple地点引用可能包含地点ID和您输入的别名。 Apple搜索会接收输入的搜索词。根据位置查找地址时，应用会将该坐标发送给Apple进行逆地理编码。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>

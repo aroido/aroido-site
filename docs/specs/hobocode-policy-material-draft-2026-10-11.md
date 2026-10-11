@@ -49,3 +49,6 @@ Siri·앱 단축어는 요청한 메모 본문을 앱에 전달합니다. 앱이
 
 ## 게시 전 추가 교정
 2026-10-11: 홈페이지 Google Analytics 직접 삽입을 확인하여 네 언어 protection 문구를 교정했다. 웹 분석은 앱 SDK와 별개이며 cookie·개인별 식별·보관기간·실제 수신을 검증한 것으로 확대하지 않는다.
+
+## Apple 경로의 전송 정보 구분
+`App/Services/PlaceSearchProvider.swift:77–89`는 Apple fallback에 입력 검색어만 설정하고 GPS/region은 붙이지 않는다. `PlaceAddressResolver.swift:83,97`와 `PlaceSearchProvider.swift:485–492`의 주소 조회에는 좌표를 Apple 역지오코딩에 전달한다. NAVER 요청 본문에 좌표가 없다는 설명을 앱 전체의 좌표 미전송으로 오해하지 않도록 네 언어 maps 문구에 이 사실을 명시했다.
