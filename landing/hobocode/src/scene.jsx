@@ -22,7 +22,7 @@ function Earth({state,opening}){
   for(let lon=-180;lon<180;lon+=30) lines.push(Array.from({length:61},(_,i)=>point(lon,i*3-90,1.002)));
   return lines;
  },[]);
- const locations=[[127,37],[108,20],[142,47],[83,33],[154,-15],[56,15]];
+ const locations=[[127,37],[108,20],[142,47],[83,33]];
  useFrame(({camera,gl})=>{
   document.documentElement.dataset.render='webgl';
   const p=state.progress;
@@ -33,7 +33,13 @@ function Earth({state,opening}){
   camera.position.set(0,0,z);camera.lookAt(0,0,0);
   group.current.rotation.set(.64,0,0);
   group.current.rotation.y=(1-enter)*-.28+end*.22;
-  marks.current.forEach((mark,i)=>{if(mark) mark.visible=i===0 || p>(i*.023+.012)});
+  group.current.updateWorldMatrix(true,true);
+  marks.current.forEach((mark,i)=>{
+   if(!mark)return;
+   const pos=mark.getWorldPosition(new THREE.Vector3()).project(camera);
+   const line=document.querySelector(`[data-note-link="${i}"]`);
+   if(line){const card=document.querySelector(`.note-${i}`).getBoundingClientRect(),box=document.querySelector('.visual').getBoundingClientRect();line.setAttribute('x1',String((card.x+card.width/2-box.x)/box.width*100));line.setAttribute('y1',String((card.y+card.height/2-box.y)/box.height*100));line.setAttribute('x2',String((pos.x+1)*50));line.setAttribute('y2',String((1-pos.y)*50));}
+  });
   const hide=ease((p-.32)/.12)*(1-ease((p-.74)/.15));
   gl.domElement.style.opacity=String(1-hide);
  });

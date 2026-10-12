@@ -7,3 +7,9 @@ Add /hobocode and locale-prefixed equivalents without changing existing static r
 Story: globe with personal demonstration marks → one place → actual app evidence → practical memo → save and revisit value → zoom back out. Core Korean copy: 다음에 여기 오면, 기억나도록. / 주차 입구는 건물 뒤편. Actual source assets only; no invented app UI. Explicit demonstration labeling. Honest screenshot evidence provenance and current gaps.
 
 Acceptance: desktop/mobile captures, both opening videos, WebKit mobile emulation, reduced motion, no WebGL/JS, contrast, keyboard, scroll return and resize; existing full verification gate. Physical mobile Safari is a separate manual gap.
+
+## 2026-10-12 — accumulated personal notes revision (#28)
+- Replace the separate example-note callout and repetitive feature grid with four practical, synthetic personal notes connected to globe marks.
+- Keep cards readable in fixed nonoverlapping screen positions; focus the parking note during approach, then reveal the existing real app map/detail captures.
+- Preserve synthetic-data context in the small scene caption and accessible collection description, and static/reduced-motion fallbacks.
+- Verify desktop/mobile card bounds, overlap, WebKit, scroll restoration and existing fallback checks. Update PR29 only; no merge while Preview login is pending.

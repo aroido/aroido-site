@@ -9,6 +9,8 @@ window.__hobocode=state;
 function update(p){
  if(state.progress!==p){state.progress=p;state.invalidate?.();}
  document.documentElement.style.setProperty('--journey',p);
+ document.documentElement.style.setProperty('--approach',Math.max(0,Math.min(1,(p-.09)/.12)));
+ document.documentElement.dataset.focus=p>.12&&p<.23?'note':'all';
  const phase=p<.23?0:p<.48?1:p<.73?2:3;
  document.querySelectorAll('.chapter').forEach((el,i)=>el.classList.toggle('current',i===phase));
  document.querySelector('.scene-label').textContent=document.querySelectorAll('.chapter')[phase].dataset.scene;
