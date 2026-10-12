@@ -327,7 +327,8 @@ function compareOutputs(outputMap) {
     const localeRoot = path.join(ROOT_DIR, locale.pathSegment);
     for (const htmlFile of listHtmlFiles(localeRoot)) {
       const relativePath = path.relative(ROOT_DIR, htmlFile);
-      if (relativePath.startsWith(`${locale.pathSegment}/blog/`)) {
+      // Independently generated landing; checked by landing/hobocode/generate.mjs --check.
+      if (relativePath === `${locale.pathSegment}/hobocode/index.html` || relativePath.startsWith(`${locale.pathSegment}/blog/`)) {
         continue;
       }
       if (!expectedSet.has(relativePath)) {

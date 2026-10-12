@@ -82,6 +82,11 @@ has_npm_script() {
   node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));process.exit((p.scripts&&p.scripts['$script_name'])?0:1)" >/dev/null 2>&1
 }
 
+# Independent Hobocode landing HTML parity
+if [[ -f landing/hobocode/generate.mjs ]]; then
+  add_check "static:hobocode-generated" "cd landing/hobocode && node generate.mjs --check"
+fi
+
 # baseline static-site checks
 if [[ -f script.js ]]; then
   add_check "static:js-syntax" "node --check script.js"
