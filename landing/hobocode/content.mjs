@@ -1,4 +1,3 @@
-// Four locales; actual app capture descriptions remain explicit.
 export const copy = {
   "ko": {
     "lang": "ko",
@@ -14,30 +13,30 @@ export const copy = {
     "explore": "한 줄이 쓸모 있어지는 순간",
     "chapters": [
       [
-        "“기억나겠지.”는<br>자주 빗나가니까.",
-        "어느 입구였더라. 어디가 조용했더라.<br>알아낸 자리에서, 짧게 적어 두세요.",
-        "나만의 장소 메모 · 시연 데이터"
+        "내가 남긴 장소들이",
+        "주차장, 카페, 늘 걷는 길.",
+        "내가 남긴 장소들"
       ],
       [
-        "헤맨 건 한 번으로<br>충분하니까.",
-        "주차 입구를 찾느라 한 바퀴.<br>그 팁을 다른 곳 말고, 이곳에 남기세요.",
-        "실제 개발 중 앱 화면 · 합성 시연 데이터"
+        "그곳의 표식으로,",
+        "직접 남긴 기억을 찾아가요.",
+        "장소에 붙인 메모"
       ],
       [
-        "미래의 나에게,<br>딱 한 줄.",
-        "“주차 입구는 건물 뒤편.”<br>멋진 문장보다, 바로 써먹을 한 줄이면 돼요.",
-        "실제 개발 중 앱 화면 · 합성 시연 데이터"
+        "필요한 한 줄로,",
+        "다음에 쓸 정보를 간단하게.",
+        "다시 꺼내 보는 한 줄"
       ],
       [
-        "과거의 내가,<br>제법 쓸모 있다.",
-        "주차장, 단골 카페, 늘 걷는 길.<br>직접 알아낸 팁이 하나씩 모입니다.",
-        "나만의 장소 메모 · 시연 데이터"
+        "조금씩 쌓입니다.",
+        "나만의 장소와 나만의 기록.",
+        "내가 남긴 장소들"
       ]
     ],
     "memo": "주차 입구는 건물 뒤편",
     "reminderTitle": "다시 오면,<br>메모가 아는 척.",
     "reminderBody": "장소 알림을 켜 두면, 다시 근처에 왔을 때 저장한 메모가 있음을 알려줘요.",
-    "caption": "실제 개발 앱의 확장 화면 · 시연 데이터. 축소 상태에는 “메모”, 확장 시 본문이 표시돼요. 웹에서는 동작하지 않는 제품 시연입니다.",
+    "caption": "Dynamic Island · 펼쳐서 메모 확인",
     "end": "또 한 바퀴 돌기 전에,<br>한 줄 남겨 두세요.",
     "endBody": "iPhone용 호보코드를 준비하고 있어요.<br>출시 전 개발 화면으로, 최종 모습은 달라질 수 있어요.",
     "privacy": "개인정보 처리방침",
@@ -65,7 +64,18 @@ export const copy = {
       ]
     ],
     "demoLabel": "나에게 남기는 한 줄 · 시연",
-    "conditions": "위치·알림 권한이 필요해요. Dynamic Island는 직접 시작하고 본문 표시를 허용한 메모를 보여줘요."
+    "conditions": "위치·알림 권한이 필요해요. Dynamic Island는 직접 시작하고 본문 표시를 허용한 메모를 보여줘요.",
+    "product": [
+      [
+        "장소와 함께, 한 줄 저장.",
+        "길게 쓰지 않아도 괜찮아요. 다음에 필요한 정보만 남겨 두세요. 장소에 붙인 메모를 열면 그때 적어 둔 내용을 다시 볼 수 있어요."
+      ],
+      [
+        "내가 남긴 곳을, 지도에서.",
+        "흩어진 기록을 장소로 찾으세요. 지도 위 표식에서 그곳에 남긴 메모로 이어집니다."
+      ]
+    ],
+    "disclosure": "출시 전 실제 앱 화면입니다. 화면 속 장소와 메모는 설명을 위한 가상 데이터이며, 웹에서는 지도·알림 기능이 동작하지 않습니다."
   },
   "en": {
     "lang": "en",
@@ -81,30 +91,30 @@ export const copy = {
     "explore": "See a small note earn its keep",
     "chapters": [
       [
-        "“I’ll remember.”<br>Famous last words.",
-        "Which entrance? Which table?<br>Write it down while you’re still there.",
-        "Illustrative personal places · not a public note map"
+        "Your saved places.",
+        "The car park. Your café. Your usual walk.",
+        "Your saved places"
       ],
       [
-        "One wrong turn<br>was enough.",
-        "You circled the block to find the entrance.<br>Leave that tip right here, with the place.",
-        "Actual development app · synthetic demonstration data"
+        "A mark for each place.",
+        "Return to something you learned there.",
+        "A note with its place"
       ],
       [
-        "Dear future me:<br>one useful line.",
-        "“Parking entrance is behind the building.”<br>No polished prose. Just something you can use.",
-        "Actual development app · synthetic demonstration data"
+        "One useful line.",
+        "Keep what you’ll need next time.",
+        "A line to come back to"
       ],
       [
-        "Past you<br>did you a favor.",
-        "The car park, your café, your usual walk.<br>Your own little discoveries, all kept together.",
-        "Illustration of your own saved places"
+        "A little collection.",
+        "Your own places and your own notes.",
+        "Your saved places"
       ]
     ],
     "memo": "Parking entrance is behind the building",
     "reminderTitle": "Back again?<br>Your note says hello.",
     "reminderBody": "Turn on a place alert to be reminded of saved notes when you’re nearby again.",
-    "caption": "Actual development app, expanded state · demo data. A note label appears when compact; the memo body appears when expanded. This website is a noninteractive product demonstration.",
+    "caption": "Dynamic Island · expand to read your note",
     "end": "Before another lap<br>around the block.",
     "endBody": "Hobocode for iPhone is on the way.<br>Development screens may change before release.",
     "privacy": "Privacy",
@@ -132,7 +142,18 @@ export const copy = {
       ]
     ],
     "demoLabel": "A note to yourself · demo",
-    "conditions": "Location and notification permissions required. Dynamic Island shows notes you start and allow to display their content."
+    "conditions": "Location and notification permissions required. Dynamic Island shows notes you start and allow to display their content.",
+    "product": [
+      [
+        "One line. Saved with a place.",
+        "Keep just what you will need next time. Open a place’s note to find the detail you left for yourself."
+      ],
+      [
+        "Find your places on the map.",
+        "Find a note by where you saved it. A mark on the map leads back to the note you left there."
+      ]
+    ],
+    "disclosure": "Actual prerelease app screens. Places and notes are fictional illustration data. Map and notification functions do not operate on this website."
   },
   "ja": {
     "lang": "ja",
@@ -148,30 +169,30 @@ export const copy = {
     "explore": "ひと言が役立つ、そのときへ",
     "chapters": [
       [
-        "「覚えてるはず」は、<br>案外あてにならない。",
-        "入口はどこだっけ。静かな席は？<br>わかったその場で、書き留めよう。",
-        "個人の場所を表す例 · 公開メモ地図ではありません"
+        "自分が残した場所。",
+        "駐車場、カフェ、いつもの散歩道。",
+        "自分が残した場所"
       ],
       [
-        "もう一周は、<br>しなくていいように。",
-        "駐車場の入口を探して一周。<br>そのコツを、この場所に残しておこう。",
-        "開発中の実際のアプリ · テストデータ"
+        "場所ごとの印から。",
+        "そこで見つけた記憶へ。",
+        "場所に結びついたメモ"
       ],
       [
-        "未来の自分へ、<br>ひと言だけ。",
-        "「駐車場の入口は建物の裏側」<br>名文でなくていい。役立つひと言を。",
-        "開発中の実際のアプリ · テストデータ"
+        "役立つひと言へ。",
+        "次に必要なことを、簡潔に。",
+        "また読み返すひと言"
       ],
       [
-        "昔の自分、<br>なかなか気が利く。",
-        "駐車場、いつものカフェ、散歩道。<br>自分で見つけたコツが、少しずつ集まる。",
-        "自分の場所を表す例"
+        "少しずつ集まる。",
+        "自分の場所と、自分の記録。",
+        "自分が残した場所"
       ]
     ],
     "memo": "駐車場の入口は建物の裏側",
     "reminderTitle": "また来たら、<br>メモがお出迎え。",
     "reminderBody": "場所の通知をオンにすると、また近くに来たときに保存したメモをお知らせします。",
-    "caption": "開発中の実際の展開画面 · テストデータ。コンパクト表示はメモのラベル、展開表示は本文です。このウェブページは操作できない製品デモです。",
+    "caption": "Dynamic Island · 展開してメモを確認",
     "end": "もう一周する前に、<br>ひと言残しておこう。",
     "endBody": "iPhone 向けホボコードを準備中です。<br>開発中の画面は公開前に変わる場合があります。",
     "privacy": "プライバシー",
@@ -199,7 +220,18 @@ export const copy = {
       ]
     ],
     "demoLabel": "自分へのひと言 · デモ",
-    "conditions": "位置情報と通知の許可が必要です。Dynamic Island は自分で開始し、本文表示を許可したメモを表示します。"
+    "conditions": "位置情報と通知の許可が必要です。Dynamic Island は自分で開始し、本文表示を許可したメモを表示します。",
+    "product": [
+      [
+        "場所と一緒に、ひと言保存。",
+        "長く書かなくても大丈夫。次に必要なことだけを残そう。場所のメモを開けば、そのとき書いた内容をまた確認できます。"
+      ],
+      [
+        "自分の場所を、地図から。",
+        "保存した場所からメモを探そう。地図の印から、そこに残したひと言へつながります。"
+      ]
+    ],
+    "disclosure": "公開前の実際のアプリ画面です。場所とメモは説明用の架空データです。このウェブでは地図・通知機能は動作しません。"
   },
   "zh-hans": {
     "lang": "zh-Hans",
@@ -215,30 +247,30 @@ export const copy = {
     "explore": "看看一句话怎么派上用场",
     "chapters": [
       [
-        "“我肯定记得。”<br>这话可不太靠谱。",
-        "入口在哪？哪个座位安静？<br>趁还在这里，顺手记下来。",
-        "个人地点示意 · 非公开笔记地图"
+        "自己留下的地点。",
+        "停车场、咖啡馆、常走的小路。",
+        "自己留下的地点"
       ],
       [
-        "绕过一圈，<br>就够了。",
-        "为了找停车入口，绕了整整一圈。<br>把这条窍门留在这个地点吧。",
-        "真实开发版应用画面 · 合成演示数据"
+        "每个地点的标记。",
+        "回到在那里发现的小窍门。",
+        "和地点一起保存的笔记"
       ],
       [
-        "给未来的自己，<br>就留一句。",
-        "“停车入口在建筑物后面。”<br>不用写得漂亮，能用得上就好。",
-        "真实开发版应用画面 · 合成演示数据"
+        "一句实用的笔记。",
+        "留下次会用到的信息。",
+        "再回来读的一句话"
       ],
       [
-        "过去的自己，<br>还挺贴心。",
-        "停车场、常去的咖啡馆、散步的小路。<br>亲自发现的小窍门，一点点攒起来。",
-        "自己的地点示意"
+        "一点点积累。",
+        "自己的地点，自己的记录。",
+        "自己留下的地点"
       ]
     ],
     "memo": "停车入口在建筑物后面",
     "reminderTitle": "又来了？<br>笔记来打个招呼。",
     "reminderBody": "开启地点提醒，再次来到附近时，就会提醒你查看保存的笔记。",
-    "caption": "真实开发版应用的展开画面 · 演示数据。紧凑状态显示笔记标签，展开状态显示正文。本网页为不可操作的产品演示。",
+    "caption": "Dynamic Island · 展开查看笔记",
     "end": "再绕一圈之前，<br>先留一句吧。",
     "endBody": "iPhone 版 Hobocode 正在准备中。<br>开发画面可能在发布前调整。",
     "privacy": "隐私政策",
@@ -266,6 +298,17 @@ export const copy = {
       ]
     ],
     "demoLabel": "留给自己的一句话 · 演示",
-    "conditions": "需要位置和通知权限。Dynamic Island 显示你主动开始并允许展示正文的笔记。"
+    "conditions": "需要位置和通知权限。Dynamic Island 显示你主动开始并允许展示正文的笔记。",
+    "product": [
+      [
+        "一句话，和地点一起保存。",
+        "不必写很长，只留下次会用到的信息。打开地点笔记，就能看到当时留给自己的内容。"
+      ],
+      [
+        "在地图上，找到自己的地点。",
+        "按保存的位置寻找笔记。地图上的标记，带你回到留在那里的那句话。"
+      ]
+    ],
+    "disclosure": "画面来自发布前的真实应用。地点和笔记为说明用的虚构数据。本网站不提供地图或通知功能。"
   }
 };
