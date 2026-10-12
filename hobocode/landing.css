@@ -15,3 +15,5 @@ html[data-static] .place-note{transform:none}html[data-static] .place-notes,html
 @media(prefers-reduced-motion:reduce){html[data-focus=note] .place-note{opacity:1}}
 @media(max-width:700px) and (max-height:620px){.stage{min-height:0;height:100svh}.copy-track{height:180px;min-height:180px;margin-top:18px}.visual{min-height:0}.note-0,.note-1{top:3%}.note-2,.note-3{top:51%}.phone{width:125px}.place-note{padding:9px 8px}.place-note p{font-size:12px}.scene-label{font-size:10px}.chapter h2{font-size:27px}.chapter p{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.stage{height:auto;min-height:0}.copy-track{height:auto}.visual{min-height:500px}}
+
+.fallback-globe img:nth-child(4){left:38%;top:72%;width:25px}

@@ -11,7 +11,7 @@ const ease=n=>{n=clamp(n);return n*n*(3-2*n)};
 function point(lon,lat,r=1.005){const a=lat*Math.PI/180,b=(lon-127)*Math.PI/180;return [r*Math.cos(a)*Math.sin(b),r*Math.sin(a),r*Math.cos(a)*Math.cos(b)]}
 function Earth({state,opening}){
  const group=useRef(),marks=useRef([]);
- const texture=useTexture(media+'pin-selected.svg');
+ const [texture,mineTexture]=useTexture([media+'pin-selected.svg',media+'pin-mine.svg']);
  const coast=useMemo(()=>{
   const coords=feature(world,world.objects.land).features[0].geometry.coordinates;
   return coords.flatMap(poly=>poly.map(ring=>ring.map(c=>point(...c))));
@@ -49,7 +49,7 @@ function Earth({state,opening}){
   {coast.filter(r=>r.length>5).map((pts,i)=><Line key={i} points={pts} color="#8f9689" lineWidth={1}/>)}
   {locations.map(([lon,lat],i)=>{
    const pos=new THREE.Vector3(...point(lon,lat,1.018));const q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),pos.clone().normalize());
-   return <mesh key={i} position={pos} quaternion={q} ref={el=>marks.current[i]=el}><planeGeometry args={[i===0?.12:.075,i===0?.12:.075]}/><meshBasicMaterial map={texture} transparent depthWrite={false} side={THREE.FrontSide}/></mesh>
+   return <mesh key={i} position={pos} quaternion={q} ref={el=>marks.current[i]=el}><planeGeometry args={[i===0?.12:.075,i===0?.12:.075]}/><meshBasicMaterial map={i===0?texture:mineTexture} transparent depthWrite={false} side={THREE.FrontSide}/></mesh>
   })}
  </group>
 }
