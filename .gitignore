@@ -31,3 +31,7 @@ build/
 .codex/work-session-loop/
 .codex/ui-audit*/
 .work-session-summary.md
+
+# Checked-in independent static landing bundle
+!hobocode/build/
+!hobocode/build/**

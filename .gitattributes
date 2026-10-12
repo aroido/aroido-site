@@ -1,0 +1,2 @@
+# Three.js embeds upstream multiline shader sources in generated bundles.
+hobocode/build/*.js -whitespace linguist-generated=true
