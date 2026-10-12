@@ -18,3 +18,12 @@ for(const [key,c] of Object.entries(copy)){
 copy.ko.chapters[0]=['내가 남긴 메모가,<br>곳곳에.','주차장에도, 단골 카페에도.<br>다음에 쓸 기억을 남겨 두세요.','나만의 장소 메모 · 시연 데이터'];
 copy.ko.chapters[2][1]='그때 적어 둔 한 줄.<br>필요한 곳에서 다시 꺼내 보세요.';
 copy.ko.chapters[3][2]='나만의 장소 메모 · 시연 데이터';
+
+// Actual system Island from app main 0cfc0b4; the pictured state is expanded.
+const islandCopy={
+ ko:['장소 알림에는 위치·알림 권한이 필요합니다. 직접 시작하고 본문 표시를 허용한 메모는 Dynamic Island에서 확인할 수 있습니다. 축소 상태에는 “메모”, 확장 상태에는 메모 본문이 표시됩니다.','실제 개발 앱의 iOS Dynamic Island 확장 화면 · 시연 메모 “주차 입구는 건물 뒤편”. 항상 확장되어 있지 않으며, 웹 알림이나 실시간 위치 기능이 아닌 제품 시연입니다.','실제 확장된 Dynamic Island: 잘리지 않은 분필 표식, 문화센터, 주차 입구는 건물 뒤편, 텍스트로 표시된 메모 열기와 종료'],
+ en:['Place alerts require location and notification permissions. Start a note session and allow its content to appear in Dynamic Island. The compact state shows a note label; the expanded state shows the memo body.','Actual development app, expanded iOS Dynamic Island · synthetic parking note. The Island is not always expanded. This is a product demonstration, not a web notification or live location feature.','Actual expanded Dynamic Island with the complete chalk mark, a synthetic parking note, and text actions to open or end the session'],
+ ja:['場所の通知には位置情報と通知の許可が必要です。自分で開始し、本文表示を許可したメモを Dynamic Island で確認できます。コンパクト表示はメモのラベル、展開表示はメモ本文を表示します。','開発中の実際の iOS Dynamic Island 展開画面 · 駐車場のテスト用メモ。常に展開されるわけではありません。ウェブ通知やリアルタイム位置機能ではなく製品デモです。','実際の展開された Dynamic Island：欠けのないチョークの印、駐車場のテスト用メモ、開く・終了のテキスト操作'],
+ 'zh-hans':['地点提醒需要位置和通知权限。主动开始并允许显示正文后，可在 Dynamic Island 查看笔记。紧凑状态显示笔记标签，展开状态显示笔记正文。','真实开发版应用的 iOS Dynamic Island 展开画面 · 合成停车笔记。并非始终展开。这是产品演示，不是网页通知或实时定位功能。','真实展开的 Dynamic Island：完整粉笔标记、合成停车笔记，以及打开和结束的文字操作']
+};
+for(const [key,values] of Object.entries(islandCopy)) [copy[key].reminderBody,copy[key].caption,copy[key].islandAlt]=values;
