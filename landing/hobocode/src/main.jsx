@@ -2,28 +2,42 @@ import {scroll} from 'motion';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const params=new URLSearchParams(location.search);
 const opening=params.get('opening')==='out'?'out':'in';
-document.documentElement.dataset.opening=opening;
-for(const a of document.querySelectorAll('a[data-opening]')) a.setAttribute('aria-current',a.dataset.opening===opening?'true':'false');
-let state={progress:0,reduced:reduced.matches};
-window.__hobocode=state;
-function update(p){
- if(state.progress!==p){state.progress=p;state.invalidate?.();}
- document.documentElement.style.setProperty('--journey',p);
- document.documentElement.style.setProperty('--approach',Math.max(0,Math.min(1,(p-.09)/.12)));
- document.documentElement.dataset.focus=p>.12&&p<.23?'note':'all';
- const phase=p<.23?0:p<.48?1:p<.73?2:3;
- document.querySelectorAll('.chapter').forEach((el,i)=>el.classList.toggle('current',i===phase));
- document.querySelector('.scene-label').textContent=document.querySelectorAll('.chapter')[phase].dataset.scene;
-}
-const track=document.querySelector('.journey');
-scroll(p=>update(p),{target:track,offset:['start start','end end']});
+for(const a of document.querySelectorAll('a[data-opening]')) a.setAttribute('aria-current',String(a.dataset.opening===opening));
+const states=[...document.querySelectorAll('.journey')].map(container=>{
+ const state={progress:0,reduced:reduced.matches,mode:container.classList.contains('return-journey')?'return':'in'};
+ if(!reduced.matches){
+  container.dataset.motion='';
+  let stop;
+  const observe=()=>{
+   stop?.();
+   stop=scroll(p=>{
+   state.progress=p;
+   container.style.setProperty('--journey',p);
+   container.dataset.focus=state.mode==='in'&&p>.3?'note':'all';
+   state.invalidate?.();
+   },{target:container,offset:['start start',`end ${container.querySelector('.stage').getBoundingClientRect().height}px`]});
+  };
+  const resize=new ResizeObserver(observe);
+  resize.observe(container.querySelector('.stage'));
+  observe();
+ }
+ return {container,state};
+});
+window.__hobocode={scenes:states.map(x=>x.state)};
 reduced.addEventListener('change',()=>location.reload());
-if(!reduced.matches && !params.has('flat')){
- const canvas=document.createElement('canvas');
- const gl=canvas.getContext('webgl2');
+if(!reduced.matches&&!params.has('flat')){
+ const probe=document.createElement('canvas');
+ const gl=probe.getContext('webgl2');
  if(gl){
   gl.getExtension('WEBGL_lose_context')?.loseContext();
-  const load=()=>import('./scene.jsx').then(m=>m.mountScene(state,opening)).catch(()=>{document.documentElement.dataset.render='fallback'});
-  if('requestIdleCallback' in window) requestIdleCallback(load,{timeout:1800}); else setTimeout(load,300);
+  const observer=new IntersectionObserver(entries=>{
+   for(const entry of entries){
+    if(!entry.isIntersecting)continue;
+    observer.unobserve(entry.target);
+    const {container,state}=states.find(x=>x.container===entry.target);
+    import('./scene.jsx').then(m=>m.mountScene(state,opening,container)).catch(()=>{container.dataset.render='fallback'});
+   }
+  },{rootMargin:'300px'});
+  states.forEach(({container})=>observer.observe(container));
  }
 }
