@@ -65,7 +65,13 @@ export const copy = {
         "장소를 선택하면 남겨둔 메모를 볼 수 있어요."
       ]
     ],
-    "disclosure": "출시 전 앱 화면이에요. 화면 속 장소와 메모는 설명을 위해 만든 데이터예요. 이 웹페이지에서는 지도나 알림 기능을 사용할 수 없어요."
+    "disclosure": "출시 전 앱 화면이에요. 화면 속 장소와 메모는 설명을 위해 만든 데이터예요. 이 웹페이지에서는 지도나 알림 기능을 사용할 수 없어요.",
+    "zoomLabels": [
+      "장소 메모 예시",
+      "가상 도시 · 시연용 장면",
+      "가상 거리 · 시연용 장면",
+      "가상 건물에 남긴 메모 · 시연"
+    ]
   },
   "en": {
     "lang": "en",
@@ -133,7 +139,13 @@ export const copy = {
         "Select the place to read the note you left there."
       ]
     ],
-    "disclosure": "Actual prerelease app screens. Places and notes are fictional illustration data. Map and notification functions do not operate on this website."
+    "disclosure": "Actual prerelease app screens. Places and notes are fictional illustration data. Map and notification functions do not operate on this website.",
+    "zoomLabels": [
+      "Illustrative place notes",
+      "Fictional city · product demonstration",
+      "Fictional street · product demonstration",
+      "Note on a fictional building · demo"
+    ]
   },
   "ja": {
     "lang": "ja",
@@ -201,7 +213,13 @@ export const copy = {
         "場所を選ぶと、残したメモを確認できます。"
       ]
     ],
-    "disclosure": "公開前の実際のアプリ画面です。場所とメモは説明用の架空データです。このウェブでは地図・通知機能は動作しません。"
+    "disclosure": "公開前の実際のアプリ画面です。場所とメモは説明用の架空データです。このウェブでは地図・通知機能は動作しません。",
+    "zoomLabels": [
+      "場所メモの例",
+      "架空の街 · デモ用の場面",
+      "架空の通り · デモ用の場面",
+      "架空の建物に残したメモ · デモ"
+    ]
   },
   "zh-hans": {
     "lang": "zh-Hans",
@@ -269,6 +287,12 @@ export const copy = {
         "选择地点，就能查看留在那里的笔记。"
       ]
     ],
-    "disclosure": "画面来自发布前的真实应用。地点和笔记为说明用的虚构数据。本网站不提供地图或通知功能。"
+    "disclosure": "画面来自发布前的真实应用。地点和笔记为说明用的虚构数据。本网站不提供地图或通知功能。",
+    "zoomLabels": [
+      "地点笔记示例",
+      "虚构城市 · 产品演示",
+      "虚构街道 · 产品演示",
+      "虚构建筑上的笔记 · 演示"
+    ]
   }
 };

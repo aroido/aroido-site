@@ -19,8 +19,14 @@ export function connector({projected,canvasRect,cardRect,otherCards,screenMatrix
  if(!contains(canvasRect,edge))return {visible:false,marker};
  return {visible:true,marker,edge,start:applyMatrix(edge,inverse),end:applyMatrix(marker,inverse)};
 }
-export function cameraDistance(progress,mode,opening){
- const p=ease(progress);
- if(mode==='return'||opening==='out')return 1.42+(4.05-1.42)*p;
- return 4.05-(4.05-1.42)*p;
+export function zoomProgress(progress,mode,opening){
+ const p=clamp(progress/.9);
+ return mode==='return'||opening==='out'?1-p:p;
+}
+export function cameraDistance(progress,mode,opening,start=4.05){
+ const q=zoomProgress(progress,mode,opening);
+ return 1+(start-1)*Math.exp(-Math.log((start-1)/.0016)*q);
+}
+export function markerScale(depth,viewportHeight,fov,size,pixels=28){
+ return Math.min(1,2*Math.max(depth,.00001)*Math.tan(fov*Math.PI/360)/viewportHeight*pixels/size);
 }
