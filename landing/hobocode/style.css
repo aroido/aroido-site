@@ -14,3 +14,11 @@ header{height:80px;padding:0 6%;border-bottom:1px solid var(--line);display:flex
 @media(max-width:700px) and (max-height:620px){.journey[data-motion] .stage{height:100svh}.copy-track{margin-top:20px}.copy-track h2{font-size:25px}.copy-track p{font-size:12px}.visual{min-height:330px}.place-note p{font-size:11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.progress-line{display:none}}
 .return-journey .note-3{left:2%;right:auto;top:8%;bottom:auto}.return-journey .note-1{left:2%;right:auto;top:auto;bottom:10%}.return-journey .note-2{left:auto;right:2%;top:8%;bottom:auto}.return-journey .note-0{left:auto;right:2%;top:auto;bottom:10%}
+
+/* Readable multi-scale camera travel, followed by a short hold on the opened memo. */
+.journey[data-motion]{height:1800px}.journey[data-motion] .stage{height:min(100svh,760px)}
+.journey[data-render=webgl] .place-note{opacity:0;transition:opacity .25s}
+.journey[data-render=webgl][data-zoom=earth] .place-note{opacity:1}
+.journey[data-render=webgl][data-zoom=building] .note-0{opacity:1}
+.journey[data-zoom=building] .note-0{left:50%;right:auto;top:auto;bottom:12%;transform:translateX(-50%);width:min(80%,280px)}
+@media(max-width:700px){.journey[data-motion]{height:1550px}.journey[data-motion] .stage{height:100svh;max-height:760px}.journey[data-zoom=building] .note-0{bottom:12%;width:72%;max-width:270px}.scene-label{padding:0 10px}}

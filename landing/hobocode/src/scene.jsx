@@ -6,7 +6,13 @@ import * as THREE from 'three';
 import {feature} from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
 const media='/hobocode/media/';
-import {ease,ndcToClient,connector,cameraDistance} from './geometry.mjs';
+function showFallback(container){
+ container.dataset.render='fallback';delete container.dataset.zoom;
+ const label=container.querySelector('.scene-label');if(label)label.textContent=label.dataset.earth;
+ container.querySelectorAll('[data-note-link]').forEach(line=>line.style.visibility='hidden');
+}
+import {ease,ndcToClient,connector,cameraDistance,zoomProgress,markerScale} from './geometry.mjs';
+import {Town} from './town.jsx';
 function point(lon,lat,r=1.005){const a=lat*Math.PI/180,b=(lon-127)*Math.PI/180;return [r*Math.cos(a)*Math.sin(b),r*Math.sin(a),r*Math.cos(a)*Math.cos(b)]}
 // Flat geographic ink on a white globe: no light-dependent gloss or coloured shadows.
 function landTexture(){
@@ -46,7 +52,7 @@ float alpha=texture2D(artwork,vUv).a*visible;if(alpha<.01)discard;gl_FragColor=v
 #include <colorspace_fragment>
 }`;
 function Earth({state,opening,container}){
- const group=useRef(),marks=useRef([]),materials=useRef([]),started=useRef(null),entered=useRef(false),onScreen=useRef(false);
+ const group=useRef(),earth=useRef(),town=useRef(),marks=useRef([]),materials=useRef([]),started=useRef(null),entered=useRef(false),onScreen=useRef(false);
  const texture=useTexture(media+'chalk-mark.png');
  const land=useMemo(landTexture,[]);
  const locations=[[127,37],[108,20],[142,47],[83,33]];
@@ -59,8 +65,10 @@ function Earth({state,opening,container}){
    if(onScreen.current){entered.current=true;state.invalidate?.();}
   },{threshold:.15});
   const resize=new ResizeObserver(()=>state.invalidate?.());
-  observer.observe(visual);resize.observe(visual);elements.cards.forEach(card=>card&&resize.observe(card));
-  return ()=>{observer.disconnect();resize.disconnect();land.dispose();};
+  observer.observe(visual);resize.observe(visual);
+  const settled=()=>state.invalidate?.();
+  elements.cards.forEach(card=>{if(card){resize.observe(card);card.addEventListener('transitionend',settled);}});
+  return ()=>{observer.disconnect();resize.disconnect();elements.cards.forEach(card=>card?.removeEventListener('transitionend',settled));land.dispose();};
  },[elements,state,land]);
  useFrame(({camera,gl,clock,invalidate})=>{
   if(state.contextLost)return;
@@ -68,7 +76,19 @@ function Earth({state,opening,container}){
   if(entered.current&&started.current===null)started.current=clock.elapsedTime;
   const elapsed=started.current===null?0:clock.elapsedTime-started.current;
   const z=cameraDistance(state.progress,state.mode,opening);
-  camera.position.set(0,0,z);camera.lookAt(0,0,0);camera.updateMatrixWorld();
+  const q=zoomProgress(state.progress,state.mode,opening);
+  const townVisible=q>.27;
+  earth.current.visible=q<.4;town.current.visible=townVisible;
+  const blend=ease((q-.27)/.08);
+  town.current.traverse(object=>{if(object.material){object.material.transparent=blend<1;object.material.opacity=blend;object.material.depthWrite=blend>=1;}});
+  // One continuous camera moves from the globe into independently modelled detail.
+  // The geographic globe is only an overview; the town is explicitly fictional.
+  container.dataset.zoom=q>.89?'building':q>.65?'street':q>.3?'city':'earth';
+  container.style.setProperty('--memo-open',q>.89?1:0);
+  const label=container.querySelector('.scene-label');
+  if(label)label.textContent=label.dataset[container.dataset.zoom]||label.dataset.earth;
+  state.zoom={q,level:container.dataset.zoom,distance:z-1};
+  camera.position.set(0,-(z-1)*.55*ease((q-.55)/.35),z);camera.lookAt(0,0,1);camera.updateMatrixWorld();
   // Exactly centre the selected longitude/latitude. No yaw drift during the zoom.
   group.current.rotation.set(37*Math.PI/180,0,0);group.current.updateWorldMatrix(true,true);
   const canvasRect=gl.domElement.getBoundingClientRect(),accepted=[];
@@ -82,13 +102,25 @@ function Earth({state,opening,container}){
    if(!mark)return;
    materials.current[i].uniforms.reveal.value=ease((elapsed-i*.19)/1.05);
    const worldPosition=mark.getWorldPosition(new THREE.Vector3());
+   const size=i===0?.13:.10;
+   mark.scale.setScalar(markerScale(-worldPosition.clone().applyMatrix4(camera.matrixWorldInverse).z,canvasRect.height,camera.fov,size,i===0?28:22));
+   mark.updateWorldMatrix(true,false);
+   const bounds=()=>{
+    const corners=[[-1,-1],[-1,1],[1,-1],[1,1]].map(([x,y])=>ndcToClient(new THREE.Vector3(x*size/2,y*size/2,0).applyMatrix4(mark.matrixWorld).project(camera),canvasRect));
+    return {width:Math.max(...corners.map(p=>p.x))-Math.min(...corners.map(p=>p.x)),height:Math.max(...corners.map(p=>p.y))-Math.min(...corners.map(p=>p.y))};
+   };
+   let pixelBounds=bounds();const cap=i===0?28:22;
+   for(let attempt=0;attempt<2&&Math.max(pixelBounds.width,pixelBounds.height)>cap;attempt++){
+    mark.scale.multiplyScalar(cap/Math.max(pixelBounds.width,pixelBounds.height)*.999);
+    mark.updateWorldMatrix(true,false);pixelBounds=bounds();
+   }
    const facing=worldPosition.clone().normalize().dot(camera.position.clone().sub(worldPosition).normalize())>.08;
    const projected=worldPosition.clone().project(camera),screen=ndcToClient(projected,canvasRect);
    const overlapping=accepted.some(other=>Math.hypot(screen.x-other.x,screen.y-other.y)<18);
-   mark.visible=facing&&!overlapping;if(mark.visible)accepted.push(screen);
+   mark.visible=facing&&!overlapping&&(i===0||q<.3);if(mark.visible)accepted.push(screen);
    const line=elements.lines[i],cardRect=activeCards[i];
-   const result=cardRect?connector({projected,canvasRect,cardRect,otherCards:activeCards.filter(Boolean),screenMatrix,facing,overlapping}):{visible:false,marker:screen};
-   state.geometry.push({index:i,...result,facing,overlapping,projected:{x:projected.x,y:projected.y,z:projected.z}});
+   const result=cardRect?connector({projected,canvasRect,cardRect,otherCards:activeCards.filter(Boolean),screenMatrix,facing:mark.visible,overlapping}):{visible:false,marker:screen};
+   state.geometry.push({index:i,pixelBounds,visible:mark.visible,pixelCap:i===0?28:22,scale:mark.scale.x,...result,facing,overlapping,projected:{x:projected.x,y:projected.y,z:projected.z}});
    if(line){
     line.style.visibility=result.visible?'visible':'hidden';
     if(result.visible){
@@ -99,25 +131,25 @@ function Earth({state,opening,container}){
   });
   if(onScreen.current&&entered.current&&elapsed<1.7)invalidate();
  });
- return <group ref={group}>
-  <mesh><sphereGeometry args={[1,96,64]}/><meshBasicMaterial map={land}/></mesh>
+ return <><ambientLight intensity={1.3}/><directionalLight position={[-2,-3,5]} intensity={1.3}/><Town groupRef={town}/><group ref={group}>
+  <mesh ref={earth}><sphereGeometry args={[1,96,64]}/><meshBasicMaterial map={land}/></mesh>
   {locations.map(([lon,lat],i)=>{
-   const pos=new THREE.Vector3(...point(lon,lat,1.009));const q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),pos.clone().normalize());
+   const pos=new THREE.Vector3(...point(lon,lat,i===0?1.00010:1.009));const q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),pos.clone().normalize());
    return <mesh key={i} position={pos} quaternion={q} ref={el=>marks.current[i]=el}><planeGeometry args={[i===0?.13:.10,i===0?.13:.10]}/><shaderMaterial ref={el=>materials.current[i]=el} uniforms={uniforms[i]} vertexShader={vertexShader} fragmentShader={fragmentShader} transparent depthWrite={false} side={THREE.FrontSide}/></mesh>
   })}
- </group>
+ </group></>
 }
 class Boundary extends Component{
  state={failed:false};static getDerivedStateFromError(){return {failed:true}}
- componentDidCatch(){this.props.container.dataset.render='fallback'}
+ componentDidCatch(){showFallback(this.props.container)}
  render(){return this.state.failed?null:this.props.children}
 }
 export function mountScene(state,opening,container){
  const target=container.querySelector('.scene');if(!target)return ()=>{};
  const root=createRoot(target);
- root.render(<Boundary container={container}><Canvas frameloop="demand" dpr={[1,1.5]} camera={{position:[0,0,4.05],fov:38}} gl={{alpha:true,antialias:true,powerPreference:'low-power'}} onCreated={({gl,invalidate})=>{
+ root.render(<Boundary container={container}><Canvas frameloop="demand" dpr={[1,1.5]} camera={{position:[0,0,4.05],fov:38,near:.00001,far:100}} gl={{alpha:true,antialias:true,powerPreference:'low-power'}} onCreated={({gl,invalidate})=>{
   state.invalidate=invalidate;
-  gl.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();state.contextLost=true;container.dataset.render='fallback';container.querySelectorAll('[data-note-link]').forEach(line=>line.style.visibility='hidden')});
+  gl.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();state.contextLost=true;showFallback(container)});
  }}><Suspense fallback={null}><Earth state={state} opening={opening} container={container}/></Suspense></Canvas></Boundary>);
  return ()=>{state.invalidate=undefined;root.unmount();};
 }

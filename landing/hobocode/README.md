@@ -17,3 +17,5 @@ No browser location, map API, notification request, downloads, user data or anal
 Flow: empathy → opening globe → actual map/detail → revisit reminder → return globe → release status. Globe instances are independent and lazy-loaded near the viewport. SVG connectors project actual canvas coordinates through the SVG screen transform and start at card borders.
 
 Geometry regression: `node --test landing/hobocode/src/geometry.test.mjs` from repository root.
+
+The building zoom uses an original fictional town mesh (roads, parcels, buildings, roofs and parking), explicitly captioned in all four languages. A continuous camera travels into it; this is not a zoomed world bitmap or a replacement for the real app screenshots. Projected mark bounds are limited to 28 CSS px (selected) / 22 px (others), including perspective and resize.
