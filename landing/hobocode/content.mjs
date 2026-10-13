@@ -18,16 +18,6 @@ export const copy = {
         "메모를 남긴 장소"
       ],
       [
-        "지도에서 찾아봐요.",
-        "메모해 둔 장소를 지도에서 찾을 수 있어요.",
-        "메모를 남긴 장소 찾기"
-      ],
-      [
-        "뭐라고 적었더라?",
-        "장소를 선택하면 남겨둔 메모를 볼 수 있어요.",
-        "저장한 메모 확인"
-      ],
-      [
         "다른 장소에도 남겨두세요.",
         "식당에는 주문할 메뉴를, 마트에는 살 물건을요.",
         "메모를 남긴 장소"
@@ -63,19 +53,19 @@ export const copy = {
         "돌아올 때는 강변으로"
       ]
     ],
-    "demoLabel": "장소 메모",
-    "conditions": "위치·알림 권한이 필요해요. Dynamic Island에는 직접 표시를 시작하고 내용 표시를 허용한 메모가 나와요.",
+    "demoLabel": "장소 메모 예시",
+    "conditions": "위치·알림 권한이 필요해요. Dynamic Island에서 메모 내용을 보려면 직접 표시를 시작하고 내용 표시를 허용해야 해요.",
     "product": [
       [
-        "다음에 기억할 내용을<br>적어두세요.",
-        "“주차장 입구는 건물 뒤쪽”, “다음엔 덜 맵게 주문하기”. 다음에 왔을 때 필요한 내용을 남겨두세요."
+        "그때 적어둔 내용을<br>확인하세요.",
+        "“주차장 입구는 건물 뒤쪽”, “다음엔 덜 맵게 주문하기”."
       ],
       [
-        "어디에 남겼는지<br>지도에서 찾아봐요.",
-        "메모를 남긴 장소가 지도에 표시돼요. 장소를 선택하면 메모를 확인할 수 있어요."
+        "메모한 장소를<br>지도에서 찾아보세요.",
+        "장소를 선택하면 남겨둔 메모를 볼 수 있어요."
       ]
     ],
-    "disclosure": "출시 전 앱 화면입니다. 화면 속 장소와 메모는 설명을 위해 만든 데이터예요. 이 웹페이지에서는 지도나 알림 기능을 사용할 수 없어요."
+    "disclosure": "출시 전 앱 화면이에요. 화면 속 장소와 메모는 설명을 위해 만든 데이터예요. 이 웹페이지에서는 지도나 알림 기능을 사용할 수 없어요."
   },
   "en": {
     "lang": "en",
@@ -94,16 +84,6 @@ export const copy = {
         "Your saved places.",
         "The car park. Your café. Your usual walk.",
         "Your saved places"
-      ],
-      [
-        "A mark for each place.",
-        "Return to something you learned there.",
-        "A note with its place"
-      ],
-      [
-        "One useful line.",
-        "Keep what you’ll need next time.",
-        "A line to come back to"
       ],
       [
         "A little collection.",
@@ -145,12 +125,12 @@ export const copy = {
     "conditions": "Location and notification permissions required. Dynamic Island shows notes you start and allow to display their content.",
     "product": [
       [
-        "One line. Saved with a place.",
-        "Keep just what you will need next time. Open a place’s note to find the detail you left for yourself."
+        "Read what you saved.",
+        "“Parking entrance is behind the building.” “Order it less spicy next time.”"
       ],
       [
-        "Find your places on the map.",
-        "Find a note by where you saved it. A mark on the map leads back to the note you left there."
+        "Find a saved place<br>on the map.",
+        "Select the place to read the note you left there."
       ]
     ],
     "disclosure": "Actual prerelease app screens. Places and notes are fictional illustration data. Map and notification functions do not operate on this website."
@@ -172,16 +152,6 @@ export const copy = {
         "自分が残した場所。",
         "駐車場、カフェ、いつもの散歩道。",
         "自分が残した場所"
-      ],
-      [
-        "場所ごとの印から。",
-        "そこで見つけた記憶へ。",
-        "場所に結びついたメモ"
-      ],
-      [
-        "役立つひと言へ。",
-        "次に必要なことを、簡潔に。",
-        "また読み返すひと言"
       ],
       [
         "少しずつ集まる。",
@@ -223,12 +193,12 @@ export const copy = {
     "conditions": "位置情報と通知の許可が必要です。Dynamic Island は自分で開始し、本文表示を許可したメモを表示します。",
     "product": [
       [
-        "場所と一緒に、ひと言保存。",
-        "長く書かなくても大丈夫。次に必要なことだけを残そう。場所のメモを開けば、そのとき書いた内容をまた確認できます。"
+        "書いておいたことを<br>確認。",
+        "「駐車場の入口は建物の裏側」「次は辛さ控えめで注文」。"
       ],
       [
-        "自分の場所を、地図から。",
-        "保存した場所からメモを探そう。地図の印から、そこに残したひと言へつながります。"
+        "メモした場所を<br>地図で探す。",
+        "場所を選ぶと、残したメモを確認できます。"
       ]
     ],
     "disclosure": "公開前の実際のアプリ画面です。場所とメモは説明用の架空データです。このウェブでは地図・通知機能は動作しません。"
@@ -250,16 +220,6 @@ export const copy = {
         "自己留下的地点。",
         "停车场、咖啡馆、常走的小路。",
         "自己留下的地点"
-      ],
-      [
-        "每个地点的标记。",
-        "回到在那里发现的小窍门。",
-        "和地点一起保存的笔记"
-      ],
-      [
-        "一句实用的笔记。",
-        "留下次会用到的信息。",
-        "再回来读的一句话"
       ],
       [
         "一点点积累。",
@@ -301,12 +261,12 @@ export const copy = {
     "conditions": "需要位置和通知权限。Dynamic Island 显示你主动开始并允许展示正文的笔记。",
     "product": [
       [
-        "一句话，和地点一起保存。",
-        "不必写很长，只留下次会用到的信息。打开地点笔记，就能看到当时留给自己的内容。"
+        "看看当时<br>记了什么。",
+        "“停车入口在建筑物后面。”“下次点微辣。”"
       ],
       [
-        "在地图上，找到自己的地点。",
-        "按保存的位置寻找笔记。地图上的标记，带你回到留在那里的那句话。"
+        "在地图上找到<br>记过笔记的地点。",
+        "选择地点，就能查看留在那里的笔记。"
       ]
     ],
     "disclosure": "画面来自发布前的真实应用。地点和笔记为说明用的虚构数据。本网站不提供地图或通知功能。"
