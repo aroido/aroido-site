@@ -4,7 +4,7 @@ import {Canvas,useFrame} from '@react-three/fiber';
 import {useTexture} from '@react-three/drei';
 import * as THREE from 'three';
 import {feature} from 'topojson-client';
-import world from 'world-atlas/land-110m.json';
+import world from 'world-atlas/land-110m.json' with {type:'json'};
 const media='/hobocode/media/';
 function showFallback(container){
  container.dataset.render='fallback';delete container.dataset.zoom;
@@ -14,6 +14,7 @@ function showFallback(container){
 import {ease,ndcToClient,connector,cameraDistance,zoomProgress,markerScale} from './geometry.mjs';
 import {Town} from './town.jsx';
 import target from './nyc-target.json';
+import {clusterMarks} from './cluster-data.mjs';
 function point(lon,lat,r=1.005){const a=lat*Math.PI/180,b=(lon-target.longitude)*Math.PI/180;return [r*Math.cos(a)*Math.sin(b),r*Math.sin(a),r*Math.cos(a)*Math.cos(b)]}
 // Flat geographic ink on a white globe: no light-dependent gloss or coloured shadows.
 function landTexture(){
@@ -54,19 +55,23 @@ float alpha=texture2D(artwork,vUv).a*visible;if(alpha<.01)discard;gl_FragColor=v
 }`;
 function ManyMarks({state,opening}){
  const texture=useTexture(media+'chalk-mark.png'),mesh=useRef();
- const positions=useMemo(()=>Array.from({length:180},(_,i)=>{
-  const lat=Math.asin(1-2*(i+.5)/180),lon=i*2.399963229728653;
-  return new THREE.Vector3(Math.cos(lat)*Math.sin(lon),Math.sin(lat),Math.cos(lat)*Math.cos(lon)).multiplyScalar(1.008);
- }),[]);
+ const positions=useMemo(()=>clusterMarks.map(m=>new THREE.Vector3(...point(m.lon,m.lat,1.004)).applyAxisAngle(new THREE.Vector3(1,0,0),target.latitude*Math.PI/180)),[]);
  useFrame(({camera,size})=>{
   const q=zoomProgress(state.progress,state.mode,opening),accepted=[],matrix=new THREE.Matrix4();state.globeMarks=[];
+  const main=state.geometry?.filter(g=>g.markerVisible).map(g=>g.marker)||[];
   positions.forEach((p,i)=>{
    const projected=p.clone().project(camera),screen={x:(projected.x+1)*size.width/2,y:(1-projected.y)*size.height/2};
-   const visible=q<.33&&p.clone().normalize().dot(camera.position.clone().sub(p).normalize())>.15&&Math.abs(projected.x)<.98&&Math.abs(projected.y)<.98&&accepted.every(a=>Math.hypot(a.x-screen.x,a.y-screen.y)>12);
-   const scale=visible?markerScale(-p.clone().applyMatrix4(camera.matrixWorldInverse).z,size.height,camera.fov,.04,8):0;
+   const pixels=clusterMarks[i].pixels;
+   const visible=q<.33&&main.every(a=>Math.hypot(a.x-screen.x-(state.canvasOffset?.x||0),a.y-screen.y-(state.canvasOffset?.y||0))>22)&&p.clone().normalize().dot(camera.position.clone().sub(p).normalize())>.15&&Math.abs(projected.x)<.98&&Math.abs(projected.y)<.98&&accepted.every(a=>Math.hypot(a.x-screen.x,a.y-screen.y)>(a.pixels+pixels)/2+1.5);
+   const scale=visible?markerScale(-p.clone().applyMatrix4(camera.matrixWorldInverse).z,size.height,camera.fov,.04,pixels):0;
    matrix.compose(p,new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),p.clone().normalize()),new THREE.Vector3(scale,scale,scale));
+   if(visible){
+    const bounds=()=>{const corners=[[-1,-1],[-1,1],[1,-1],[1,1]].map(([x,y])=>new THREE.Vector3(x*.02,y*.02,0).applyMatrix4(matrix).project(camera));
+    const width=(Math.max(...corners.map(p=>p.x))-Math.min(...corners.map(p=>p.x)))*size.width/2,height=(Math.max(...corners.map(p=>p.y))-Math.min(...corners.map(p=>p.y)))*size.height/2;return {width,height}};
+    let {width,height}=bounds();if(Math.max(width,height)>pixels){matrix.scale(new THREE.Vector3().setScalar(pixels/Math.max(width,height)*.999));({width,height}=bounds());}
+    accepted.push({...screen,pixels});state.globeMarks.push({...screen,pixels,width,height,cap:8,lon:clusterMarks[i].lon,lat:clusterMarks[i].lat,city:clusterMarks[i].city});
+   }
    mesh.current.setMatrixAt(i,matrix);
-   if(visible){accepted.push(screen);state.globeMarks.push({cap:8});}
   });mesh.current.instanceMatrix.needsUpdate=true;
  });
  return <instancedMesh ref={mesh} args={[null,null,positions.length]} frustumCulled={false}><planeGeometry args={[.04,.04]}/><meshBasicMaterial map={texture} transparent depthWrite={false} color="#333333"/></instancedMesh>;
@@ -75,7 +80,7 @@ function Earth({state,opening,container}){
  const group=useRef(),earth=useRef(),town=useRef(),marks=useRef([]),materials=useRef([]),started=useRef(null),entered=useRef(false),onScreen=useRef(false);
  const texture=useTexture(media+'chalk-mark.png');
  const land=useMemo(landTexture,[]);
- const locations=[[target.longitude,target.latitude],[-98,32],[-62,50],[-118,47]];
+ const locations=[[target.longitude,target.latitude],[-96.80,32.78],[-79.38,43.65],[-118.24,34.05]];
  const uniforms=useMemo(()=>locations.map((_,i)=>({artwork:{value:texture},ink:{value:new THREE.Color(i===0?'#b4501f':'#111111')},reveal:{value:0}})),[texture]);
  const elements=useMemo(()=>({visual:container.querySelector('.visual'),svg:container.querySelector('.note-links'),cards:locations.map((_,i)=>container.querySelector(`.note-${i}`)),lines:locations.map((_,i)=>container.querySelector(`[data-note-link="${i}"]`))}),[container]);
  useEffect(()=>{
@@ -93,8 +98,8 @@ function Earth({state,opening,container}){
   if(state.contextLost)return;
   container.dataset.render='webgl';
   if(entered.current&&started.current===null)started.current=clock.elapsedTime;
-  const elapsed=started.current===null?0:clock.elapsedTime-started.current;
-  const canvasRect=gl.domElement.getBoundingClientRect();
+  const elapsed=started.current===null?0:clock.elapsedTime-started.current;state.revealDone=elapsed>=1.7;
+  const canvasRect=gl.domElement.getBoundingClientRect();state.canvasOffset={x:canvasRect.left,y:canvasRect.top};
   const fit=Math.sqrt(1+(canvasRect.height/(canvasRect.width*.84*Math.tan(camera.fov*Math.PI/360)))**2);
   const z=cameraDistance(state.progress,state.mode,opening,Math.max(4.05,fit));
   const q=zoomProgress(state.progress,state.mode,opening);
@@ -139,7 +144,7 @@ function Earth({state,opening,container}){
    const facing=worldPosition.clone().normalize().dot(camera.position.clone().sub(worldPosition).normalize())>.08;
    const projected=worldPosition.clone().project(camera),screen=ndcToClient(projected,canvasRect);
    const overlapping=accepted.some(other=>Math.hypot(screen.x-other.x,screen.y-other.y)<18);
-   mark.visible=facing&&!overlapping&&(i===0||q<.3);if(mark.visible)accepted.push(screen);
+   mark.visible=facing&&!overlapping&&(i===0||(state.mode==='return'&&q<.3));if(mark.visible)accepted.push(screen);
    const line=elements.lines[i],cardRect=activeCards[i];
    const result=cardRect?connector({projected,canvasRect,cardRect,otherCards:activeCards.filter(Boolean),screenMatrix,facing:mark.visible,overlapping}):{visible:false,marker:screen};
    state.geometry.push({index:i,pixelBounds,markerVisible:mark.visible,pixelCap:i===0?28:22,scale:mark.scale.x,...result,facing,overlapping,projected:{x:projected.x,y:projected.y,z:projected.z}});
