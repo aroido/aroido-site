@@ -66,16 +66,17 @@ function Earth({state,opening,container}){
   },{threshold:.15});
   const resize=new ResizeObserver(()=>state.invalidate?.());
   observer.observe(visual);resize.observe(visual);
-  const settled=()=>state.invalidate?.();
-  elements.cards.forEach(card=>{if(card){resize.observe(card);card.addEventListener('transitionend',settled);}});
-  return ()=>{observer.disconnect();resize.disconnect();elements.cards.forEach(card=>card?.removeEventListener('transitionend',settled));land.dispose();};
+  elements.cards.forEach(card=>card&&resize.observe(card));
+  return ()=>{observer.disconnect();resize.disconnect();land.dispose();};
  },[elements,state,land]);
  useFrame(({camera,gl,clock,invalidate})=>{
   if(state.contextLost)return;
   container.dataset.render='webgl';
   if(entered.current&&started.current===null)started.current=clock.elapsedTime;
   const elapsed=started.current===null?0:clock.elapsedTime-started.current;
-  const z=cameraDistance(state.progress,state.mode,opening);
+  const canvasRect=gl.domElement.getBoundingClientRect();
+  const fit=Math.sqrt(1+(canvasRect.height/(canvasRect.width*.84*Math.tan(camera.fov*Math.PI/360)))**2);
+  const z=cameraDistance(state.progress,state.mode,opening,Math.max(4.05,fit));
   const q=zoomProgress(state.progress,state.mode,opening);
   const townVisible=q>.27;
   earth.current.visible=q<.4;town.current.visible=townVisible;
@@ -88,10 +89,11 @@ function Earth({state,opening,container}){
   const label=container.querySelector('.scene-label');
   if(label)label.textContent=label.dataset[container.dataset.zoom]||label.dataset.earth;
   state.zoom={q,level:container.dataset.zoom,distance:z-1};
+  camera.near=Math.max(.000001,(z-1)*.04);camera.far=10;camera.updateProjectionMatrix();
   camera.position.set(0,-(z-1)*.55*ease((q-.55)/.35),z);camera.lookAt(0,0,1);camera.updateMatrixWorld();
   // Exactly centre the selected longitude/latitude. No yaw drift during the zoom.
   group.current.rotation.set(37*Math.PI/180,0,0);group.current.updateWorldMatrix(true,true);
-  const canvasRect=gl.domElement.getBoundingClientRect(),accepted=[];
+  const accepted=[];
   const activeCards=elements.cards.map(card=>{
    if(!card)return null;const style=getComputedStyle(card),bounds=card.getBoundingClientRect();
    return style.display!=='none'&&style.visibility!=='hidden'&&Number(style.opacity)>.01&&bounds.width>0&&bounds.height>0?bounds:null;
@@ -120,7 +122,7 @@ function Earth({state,opening,container}){
    mark.visible=facing&&!overlapping&&(i===0||q<.3);if(mark.visible)accepted.push(screen);
    const line=elements.lines[i],cardRect=activeCards[i];
    const result=cardRect?connector({projected,canvasRect,cardRect,otherCards:activeCards.filter(Boolean),screenMatrix,facing:mark.visible,overlapping}):{visible:false,marker:screen};
-   state.geometry.push({index:i,pixelBounds,visible:mark.visible,pixelCap:i===0?28:22,scale:mark.scale.x,...result,facing,overlapping,projected:{x:projected.x,y:projected.y,z:projected.z}});
+   state.geometry.push({index:i,pixelBounds,markerVisible:mark.visible,pixelCap:i===0?28:22,scale:mark.scale.x,...result,facing,overlapping,projected:{x:projected.x,y:projected.y,z:projected.z}});
    if(line){
     line.style.visibility=result.visible?'visible':'hidden';
     if(result.visible){

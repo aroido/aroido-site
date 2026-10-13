@@ -17,7 +17,7 @@ header{height:80px;padding:0 6%;border-bottom:1px solid var(--line);display:flex
 
 /* Readable multi-scale camera travel, followed by a short hold on the opened memo. */
 .journey[data-motion]{height:1800px}.journey[data-motion] .stage{height:min(100svh,760px)}
-.journey[data-render=webgl] .place-note{opacity:0;transition:opacity .25s}
+.journey[data-render=webgl] .place-note{opacity:0;transition:none}
 .journey[data-render=webgl][data-zoom=earth] .place-note{opacity:1}
 .journey[data-render=webgl][data-zoom=building] .note-0{opacity:1}
 .journey[data-zoom=building] .note-0{left:50%;right:auto;top:auto;bottom:12%;transform:translateX(-50%);width:min(80%,280px)}

@@ -23,9 +23,9 @@ export function zoomProgress(progress,mode,opening){
  const p=clamp(progress/.9);
  return mode==='return'||opening==='out'?1-p:p;
 }
-export function cameraDistance(progress,mode,opening){
+export function cameraDistance(progress,mode,opening,start=4.05){
  const q=zoomProgress(progress,mode,opening);
- return 1+3.05*Math.exp(-Math.log(3.05/.0016)*q);
+ return 1+(start-1)*Math.exp(-Math.log((start-1)/.0016)*q);
 }
 export function markerScale(depth,viewportHeight,fov,size,pixels=28){
  return Math.min(1,2*Math.max(depth,.00001)*Math.tan(fov*Math.PI/360)/viewportHeight*pixels/size);
