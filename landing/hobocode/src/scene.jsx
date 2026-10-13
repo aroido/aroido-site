@@ -1,7 +1,7 @@
-import React,{Suspense,useRef,useMemo,Component} from 'react';
+import React,{Suspense,useRef,useMemo,useEffect,Component} from 'react';
 import {createRoot} from 'react-dom/client';
 import {Canvas,useFrame} from '@react-three/fiber';
-import {Line,useTexture} from '@react-three/drei';
+import {useTexture} from '@react-three/drei';
 import * as THREE from 'three';
 import {feature} from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
@@ -9,52 +9,103 @@ const media='/hobocode/media/';
 const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
 const ease=n=>{n=clamp(n);return n*n*(3-2*n)};
 function point(lon,lat,r=1.005){const a=lat*Math.PI/180,b=(lon-127)*Math.PI/180;return [r*Math.cos(a)*Math.sin(b),r*Math.sin(a),r*Math.cos(a)*Math.cos(b)]}
+// Flat geographic ink on a white globe: no light-dependent gloss or coloured shadows.
+function landTexture(){
+ const canvas=document.createElement('canvas');canvas.width=2048;canvas.height=1024;
+ const ctx=canvas.getContext('2d');ctx.fillStyle='#fafafa';ctx.fillRect(0,0,2048,1024);
+ const polygons=feature(world,world.objects.land).features[0].geometry.coordinates;
+ ctx.fillStyle='#dededb';ctx.strokeStyle='#b8b8b4';ctx.lineWidth=.7;
+ for(const polygon of polygons){
+  for(const shift of [-2048,0,2048]){
+   ctx.beginPath();
+   for(const ring of polygon){
+    let previous;
+    ring.forEach(([lon,lat],i)=>{
+     let x=(lon+180)/360*2048;
+     if(previous!==undefined){while(x-previous>1024)x-=2048;while(x-previous< -1024)x+=2048;}
+     previous=x;const y=(90-lat)/180*1024;
+     if(i===0)ctx.moveTo(x+shift,y);else ctx.lineTo(x+shift,y);
+    });ctx.closePath();
+   }
+   ctx.fill('evenodd');ctx.stroke();
+  }
+ }
+ const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
+ texture.wrapS=THREE.RepeatWrapping;texture.offset.x=217/360;
+ return texture;
+}
+const vertexShader=`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
+// Reveal the original artwork, first around the circle, then along each X stroke.
+// The source alpha remains untouched; the last frame is the complete official mark.
+const fragmentShader=`uniform sampler2D artwork;uniform vec3 ink;uniform float reveal;varying vec2 vUv;
+void main(){vec2 p=vUv-.5;float r=length(p);float angle=mod(atan(p.x,p.y)+6.2831853,6.2831853)/6.2831853;
+float ring=step(.31,r)*step(angle,reveal/.55);
+float first=step(abs(p.x+p.y),.14)*step((.5-p.y),clamp((reveal-.55)/.225,0.,1.));
+float second=step(abs(p.x-p.y),.14)*step((.5-p.y),clamp((reveal-.775)/.225,0.,1.));
+float visible=max(ring,max(first,second));if(reveal>=.999)visible=1.;
+float alpha=texture2D(artwork,vUv).a*visible;if(alpha<.01)discard;gl_FragColor=vec4(ink,alpha);
+#include <colorspace_fragment>
+}`;
 function Earth({state,opening}){
- const group=useRef(),marks=useRef([]);
- const [texture,mineTexture]=useTexture([media+'pin-selected.svg',media+'pin-mine.svg']);
- const coast=useMemo(()=>{
-  const coords=feature(world,world.objects.land).features[0].geometry.coordinates;
-  return coords.flatMap(poly=>poly.map(ring=>ring.map(c=>point(...c))));
- },[]);
- const grid=useMemo(()=>{
-  const lines=[];
-  for(let lat=-60;lat<=60;lat+=30) lines.push(Array.from({length:121},(_,i)=>point(i*3-180,lat,1.002)));
-  for(let lon=-180;lon<180;lon+=30) lines.push(Array.from({length:61},(_,i)=>point(lon,i*3-90,1.002)));
-  return lines;
- },[]);
+ const group=useRef(),marks=useRef([]),materials=useRef([]),started=useRef(null),entered=useRef(false),onScreen=useRef(false);
+ const texture=useTexture(media+'chalk-mark.png');
+ const land=useMemo(landTexture,[]);
  const locations=[[127,37],[108,20],[142,47],[83,33]];
- useFrame(({camera,gl})=>{
+ const uniforms=useMemo(()=>locations.map((_,i)=>({artwork:{value:texture},ink:{value:new THREE.Color(i===0?'#b4501f':'#111111')},reveal:{value:0}})),[texture]);
+ const elements=useMemo(()=>({visual:document.querySelector('.visual'),cards:locations.map((_,i)=>document.querySelector(`.note-${i}`)),lines:locations.map((_,i)=>document.querySelector(`[data-note-link="${i}"]`))}),[]);
+ useEffect(()=>{
+  const visual=elements.visual;if(!visual)return;
+  const observer=new IntersectionObserver(entries=>{
+   onScreen.current=entries.some(entry=>entry.isIntersecting);
+   if(onScreen.current){entered.current=true;state.invalidate?.();}
+  },{threshold:.15});
+  observer.observe(visual);return ()=>observer.disconnect();
+ },[elements,state]);
+ useFrame(({camera,gl,clock,invalidate})=>{
   document.documentElement.dataset.render='webgl';
-  const p=state.progress;
-  const end=ease((p-.76)/.24);
-  const enter=ease(p/.31);
-  let z=opening==='in'?4.05-(2.7*enter):1.42+2.63*ease(p/.2)-2.7*ease((p-.2)/.2);
-  z=THREE.MathUtils.lerp(z,4.05,end);
-  camera.position.set(0,0,z);camera.lookAt(0,0,0);
-  group.current.rotation.set(.64,0,0);
-  group.current.rotation.y=(1-enter)*-.28+end*.22;
-  group.current.updateWorldMatrix(true,true);
+  if(entered.current&&started.current===null)started.current=clock.elapsedTime;
+  const elapsed=started.current===null?0:clock.elapsedTime-started.current;
+  const p=state.progress,end=ease((p-.76)/.24),enter=ease(p/.31);
+  let z=opening==='in'?4.05-2.7*enter:1.42+2.63*ease(p/.2)-2.7*ease((p-.2)/.2);
+  z=THREE.MathUtils.lerp(z,4.05,end);camera.position.set(0,0,z);camera.lookAt(0,0,0);camera.updateMatrixWorld();
+  group.current.rotation.set(.64,(1-enter)*-.08+end*.06,0);group.current.updateWorldMatrix(true,true);
+  const hide=ease((p-.32)/.12)*(1-ease((p-.74)/.15));gl.domElement.style.opacity=String(1-hide);
+  const box=elements.visual?.getBoundingClientRect(),accepted=[];
   marks.current.forEach((mark,i)=>{
    if(!mark)return;
-   const pos=mark.getWorldPosition(new THREE.Vector3()).project(camera);
-   const line=document.querySelector(`[data-note-link="${i}"]`);
-   if(line){const card=document.querySelector(`.note-${i}`).getBoundingClientRect(),box=document.querySelector('.visual').getBoundingClientRect();line.setAttribute('x1',String((card.x+card.width/2-box.x)/box.width*100));line.setAttribute('y1',String((card.y+card.height/2-box.y)/box.height*100));line.setAttribute('x2',String((pos.x+1)*50));line.setAttribute('y2',String((1-pos.y)*50));}
+   materials.current[i].uniforms.reveal.value=ease((elapsed-i*.19)/1.05);
+   const worldPosition=mark.getWorldPosition(new THREE.Vector3());
+   const facing=worldPosition.clone().normalize().dot(camera.position.clone().sub(worldPosition).normalize())>.08;
+   const projected=worldPosition.clone().project(camera);
+   const screen={x:(projected.x+1)*.5*(box?.width||0),y:(1-projected.y)*.5*(box?.height||0)};
+   const overlapping=accepted.some(other=>Math.hypot(screen.x-other.x,screen.y-other.y)<18);
+   mark.visible=facing&&!overlapping;if(mark.visible)accepted.push(screen);
+   const line=elements.lines[i],card=elements.cards[i];
+   if(line&&card&&box){
+    const rect=card.getBoundingClientRect();
+    const onScreen=projected.z> -1&&projected.z<1&&Math.abs(projected.x)<.98&&Math.abs(projected.y)<.98;
+    // A card can cover a front-facing mark: hide that connector too.
+    const obscured=elements.cards.some(other=>{
+     const bounds=other.getBoundingClientRect();const x=box.x+screen.x,y=box.y+screen.y;
+     return x>=bounds.left-5&&x<=bounds.right+5&&y>=bounds.top-5&&y<=bounds.bottom+5;
+    });
+    line.style.visibility=mark.visible&&onScreen&&!obscured&&hide<.05?'visible':'hidden';
+    line.setAttribute('x1',String((rect.x+rect.width/2-box.x)/box.width*100));line.setAttribute('y1',String((rect.y+rect.height/2-box.y)/box.height*100));
+    line.setAttribute('x2',String((projected.x+1)*50));line.setAttribute('y2',String((1-projected.y)*50));
+   }
   });
-  const hide=ease((p-.32)/.12)*(1-ease((p-.74)/.15));
-  gl.domElement.style.opacity=String(1-hide);
+  if(onScreen.current&&entered.current&&elapsed<1.7)invalidate();
  });
  return <group ref={group}>
-  <mesh><sphereGeometry args={[1,64,40]}/><meshStandardMaterial color="#e7e8e5" roughness={1}/></mesh>
-  {grid.map((pts,i)=><Line key={'g'+i} points={pts} color="#c5c8c1" lineWidth={.5}/>)}
-  {coast.filter(r=>r.length>5).map((pts,i)=><Line key={i} points={pts} color="#8f9689" lineWidth={1}/>)}
+  <mesh><sphereGeometry args={[1,96,64]}/><meshBasicMaterial map={land}/></mesh>
   {locations.map(([lon,lat],i)=>{
-   const pos=new THREE.Vector3(...point(lon,lat,1.018));const q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),pos.clone().normalize());
-   return <mesh key={i} position={pos} quaternion={q} ref={el=>marks.current[i]=el}><planeGeometry args={[i===0?.12:.075,i===0?.12:.075]}/><meshBasicMaterial map={i===0?texture:mineTexture} transparent depthWrite={false} side={THREE.FrontSide}/></mesh>
+   const pos=new THREE.Vector3(...point(lon,lat,1.009));const q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),pos.clone().normalize());
+   return <mesh key={i} position={pos} quaternion={q} ref={el=>marks.current[i]=el}><planeGeometry args={[i===0?.13:.10,i===0?.13:.10]}/><shaderMaterial ref={el=>materials.current[i]=el} uniforms={uniforms[i]} vertexShader={vertexShader} fragmentShader={fragmentShader} transparent depthWrite={false} side={THREE.FrontSide}/></mesh>
   })}
  </group>
 }
 class Boundary extends Component{state={failed:false};static getDerivedStateFromError(){return {failed:true}}componentDidCatch(){document.documentElement.dataset.render='fallback'}render(){return this.state.failed?null:this.props.children}}
 export function mountScene(state,opening){
  const root=createRoot(document.querySelector('#scene'));
- root.render(<Boundary><Canvas frameloop="demand" dpr={[1,1.5]} camera={{position:[0,0,4.05],fov:38}} gl={{alpha:true,antialias:true,powerPreference:'low-power'}} onCreated={({gl,invalidate})=>{state.invalidate=invalidate;gl.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();document.documentElement.dataset.render='fallback'})}}><ambientLight intensity={1.8}/><directionalLight position={[-3,5,4]} intensity={2}/><Suspense fallback={null}><Earth state={state} opening={opening}/></Suspense></Canvas></Boundary>);
+ root.render(<Boundary><Canvas frameloop="demand" dpr={[1,1.5]} camera={{position:[0,0,4.05],fov:38}} gl={{alpha:true,antialias:true,powerPreference:'low-power'}} onCreated={({gl,invalidate})=>{state.invalidate=invalidate;gl.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();document.documentElement.dataset.render='fallback';document.querySelectorAll('[data-note-link]').forEach(line=>line.style.visibility='hidden')})}}><Suspense fallback={null}><Earth state={state} opening={opening}/></Suspense></Canvas></Boundary>);
 }
