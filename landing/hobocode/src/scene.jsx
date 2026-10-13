@@ -13,7 +13,8 @@ function showFallback(container){
 }
 import {ease,ndcToClient,connector,cameraDistance,zoomProgress,markerScale} from './geometry.mjs';
 import {Town} from './town.jsx';
-function point(lon,lat,r=1.005){const a=lat*Math.PI/180,b=(lon-127)*Math.PI/180;return [r*Math.cos(a)*Math.sin(b),r*Math.sin(a),r*Math.cos(a)*Math.cos(b)]}
+import target from './nyc-target.json';
+function point(lon,lat,r=1.005){const a=lat*Math.PI/180,b=(lon-target.longitude)*Math.PI/180;return [r*Math.cos(a)*Math.sin(b),r*Math.sin(a),r*Math.cos(a)*Math.cos(b)]}
 // Flat geographic ink on a white globe: no light-dependent gloss or coloured shadows.
 function landTexture(){
  const canvas=document.createElement('canvas');canvas.width=2048;canvas.height=1024;
@@ -36,7 +37,7 @@ function landTexture(){
   }
  }
  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
- texture.wrapS=THREE.RepeatWrapping;texture.offset.x=217/360;
+ texture.wrapS=THREE.RepeatWrapping;texture.offset.x=(90+target.longitude)/360;
  return texture;
 }
 const vertexShader=`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
@@ -51,11 +52,30 @@ float visible=max(ring,max(first,second));if(reveal>=.999)visible=1.;
 float alpha=texture2D(artwork,vUv).a*visible;if(alpha<.01)discard;gl_FragColor=vec4(ink,alpha);
 #include <colorspace_fragment>
 }`;
+function ManyMarks({state,opening}){
+ const texture=useTexture(media+'chalk-mark.png'),mesh=useRef();
+ const positions=useMemo(()=>Array.from({length:180},(_,i)=>{
+  const lat=Math.asin(1-2*(i+.5)/180),lon=i*2.399963229728653;
+  return new THREE.Vector3(Math.cos(lat)*Math.sin(lon),Math.sin(lat),Math.cos(lat)*Math.cos(lon)).multiplyScalar(1.008);
+ }),[]);
+ useFrame(({camera,size})=>{
+  const q=zoomProgress(state.progress,state.mode,opening),accepted=[],matrix=new THREE.Matrix4();state.globeMarks=[];
+  positions.forEach((p,i)=>{
+   const projected=p.clone().project(camera),screen={x:(projected.x+1)*size.width/2,y:(1-projected.y)*size.height/2};
+   const visible=q<.33&&p.clone().normalize().dot(camera.position.clone().sub(p).normalize())>.15&&Math.abs(projected.x)<.98&&Math.abs(projected.y)<.98&&accepted.every(a=>Math.hypot(a.x-screen.x,a.y-screen.y)>12);
+   const scale=visible?markerScale(-p.clone().applyMatrix4(camera.matrixWorldInverse).z,size.height,camera.fov,.04,8):0;
+   matrix.compose(p,new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),p.clone().normalize()),new THREE.Vector3(scale,scale,scale));
+   mesh.current.setMatrixAt(i,matrix);
+   if(visible){accepted.push(screen);state.globeMarks.push({cap:8});}
+  });mesh.current.instanceMatrix.needsUpdate=true;
+ });
+ return <instancedMesh ref={mesh} args={[null,null,positions.length]} frustumCulled={false}><planeGeometry args={[.04,.04]}/><meshBasicMaterial map={texture} transparent depthWrite={false} color="#333333"/></instancedMesh>;
+}
 function Earth({state,opening,container}){
  const group=useRef(),earth=useRef(),town=useRef(),marks=useRef([]),materials=useRef([]),started=useRef(null),entered=useRef(false),onScreen=useRef(false);
  const texture=useTexture(media+'chalk-mark.png');
  const land=useMemo(landTexture,[]);
- const locations=[[127,37],[108,20],[142,47],[83,33]];
+ const locations=[[target.longitude,target.latitude],[-98,32],[-62,50],[-118,47]];
  const uniforms=useMemo(()=>locations.map((_,i)=>({artwork:{value:texture},ink:{value:new THREE.Color(i===0?'#b4501f':'#111111')},reveal:{value:0}})),[texture]);
  const elements=useMemo(()=>({visual:container.querySelector('.visual'),svg:container.querySelector('.note-links'),cards:locations.map((_,i)=>container.querySelector(`.note-${i}`)),lines:locations.map((_,i)=>container.querySelector(`[data-note-link="${i}"]`))}),[container]);
  useEffect(()=>{
@@ -81,18 +101,18 @@ function Earth({state,opening,container}){
   const townVisible=q>.27;
   earth.current.visible=q<.4;town.current.visible=townVisible;
   const blend=ease((q-.27)/.08);
-  town.current.traverse(object=>{if(object.material){object.material.transparent=blend<1;object.material.opacity=blend;object.material.depthWrite=blend>=1;}});
-  // One continuous camera moves from the globe into independently modelled detail.
-  // The geographic globe is only an overview; the town is explicitly fictional.
+  town.current.traverse(object=>{if(object.material&&!object.isSprite){object.material.transparent=blend<1;object.material.opacity=blend;object.material.depthWrite=blend>=1;}});
+  // Globe overview transitions to self-hosted real OSM street/building geometry.
   container.dataset.zoom=q>.89?'building':q>.65?'street':q>.3?'city':'earth';
   container.style.setProperty('--memo-open',q>.89?1:0);
   const label=container.querySelector('.scene-label');
   if(label)label.textContent=label.dataset[container.dataset.zoom]||label.dataset.earth;
   state.zoom={q,level:container.dataset.zoom,distance:z-1};
   camera.near=Math.max(.000001,(z-1)*.04);camera.far=10;camera.updateProjectionMatrix();
-  camera.position.set(0,-(z-1)*.55*ease((q-.55)/.35),z);camera.lookAt(0,0,1);camera.updateMatrixWorld();
+  const roof=(.00002+target.height*.00001)*ease((q-.3)/.5);
+  camera.position.set(0,-(z-1)*.55*ease((q-.55)/.35),z+roof);camera.lookAt(0,0,1+roof);camera.updateMatrixWorld();
   // Exactly centre the selected longitude/latitude. No yaw drift during the zoom.
-  group.current.rotation.set(37*Math.PI/180,0,0);group.current.updateWorldMatrix(true,true);
+  group.current.rotation.set(target.latitude*Math.PI/180,0,0);group.current.updateWorldMatrix(true,true);
   const accepted=[];
   const activeCards=elements.cards.map(card=>{
    if(!card)return null;const style=getComputedStyle(card),bounds=card.getBoundingClientRect();
@@ -132,11 +152,11 @@ function Earth({state,opening,container}){
    }
   });
   if(onScreen.current&&entered.current&&elapsed<1.7)invalidate();
- });
- return <><ambientLight intensity={1.3}/><directionalLight position={[-2,-3,5]} intensity={1.3}/><Town groupRef={town}/><group ref={group}>
+ },-2);
+ return <><ManyMarks state={state} opening={opening}/><ambientLight intensity={1.3}/><directionalLight position={[-2,-3,5]} intensity={1.3}/><Town groupRef={town} state={state} opening={opening}/><group ref={group}>
   <mesh ref={earth}><sphereGeometry args={[1,96,64]}/><meshBasicMaterial map={land}/></mesh>
   {locations.map(([lon,lat],i)=>{
-   const pos=new THREE.Vector3(...point(lon,lat,i===0?1.00010:1.009));const q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),pos.clone().normalize());
+   const pos=new THREE.Vector3(...point(lon,lat,i===0?1.00002+target.height*.00001+.00003:1.009));const q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),pos.clone().normalize());
    return <mesh key={i} position={pos} quaternion={q} ref={el=>marks.current[i]=el}><planeGeometry args={[i===0?.13:.10,i===0?.13:.10]}/><shaderMaterial ref={el=>materials.current[i]=el} uniforms={uniforms[i]} vertexShader={vertexShader} fragmentShader={fragmentShader} transparent depthWrite={false} side={THREE.FrontSide}/></mesh>
   })}
  </group></>
