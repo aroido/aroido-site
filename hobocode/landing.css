@@ -22,3 +22,12 @@ header{height:80px;padding:0 6%;border-bottom:1px solid var(--line);display:flex
 .journey[data-render=webgl][data-zoom=building] .note-0{opacity:1}
 .journey[data-zoom=building] .note-0{left:50%;right:auto;top:auto;bottom:12%;transform:translateX(-50%);width:min(80%,280px)}
 @media(max-width:700px){.journey[data-motion]{height:1550px}.journey[data-motion] .stage{height:100svh;max-height:760px}.journey[data-zoom=building] .note-0{bottom:12%;width:72%;max-width:270px}.scene-label{padding:0 10px}}
+
+/* Short scroll-driven transition: 320px, followed immediately by the app. */
+.journey[data-motion]{height:920px}
+.journey[data-motion] .stage{height:600px;max-height:none}
+.map-credit{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-size:10px;color:#555;z-index:5}.map-credit a{color:inherit}
+.scene-label{bottom:32px}
+@media(max-width:700px){.journey[data-motion]{height:880px}.journey[data-motion] .stage{height:560px;max-height:none}.scene-label{bottom:32px}}
+
+.scene-label{background:rgba(255,255,255,.94);padding:4px 8px;color:#4a4a4a;width:max-content;max-width:95%;left:50%;transform:translateX(-50%);border-radius:3px}.map-credit{background:rgba(255,255,255,.94);padding:3px 0}

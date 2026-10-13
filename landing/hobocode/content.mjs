@@ -68,9 +68,9 @@ export const copy = {
     "disclosure": "출시 전 앱 화면이에요. 화면 속 장소와 메모는 설명을 위해 만든 데이터예요. 이 웹페이지에서는 지도나 알림 기능을 사용할 수 없어요.",
     "zoomLabels": [
       "장소 메모 예시",
-      "가상 도시 · 시연용 장면",
-      "가상 거리 · 시연용 장면",
-      "가상 건물에 남긴 메모 · 시연"
+      "뉴욕 · 실제 지도 데이터 / 메모는 예시",
+      "뉴욕 · 실제 도로와 건물 / 메모는 예시",
+      "Flatiron Building · 메모는 시연용 예시"
     ]
   },
   "en": {
@@ -142,9 +142,9 @@ export const copy = {
     "disclosure": "Actual prerelease app screens. Places and notes are fictional illustration data. Map and notification functions do not operate on this website.",
     "zoomLabels": [
       "Illustrative place notes",
-      "Fictional city · product demonstration",
-      "Fictional street · product demonstration",
-      "Note on a fictional building · demo"
+      "New York · real map data / example notes",
+      "New York · real streets and buildings / example notes",
+      "Flatiron Building · illustrative note"
     ]
   },
   "ja": {
@@ -216,9 +216,9 @@ export const copy = {
     "disclosure": "公開前の実際のアプリ画面です。場所とメモは説明用の架空データです。このウェブでは地図・通知機能は動作しません。",
     "zoomLabels": [
       "場所メモの例",
-      "架空の街 · デモ用の場面",
-      "架空の通り · デモ用の場面",
-      "架空の建物に残したメモ · デモ"
+      "ニューヨーク · 実際の地図データ／メモは例",
+      "ニューヨーク · 実際の道路と建物／メモは例",
+      "Flatiron Building · メモはデモ用の例"
     ]
   },
   "zh-hans": {
@@ -290,9 +290,9 @@ export const copy = {
     "disclosure": "画面来自发布前的真实应用。地点和笔记为说明用的虚构数据。本网站不提供地图或通知功能。",
     "zoomLabels": [
       "地点笔记示例",
-      "虚构城市 · 产品演示",
-      "虚构街道 · 产品演示",
-      "虚构建筑上的笔记 · 演示"
+      "纽约 · 真实地图数据／笔记为示例",
+      "纽约 · 真实道路与建筑／笔记为示例",
+      "Flatiron Building · 笔记为演示示例"
     ]
   }
 };
