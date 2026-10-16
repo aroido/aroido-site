@@ -145,9 +145,7 @@ const extra = {
   ],
   "conditions": "위치·알림 권한이 필요해요. 앱을 쓰지 않을 때도 알림을 받으려면 위치를 ‘항상 허용’으로 설정해 주세요.",
   "place": "한길전골",
-  "sceneNote": "그림 지도 · 실제 지역이 아니에요",
   "notifAlt": "잠금 화면 알림: 근처에 저장한 메모가 있어요. 둘이 오면 전골 소짜 + 볶음밥 하나. 이 조합이 딱 좋았음. #주문팁 외 1개",
-  "notifCaption": "잠금 화면 알림 · 개발 빌드의 실제 화면, 메모는 예시",
   "screensTitle": "앱에서는 이렇게 보여요.",
   "screensBody": "지금 개발 중인 앱의 실제 화면이에요.",
   "screens": [
@@ -247,9 +245,7 @@ const extra = {
   ],
   "conditions": "Location and notification permissions required. To get alerts when you’re not using the app, set location access to “Always”.",
   "place": "Hangil Jeongol",
-  "sceneNote": "Illustrated map · not a real area",
   "notifAlt": "Lock Screen notification in Korean: there is a saved note nearby. For two, a small hot pot and one fried rice; this combo was perfect. #ordertip, and 1 more",
-  "notifCaption": "Lock Screen notification · actual development build screen (Korean), example note",
   "screensTitle": "What it looks like in the app.",
   "screensBody": "Actual screens from the app in development.",
   "screens": [
@@ -349,9 +345,7 @@ const extra = {
   ],
   "conditions": "位置情報と通知の許可が必要です。アプリを使っていないときも通知を受け取るには、位置情報を「常に」に設定してください。",
   "place": "ハンギル鍋",
-  "sceneNote": "イラストの地図 · 実在の地域ではありません",
   "notifAlt": "韓国語のロック画面通知：近くに保存したメモがあります。二人なら鍋の小と焼き飯ひとつ、この組み合わせが最高。#注文のコツ ほか1件",
-  "notifCaption": "ロック画面の通知 · 開発ビルドの実際の画面（韓国語）、メモは例",
   "screensTitle": "アプリではこう見えます。",
   "screensBody": "開発中のアプリの実際の画面です。",
   "screens": [
@@ -451,9 +445,7 @@ const extra = {
   ],
   "conditions": "需要位置和通知权限。若想在不使用应用时也收到提醒，请把位置权限设为“始终”。",
   "place": "韩吉火锅",
-  "sceneNote": "插画地图 · 并非真实地区",
   "notifAlt": "韩语锁屏通知：附近有保存的笔记。两个人点小份火锅加一份炒饭，这个组合刚刚好。#点餐窍门，另有1条",
-  "notifCaption": "锁屏通知 · 开发版本的真实画面（韩语），笔记为示例",
   "screensTitle": "在应用里是这样的。",
   "screensBody": "开发中应用的真实画面。",
   "screens": [
