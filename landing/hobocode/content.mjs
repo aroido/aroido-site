@@ -140,12 +140,12 @@ const extra = {
    ],
    [
     "남겨둔 메모를 알려드려요",
-    "잠금 화면 알림에서 메모 내용을 바로 볼 수 있어요."
+    "알림을 누르고 앱에서 메모를 확인해요."
    ]
   ],
-  "conditions": "위치·알림 권한이 필요해요. 앱을 쓰지 않을 때도 알림을 받으려면 위치를 ‘항상 허용’으로 설정해 주세요.",
+  "conditions": "위치·알림 권한이 필요해요. 앱을 쓰지 않을 때도 알림을 받으려면 위치를 ‘항상 허용’으로 설정해 주세요. 기본 알림에는 본문이 표시되지 않아요. 아래 본문 표시 예시는 별도 동의한 경우예요.",
   "place": "한길전골",
-  "notifAlt": "잠금 화면 알림: 근처에 저장한 메모가 있어요. 둘이 오면 전골 소짜 + 볶음밥 하나. 이 조합이 딱 좋았음. #주문팁 외 1개",
+  "notifAlt": "본문 표시를 별도 허용한 예시. 잠금 화면 알림: 근처에 저장한 메모가 있어요. 둘이 오면 전골 소짜 + 볶음밥 하나. 이 조합이 딱 좋았음. #주문팁 외 1개",
   "screensTitle": "앱에서는 이렇게 보여요.",
   "screensBody": "지금 개발 중인 앱의 실제 화면이에요.",
   "screens": [
@@ -153,7 +153,7 @@ const extra = {
     "home",
     "홈",
     "지금 있는 곳 근처에 남긴 메모를 먼저 보여줘요.",
-    "호보코드 홈 화면. 철길 마을 그림 아래 흰 페인트 메모에 소담카페 메모와 라테 사진이 있고, 아래에 지도가 있습니다."
+    "호보코드 홈 화면. 장소명 앞 표식과 합성 카페 메모가 있는 흰 페인트 카드, 아래에 실제 네이버 지도가 있습니다."
    ],
    [
     "map",
@@ -165,10 +165,28 @@ const extra = {
     "alert",
     "장소 알림",
     "장소마다 알림을 켜고 반경을 정해요.",
-    "호보코드 장소 화면. 이 장소 도착 알림이 켜져 있고 알림 반경 100m가 선택되어 있습니다."
+    "호보코드 장소 설정 화면. 합성 카페의 도착 알림은 꺼져 있고 반경 100m가 선택되어 있습니다."
+   ],
+   [
+    "editor",
+    "메모",
+    "장소와 지도를 확인하며 메모를 읽고 고쳐요.",
+    "호보코드 메모 화면. 합성 카페의 장소 카드와 지도, 메모 본문, 아래 도구 줄이 보입니다."
+   ],
+   [
+    "mark",
+    "나만의 표식",
+    "메모에 어울리는 표식을 골라요.",
+    "호보코드 메모 표식 선택창. 본문 아래에 분필 모양 표식 목록이 펼쳐져 있습니다."
+   ],
+   [
+    "onboarding",
+    "처음 시작할 때",
+    "장소에 메모를 남기는 방법을 소개해요.",
+    "호보코드 실제 첫 실행 화면. 벽의 분필 표식과 예시 메모, 다음 버튼이 보입니다."
    ]
   ],
-  "disclosure": "2026년 10월 14일 개발 빌드의 실제 화면이에요. 화면 속 장소·메모·사진은 설명을 위한 예시이고, 출시 전에 화면이 바뀔 수 있어요. 이 웹페이지에서는 지도나 알림 기능을 쓸 수 없어요."
+  "disclosure": "2026년 10월 16일 개발 빌드의 실제 화면이에요. 장소·메모는 공개용 합성 예시이며, 출시 전에 화면이 바뀔 수 있어요. 이 웹페이지에서는 지도나 알림 기능을 쓸 수 없어요."
  },
  "en": {
   "replay": "Replay",
@@ -240,12 +258,12 @@ const extra = {
    ],
    [
     "See your note",
-    "Read the note right from the Lock Screen notification."
+    "Open the app from the notification to read your notes."
    ]
   ],
-  "conditions": "Location and notification permissions required. To get alerts when you’re not using the app, set location access to “Always”.",
+  "conditions": "Location and notification permissions required. To get alerts when you’re not using the app, set location access to “Always”. Notifications hide note text by default. The text preview shown below requires separate consent.",
   "place": "Hangil Jeongol",
-  "notifAlt": "Lock Screen notification in Korean: there is a saved note nearby. For two, a small hot pot and one fried rice; this combo was perfect. #ordertip, and 1 more",
+  "notifAlt": "Example with separate consent to show note text. Lock Screen notification in Korean: there is a saved note nearby. For two, a small hot pot and one fried rice; this combo was perfect. #ordertip, and 1 more",
   "screensTitle": "What it looks like in the app.",
   "screensBody": "Actual screens from the app in development.",
   "screens": [
@@ -253,7 +271,7 @@ const extra = {
     "home",
     "Home",
     "Shows the notes you left near where you are now.",
-    "Hobocode home screen in Korean: a white paint note for Café Sodam with a latte photo below a rail-town silhouette, and a map below."
+    "Hobocode home screen in Korean: a synthetic café note with its mark before the place name, and a live NAVER map below."
    ],
    [
     "map",
@@ -265,10 +283,28 @@ const extra = {
     "alert",
     "Place alert",
     "Turn on alerts and pick a radius for each place.",
-    "Hobocode place screen in Korean: arrival alert for this place is on and a 100 m radius is selected."
+    "Hobocode place settings in Korean: arrival alerts for the synthetic café are off, with a 100 m radius selected."
+   ],
+   [
+    "editor",
+    "Notes",
+    "Read and edit a note alongside its place and map.",
+    "Hobocode note screen in Korean: a synthetic café place card, map, note body and tools below."
+   ],
+   [
+    "mark",
+    "Your own mark",
+    "Choose a mark that fits your note.",
+    "Hobocode note mark picker in Korean: a grid of chalk symbols below the note."
+   ],
+   [
+    "onboarding",
+    "Getting started",
+    "An introduction to leaving notes at places.",
+    "Hobocode first-run screen in Korean: a chalk mark on a wall, an example note and the Next button."
    ]
   ],
-  "disclosure": "Actual screens from the October 14, 2026 development build. Places, notes and photos are examples, and screens may change before release. Map and notification features don’t work on this website."
+  "disclosure": "Actual screens captured on October 16, 2026 from a development build. Places and notes are synthetic examples; screens may change before release. Map and notification features don’t work on this website."
  },
  "ja": {
   "replay": "もう一度見る",
@@ -340,12 +376,12 @@ const extra = {
    ],
    [
     "残したメモをお知らせ",
-    "ロック画面の通知で、メモの内容をすぐ確認できます。"
+    "通知からアプリを開いて、メモを確認します。"
    ]
   ],
-  "conditions": "位置情報と通知の許可が必要です。アプリを使っていないときも通知を受け取るには、位置情報を「常に」に設定してください。",
+  "conditions": "位置情報と通知の許可が必要です。アプリを使っていないときも通知を受け取るには、位置情報を「常に」に設定してください。 通知は初期設定では本文を表示しません。下の本文表示例には別途同意が必要です。",
   "place": "ハンギル鍋",
-  "notifAlt": "韓国語のロック画面通知：近くに保存したメモがあります。二人なら鍋の小と焼き飯ひとつ、この組み合わせが最高。#注文のコツ ほか1件",
+  "notifAlt": "本文の表示に別途同意した場合の例。韓国語のロック画面通知：近くに保存したメモがあります。二人なら鍋の小と焼き飯ひとつ、この組み合わせが最高。#注文のコツ ほか1件",
   "screensTitle": "アプリではこう見えます。",
   "screensBody": "開発中のアプリの実際の画面です。",
   "screens": [
@@ -353,7 +389,7 @@ const extra = {
     "home",
     "ホーム",
     "いる場所の近くに残したメモを先に表示します。",
-    "韓国語のホボコードのホーム画面：線路沿いの町のシルエットの下に、ラテの写真付きのカフェのメモ、その下に地図。"
+    "韓国語のホーム画面：場所名の前に印がある架空のカフェのメモと、その下のNAVER地図。"
    ],
    [
     "map",
@@ -365,10 +401,28 @@ const extra = {
     "alert",
     "場所の通知",
     "場所ごとに通知をオンにして範囲を決めます。",
-    "韓国語のホボコードの場所画面：この場所の到着通知がオンで、通知範囲100mが選択されている。"
+    "韓国語の場所設定画面：架空のカフェの到着通知はオフで、範囲100mが選択されている。"
+   ],
+   [
+    "editor",
+    "メモ",
+    "場所と地図を確認しながら、メモを読んで編集します。",
+    "韓国語のメモ画面：架空のカフェの場所カード、地図、本文と下部のツール。"
+   ],
+   [
+    "mark",
+    "自分だけの印",
+    "メモに合う印を選びます。",
+    "韓国語のメモの印選択画面：本文の下にチョーク風の印が並んでいる。"
+   ],
+   [
+    "onboarding",
+    "はじめに",
+    "場所にメモを残す使い方を紹介します。",
+    "韓国語の初回起動画面：壁のチョークの印、例のメモと次へボタン。"
    ]
   ],
-  "disclosure": "2026年10月14日の開発ビルドの実際の画面です。場所・メモ・写真は説明用の例で、公開前に画面が変わる場合があります。このウェブでは地図・通知機能は使えません。"
+  "disclosure": "2026年10月16日に開発ビルドから撮影した実際の画面です。場所とメモは架空の例で、公開前に画面が変わる場合があります。このウェブでは地図・通知機能は使えません。"
  },
  "zh-hans": {
   "replay": "重新播放",
@@ -440,12 +494,12 @@ const extra = {
    ],
    [
     "提醒你看笔记",
-    "在锁屏通知里就能看到笔记内容。"
+    "点击通知打开应用，查看笔记。"
    ]
   ],
-  "conditions": "需要位置和通知权限。若想在不使用应用时也收到提醒，请把位置权限设为“始终”。",
+  "conditions": "需要位置和通知权限。若想在不使用应用时也收到提醒，请把位置权限设为“始终”。 默认通知不显示正文。下方的正文预览示例需要另行同意。",
   "place": "韩吉火锅",
-  "notifAlt": "韩语锁屏通知：附近有保存的笔记。两个人点小份火锅加一份炒饭，这个组合刚刚好。#点餐窍门，另有1条",
+  "notifAlt": "另行同意显示笔记正文后的示例。韩语锁屏通知：附近有保存的笔记。两个人点小份火锅加一份炒饭，这个组合刚刚好。#点餐窍门，另有1条",
   "screensTitle": "在应用里是这样的。",
   "screensBody": "开发中应用的真实画面。",
   "screens": [
@@ -453,7 +507,7 @@ const extra = {
     "home",
     "首页",
     "优先显示你现在所在位置附近的笔记。",
-    "韩语的 Hobocode 首页：铁路小镇剪影下方的白漆笔记里有咖啡馆笔记和拿铁照片，下方是地图。"
+    "韩语首页：虚构咖啡馆的笔记，标记位于地点名称前，下方是NAVER地图。"
    ],
    [
     "map",
@@ -465,10 +519,28 @@ const extra = {
     "alert",
     "地点提醒",
     "为每个地点开启提醒并设置范围。",
-    "韩语的 Hobocode 地点页面：此地点的到达提醒已开启，并选择了100米的提醒范围。"
+    "韩语地点设置页：虚构咖啡馆的到达提醒已关闭，选择的范围为100米。"
+   ],
+   [
+    "editor",
+    "笔记",
+    "查看地点和地图，阅读并修改笔记。",
+    "韩语笔记页：虚构咖啡馆的地点卡片、地图、笔记正文和下方工具栏。"
+   ],
+   [
+    "mark",
+    "自己的标记",
+    "为笔记选择合适的标记。",
+    "韩语笔记标记选择页：正文下方展开粉笔风格的标记列表。"
+   ],
+   [
+    "onboarding",
+    "开始使用",
+    "了解如何在地点留下笔记。",
+    "韩语首次启动页：墙上的粉笔标记、示例笔记和下一步按钮。"
    ]
   ],
-  "disclosure": "画面来自2026年10月14日开发版本的真实应用。地点、笔记和照片为说明用的示例，发布前画面可能调整。本网站不提供地图或通知功能。"
+  "disclosure": "画面于2026年10月16日从开发版本中实际截取。地点和笔记均为虚构示例，发布前画面可能调整。本网站不提供地图或通知功能。"
  }
 };
 export const copy = Object.fromEntries(Object.keys(base).map(k => [k, { ...base[k], ...extra[k] }]));
