@@ -7,8 +7,8 @@ from fontTools import subset
 here = Path(__file__).resolve().parent
 source = Path(sys.argv[1])
 target = here.parent.parent / 'hobocode/fonts'
-text = (here / 'content.mjs').read_text() + (here / 'generate.mjs').read_text() + ''.join(chr(i) for i in range(32, 127))
-for name in ['BlackHanSans-Regular', 'NanumGothicCoding-Regular', 'NanumGothicCoding-Bold', 'SairaStencilOne-Regular']:
+text = (here / 'content.mjs').read_text() + (here / 'generate.mjs').read_text() + (here / 'art.mjs').read_text() + ''.join(chr(i) for i in range(32, 127))
+for name in ['BlackHanSans-Regular', 'NanumGothicCoding-Regular', 'NanumGothicCoding-Bold', 'SairaStencilOne-Regular', 'RubikWetPaint-Regular']:
     options = subset.Options()
     options.flavor = 'woff2'
     options.layout_features = ['*']
@@ -16,6 +16,6 @@ for name in ['BlackHanSans-Regular', 'NanumGothicCoding-Regular', 'NanumGothicCo
     options.name_legacy = True
     font = subset.load_font(str(source / (name + '.ttf')), options)
     selection = subset.Subsetter(options=options)
-    selection.populate(text=text)
+    selection.populate(text='JanFebMarAprMayJunJulAugSepOctNovDec0123456789 ' if name.startswith('RubikWetPaint') else text)
     selection.subset(font)
     subset.save_font(font, str(target / (name + '.woff2')), options)
