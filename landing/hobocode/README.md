@@ -21,3 +21,5 @@ Without JavaScript or with reduced motion, every section renders its final state
 `/hobocode/get` (also generated) is the single share link for QR codes, ads and profiles. It redirects iPhone to the App Store and Android to Google Play once `STORE_URLS` in `generate.mjs` is filled; until then every device goes to the landing page in its browser language, keeping the query string. It is `noindex`.
 
 No browser location, map API, notification request, user data or analytics on this page. See ASSETS.md for provenance.
+
+Mobile screen cards use a single vertical column; desktop uses three columns. To check scroll containment, locale layouts, reduced motion, sticky stages and a diagonal touch gesture, serve the root and run `BASE_URL=http://127.0.0.1:4173 node scripts/verify-hobocode-scroll.cjs` from the root with Playwright Chromium and WebKit installed. `PLAYWRIGHT_MODULE`, `CHROMIUM_EXECUTABLE`, and `WEBKIT_EXECUTABLE` support an existing local browser runtime; optional `EVIDENCE_DIR` saves screenshots. This is mobile emulation, not physical iPhone testing.
