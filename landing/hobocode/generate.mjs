@@ -38,7 +38,7 @@ for (const c of Object.values(copy)) {
     c.screens.map(([k, name, text, alt], i) => '<li class="reveal" style="--d:' + i * 120 + 'ms"><figure><div class="phone"><img src="' + m + 'screen-' + k + '.webp" width="660" height="1434" alt="' + alt + '" loading="lazy" decoding="async"></div><figcaption><b>' + name + '</b><span>' + text + '</span></figcaption></figure></li>').join('') + '</ul><p class="demo-disclosure">' + c.disclosure + '</p></section>' +
     // 5. Closing.
     '<section class="closing"><img src="' + m + 'chalk-mark.png" alt="" width="76" height="76" loading="lazy"><h2>' + c.end + '</h2><span class="badge">' + c.soon + '</span><p>' + c.endBody + '</p></section></main>' +
-    '<footer><span>© 2026 Aroido · Hobocode</span><nav aria-label="' + c.support + '"><a href="/hobocode/privacy/">' + c.privacy + '</a><a href="/hobocode/support/">' + c.support + '</a></nav><nav class="locale" aria-label="Language"><a href="/hobocode/" lang="en">EN</a><a href="/ko/hobocode/" lang="ko">한국어</a><a href="/ja/hobocode/" lang="ja">日本語</a><a href="/zh-hans/hobocode/" lang="zh-Hans">中文</a></nav></footer>' +
+    '<footer><span>© 2026 Aroido · Hobocode</span><nav aria-label="' + c.support + '"><a href="' + c.prefix + '/hobocode/privacy/">' + c.privacy + '</a><a href="' + c.prefix + '/hobocode/support/">' + c.support + '</a></nav><nav class="locale" aria-label="Language"><a href="/hobocode/" lang="en">EN</a><a href="/ko/hobocode/" lang="ko">한국어</a><a href="/ja/hobocode/" lang="ja">日本語</a><a href="/zh-hans/hobocode/" lang="zh-Hans">中文</a></nav></footer>' +
     '<script type="module" src="/hobocode/landing.js"></script></body></html>\n';
   files.set(root + path + 'index.html', html);
 }

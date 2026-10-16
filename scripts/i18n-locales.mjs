@@ -72,6 +72,11 @@ export const STATIC_I18N_ROUTES = [
   { sourcePath: "contact/index.html", routePath: "/contact/" },
 ];
 
+// Independently authored locales: sitemap discovery only, never translation inputs.
+export const INDEPENDENT_I18N_ROUTES = [
+  { sourcePath: "hobocode/index.html", routePath: "/hobocode/" },
+];
+
 export function getLocale(code) {
   return LOCALE_BY_CODE.get(code) || LOCALE_BY_CODE.get(DEFAULT_LOCALE);
 }
