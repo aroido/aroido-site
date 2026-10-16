@@ -106,6 +106,7 @@ if [[ -f scripts/check-vibesmith-install-paths.sh ]]; then
 fi
 
 if [[ "$MODE" == "full" ]]; then
+  add_check "static:hobocode-seo" "node scripts/verify-hobocode-seo.mjs"
   add_check "static:smoke-content" "grep -q '<!doctype html' index.html || grep -qi '<html' index.html"
   if [[ -f scripts/verify-localized-output.mjs ]]; then
     add_check "static:localized-output" "node scripts/verify-localized-output.mjs"

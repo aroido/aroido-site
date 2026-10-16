@@ -10,6 +10,7 @@ import {
   PUBLIC_LOCALES,
   SITE_URL,
   STATIC_I18N_ROUTES,
+  INDEPENDENT_I18N_ROUTES,
   buildHreflangLinks,
   getLocale,
   localizeHref,
@@ -1021,7 +1022,7 @@ function getFileLastModifiedIso(relativePath) {
 function renderSitemap(posts, archivePages) {
   const latestPostIso = posts[0]?.isoDate || getFileLastModifiedIso("index.html");
   const canonicalEntries = [
-    ...STATIC_I18N_ROUTES.map((route) => ({
+    ...[...STATIC_I18N_ROUTES, ...INDEPENDENT_I18N_ROUTES].map((route) => ({
       loc: route.routePath,
       lastmod: getFileLastModifiedIso(route.sourcePath),
     })),
