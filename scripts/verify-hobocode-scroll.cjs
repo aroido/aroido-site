@@ -20,7 +20,7 @@ const routes = ['/hobocode/', '/ko/hobocode/', '/ja/hobocode/', '/zh-hans/hoboco
               await page.evaluate(() => document.fonts.ready);
               await page.addStyleTag({ content: 'html { scroll-behavior: auto !important; }' });
               await page.locator('.screen-list').scrollIntoViewIfNeeded();
-              if (width >= 760) await page.waitForTimeout(1200); // settle staggered reveal transforms
+              if (width >= 760) await page.waitForTimeout(1600); // settle staggered reveal transforms
               const layout = await page.evaluate(() => {
                 const list = document.querySelector('.screen-list');
                 const cards = [...list.children].map(e => e.getBoundingClientRect().toJSON());
@@ -33,10 +33,11 @@ const routes = ['/hobocode/', '/ko/hobocode/', '/ja/hobocode/', '/zh-hans/hoboco
               assert.ok(layout.listScroll <= layout.listWidth, 'nested horizontal overflow');
               assert.equal(layout.left, 0);
               assert.equal(layout.snap, 'none');
-              assert.equal(layout.cards.length, 3);
-              for (let i = 1; i < 3; i++) {
+              assert.equal(layout.cards.length, 6);
+              for (let i = 1; i < layout.cards.length; i++) {
                 if (width < 760) assert.ok(layout.cards[i].top >= layout.cards[i - 1].bottom, 'cards must stack');
-                else assert.ok(Math.abs(layout.cards[i].top - layout.cards[0].top) < 1, 'desktop cards must share row');
+                else if (i % 3) assert.ok(Math.abs(layout.cards[i].top - layout.cards[i - 1].top) < 1, 'desktop cards must share row');
+                else assert.ok(layout.cards[i].top >= layout.cards[i - 1].bottom, 'desktop wraps after three cards');
               }
               // Traverse the page through the sticky arrival sequence, checking horizontal containment.
               for (const progress of [0, 0.5, 1]) {
