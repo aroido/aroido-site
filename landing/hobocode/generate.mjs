@@ -42,6 +42,16 @@ for (const c of Object.values(copy)) {
     '<script type="module" src="/hobocode/landing.js"></script></body></html>\n';
   files.set(root + path + 'index.html', html);
 }
+// /hobocode/get: one share link (QR, ads, profile). Sends phones to their store once the
+// store URLs exist; until then everyone lands on the landing page in their language.
+// Query strings (utm_*) are kept for the landing page.
+const STORE_URLS = {ios: '', android: ''}; // e.g. https://apps.apple.com/kr/app/id..., https://play.google.com/store/apps/details?id=...
+files.set(root + '/hobocode/get/index.html', '<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hobocode</title><meta name="robots" content="noindex"><meta name="theme-color" content="#0e0e0e"><link rel="canonical" href="https://aroido.com/hobocode/"><link rel="icon" href="' + m + 'app-icon.png">' +
+  '<script>(function(){var S=' + JSON.stringify(STORE_URLS) + ',u=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1),and=/Android/i.test(u),ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]),p="";' +
+  'for(var i=0;i<ls.length;i++){var l=String(ls[i]).toLowerCase();if(l.indexOf("ko")===0){p="/ko";break}if(l.indexOf("ja")===0){p="/ja";break}if(l.indexOf("zh")===0){p="/zh-hans";break}if(l.indexOf("en")===0)break}' +
+  'location.replace((ios&&S.ios)||(and&&S.android)||(p+"/hobocode/"+location.search))})()</script>' +
+  '<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0e0e0e;color:#f2f2f2;font:15px/1.6 -apple-system,system-ui,sans-serif;text-align:center}img{width:64px;height:64px;background:#111;border:1px solid #2c2c2c;border-radius:8px;padding:10px}a{color:inherit}nav{display:flex;gap:18px;justify-content:center;margin-top:8px}nav a{min-height:44px;display:inline-flex;align-items:center}</style></head>' +
+  '<body><main><img src="' + m + 'chalk-mark.png" alt="" width="64" height="64"><h1 style="font-size:20px;margin:16px 0 4px"><a href="/hobocode/">hobo code</a></h1><nav aria-label="Language"><a href="/hobocode/" lang="en">EN</a><a href="/ko/hobocode/" lang="ko">한국어</a><a href="/ja/hobocode/" lang="ja">日本語</a><a href="/zh-hans/hobocode/" lang="zh-Hans">中文</a></nav></main></body></html>\n');
 files.set(root + '/hobocode/media/town.svg', townSvg(VIEW));
 files.set(root + '/hobocode/media/wear.svg', wearSvg(300, 160, 1000, 700));
 files.set(root + '/hobocode/landing.css', fs.readFileSync('style.css', 'utf8'));
