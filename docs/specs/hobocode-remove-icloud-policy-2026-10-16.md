@@ -10,8 +10,8 @@ Align the public Hobocode privacy policy and support page with the app after `ar
 ## Facts from the app change
 
 - iCloud sync is removed. Notes, places, photos, drafts and trash stay in app-private storage on this iPhone. The app does not check the iCloud account, does not separate record spaces by account, and does not send the received-reminder total to iCloud. There is still no separate sign-up.
-- Earlier test versions (TestFlight) had optional iCloud sync. Data already sent to iCloud is no longer read or deleted by the app; users can delete it in iPhone Settings > [name] > iCloud > Manage Storage (Manage Account Storage). After updating, existing on-iPhone records move into on-device app storage and stay visible; the app does not delete files.
-- iOS system backups (iCloud Backup, device backup) are Apple features separate from the app and may still be mentioned.
+- Earlier test versions (TestFlight) had optional iCloud sync. Data already sent to iCloud is no longer read or deleted by the app; users can delete it in iPhone Settings > [name] > iCloud > Manage Storage (Manage Account Storage). On first launch after updating, the app continues with the most recently used record space that was on this iPhone. If an earlier version kept both device records and iCloud account records, the other records no longer appear in the app but stay on this iPhone and are deleted together with the app. The app does not delete files while moving records.
+- Hobocode records can be included in iPhone backups (iCloud Backup or a computer backup) under the user's Apple settings; the app does not exclude them. Public copy must not say records exist only on the iPhone. The app itself does not back up or sync records elsewhere.
 
 ## Scope
 
@@ -30,5 +30,6 @@ Align the public Hobocode privacy policy and support page with the app after `ar
 
 ## Change history
 
+- 2026-10-16: Independent review fixes. Reason: earlier-test-version paragraph overstated that all records stay visible; removed the obsolete reminder-total clause; aligned on-device wording with iPhone backups; support intro no longer cites a storage status screen; conditional place-save wording.
 - 2026-10-16: Created. Reason: app removed iCloud sync (aroido/hobocode#264); public copy must not describe sync that no longer exists.
 
