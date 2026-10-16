@@ -7,7 +7,7 @@
     <meta
       id="metaDescription"
       name="description"
-      content="How Hobocode handles notes, photos, location, optional iCloud sync and support requests."
+      content="How Hobocode handles notes, photos, location, on-device storage, map search and support requests."
     />
     <link rel="canonical" href="https://aroido.com/hobocode/privacy/" />
     <link rel="alternate" hreflang="en" href="https://aroido.com/hobocode/privacy/" />
@@ -21,7 +21,7 @@
     <meta property="og:title" content="Hobocode Privacy Policy | Aroido" />
     <meta
       property="og:description"
-      content="How Hobocode handles notes, photos, location, optional iCloud sync and support requests."
+      content="How Hobocode handles notes, photos, location, on-device storage, map search and support requests."
     />
     <meta property="og:url" content="https://aroido.com/hobocode/privacy/" />
     <meta property="og:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="Hobocode Privacy Policy | Aroido" />
     <meta
       name="twitter:description"
-      content="How Hobocode handles notes, photos, location, optional iCloud sync and support requests."
+      content="How Hobocode handles notes, photos, location, on-device storage, map search and support requests."
     />
     <meta name="twitter:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
@@ -42,7 +42,7 @@
         "name": "Hobocode Privacy",
         "url": "https://aroido.com/hobocode/privacy/",
         "inLanguage": "en-US",
-        "description": "How Hobocode handles notes, photos, location, optional iCloud sync and support requests."
+        "description": "How Hobocode handles notes, photos, location, on-device storage, map search and support requests."
       }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -94,10 +94,10 @@
       <section class="page-hero contact-hero reveal" data-reveal>
         <p class="kicker" data-i18n="hobocode_name">Hobocode</p>
         <h1 data-i18n="hobocode_privacy_title">Privacy policy</h1>
-        <p class="hero-description" data-i18n="hobocode_privacy_intro">This policy explains the records Hobocode keeps on your iPhone, optional iCloud syncing, map searches and automatic Live Activity processing, and your choices.</p>
+        <p class="hero-description" data-i18n="hobocode_privacy_intro">This policy explains the records Hobocode keeps on this iPhone, map searches and automatic Live Activity processing, and your choices.</p>
         <p data-i18n="hobocode_app_scope">These pages apply to Hobocode. Ramgnote remains a separate app; its existing records are not automatically moved into Hobocode.</p>
         <p><a href="/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnote privacy policy</a></p>
-        <p data-i18n="hobocode_privacy_updated">Effective date: October 14, 2026</p>
+        <p data-i18n="hobocode_privacy_updated">Effective date: October 16, 2026</p>
         <p data-i18n="hobocode_operator">Operator and privacy contact: 송희섭 (Song Hui-seop)</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:admin@aroido.com?subject=Hobocode%20Privacy" data-i18n="hobocode_email_cta">Email Hobocode support</a>
@@ -107,7 +107,7 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_local_title">Records on your device</h2>
-          <p data-i18n="hobocode_privacy_local_body">Hobocode stores note text, categories, place names and addresses you enter, saved coordinates, creation and edit times, selected photo copies, and storage/sync identifiers in app-private storage. Drafts and recovery inputs help preserve unfinished writing. App preferences and an iCloud identity mapping keep settings and record spaces separate. There is no separate Hobocode sign-up. A configured iCloud connection can check account availability even before record syncing is enabled.</p>
+          <p data-i18n="hobocode_privacy_local_body">Hobocode stores note text, categories, place names and addresses you enter, saved coordinates, creation and edit times, selected photo copies and storage identifiers in app-private storage on this iPhone. Drafts, recovery inputs and trash are kept in the same place. Drafts and recovery inputs help preserve unfinished writing. The app does not check your iCloud account or separate records by account. If iPhone backup (iCloud Backup or a computer backup) is on, these records may also be included in the backup according to your Apple settings. There is no separate Hobocode sign-up.</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
@@ -125,19 +125,13 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_maps_title">Maps and place searches</h2>
-          <p data-i18n="hobocode_privacy_maps_body">Hobocode uses NAVER Maps and place search, with Apple search and reverse-geocoding paths. NAVER search sends the query you enter through a Cloudflare Workers relay to NAVER. The search request body contains the query, not your note text or current device coordinates. Apple search may be used depending on configuration, errors or limits. Place names, addresses, coordinates and source information from selected results can be saved with your records and included in optional iCloud sync. Apple place references can include a place ID and your alias. Apple search receives the entered search query. When looking up an address from a location, the app sends those coordinates to Apple for reverse geocoding.</p>
+          <p data-i18n="hobocode_privacy_maps_body">Hobocode uses NAVER Maps and place search, with Apple search and reverse-geocoding paths. NAVER search sends the query you enter through a Cloudflare Workers relay to NAVER. The search request body contains the query, not your note text or current device coordinates. Apple search may be used depending on configuration, errors or limits. When you save a selected result, its place name, address, coordinates and source information are saved with the record on this iPhone. Apple place references can include a place ID and your alias. Apple search receives the entered search query. When looking up an address from a location, the app sends those coordinates to Apple for reverse geocoding.</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
         <div class="section-head">
-          <h2 data-i18n="hobocode_privacy_cloud_title">Optional iCloud record sync</h2>
-          <p data-i18n="hobocode_privacy_cloud_body">After you review the scope and consent, Hobocode syncs saved notes, place information and coordinates, attached photos, trash, deletion history and sync metadata in the current iCloud record space with your private Apple CloudKit database. Drafts, recovery inputs, device-only records and other accounts’ records are excluded. Consent is stored for this app installation and verified iCloud account. Turning sync off or changing accounts stops transfers but does not delete data already sent. Installation-specific reminder totals can also sync in the private database. iCloud capacity and connectivity can delay or prevent transfers; a local save or connected status does not mean every item has uploaded.</p>
-        </div>
-      </section>
-      <section class="section reveal" data-reveal>
-        <div class="section-head">
-          <h2 data-i18n="hobocode_privacy_cloud_photos_title">Photos included in iCloud sync</h2>
-          <p data-i18n="hobocode_privacy_cloud_photos_body">The sync consent includes photos attached to saved notes and trash in the current iCloud space, including existing attachments. Draft photos and photos in other record spaces are excluded. Photos are transferred as CloudKit assets and use iCloud storage and network data. Check sync status before deleting originals or reinstalling the app; transfer completion is not guaranteed.</p>
+          <h2 data-i18n="hobocode_privacy_earlier_test_title">iCloud data from earlier test versions</h2>
+          <p data-i18n="hobocode_privacy_earlier_test_body">Earlier test versions (TestFlight) had optional iCloud sync. If you turned it on, the current app no longer reads or deletes data already sent to iCloud; you can delete it yourself in iPhone Settings &gt; [your name] &gt; iCloud &gt; Manage Account Storage (or Manage Storage). The first time you open the app after updating, it continues with the most recently used record space that was on this iPhone. If an earlier version used both the device record space and per-iCloud-account record spaces on this iPhone, the other records no longer appear in the app but stay on this iPhone, and they are deleted along with the app if you delete it. The app does not delete files while moving records.</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
@@ -149,13 +143,13 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_retention_title">Retention and deletion</h2>
-          <p data-i18n="hobocode_privacy_retention_body">Saved notes remain until you delete them. Trash can be restored within 30 days or permanently deleted earlier. Explicit drafts expire 30 days after creation; expired items and unreferenced photo copies are removed when the app can process storage. Recovery inputs can remain until they are saved, discarded or their related record is removed. Deletion markers and sync metadata may remain to prevent deleted content from returning. Sync must run successfully for remote deletion changes to propagate. Switching accounts retains earlier local spaces. Deleting the app or turning sync off does not erase iCloud copies or system backups. Manage Apple services in your device settings; support cannot promise immediate deletion of every Apple-managed backup.</p>
+          <p data-i18n="hobocode_privacy_retention_body">Saved notes remain until you delete them. Trash can be restored within 30 days or permanently deleted earlier. Explicit drafts expire 30 days after creation; expired items and unreferenced photo copies are removed when the app can process storage. Recovery inputs can remain until they are saved, discarded or their related record is removed. Deleting the app can remove the records on this iPhone. Data an earlier test version already sent to iCloud, and iOS system backups, are stored separately from the app (in iCloud or on your computer), so deleting the app does not erase them. Manage them in your device settings or on the computer where the backup is stored; support cannot promise immediate deletion of every Apple-managed backup.</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">Protection and other services</h2>
-          <p data-i18n="hobocode_privacy_protection_body">Hobocode separates record spaces and uses iOS file protection. This is not a claim of end-to-end encryption or a separate app password. The app uses Apple iCloud, Siri, APNs and map/search services, NAVER maps/search and Cloudflare relays. Advertising-enabled versions use Google AdMob; the advertising section below explains that processing. This website is hosted by Vercel, loads Google Fonts and includes Vercel Web Analytics for visits and some web interactions. Some pages, including the homepage, also load Google Analytics. Web requests can transmit IP addresses and browser information to service providers. App processing and website analytics are separate.</p>
+          <p data-i18n="hobocode_privacy_protection_body">Hobocode keeps records in app-private storage on this iPhone and uses iOS file protection. This is not a claim of end-to-end encryption or a separate app password. The app uses Apple Siri, APNs and map/search services, NAVER maps/search and Cloudflare relays. Advertising-enabled versions use Google AdMob; the advertising section below explains that processing. This website is hosted by Vercel, loads Google Fonts and includes Vercel Web Analytics for visits and some web interactions. Some pages, including the homepage, also load Google Analytics. Web requests can transmit IP addresses and browser information to service providers. App processing and website analytics are separate.</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
@@ -170,7 +164,7 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_rights_title">Questions, choices and updates</h2>
-          <p data-i18n="hobocode_privacy_rights_body">Contact 송희섭 at admin@aroido.com about access, correction, deletion or stopping processing. We can explain steps for device/iCloud records without asking for your Apple ID password. We cannot inspect every device-only record or guarantee restoration of unsynced content. If you email us, your sender address, message and any attachments you choose to send are handled to answer and resolve the request. We announce material changes on this page and update the effective date.</p>
+          <p data-i18n="hobocode_privacy_rights_body">Contact 송희섭 at admin@aroido.com about access, correction, deletion or stopping processing. We can explain steps for records on your device and for data an earlier test version sent to iCloud, without asking for your Apple ID password. We cannot view records stored on your device or guarantee restoration of lost records. If you email us, your sender address, message and any attachments you choose to send are handled to answer and resolve the request. We announce material changes on this page and update the effective date.</p>
           <p data-i18n="hobocode_support_retention">We retain inquiry emails and attachments only as long as needed to handle the inquiry. Once that purpose is fulfilled, we delete information no longer needed without undue delay, except where retention is required by law.</p>
         </div>
       </section>
