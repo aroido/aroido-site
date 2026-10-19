@@ -1,0 +1,136 @@
+{
+  "capturedAt": "2026-10-19",
+  "appRepository": "aroido/hobocode",
+  "appCommit": "0ec5fe8a7c8b2b394553090a82d0b58a6c67fa92",
+  "build": "local Debug 0.1.1 (3)",
+  "simulator": "iPhone 17, iOS 26.5",
+  "supportedAppLanguages": [
+    "ko",
+    "en"
+  ],
+  "webMedia": {
+    "ko": "ko",
+    "en": "en",
+    "ja": "en",
+    "zh-Hans": "en"
+  },
+  "syntheticDataOnly": true,
+  "productionUIChanged": false,
+  "notificationEvidence": "real OS adapter display with synthetic arrival observations; not GPS/APNs evidence",
+  "assets": [
+    {
+      "path": "hobocode/media/ko/notification.webp",
+      "contentLanguage": "ko",
+      "sha256": "3d3f957b0d249adb426cd01acaf495690a0476f49b9602da4ddfd87d38641fa9",
+      "bytes": 18894
+    },
+    {
+      "path": "hobocode/media/ko/screen-alert.webp",
+      "contentLanguage": "ko",
+      "sha256": "21ce446e09389eac61027b3405f065615648157ab4464c00072ae8e383a4f35c",
+      "bytes": 46518
+    },
+    {
+      "path": "hobocode/media/ko/screen-editor.webp",
+      "contentLanguage": "ko",
+      "sha256": "f0df1532450950880c2b5e191e2c0cbb280519fbe4bcfb9082d8993ab3f8d8f0",
+      "bytes": 31138
+    },
+    {
+      "path": "hobocode/media/ko/screen-home.webp",
+      "contentLanguage": "ko",
+      "sha256": "e5184dbdca1e79007aeb5e7463910075549f12c66ed6ed192700463b96956d00",
+      "bytes": 59870
+    },
+    {
+      "path": "hobocode/media/ko/screen-map.webp",
+      "contentLanguage": "ko",
+      "sha256": "ca990d5fa84805415cfd7c5ddacc3ceb5f9bd79bf0f49ced25a504b95f60dcb6",
+      "bytes": 100692
+    },
+    {
+      "path": "hobocode/media/ko/screen-mark.webp",
+      "contentLanguage": "ko",
+      "sha256": "d6a544691cd3585c41e24c097e8764051d8391c79c38361403e334acf309bc33",
+      "bytes": 34442
+    },
+    {
+      "path": "hobocode/media/ko/screen-onboarding.webp",
+      "contentLanguage": "ko",
+      "sha256": "508d654ef41ee8e4722f1e010bc20d0ce45e45ae0b5d5f2303d1628e2c9d1c5b",
+      "bytes": 99674
+    },
+    {
+      "path": "hobocode/media/ko/walkthrough.mp4",
+      "contentLanguage": "ko",
+      "sha256": "91ff0255a3d524a4ceb843625770343518c12d3ddf2d91b62d4fda19203dcf99",
+      "bytes": 403183
+    },
+    {
+      "path": "hobocode/media/en/notification.webp",
+      "contentLanguage": "en",
+      "sha256": "c6aab72c13c166eb315f2d33112d2c7a21099b2edf8ac73edf79a33945913ffc",
+      "bytes": 20922
+    },
+    {
+      "path": "hobocode/media/en/screen-alert.webp",
+      "contentLanguage": "en",
+      "sha256": "ff4e74a6dc0d480521505aa4f36fb4c343acb4e1507f7d7c8e6fbf7cfb340928",
+      "bytes": 41368
+    },
+    {
+      "path": "hobocode/media/en/screen-editor.webp",
+      "contentLanguage": "en",
+      "sha256": "ee299b08ec058ebbba7cd3d53046b27c2433eef4d2466657de6dd494d4d548cd",
+      "bytes": 37348
+    },
+    {
+      "path": "hobocode/media/en/screen-home.webp",
+      "contentLanguage": "en",
+      "sha256": "bfd6942a38d99e7d1ac43d39d4fcd1f3dcdababd44424ed6c463a02d8d4241b9",
+      "bytes": 52062
+    },
+    {
+      "path": "hobocode/media/en/screen-map.webp",
+      "contentLanguage": "en",
+      "sha256": "2bb3451fbc263cfb7a66fa1e1d5e6db24c5d80b011f5dd67cee8b4d09ba7c193",
+      "bytes": 61954
+    },
+    {
+      "path": "hobocode/media/en/screen-mark.webp",
+      "contentLanguage": "en",
+      "sha256": "5632aa9db25afa90b2d0167004e9cdc1f42699914ce17ac17ab049d22948d5dd",
+      "bytes": 39766
+    },
+    {
+      "path": "hobocode/media/en/screen-onboarding.webp",
+      "contentLanguage": "en",
+      "sha256": "e2ac139fc4483f226083683ceff6e41a251b02d18644c42e9fe0143f02373489",
+      "bytes": 101532
+    },
+    {
+      "path": "hobocode/media/en/walkthrough.mp4",
+      "contentLanguage": "en",
+      "sha256": "58f3babe57429418bd34c415bfce6847f67854103371d85abe2289cdbf2c92c8",
+      "bytes": 240736
+    },
+    {
+      "path": "hobocode/media/chalk-mark-web.webp",
+      "contentLanguage": "zxx",
+      "sha256": "a60d1103297e077ace841a8592abd7763ef43bc3750623c1b278ebbf4d0850d3",
+      "bytes": 10670
+    },
+    {
+      "path": "hobocode/media/app-icon-web.png",
+      "contentLanguage": "zxx",
+      "sha256": "cce72ff5ef83b33fd5b9a2d0aa44b0da008f6af65a084a65f3ee42827d6acb82",
+      "bytes": 21213
+    },
+    {
+      "path": "hobocode/media/intro.mp4",
+      "contentLanguage": "zxx",
+      "sha256": "2825cf00d0e05c2a76c62c88458a182903a8200c050969412913dc72c291d5af",
+      "bytes": 1047985
+    }
+  ]
+}

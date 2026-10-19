@@ -143,11 +143,11 @@ const extra = {
     "알림을 누르고 앱에서 메모를 확인해요."
    ]
   ],
-  "conditions": "위치·알림 권한이 필요해요. 앱을 쓰지 않을 때도 알림을 받으려면 위치를 ‘항상 허용’으로 설정해 주세요. 기본 알림에는 본문이 표시되지 않아요. 아래 본문 표시 예시는 별도 동의한 경우예요.",
+  "conditions": "위치·알림 권한이 필요해요. 앱을 쓰지 않을 때도 알림을 받으려면 위치 접근을 “항상”으로 설정하세요. 아래 예시는 기본 설정처럼 메모 본문을 숨긴 알림이에요.",
   "place": "한길전골",
-  "notifAlt": "본문 표시를 별도 허용한 예시. 잠금 화면 알림: 근처에 저장한 메모가 있어요. 둘이 오면 전골 소짜 + 볶음밥 하나. 이 조합이 딱 좋았음. #주문팁 외 1개",
+  "notifAlt": "호보코드가 가상 도착 조건에서 보낸 한국어 iOS 알림. 메모 본문은 기본 설정대로 숨겨져 있어요.",
   "screensTitle": "앱에서는 이렇게 보여요.",
-  "screensBody": "지금 개발 중인 앱의 실제 화면이에요.",
+  "screensBody": "한국어 앱의 실제 화면이에요. 현재 앱은 한국어와 영어를 지원해요.",
   "screens": [
    [
     "home",
@@ -186,7 +186,12 @@ const extra = {
     "호보코드 실제 첫 실행 화면. 벽의 분필 표식과 예시 메모, 다음 버튼이 보입니다."
    ]
   ],
-  "disclosure": "2026년 10월 16일 개발 빌드의 실제 화면이에요. 장소·메모는 공개용 합성 예시이며, 출시 전에 화면이 바뀔 수 있어요. 이 웹페이지에서는 지도나 알림 기능을 쓸 수 없어요."
+  "disclosure": "2026년 10월 19일 개발 빌드에서 촬영했어요. 장소·메모·위치는 검증용 가상 예시이며 출시 전에 화면이 바뀔 수 있어요. 이 웹페이지에서는 지도나 알림 기능을 쓸 수 없어요.",
+  "mediaLocale": "ko",
+  "studio": "제작사 아로이도",
+  "products": "아로이도 제품",
+  "walkthrough": "한국어 앱 둘러보기",
+  "notificationCaption": "앱이 보낸 한국어 알림 예시 · 가상 도착 조건으로 촬영"
  },
  "en": {
   "replay": "Replay",
@@ -261,50 +266,55 @@ const extra = {
     "Open the app from the notification to read your notes."
    ]
   ],
-  "conditions": "Location and notification permissions required. To get alerts when you’re not using the app, set location access to “Always”. Notifications hide note text by default. The text preview shown below requires separate consent.",
+  "conditions": "Location and notification permissions are required. Set location access to “Always” for alerts while the app is not in use. The example below hides note text, as the default setting does.",
   "place": "Hangil Jeongol",
-  "notifAlt": "Example with separate consent to show note text. Lock Screen notification in Korean: there is a saved note nearby. For two, a small hot pot and one fried rice; this combo was perfect. #ordertip, and 1 more",
+  "notifAlt": "English iOS notification sent by Hobocode under synthetic arrival conditions. Note text is hidden by default.",
   "screensTitle": "What it looks like in the app.",
-  "screensBody": "Actual screens from the app in development.",
+  "screensBody": "Actual screens in English. The app currently supports Korean and English.",
   "screens": [
    [
     "home",
     "Home",
     "Shows the notes you left near where you are now.",
-    "Hobocode home screen in Korean: a synthetic café note with its mark before the place name, and a live NAVER map below."
+    "English Hobocode home with a synthetic Demo Cafe note and Apple Maps."
    ],
    [
     "map",
     "Map",
     "Find your saved places on the map.",
-    "Hobocode map screen in Korean: saved place marks and the current location around Seoul City Hall."
+    "English Hobocode map with synthetic saved places near Seoul City Hall."
    ],
    [
     "alert",
     "Place alert",
     "Turn on alerts and pick a radius for each place.",
-    "Hobocode place settings in Korean: arrival alerts for the synthetic café are off, with a 100 m radius selected."
+    "English place settings: Demo Cafe arrival alerts off and a 330 ft radius."
    ],
    [
     "editor",
     "Notes",
     "Read and edit a note alongside its place and map.",
-    "Hobocode note screen in Korean: a synthetic café place card, map, note body and tools below."
+    "English note editor with a synthetic Demo Cafe note and place map."
    ],
    [
     "mark",
     "Your own mark",
     "Choose a mark that fits your note.",
-    "Hobocode note mark picker in Korean: a grid of chalk symbols below the note."
+    "English note sign picker with sixteen chalk symbols."
    ],
    [
     "onboarding",
     "Getting started",
     "An introduction to leaving notes at places.",
-    "Hobocode first-run screen in Korean: a chalk mark on a wall, an example note and the Next button."
+    "English first-run screen with an example note and Next button."
    ]
   ],
-  "disclosure": "Actual screens captured on October 16, 2026 from a development build. Places and notes are synthetic examples; screens may change before release. Map and notification features don’t work on this website."
+  "disclosure": "Captured on October 19, 2026 from a development build. Notes, places and locations are synthetic examples. Screens may change before release. Map and notification features do not work on this website.",
+  "mediaLocale": "en",
+  "studio": "Made by Aroido",
+  "products": "Aroido products",
+  "walkthrough": "Explore the app in English",
+  "notificationCaption": "English notification sent by the app · synthetic arrival conditions"
  },
  "ja": {
   "replay": "もう一度見る",
@@ -379,50 +389,55 @@ const extra = {
     "通知からアプリを開いて、メモを確認します。"
    ]
   ],
-  "conditions": "位置情報と通知の許可が必要です。アプリを使っていないときも通知を受け取るには、位置情報を「常に」に設定してください。 通知は初期設定では本文を表示しません。下の本文表示例には別途同意が必要です。",
+  "conditions": "位置情報と通知の許可が必要です。アプリ未使用時の通知には位置情報を「常に」に設定してください。下の例は初期設定と同じくメモ本文を隠しています。",
   "place": "ハンギル鍋",
-  "notifAlt": "本文の表示に別途同意した場合の例。韓国語のロック画面通知：近くに保存したメモがあります。二人なら鍋の小と焼き飯ひとつ、この組み合わせが最高。#注文のコツ ほか1件",
+  "notifAlt": "架空の到着条件でHobocodeが送信した英語のiOS通知。初期設定ではメモ本文は表示されません。",
   "screensTitle": "アプリではこう見えます。",
-  "screensBody": "開発中のアプリの実際の画面です。",
+  "screensBody": "以下は英語版アプリの実際の画面です。現在の対応言語は韓国語と英語です。日本語版は未対応です。",
   "screens": [
    [
     "home",
     "ホーム",
     "いる場所の近くに残したメモを先に表示します。",
-    "韓国語のホーム画面：場所名の前に印がある架空のカフェのメモと、その下のNAVER地図。"
+    "英語版のホーム：架空のカフェメモとApple地図。"
    ],
    [
     "map",
     "地図",
     "メモした場所を地図で探せます。",
-    "韓国語のホボコードの地図画面：ソウル市庁周辺に、メモした場所の印と現在地。"
+    "英語版の地図：ソウル市庁付近の架空の保存場所。"
    ],
    [
     "alert",
     "場所の通知",
     "場所ごとに通知をオンにして範囲を決めます。",
-    "韓国語の場所設定画面：架空のカフェの到着通知はオフで、範囲100mが選択されている。"
+    "英語版の場所設定：架空のカフェの到着通知はオフ、半径330フィート。"
    ],
    [
     "editor",
     "メモ",
     "場所と地図を確認しながら、メモを読んで編集します。",
-    "韓国語のメモ画面：架空のカフェの場所カード、地図、本文と下部のツール。"
+    "英語版のメモ編集：架空のカフェメモと場所の地図。"
    ],
    [
     "mark",
     "自分だけの印",
     "メモに合う印を選びます。",
-    "韓国語のメモの印選択画面：本文の下にチョーク風の印が並んでいる。"
+    "英語版のメモのマーク選択：16種類のチョークのマーク。"
    ],
    [
     "onboarding",
     "はじめに",
     "場所にメモを残す使い方を紹介します。",
-    "韓国語の初回起動画面：壁のチョークの印、例のメモと次へボタン。"
+    "英語版の初回画面：例のメモと次へボタン。"
    ]
   ],
-  "disclosure": "2026年10月16日に開発ビルドから撮影した実際の画面です。場所とメモは架空の例で、公開前に画面が変わる場合があります。このウェブでは地図・通知機能は使えません。"
+  "disclosure": "2026年10月19日に開発ビルドから撮影しました。場所・メモ・位置は検証用の架空例です。公開前に画面が変わる場合があります。このサイトでは地図・通知機能は使えません。",
+  "mediaLocale": "en",
+  "studio": "制作元 Aroido",
+  "products": "Aroidoの製品",
+  "walkthrough": "英語版アプリの操作を見る",
+  "notificationCaption": "アプリが送信した英語の通知例 · 架空の到着条件で撮影"
  },
  "zh-hans": {
   "replay": "重新播放",
@@ -497,50 +512,55 @@ const extra = {
     "点击通知打开应用，查看笔记。"
    ]
   ],
-  "conditions": "需要位置和通知权限。若想在不使用应用时也收到提醒，请把位置权限设为“始终”。 默认通知不显示正文。下方的正文预览示例需要另行同意。",
+  "conditions": "需要位置和通知权限。若要在未使用应用时收到提醒，请将位置访问设为“始终”。下方示例与默认设置一样隐藏笔记正文。",
   "place": "韩吉火锅",
-  "notifAlt": "另行同意显示笔记正文后的示例。韩语锁屏通知：附近有保存的笔记。两个人点小份火锅加一份炒饭，这个组合刚刚好。#点餐窍门，另有1条",
+  "notifAlt": "Hobocode在虚构到达条件下发送的英语iOS通知。默认隐藏笔记正文。",
   "screensTitle": "在应用里是这样的。",
-  "screensBody": "开发中应用的真实画面。",
+  "screensBody": "以下为英语版应用的真实画面。目前应用支持韩语和英语，尚不支持简体中文。",
   "screens": [
    [
     "home",
     "首页",
     "优先显示你现在所在位置附近的笔记。",
-    "韩语首页：虚构咖啡馆的笔记，标记位于地点名称前，下方是NAVER地图。"
+    "英语版主页：虚构咖啡馆笔记和Apple地图。"
    ],
    [
     "map",
     "地图",
     "在地图上找到记过笔记的地点。",
-    "韩语的 Hobocode 地图：首尔市政厅周边显示记过笔记的地点标记和当前位置。"
+    "英语版地图：首尔市政厅附近的虚构保存地点。"
    ],
    [
     "alert",
     "地点提醒",
     "为每个地点开启提醒并设置范围。",
-    "韩语地点设置页：虚构咖啡馆的到达提醒已关闭，选择的范围为100米。"
+    "英语版地点设置：虚构咖啡馆的到达提醒关闭，半径330英尺。"
    ],
    [
     "editor",
     "笔记",
     "查看地点和地图，阅读并修改笔记。",
-    "韩语笔记页：虚构咖啡馆的地点卡片、地图、笔记正文和下方工具栏。"
+    "英语版笔记编辑器：虚构咖啡馆笔记和地点地图。"
    ],
    [
     "mark",
     "自己的标记",
     "为笔记选择合适的标记。",
-    "韩语笔记标记选择页：正文下方展开粉笔风格的标记列表。"
+    "英语版笔记标记选择器：16种粉笔标记。"
    ],
    [
     "onboarding",
     "开始使用",
     "了解如何在地点留下笔记。",
-    "韩语首次启动页：墙上的粉笔标记、示例笔记和下一步按钮。"
+    "英语版首次启动画面：示例笔记和下一步按钮。"
    ]
   ],
-  "disclosure": "画面于2026年10月16日从开发版本中实际截取。地点和笔记均为虚构示例，发布前画面可能调整。本网站不提供地图或通知功能。"
+  "disclosure": "于2026年10月19日从开发版本中拍摄。地点、笔记和位置均为验证用虚构示例，发布前画面可能调整。本网站不提供地图或通知功能。",
+  "mediaLocale": "en",
+  "studio": "制作方 Aroido",
+  "products": "Aroido 产品",
+  "walkthrough": "观看英语版应用操作",
+  "notificationCaption": "应用发送的英语通知示例 · 使用虚构到达条件拍摄"
  }
 };
 export const copy = Object.fromEntries(Object.keys(base).map(k => [k, { ...base[k], ...extra[k] }]));
