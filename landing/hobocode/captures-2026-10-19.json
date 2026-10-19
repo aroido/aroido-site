@@ -13,7 +13,7 @@
     "ja": "ja",
     "zh-Hans": "en"
   },
-  "syntheticDataOnly": true,
+  "syntheticDataOnly": false,
   "productionUIChanged": false,
   "notificationEvidence": "real OS adapter display with synthetic arrival observations; not GPS/APNs evidence",
   "captureSources": {
@@ -25,12 +25,14 @@
     "en": {
       "commit": "e6d813ab376894cec556441c5d153b924f2c0532",
       "ref": "main",
-      "status": "current-main"
+      "status": "current-main",
+      "locationMode": "native simulator location API; --composer-native-location; --service-region-international"
     },
     "ja": {
       "commit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
       "ref": "PR #341",
-      "status": "development-preview-code-review"
+      "status": "development-preview-code-review",
+      "locationMode": "native simulator location API; --composer-native-location; --service-region-international"
     }
   },
   "unsupportedAppLanguages": [
@@ -101,113 +103,143 @@
       "path": "hobocode/media/en/notification.webp",
       "contentLanguage": "en",
       "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
-      "sha256": "f10cc15e63f6d757321f3dd704918aa30908615713ac8fe5e639457f3bce6423",
-      "bytes": 21392
+      "sha256": "300c2fe0a4fb39e8ab1d0c8e4e0fb6fb5722016614ed04f35c7ae6f446b3eae0",
+      "bytes": 18184,
+      "placeContext": "San Francisco",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/en/screen-alert.webp",
       "contentLanguage": "en",
       "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
-      "sha256": "fcd6a02f578f4e214eab85cbd606b30b7d402808aae5c4b92f405e1ec55b3a57",
-      "bytes": 41374
+      "sha256": "6b0bf94c63ebdec189a5d5189c3c5db1da10ca3b530330762422312806281db9",
+      "bytes": 41682,
+      "placeContext": "San Francisco",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/en/screen-editor.webp",
       "contentLanguage": "en",
       "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
-      "sha256": "352e67c596e3ef043ee888a476cca5ef52bd6f3f9ed5275874bae96c9791e799",
-      "bytes": 37354
+      "sha256": "5b7be76300846fad52a5d4472e017cb5131549add363246d0575fd80207fb508",
+      "bytes": 32968,
+      "placeContext": "San Francisco",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/en/screen-home.webp",
       "contentLanguage": "en",
       "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
-      "sha256": "f83bc8cfde4ff34b74410e0517c3f7ea986cef4d4249e5d5c85fe9eed730eec6",
-      "bytes": 52012
+      "sha256": "d4b6d3bfc55a917c77b45b8add8a2f69031566d18f0e39c2c546a1d8c2658558",
+      "bytes": 54806,
+      "placeContext": "San Francisco",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/en/screen-map.webp",
       "contentLanguage": "en",
       "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
-      "sha256": "0315a83660796ebae3abfd95687b882f6eb4ea571cf34a4c6a1d1ebac2cd784f",
-      "bytes": 61902
+      "sha256": "309015e8008e7e1aa2956de5623c52fb95538de27354b3e5de1d1852380eada7",
+      "bytes": 52664,
+      "placeContext": "San Francisco",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/en/screen-mark.webp",
       "contentLanguage": "en",
       "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
-      "sha256": "bd968b4cf06c6fdd3bffc32960ab368f2425e2a45fcbe37ac7d9a1170cf96fa4",
-      "bytes": 39716
+      "sha256": "4ef1303637b16acdde9854764a8ba87974f9ad347b50f85e61b7329f826c1b67",
+      "bytes": 41890,
+      "placeContext": "San Francisco",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/en/screen-onboarding.webp",
       "contentLanguage": "en",
       "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
       "sha256": "e2ac139fc4483f226083683ceff6e41a251b02d18644c42e9fe0143f02373489",
-      "bytes": 101532
+      "bytes": 101532,
+      "placeContext": "built-in-fictional-onboarding"
     },
     {
       "path": "hobocode/media/en/walkthrough.mp4",
       "contentLanguage": "en",
       "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
-      "sha256": "2ed3df0fa040156bb5f9ba9c3c23de599a50d22523943d15640d581fe71ea0cc",
-      "bytes": 342196
+      "sha256": "af815dca03e18783ccf31eac256107898912c8dd6c2a516d1d398fec3e111f21",
+      "bytes": 373250,
+      "placeContext": "San Francisco",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/notification.webp",
       "contentLanguage": "ja",
       "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "1fe750efd2ab9a3bd7a524e67b317ab2574c2d570954587d0052b54c3d018bc6",
-      "bytes": 19260
+      "sha256": "af11fe217349e7b8539d10ba149c7ba5b49857d9ff0b15c0254eeb89b5fc0ba2",
+      "bytes": 18856,
+      "placeContext": "Tokyo",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-alert.webp",
       "contentLanguage": "ja",
       "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "b99aec4e3c1d18d91f70c6a60718ba13725381cd0547b9a57c135fbefe3f1c68",
-      "bytes": 41710
+      "sha256": "085d193cd8e36d08fdbf792b3ca80b42a015960d72b53a9919a2597b4f64da2c",
+      "bytes": 50246,
+      "placeContext": "Tokyo",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-editor.webp",
       "contentLanguage": "ja",
       "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "6fac08731b96fea74ce449dad9227d8db160e908f56e57e7986b09fc3040eac3",
-      "bytes": 38966
+      "sha256": "345b6ac6dc55a9d96ea4b8dd397b7931fb892b144359d97086750cf8081ede5f",
+      "bytes": 36016,
+      "placeContext": "Tokyo",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-home.webp",
       "contentLanguage": "ja",
       "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "5dfca488d52abf4ea2622c24d514af8fcca5776193968d2b6fbe628a86d53686",
-      "bytes": 50738
+      "sha256": "16dd209fcf86b59c6c6d7ac804c6fafec6d9136a1bd5b27804fa0b1b2c08edea",
+      "bytes": 57136,
+      "placeContext": "Tokyo",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-map.webp",
       "contentLanguage": "ja",
       "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "51fa67bdd9223cb97f52eb6fd2a217abe9cb6fbb26bbb2b3930556d65d21debb",
-      "bytes": 62954
+      "sha256": "1c147bfbd270bb2855bf006c356b362942fbfbdbc03e3f6a735e83e6018e23d5",
+      "bytes": 98956,
+      "placeContext": "Tokyo",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-mark.webp",
       "contentLanguage": "ja",
       "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "ada46e2b89963addef88ef32f62c962f578427d55500b4c44621cce28a628238",
-      "bytes": 41272
+      "sha256": "5697f6059e2fe48a64ddf10e960bb9d4c902bac34729f7d75b91ad5aff54e2ac",
+      "bytes": 44910,
+      "placeContext": "Tokyo",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-onboarding.webp",
       "contentLanguage": "ja",
       "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
       "sha256": "1f388614657bd4e45cc87f03c96b91fc0eb2cbb2a7d85aab090e7071425b81db",
-      "bytes": 97726
+      "bytes": 97726,
+      "placeContext": "built-in-fictional-onboarding"
     },
     {
       "path": "hobocode/media/ja/walkthrough.mp4",
       "contentLanguage": "ja",
       "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "7dafb44e5a9088a33f0a5654f457e116ca281a337603a6560315c77e1ad13b66",
-      "bytes": 470700
+      "sha256": "158e6ec1017f2410ffe82e2bc472f3f6c61053669962861c0e6a0bdfb61e34f9",
+      "bytes": 369069,
+      "placeContext": "Tokyo",
+      "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/chalk-mark-web.webp",
@@ -227,5 +259,44 @@
       "sha256": "2825cf00d0e05c2a76c62c88458a182903a8200c050969412913dc72c291d5af",
       "bytes": 1047985
     }
-  ]
+  ],
+  "fictionalNotes": true,
+  "personalDataUsed": false,
+  "simulatedLocation": true,
+  "locations": {
+    "en": {
+      "city": "San Francisco",
+      "name": "Ferry Building",
+      "address": "1 Ferry Building, San Francisco, CA 94111",
+      "coordinate": {
+        "latitude": 37.7954425,
+        "longitude": -122.3936136
+      },
+      "simulatorLocation": {
+        "latitude": 37.795,
+        "longitude": -122.3943
+      },
+      "addressSource": "https://www.ferrybuildingmarketplace.com/visit/",
+      "coordinateSource": "Google Maps destination linked from the official visitor page;37.7954425,-122.3936136"
+    },
+    "ja": {
+      "city": "Tokyo",
+      "name": "東京国立博物館",
+      "address": "東京都台東区上野公園13-9",
+      "coordinate": {
+        "latitude": 35.7189,
+        "longitude": 139.7764
+      },
+      "simulatorLocation": {
+        "latitude": 35.7182,
+        "longitude": 139.7764
+      },
+      "addressSource": "https://www.tnm.jp/modules/r_free_page/index.php?id=113",
+      "coordinateSource": "https://en.wikipedia.org/wiki/Tokyo_National_Museum"
+    }
+  },
+  "captureDataPatches": {
+    "en": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056",
+    "ja": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
+  }
 }

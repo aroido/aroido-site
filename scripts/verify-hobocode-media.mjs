@@ -11,6 +11,22 @@ assert.deepEqual(manifest.unsupportedAppLanguages,['zh-Hans']);
 assert.equal(manifest.captureSources.ja.status,'development-preview-code-review');
 assert.equal(manifest.captureSources.ja.commit,'8255c2cc4247127cbe2d56fc83b9783f4a1b5f72');
 assert.equal(manifest.appCommit,'e6d813ab376894cec556441c5d153b924f2c0532');
+assert.equal(manifest.personalDataUsed,false);
+assert.equal(manifest.fictionalNotes,true);
+assert.equal(manifest.locations.en.city,'San Francisco');
+assert.equal(manifest.locations.en.name,'Ferry Building');
+assert.equal(manifest.locations.ja.city,'Tokyo');
+assert.equal(manifest.locations.ja.name,'東京国立博物館');
+for(const locale of ['en','ja']){
+ assert(manifest.captureSources[locale].locationMode.includes('--composer-native-location'));
+ assert(manifest.captureSources[locale].locationMode.includes('--service-region-international'));
+ for(const asset of manifest.assets.filter(x=>x.contentLanguage===locale)){
+  const context=asset.path.includes('onboarding')?'built-in-fictional-onboarding':manifest.locations[locale].city;
+  assert.equal(asset.placeContext,context);
+  if(!asset.path.includes('onboarding'))assert.equal(asset.captureDataPatchSHA256,manifest.captureDataPatches[locale]);
+ }
+}
+
 for(const asset of manifest.assets){
  const bytes=fs.readFileSync(new URL(asset.path,root));
  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),asset.sha256,asset.path);

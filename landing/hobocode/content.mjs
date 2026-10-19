@@ -268,8 +268,8 @@ const extra = {
    ]
   ],
   "conditions": "Location and notification permissions are required. Set location access to “Always” for alerts while the app is not in use. The example below hides note text, as the default setting does.",
-  "place": "Hangil Jeongol",
-  "notifAlt": "English iOS notification sent by Hobocode under synthetic arrival conditions. Note text is hidden by default.",
+  "place": "Ferry Building",
+  "notifAlt": "Actual English iOS notification for a simulated arrival at Ferry Building in San Francisco. Note text is hidden by default.",
   "screensTitle": "What it looks like in the app.",
   "screensBody": "Actual screens in English. The app currently supports Korean and English. A Japanese development preview is under code review.",
   "screens": [
@@ -277,31 +277,31 @@ const extra = {
     "home",
     "Home",
     "Shows the notes you left near where you are now.",
-    "English Hobocode home with a synthetic Demo Cafe note and Apple Maps."
+    "English home: a fictional planning note for Ferry Building and Apple Maps in San Francisco."
    ],
    [
     "map",
     "Map",
     "Find your saved places on the map.",
-    "English Hobocode map with synthetic saved places near Seoul City Hall."
+    "English Apple Maps in San Francisco, showing the saved Ferry Building location."
    ],
    [
     "alert",
     "Place alert",
     "Turn on alerts and pick a radius for each place.",
-    "English place settings: Demo Cafe arrival alerts off and a 330 ft radius."
+    "English place settings: Ferry Building, its San Francisco address, arrival alerts off and a 330 ft radius."
    ],
    [
     "editor",
     "Notes",
     "Read and edit a note alongside its place and map.",
-    "English note editor with a synthetic Demo Cafe note and place map."
+    "English editor: a fictional Ferry Building planning note, San Francisco address and Apple Maps."
    ],
    [
     "mark",
     "Your own mark",
     "Choose a mark that fits your note.",
-    "English note sign picker with sixteen chalk symbols."
+    "English mark picker for a fictional Ferry Building planning note."
    ],
    [
     "onboarding",
@@ -310,12 +310,12 @@ const extra = {
     "English first-run screen with an example note and Next button."
    ]
   ],
-  "disclosure": "Captured on October 19, 2026 from a development build. Notes, places and locations are synthetic examples. Screens may change before release. Map and notification features do not work on this website.",
+  "disclosure": "Captured on October 19, 2026 from a development build at a simulated San Francisco location. Ferry Building is a real public place; notes are fictional planning examples, not a visit review. Onboarding uses the app’s built-in fictional example. Screens may change before release. Map and notification features do not work on this website.",
   "mediaLocale": "en",
   "studio": "Made by Aroido",
   "products": "Aroido products",
   "walkthrough": "Explore the app in English",
-  "notificationCaption": "English notification sent by the app · synthetic arrival conditions",
+  "notificationCaption": "English notification example · simulated arrival at Ferry Building, San Francisco",
   "ogAlt": "Hobocode chalk mark on a dark wall"
  },
  "ja": {
@@ -392,8 +392,8 @@ const extra = {
    ]
   ],
   "conditions": "位置情報と通知の許可が必要です。アプリ未使用時の通知には位置情報を「常に」に設定してください。下の例は初期設定と同じくメモ本文を隠しています。",
-  "place": "ハンギル鍋",
-  "notifAlt": "架空の到着条件でホーボーコードが送信した日本語のiOS通知。初期設定ではメモ本文は表示されません。",
+  "place": "東京国立博物館",
+  "notifAlt": "東京国立博物館への到着を模擬してアプリが送信した日本語のiOS通知。初期設定ではメモ本文は表示されません。",
   "screensTitle": "アプリではこう見えます。",
   "screensBody": "日本語対応を実装した開発プレビューの実画面です。日本語対応はコードレビュー中で、現在のアプリの対応言語は韓国語と英語です。",
   "screens": [
@@ -401,31 +401,31 @@ const extra = {
     "home",
     "ホーム",
     "いる場所の近くに残したメモを先に表示します。",
-    "日本語開発版のホーム：架空のカフェメモとApple地図。"
+    "日本語開発版ホーム：東京国立博物館の架空の予定メモと東京のAppleマップ。"
    ],
    [
     "map",
     "地図",
     "メモした場所を地図で探せます。",
-    "日本語開発版の地図：ソウル市庁付近の架空の保存場所。"
+    "日本語開発版のAppleマップ：東京の東京国立博物館の保存場所。"
    ],
    [
     "alert",
     "場所の通知",
     "場所ごとに通知をオンにして範囲を決めます。",
-    "日本語開発版の場所設定：架空のカフェの到着通知はオフ、半径100メートル。"
+    "日本語開発版の場所設定：東京国立博物館、東京都台東区上野公園13-9、通知オフ、半径100メートル。"
    ],
    [
     "editor",
     "メモ",
     "場所と地図を確認しながら、メモを読んで編集します。",
-    "日本語開発版のメモ編集：架空のカフェメモと場所の地図。"
+    "日本語開発版メモ：東京国立博物館の架空の予定、東京の住所とAppleマップ。"
    ],
    [
     "mark",
     "自分だけの印",
     "メモに合う印を選びます。",
-    "日本語開発版のメモのマーク選択：16種類のチョークのマーク。"
+    "日本語開発版：東京国立博物館の架空の予定メモのマーク選択。"
    ],
    [
     "onboarding",
@@ -434,12 +434,12 @@ const extra = {
     "日本語開発版の初回画面：例のメモと次へボタン。"
    ]
   ],
-  "disclosure": "2026年10月19日、日本語対応をコードレビュー中の開発ビルドで撮影しました。場所・メモ・位置は検証用の架空例です。公開前に画面が変わる場合があります。このサイトでは地図・通知機能は使えません。",
+  "disclosure": "2026年10月19日、日本語対応をコードレビュー中の開発ビルドで、位置を東京にシミュレーションして撮影しました。東京国立博物館は実在する公開施設ですが、メモは架空の予定例で、訪問レビューではありません。初回画面はアプリ内の架空例です。公開前に画面が変わる場合があります。このサイトでは地図・通知機能は使えません。",
   "mediaLocale": "ja",
   "studio": "制作元 Aroido",
   "products": "Aroidoの製品",
   "walkthrough": "日本語開発プレビューの操作を見る",
-  "notificationCaption": "日本語開発プレビューの通知例 · 架空の到着条件で撮影",
+  "notificationCaption": "日本語開発プレビューの通知例 · 東京国立博物館への到着を模擬",
   "ogAlt": "暗い壁に描かれたホーボーコードのチョークマーク"
  },
  "zh-hans": {
@@ -516,8 +516,8 @@ const extra = {
    ]
   ],
   "conditions": "需要位置和通知权限。若要在未使用应用时收到提醒，请将位置访问设为“始终”。下方示例与默认设置一样隐藏笔记正文。",
-  "place": "韩吉火锅",
-  "notifAlt": "Hobocode在虚构到达条件下发送的英语iOS通知。默认隐藏笔记正文。",
+  "place": "Ferry Building",
+  "notifAlt": "应用模拟抵达旧金山 Ferry Building 后发送的真实英语 iOS 通知。默认隐藏笔记正文。",
   "screensTitle": "在应用里是这样的。",
   "screensBody": "以下为英语版应用的真实画面。目前应用支持韩语和英语；日语开发预览正在进行代码审查，尚不支持简体中文。",
   "screens": [
@@ -525,31 +525,31 @@ const extra = {
     "home",
     "首页",
     "优先显示你现在所在位置附近的笔记。",
-    "英语版主页：虚构咖啡馆笔记和Apple地图。"
+    "英语版主页：Ferry Building 的虚构计划笔记与旧金山 Apple 地图。"
    ],
    [
     "map",
     "地图",
     "在地图上找到记过笔记的地点。",
-    "英语版地图：首尔市政厅附近的虚构保存地点。"
+    "英语版 Apple 地图：旧金山 Ferry Building 的保存地点。"
    ],
    [
     "alert",
     "地点提醒",
     "为每个地点开启提醒并设置范围。",
-    "英语版地点设置：虚构咖啡馆的到达提醒关闭，半径330英尺。"
+    "英语版地点设置：Ferry Building 的旧金山地址、到达提醒关闭、半径330英尺。"
    ],
    [
     "editor",
     "笔记",
     "查看地点和地图，阅读并修改笔记。",
-    "英语版笔记编辑器：虚构咖啡馆笔记和地点地图。"
+    "英语版编辑器：Ferry Building 的虚构计划笔记、旧金山地址和 Apple 地图。"
    ],
    [
     "mark",
     "自己的标记",
     "为笔记选择合适的标记。",
-    "英语版笔记标记选择器：16种粉笔标记。"
+    "英语版标记选择器：Ferry Building 的虚构计划笔记。"
    ],
    [
     "onboarding",
@@ -558,12 +558,12 @@ const extra = {
     "英语版首次启动画面：示例笔记和下一步按钮。"
    ]
   ],
-  "disclosure": "于2026年10月19日从开发版本中拍摄。地点、笔记和位置均为验证用虚构示例，发布前画面可能调整。本网站不提供地图或通知功能。",
+  "disclosure": "于2026年10月19日从开发版本中拍摄，模拟位置为旧金山。Ferry Building 是真实公共地点，笔记为虚构计划示例，并非到访评价。首次启动画面使用应用内置的虚构示例。发布前画面可能调整，本网站不提供地图或通知功能。",
   "mediaLocale": "en",
   "studio": "制作方 Aroido",
   "products": "Aroido 产品",
   "walkthrough": "观看英语版应用操作",
-  "notificationCaption": "应用发送的英语通知示例 · 使用虚构到达条件拍摄",
+  "notificationCaption": "英语通知示例 · 模拟抵达旧金山 Ferry Building",
   "ogAlt": "深色墙面上的 Hobocode 粉笔标记"
  }
 };

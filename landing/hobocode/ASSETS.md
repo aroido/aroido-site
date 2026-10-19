@@ -1,3 +1,14 @@
+# Local place follow-up (2026-10-19)
+
+- English home/map/editor/mark/place-alert settings and walkthrough now use **Ferry Building, San Francisco**,1 Ferry Building,CA94111,37.7954425,-122.3936136. Address source: https://www.ferrybuildingmarketplace.com/visit/ ; exact coordinates from that page’s linked Google Maps destination. The official visitor page’s94111 is retained despite the linked Google Maps label using94105.
+- Japanese equivalent media use **東京国立博物館, Tokyo**,東京都台東区上野公園13-9,35.7189,139.7764. Address: https://www.tnm.jp/modules/r_free_page/index.php?id=113 ; coordinate cross-check: https://en.wikipedia.org/wiki/Tokyo_National_Museum plus actual Apple Maps placement.
+- Actual native location acquisition runs on dedicated en_US/ja_JP simulators, respectively37.7950,-122.3943 and35.7182,139.7764. Capture explicitly uses `--composer-native-location --service-region-international`. The previous `--composer-location=success` Seoul fixed-location fixture is removed. Apple Maps tiles/labels, native reverse-geocoded header, facility coordinates and localized record addresses must agree; intermediate Seoul captures are discarded.
+- Public facility names/addresses are factual, while two notes per place are **fictional planning examples**, explicitly labeled Sample/サンプル in the app. No visit review, measured onsite condition, private data, or endorsement is implied. Existing built-in fictional onboarding screens and every Korean media file are unchanged.
+- Notification-only Debug fixture data and far/near synthetic observations are moved to the same verified facility coordinates. Real OS adapter/default hidden-note-content capture remains distinct from real GPS/APNs delivery. No production app UI was changed, app PR merged, or App Store submission made.
+- Source commits remain main `e6d813ab376894cec556441c5d153b924f2c0532` and Japanese open PR341 `8255c2cc4247127cbe2d56fc83b9783f4a1b5f72`. Capture-only patches cover guarded HomeV17Fixture/NotificationRouteUIFixture/deliverNotificationRouteFixture data, and are retained with provenance. Japanese web still identifies a development preview under code review. Chinese web uses the updated English/San Francisco media.
+- English/Japanese notifications are actual Notification Center cards cropped x24/y1944/w1158/h198 from the new raw screenshots; the Korean crop is unchanged.
+- The manifest records per-asset city and capture-data patch hashes. Earlier sections below describe the previous Seoul capture pass and are historical.
+
 # Current localized media (2026-10-19, latest capture)
 
 - Korean/English source: `aroido/hobocode` main `e6d813ab376894cec556441c5d153b924f2c0532`. Japanese source: open **PR #341**, head `8255c2cc4247127cbe2d56fc83b9783f4a1b5f72`. Japanese remains a **development preview under code review**, not merged/released support. No app PR was merged for this website work. PR #340 media was not used.
