@@ -47,7 +47,10 @@ const routes = ['/hobocode/', '/ko/hobocode/', '/ja/hobocode/', '/zh-hans/hoboco
                 }, progress);
                 await page.waitForTimeout(60);
                 assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-                if (reducedMotion === 'no-preference') assert.equal(await page.locator('.arrive').getAttribute('data-step'), String(progress * 2));
+                if (reducedMotion === 'no-preference') {
+                  await page.waitForFunction(expected => document.querySelector('.arrive').dataset.step === expected, String(progress * 2), { timeout: 3000 });
+                  assert.equal(await page.locator('.arrive').getAttribute('data-step'), String(progress * 2), `${name} ${width} ${route} progress ${progress}`);
+                }
               }
               if (name === 'chromium' && width === 390 && route === '/ko/hobocode/' && reducedMotion === 'no-preference') {
                 await page.evaluate(() => { const e = document.querySelector('.screen-list'); scrollTo(0, e.getBoundingClientRect().top + scrollY - 140); });
