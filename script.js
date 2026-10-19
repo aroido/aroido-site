@@ -116,7 +116,7 @@
       hobocode_discovery_tagline: "Notes that bring you back to a place.",
       hobocode_discovery_description: "Save a note with a place and photos, then find the details again on the map when you return. Hobocode is a location-based notes app for the things you want to remember where they happened.",
       hobocode_discovery_platform: "For iPhone · iOS 18 or later",
-      hobocode_discovery_languages: "App languages: Korean and English",
+      hobocode_discovery_languages: "App languages: Korean and English. Japanese development preview is under code review; Chinese is not supported.",
       hobocode_discovery_release: "Preparing for release. App Store download is not available yet.",
     },
     ko: {
@@ -176,7 +176,7 @@
       hobocode_discovery_tagline: "장소와 함께 기억하는 메모.",
       hobocode_discovery_description: "메모에 장소와 사진을 함께 저장하고, 다시 방문할 때 지도에서 그때의 기록을 찾아보세요. Hobocode는 어디에서 있었는지까지 기억하고 싶은 순간을 위한 위치 기반 메모 앱입니다.",
       hobocode_discovery_platform: "iPhone용 · iOS 18 이상",
-      hobocode_discovery_languages: "앱 지원 언어: 한국어, 영어",
+      hobocode_discovery_languages: "앱 지원 언어: 한국어, 영어. 일본어는 개발 미리보기로 코드 검토 중이며, 중국어는 지원하지 않습니다.",
       hobocode_discovery_release: "출시를 준비하고 있습니다. 아직 App Store에서 다운로드할 수 없습니다.",
     },
   };

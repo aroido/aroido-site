@@ -60,3 +60,32 @@ Home/projects source HTML, shared CSS and translation resources, and their gener
 - Two independent review passes: **No findings**, including media manifest/dimensions and visual Korean/English notification privacy. Captures show current app UI; no text overlays or generated app screens.
 - Final remote read confirms site main `8580398` and app main `0ec5fe8` are still the source baselines. TestFlight 0.1.1 (96) refresh is unverified: ASC CLI has no API credentials in this execution. No physical-device/GPS/APNs validation claimed.
 - Deliverable remains a local branch/commit and Library review bundle. No push, PR, merge or deployment was performed; existing checkouts were not edited.
+
+## Authorized website release stage (2026-10-19)
+
+- The user now authorizes website push, PR, merge, and deployment. App merges remain unauthorized. The preceding validation and delivery notes describe the earlier local-only stage and remain historical evidence.
+- Website source baseline remains `8580398043c77967a8ebc0af610416a5c3e8f105`; the previous work is preserved in commit `ecabe677`.
+- Updated app main baseline: `e6d813ab376894cec556441c5d153b924f2c0532`, supporting Korean and English. Japanese is implemented as a development preview in open PR #341, head `8255c2cc4247127cbe2d56fc83b9783f4a1b5f72`, and remains under code review rather than merged or released. Chinese is unsupported.
+- Home and products cards in all four website languages now state current Korean/English app support, the Japanese development preview under code review, and unsupported Chinese. Existing Coming soon/App Store availability statements, links, and layout remain unchanged.
+- The parent task owns actual main Korean/English and pending Japanese PR-head UI captures, final verification, website publication, and deployment evidence. Pending-branch media must disclose its development preview status.
+- Focused card follow-up checks passed: `./scripts/i18n-audit.sh`, `node --check script.js`, `git diff --check`, and scoped generation/parity for the six localized home/projects artifacts. This follow-up did not run the full verification gate or perform any git/network publication action.
+
+### Existing WebKit home crash
+
+- Independent investigation reproduces the crash on unchanged `8580398`, the modified branch, and live Aroido home, with JavaScript disabled and external requests blocked.
+- WebKit 2370 throws `bad_optional_access` in `WebCore::FlexFormattingContext::computeFlexBaseSize` during grid intrinsic sizing of `.media-video`, which inherits column flex from `.media-card`.
+- Setting `.media-video { display: block; }` prevents the crash at 390/1280px on the current site and at 390px on baseline/live. This small layout fix is included; no script/font changes.
+- Site-level CSS isolation is established. A reduced standalone engine reproduction and physical Safari testing are not claimed.
+
+- Explicit `width: 100%` also preserves the media card dimensions during the video-to-iframe transition. Independent WebKit 390/1280 and Chromium 390 checks passed without crash/overflow; external YouTube playback itself was not part of that isolated sizing probe.
+
+
+### Final website release validation
+
+- Korean/English were recaptured from main `e6d813a`; Japanese was captured from open PR #341 head `8255c2c`, with visible code-review/development-preview disclosure. Chinese remains an explicitly labeled English-media fallback. Dedicated synthetic data only; capture patches do not change production UI.
+- App builds both succeeded. Japanese main UI/Live Activity/App Shortcuts catalog coverage matches English-bearing entries; English `CFBundleName` brand fallback remains. Photographed UI is not full i18n, TestFlight, physical-device, GPS or APNs validation. Japanese Seoul map/address labels remain external Korean geographical data.
+- Final full gate: 11 passed, 0 failed. Chromium and WebKit: all20 target pages at390px passed links, metadata, image/video decoding and overflow/error checks. Existing studio WebKit crash is fixed by the isolated video-card block/width rules.
+- Independent code and media review: No findings. All27 hashes/byte sizes/source commits match;18 screens,3 default-private actual OS notifications, and9 sampled video frames verified. Korean banner crop was corrected against its actual position; Japanese uses a real Notification Center card.
+- Existing20 page SEO titles/meta/canonical/hreflang are preserved; only localized OG/Twitter image-alt tags were added. Robots is unchanged. Existing generator updates lastmod to2026-10-19 for the20 modified sitemap entries; URL list and discovery rules remain unchanged.
+- Final local mobile lab measurement:390px, cold cache,1.6Mbps/150ms,4x CPU,3 runs; median LCP 2172ms, maximum CLS 0.00044. Original text-free1,047,985-byte autoplay intro remains; localized walkthroughs use manual playback/preload none. Shared-host laboratory results are indicative, not field Core Web Vitals.
+- Final responsive regression:64 Chromium/WebKit × viewport375/390/430/1280 × four locales × normal/reduced-motion cases passed, including diagonal mobile touch, sticky stages, and desktop layout. The optional browser test now waits up to3s for the asynchronous frame state instead of assuming60ms is sufficient under shared-host load; page JavaScript is unchanged.

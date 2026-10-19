@@ -1078,7 +1078,7 @@
     "hobocode_discovery_tagline": "Notes that bring you back to a place.",
     "hobocode_discovery_description": "Save a note with a place and photos, then find the details again on the map when you return. Hobocode is a location-based notes app for the things you want to remember where they happened.",
     "hobocode_discovery_platform": "For iPhone · iOS 18 or later",
-    "hobocode_discovery_languages": "App languages: Korean and English",
+    "hobocode_discovery_languages": "App languages: Korean and English. Japanese development preview is under code review; Chinese is not supported.",
     "hobocode_discovery_release": "Preparing for release. App Store download is not available yet."
   },
   "ko": {
@@ -2160,7 +2160,7 @@
     "hobocode_discovery_tagline": "장소와 함께 기억하는 메모.",
     "hobocode_discovery_description": "메모에 장소와 사진을 함께 저장하고, 다시 방문할 때 지도에서 그때의 기록을 찾아보세요. Hobocode는 어디에서 있었는지까지 기억하고 싶은 순간을 위한 위치 기반 메모 앱입니다.",
     "hobocode_discovery_platform": "iPhone용 · iOS 18 이상",
-    "hobocode_discovery_languages": "앱 지원 언어: 한국어, 영어",
+    "hobocode_discovery_languages": "앱 지원 언어: 한국어, 영어. 일본어는 개발 미리보기로 코드 검토 중이며, 중국어는 지원하지 않습니다.",
     "hobocode_discovery_release": "출시를 준비하고 있습니다. 아직 App Store에서 다운로드할 수 없습니다."
   },
   "ja": {
@@ -3223,7 +3223,7 @@
     "hobocode_support_siri_body": "アプリに表示されるSiriの文言を使い、iPhoneのロックを解除してHobocodeが開いたら結果を確認してください。保存失敗はバックアップではありません。自動ライブアクティビティは設定で接続状態と表示の選択を確認してください。権限・通信・iOSの制限で表示されない場合があり、有効にしても配信を保証しません。ロック画面の内容は周囲の人に見える場合があります。表示を終了してもメモは削除されません。",
     "hobocode_support_delete_title": "復元と削除",
     "hobocode_support_delete_body": "設定のゴミ箱から30日以内に復元するか完全削除できます。保存済みメモ・下書き・入力復元データ・ゴミ箱から参照される間、写真コピーは残ります。アプリを削除すると、このiPhoneの記録を失う場合があります。以前のテスト版がiCloudへ送ったデータとiPhoneのバックアップ（iCloudバックアップ・コンピュータへのバックアップ）は、アプリとは別に保存されるため、アプリを削除しても消えません。アプリを削除する前にご不明な点があれば、お問い合わせください。",
-    "hobocode_public_landing_link": "ホボコードを見る",
+    "hobocode_public_landing_link": "ホーボーコードを見る",
     "hobocode_public_support_link": "Hobocode サポート",
     "hobocode_public_privacy_link": "Hobocode プライバシーポリシー",
     "hobocode_privacy_relay_title": "中継サーバーの記録と削除に関するお問い合わせ",
@@ -3242,7 +3242,7 @@
     "hobocode_discovery_tagline": "場所と一緒に、思い出せるメモ。",
     "hobocode_discovery_description": "メモに場所や写真を添えて保存し、再び訪れたときに地図から記録を見返せます。Hobocodeは、どこでの出来事だったかも覚えておきたい瞬間のための位置情報メモアプリです。",
     "hobocode_discovery_platform": "iPhone向け · iOS 18以降",
-    "hobocode_discovery_languages": "アプリの対応言語：韓国語・英語",
+    "hobocode_discovery_languages": "現在のアプリ対応言語：韓国語・英語。日本語は開発プレビューとしてコードレビュー中です。中国語は未対応です。",
     "hobocode_discovery_release": "リリース準備中です。App Storeでのダウンロードはまだできません。"
   },
   "zh-Hans": {
@@ -4324,7 +4324,7 @@
     "hobocode_discovery_tagline": "让笔记与地点一起留在记忆中。",
     "hobocode_discovery_description": "为笔记保存地点和照片，再次到访时，通过地图找回当时的记录。Hobocode 是一款基于位置的笔记应用，帮助您记住那些值得保留的瞬间发生在哪里。",
     "hobocode_discovery_platform": "适用于 iPhone · iOS 18 或更高版本",
-    "hobocode_discovery_languages": "应用支持语言：韩语和英语",
+    "hobocode_discovery_languages": "应用当前支持韩语和英语。日语开发预览版正在进行代码审查；暂不支持中文。",
     "hobocode_discovery_release": "正在准备发布，暂未在 App Store 提供下载。"
   }
 }

@@ -1215,6 +1215,8 @@ html:lang(ko) .page-hero h1 {
 }
 
 .media-video {
+  display: block;
+  width: 100%;
   padding: 0;
   min-height: 0;
   aspect-ratio: 16 / 9;

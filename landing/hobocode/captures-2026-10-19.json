@@ -1,7 +1,6 @@
 {
   "capturedAt": "2026-10-19",
   "appRepository": "aroido/hobocode",
-  "appCommit": "0ec5fe8a7c8b2b394553090a82d0b58a6c67fa92",
   "build": "local Debug 0.1.1 (3)",
   "simulator": "iPhone 17, iOS 26.5",
   "supportedAppLanguages": [
@@ -11,108 +10,204 @@
   "webMedia": {
     "ko": "ko",
     "en": "en",
-    "ja": "en",
+    "ja": "ja",
     "zh-Hans": "en"
   },
   "syntheticDataOnly": true,
   "productionUIChanged": false,
   "notificationEvidence": "real OS adapter display with synthetic arrival observations; not GPS/APNs evidence",
+  "captureSources": {
+    "ko": {
+      "commit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "ref": "main",
+      "status": "current-main"
+    },
+    "en": {
+      "commit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "ref": "main",
+      "status": "current-main"
+    },
+    "ja": {
+      "commit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "ref": "PR #341",
+      "status": "development-preview-code-review"
+    }
+  },
+  "unsupportedAppLanguages": [
+    "zh-Hans"
+  ],
+  "pendingAppLanguages": [
+    "ja"
+  ],
+  "appCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
   "assets": [
     {
       "path": "hobocode/media/ko/notification.webp",
       "contentLanguage": "ko",
-      "sha256": "3d3f957b0d249adb426cd01acaf495690a0476f49b9602da4ddfd87d38641fa9",
-      "bytes": 18894
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "1f5f3e831cd0a2249b7bc79c4b29bbf58abd6c99d7f7635d6ee4b403293da1b6",
+      "bytes": 17864
     },
     {
       "path": "hobocode/media/ko/screen-alert.webp",
       "contentLanguage": "ko",
-      "sha256": "21ce446e09389eac61027b3405f065615648157ab4464c00072ae8e383a4f35c",
-      "bytes": 46518
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "ead73aec98641d57fa8e2ca756e2bd2ac25e791ff6cc4f04e08e9472bace7aa7",
+      "bytes": 46532
     },
     {
       "path": "hobocode/media/ko/screen-editor.webp",
       "contentLanguage": "ko",
-      "sha256": "f0df1532450950880c2b5e191e2c0cbb280519fbe4bcfb9082d8993ab3f8d8f0",
-      "bytes": 31138
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "2b99aed1089cec209b7555159adfa94f8417987f0abe54f1ca60acf1f0df85ed",
+      "bytes": 31114
     },
     {
       "path": "hobocode/media/ko/screen-home.webp",
       "contentLanguage": "ko",
-      "sha256": "e5184dbdca1e79007aeb5e7463910075549f12c66ed6ed192700463b96956d00",
-      "bytes": 59870
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "cf313a0cf9b2a221ba74bea7b67a19382e407c5872df58592787002b04554ec4",
+      "bytes": 57164
     },
     {
       "path": "hobocode/media/ko/screen-map.webp",
       "contentLanguage": "ko",
-      "sha256": "ca990d5fa84805415cfd7c5ddacc3ceb5f9bd79bf0f49ced25a504b95f60dcb6",
-      "bytes": 100692
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "70c2e334782a9f9c950006434de5436f865b730cce6a48f3db3b0427b4265ca4",
+      "bytes": 100826
     },
     {
       "path": "hobocode/media/ko/screen-mark.webp",
       "contentLanguage": "ko",
-      "sha256": "d6a544691cd3585c41e24c097e8764051d8391c79c38361403e334acf309bc33",
-      "bytes": 34442
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "c198d480cfbf4f27a75fc2391c7cdf2ff16724dabb7d343d407c8b30a9e4b384",
+      "bytes": 34376
     },
     {
       "path": "hobocode/media/ko/screen-onboarding.webp",
       "contentLanguage": "ko",
-      "sha256": "508d654ef41ee8e4722f1e010bc20d0ce45e45ae0b5d5f2303d1628e2c9d1c5b",
-      "bytes": 99674
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "d6d7cbf4c8a8ffbe6d79de952e3e9aec0a2462645085c168af7d5cd45b527257",
+      "bytes": 99752
     },
     {
       "path": "hobocode/media/ko/walkthrough.mp4",
       "contentLanguage": "ko",
-      "sha256": "91ff0255a3d524a4ceb843625770343518c12d3ddf2d91b62d4fda19203dcf99",
-      "bytes": 403183
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "5acbc0bb0887d0895769f7d51268374df6690a078b2702241db277b880074fba",
+      "bytes": 461258
     },
     {
       "path": "hobocode/media/en/notification.webp",
       "contentLanguage": "en",
-      "sha256": "c6aab72c13c166eb315f2d33112d2c7a21099b2edf8ac73edf79a33945913ffc",
-      "bytes": 20922
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "f10cc15e63f6d757321f3dd704918aa30908615713ac8fe5e639457f3bce6423",
+      "bytes": 21392
     },
     {
       "path": "hobocode/media/en/screen-alert.webp",
       "contentLanguage": "en",
-      "sha256": "ff4e74a6dc0d480521505aa4f36fb4c343acb4e1507f7d7c8e6fbf7cfb340928",
-      "bytes": 41368
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "fcd6a02f578f4e214eab85cbd606b30b7d402808aae5c4b92f405e1ec55b3a57",
+      "bytes": 41374
     },
     {
       "path": "hobocode/media/en/screen-editor.webp",
       "contentLanguage": "en",
-      "sha256": "ee299b08ec058ebbba7cd3d53046b27c2433eef4d2466657de6dd494d4d548cd",
-      "bytes": 37348
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "352e67c596e3ef043ee888a476cca5ef52bd6f3f9ed5275874bae96c9791e799",
+      "bytes": 37354
     },
     {
       "path": "hobocode/media/en/screen-home.webp",
       "contentLanguage": "en",
-      "sha256": "bfd6942a38d99e7d1ac43d39d4fcd1f3dcdababd44424ed6c463a02d8d4241b9",
-      "bytes": 52062
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "f83bc8cfde4ff34b74410e0517c3f7ea986cef4d4249e5d5c85fe9eed730eec6",
+      "bytes": 52012
     },
     {
       "path": "hobocode/media/en/screen-map.webp",
       "contentLanguage": "en",
-      "sha256": "2bb3451fbc263cfb7a66fa1e1d5e6db24c5d80b011f5dd67cee8b4d09ba7c193",
-      "bytes": 61954
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "0315a83660796ebae3abfd95687b882f6eb4ea571cf34a4c6a1d1ebac2cd784f",
+      "bytes": 61902
     },
     {
       "path": "hobocode/media/en/screen-mark.webp",
       "contentLanguage": "en",
-      "sha256": "5632aa9db25afa90b2d0167004e9cdc1f42699914ce17ac17ab049d22948d5dd",
-      "bytes": 39766
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "bd968b4cf06c6fdd3bffc32960ab368f2425e2a45fcbe37ac7d9a1170cf96fa4",
+      "bytes": 39716
     },
     {
       "path": "hobocode/media/en/screen-onboarding.webp",
       "contentLanguage": "en",
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
       "sha256": "e2ac139fc4483f226083683ceff6e41a251b02d18644c42e9fe0143f02373489",
       "bytes": 101532
     },
     {
       "path": "hobocode/media/en/walkthrough.mp4",
       "contentLanguage": "en",
-      "sha256": "58f3babe57429418bd34c415bfce6847f67854103371d85abe2289cdbf2c92c8",
-      "bytes": 240736
+      "sourceCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+      "sha256": "2ed3df0fa040156bb5f9ba9c3c23de599a50d22523943d15640d581fe71ea0cc",
+      "bytes": 342196
+    },
+    {
+      "path": "hobocode/media/ja/notification.webp",
+      "contentLanguage": "ja",
+      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "sha256": "1fe750efd2ab9a3bd7a524e67b317ab2574c2d570954587d0052b54c3d018bc6",
+      "bytes": 19260
+    },
+    {
+      "path": "hobocode/media/ja/screen-alert.webp",
+      "contentLanguage": "ja",
+      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "sha256": "b99aec4e3c1d18d91f70c6a60718ba13725381cd0547b9a57c135fbefe3f1c68",
+      "bytes": 41710
+    },
+    {
+      "path": "hobocode/media/ja/screen-editor.webp",
+      "contentLanguage": "ja",
+      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "sha256": "6fac08731b96fea74ce449dad9227d8db160e908f56e57e7986b09fc3040eac3",
+      "bytes": 38966
+    },
+    {
+      "path": "hobocode/media/ja/screen-home.webp",
+      "contentLanguage": "ja",
+      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "sha256": "5dfca488d52abf4ea2622c24d514af8fcca5776193968d2b6fbe628a86d53686",
+      "bytes": 50738
+    },
+    {
+      "path": "hobocode/media/ja/screen-map.webp",
+      "contentLanguage": "ja",
+      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "sha256": "51fa67bdd9223cb97f52eb6fd2a217abe9cb6fbb26bbb2b3930556d65d21debb",
+      "bytes": 62954
+    },
+    {
+      "path": "hobocode/media/ja/screen-mark.webp",
+      "contentLanguage": "ja",
+      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "sha256": "ada46e2b89963addef88ef32f62c962f578427d55500b4c44621cce28a628238",
+      "bytes": 41272
+    },
+    {
+      "path": "hobocode/media/ja/screen-onboarding.webp",
+      "contentLanguage": "ja",
+      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "sha256": "1f388614657bd4e45cc87f03c96b91fc0eb2cbb2a7d85aab090e7071425b81db",
+      "bytes": 97726
+    },
+    {
+      "path": "hobocode/media/ja/walkthrough.mp4",
+      "contentLanguage": "ja",
+      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "sha256": "7dafb44e5a9088a33f0a5654f457e116ca281a337603a6560315c77e1ad13b66",
+      "bytes": 470700
     },
     {
       "path": "hobocode/media/chalk-mark-web.webp",

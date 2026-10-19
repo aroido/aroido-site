@@ -47,7 +47,7 @@ const base = {
   "intro": "場所にメモや写真、自分だけのマークを。<br>HobocodeはiPhone向けの場所メモアプリです。",
   "explore": "ひと言が役立つ、そのときへ",
   "end": "もう一周する前に、<br>ひと言残しておこう。",
-  "endBody": "iPhone 向けホボコードを準備中です。<br>開発中の画面は公開前に変わる場合があります。",
+  "endBody": "iPhone 向けホーボーコードを準備中です。<br>開発中の画面は公開前に変わる場合があります。",
   "privacy": "プライバシー",
   "support": "サポート"
  },
@@ -147,7 +147,7 @@ const extra = {
   "place": "한길전골",
   "notifAlt": "호보코드가 가상 도착 조건에서 보낸 한국어 iOS 알림. 메모 본문은 기본 설정대로 숨겨져 있어요.",
   "screensTitle": "앱에서는 이렇게 보여요.",
-  "screensBody": "한국어 앱의 실제 화면이에요. 현재 앱은 한국어와 영어를 지원해요.",
+  "screensBody": "한국어 앱의 실제 화면이에요. 현재 앱은 한국어와 영어를 지원하며, 일본어는 구현 검토 중인 개발 화면으로 소개해요.",
   "screens": [
    [
     "home",
@@ -191,7 +191,8 @@ const extra = {
   "studio": "제작사 아로이도",
   "products": "아로이도 제품",
   "walkthrough": "한국어 앱 둘러보기",
-  "notificationCaption": "앱이 보낸 한국어 알림 예시 · 가상 도착 조건으로 촬영"
+  "notificationCaption": "앱이 보낸 한국어 알림 예시 · 가상 도착 조건으로 촬영",
+  "ogAlt": "어두운 벽에 그려진 호보코드의 분필 표식"
  },
  "en": {
   "replay": "Replay",
@@ -270,7 +271,7 @@ const extra = {
   "place": "Hangil Jeongol",
   "notifAlt": "English iOS notification sent by Hobocode under synthetic arrival conditions. Note text is hidden by default.",
   "screensTitle": "What it looks like in the app.",
-  "screensBody": "Actual screens in English. The app currently supports Korean and English.",
+  "screensBody": "Actual screens in English. The app currently supports Korean and English. A Japanese development preview is under code review.",
   "screens": [
    [
     "home",
@@ -314,7 +315,8 @@ const extra = {
   "studio": "Made by Aroido",
   "products": "Aroido products",
   "walkthrough": "Explore the app in English",
-  "notificationCaption": "English notification sent by the app · synthetic arrival conditions"
+  "notificationCaption": "English notification sent by the app · synthetic arrival conditions",
+  "ogAlt": "Hobocode chalk mark on a dark wall"
  },
  "ja": {
   "replay": "もう一度見る",
@@ -391,53 +393,54 @@ const extra = {
   ],
   "conditions": "位置情報と通知の許可が必要です。アプリ未使用時の通知には位置情報を「常に」に設定してください。下の例は初期設定と同じくメモ本文を隠しています。",
   "place": "ハンギル鍋",
-  "notifAlt": "架空の到着条件でHobocodeが送信した英語のiOS通知。初期設定ではメモ本文は表示されません。",
+  "notifAlt": "架空の到着条件でホーボーコードが送信した日本語のiOS通知。初期設定ではメモ本文は表示されません。",
   "screensTitle": "アプリではこう見えます。",
-  "screensBody": "以下は英語版アプリの実際の画面です。現在の対応言語は韓国語と英語です。日本語版は未対応です。",
+  "screensBody": "日本語対応を実装した開発プレビューの実画面です。日本語対応はコードレビュー中で、現在のアプリの対応言語は韓国語と英語です。",
   "screens": [
    [
     "home",
     "ホーム",
     "いる場所の近くに残したメモを先に表示します。",
-    "英語版のホーム：架空のカフェメモとApple地図。"
+    "日本語開発版のホーム：架空のカフェメモとApple地図。"
    ],
    [
     "map",
     "地図",
     "メモした場所を地図で探せます。",
-    "英語版の地図：ソウル市庁付近の架空の保存場所。"
+    "日本語開発版の地図：ソウル市庁付近の架空の保存場所。"
    ],
    [
     "alert",
     "場所の通知",
     "場所ごとに通知をオンにして範囲を決めます。",
-    "英語版の場所設定：架空のカフェの到着通知はオフ、半径330フィート。"
+    "日本語開発版の場所設定：架空のカフェの到着通知はオフ、半径100メートル。"
    ],
    [
     "editor",
     "メモ",
     "場所と地図を確認しながら、メモを読んで編集します。",
-    "英語版のメモ編集：架空のカフェメモと場所の地図。"
+    "日本語開発版のメモ編集：架空のカフェメモと場所の地図。"
    ],
    [
     "mark",
     "自分だけの印",
     "メモに合う印を選びます。",
-    "英語版のメモのマーク選択：16種類のチョークのマーク。"
+    "日本語開発版のメモのマーク選択：16種類のチョークのマーク。"
    ],
    [
     "onboarding",
     "はじめに",
     "場所にメモを残す使い方を紹介します。",
-    "英語版の初回画面：例のメモと次へボタン。"
+    "日本語開発版の初回画面：例のメモと次へボタン。"
    ]
   ],
-  "disclosure": "2026年10月19日に開発ビルドから撮影しました。場所・メモ・位置は検証用の架空例です。公開前に画面が変わる場合があります。このサイトでは地図・通知機能は使えません。",
-  "mediaLocale": "en",
+  "disclosure": "2026年10月19日、日本語対応をコードレビュー中の開発ビルドで撮影しました。場所・メモ・位置は検証用の架空例です。公開前に画面が変わる場合があります。このサイトでは地図・通知機能は使えません。",
+  "mediaLocale": "ja",
   "studio": "制作元 Aroido",
   "products": "Aroidoの製品",
-  "walkthrough": "英語版アプリの操作を見る",
-  "notificationCaption": "アプリが送信した英語の通知例 · 架空の到着条件で撮影"
+  "walkthrough": "日本語開発プレビューの操作を見る",
+  "notificationCaption": "日本語開発プレビューの通知例 · 架空の到着条件で撮影",
+  "ogAlt": "暗い壁に描かれたホーボーコードのチョークマーク"
  },
  "zh-hans": {
   "replay": "重新播放",
@@ -516,7 +519,7 @@ const extra = {
   "place": "韩吉火锅",
   "notifAlt": "Hobocode在虚构到达条件下发送的英语iOS通知。默认隐藏笔记正文。",
   "screensTitle": "在应用里是这样的。",
-  "screensBody": "以下为英语版应用的真实画面。目前应用支持韩语和英语，尚不支持简体中文。",
+  "screensBody": "以下为英语版应用的真实画面。目前应用支持韩语和英语；日语开发预览正在进行代码审查，尚不支持简体中文。",
   "screens": [
    [
     "home",
@@ -560,7 +563,8 @@ const extra = {
   "studio": "制作方 Aroido",
   "products": "Aroido 产品",
   "walkthrough": "观看英语版应用操作",
-  "notificationCaption": "应用发送的英语通知示例 · 使用虚构到达条件拍摄"
+  "notificationCaption": "应用发送的英语通知示例 · 使用虚构到达条件拍摄",
+  "ogAlt": "深色墙面上的 Hobocode 粉笔标记"
  }
 };
 export const copy = Object.fromEntries(Object.keys(base).map(k => [k, { ...base[k], ...extra[k] }]));
