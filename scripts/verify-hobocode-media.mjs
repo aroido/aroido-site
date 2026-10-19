@@ -5,12 +5,28 @@ import crypto from 'node:crypto';
 import {copy} from '../landing/hobocode/content.mjs';
 const root = new URL('../',import.meta.url);
 const manifest = JSON.parse(fs.readFileSync(new URL('landing/hobocode/captures-2026-10-19.json',root)));
-assert.deepEqual(manifest.supportedAppLanguages,['ko','en']);
-assert.deepEqual(manifest.pendingAppLanguages,['ja']);
+assert.deepEqual(manifest.supportedAppLanguages,['ko','en','ja']);
+assert.deepEqual(manifest.pendingAppLanguages,[]);
 assert.deepEqual(manifest.unsupportedAppLanguages,['zh-Hans']);
-assert.equal(manifest.captureSources.ja.status,'development-preview-code-review');
-assert.equal(manifest.captureSources.ja.commit,'8255c2cc4247127cbe2d56fc83b9783f4a1b5f72');
-assert.equal(manifest.appCommit,'e6d813ab376894cec556441c5d153b924f2c0532');
+assert.equal(manifest.captureSources.ja.status,'current-main');
+assert.equal(manifest.captureSources.ja.commit,'65767a6b44c5fba27e20f97ea48a6da21760aab5');
+assert.equal(manifest.appCommit,'65767a6b44c5fba27e20f97ea48a6da21760aab5');
+assert.equal(manifest.personalDataUsed,false);
+assert.equal(manifest.fictionalNotes,true);
+assert.equal(manifest.locations.en.city,'San Francisco');
+assert.equal(manifest.locations.en.name,'Ferry Building');
+assert.equal(manifest.locations.ja.city,'Tokyo');
+assert.equal(manifest.locations.ja.name,'東京国立博物館');
+for(const locale of ['en','ja']){
+ assert(manifest.captureSources[locale].locationMode.includes('--composer-native-location'));
+ assert(manifest.captureSources[locale].locationMode.includes('--service-region-international'));
+ for(const asset of manifest.assets.filter(x=>x.contentLanguage===locale)){
+  const context=asset.path.includes('onboarding')?'built-in-fictional-onboarding':manifest.locations[locale].city;
+  assert.equal(asset.placeContext,context);
+  if(!asset.path.includes('onboarding'))assert.equal(asset.captureDataPatchSHA256,manifest.captureDataPatches[locale]);
+ }
+}
+
 for(const asset of manifest.assets){
  const bytes=fs.readFileSync(new URL(asset.path,root));
  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),asset.sha256,asset.path);
@@ -22,7 +38,7 @@ for(const c of Object.values(copy)){
  assert(html.includes('name="twitter:image:alt" content="'+c.ogAlt+'"'));
  const data=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/)[1]);
  const app=data['@graph'].find(x=>x['@type']==='SoftwareApplication');
- assert.deepEqual(app.inLanguage,['ko','en']);
+ assert.deepEqual(app.inLanguage,['ko','en','ja']);
  assert.equal(app.operatingSystem,'iOS 18.0 or later');
  for(const key of ['offers','price','aggregateRating','review','datePublished','downloadUrl'])assert(!(key in app));
  for(const key of ['home','map','alert','editor','mark','onboarding'])assert(html.includes(`/hobocode/media/${locale}/screen-${key}.webp`));
