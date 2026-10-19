@@ -147,7 +147,7 @@ const extra = {
   "place": "한길전골",
   "notifAlt": "호보코드가 가상 도착 조건에서 보낸 한국어 iOS 알림. 메모 본문은 기본 설정대로 숨겨져 있어요.",
   "screensTitle": "앱에서는 이렇게 보여요.",
-  "screensBody": "한국어 앱의 실제 화면이에요. 현재 앱은 한국어와 영어를 지원하며, 일본어는 구현 검토 중인 개발 화면으로 소개해요.",
+  "screensBody": "한국어 앱의 실제 화면이에요. 현재 앱은 한국어·영어·일본어를 지원해요.",
   "screens": [
    [
     "home",
@@ -271,7 +271,7 @@ const extra = {
   "place": "Ferry Building",
   "notifAlt": "Actual English iOS notification for a simulated arrival at Ferry Building in San Francisco. Note text is hidden by default.",
   "screensTitle": "What it looks like in the app.",
-  "screensBody": "Actual screens in English. The app currently supports Korean and English. A Japanese development preview is under code review.",
+  "screensBody": "Actual screens in English. The app currently supports Korean, English and Japanese.",
   "screens": [
    [
     "home",
@@ -395,51 +395,51 @@ const extra = {
   "place": "東京国立博物館",
   "notifAlt": "東京国立博物館への到着を模擬してアプリが送信した日本語のiOS通知。初期設定ではメモ本文は表示されません。",
   "screensTitle": "アプリではこう見えます。",
-  "screensBody": "日本語対応を実装した開発プレビューの実画面です。日本語対応はコードレビュー中で、現在のアプリの対応言語は韓国語と英語です。",
+  "screensBody": "日本語版アプリの実際の開発画面です。現在のアプリは韓国語・英語・日本語に対応しています。",
   "screens": [
    [
     "home",
     "ホーム",
     "いる場所の近くに残したメモを先に表示します。",
-    "日本語開発版ホーム：東京国立博物館の架空の予定メモと東京のAppleマップ。"
+    "日本語版ホーム：東京国立博物館の架空の予定メモと東京のAppleマップ。"
    ],
    [
     "map",
     "地図",
     "メモした場所を地図で探せます。",
-    "日本語開発版のAppleマップ：東京の東京国立博物館の保存場所。"
+    "日本語版のAppleマップ：東京の東京国立博物館の保存場所。"
    ],
    [
     "alert",
     "場所の通知",
     "場所ごとに通知をオンにして範囲を決めます。",
-    "日本語開発版の場所設定：東京国立博物館、東京都台東区上野公園13-9、通知オフ、半径100メートル。"
+    "日本語版の場所設定：東京国立博物館、東京都台東区上野公園13-9、通知オフ、半径100メートル。"
    ],
    [
     "editor",
     "メモ",
     "場所と地図を確認しながら、メモを読んで編集します。",
-    "日本語開発版メモ：東京国立博物館の架空の予定、東京の住所とAppleマップ。"
+    "日本語版メモ：東京国立博物館の架空の予定、東京の住所とAppleマップ。"
    ],
    [
     "mark",
     "自分だけの印",
     "メモに合う印を選びます。",
-    "日本語開発版：東京国立博物館の架空の予定メモのマーク選択。"
+    "日本語版：東京国立博物館の架空の予定メモのマーク選択。"
    ],
    [
     "onboarding",
     "はじめに",
     "場所にメモを残す使い方を紹介します。",
-    "日本語開発版の初回画面：例のメモと次へボタン。"
+    "日本語版の初回画面：例のメモと次へボタン。"
    ]
   ],
-  "disclosure": "2026年10月19日、日本語対応をコードレビュー中の開発ビルドで、位置を東京にシミュレーションして撮影しました。東京国立博物館は実在する公開施設ですが、メモは架空の予定例で、訪問レビューではありません。初回画面はアプリ内の架空例です。公開前に画面が変わる場合があります。このサイトでは地図・通知機能は使えません。",
+  "disclosure": "2026年10月19日、最新の開発ビルドで、位置を東京にシミュレーションして撮影しました。東京国立博物館は実在する公開施設ですが、メモは架空の予定例で、訪問レビューではありません。初回画面はアプリ内の架空例です。公開前に画面が変わる場合があります。このサイトでは地図・通知機能は使えません。",
   "mediaLocale": "ja",
   "studio": "制作元 Aroido",
   "products": "Aroidoの製品",
-  "walkthrough": "日本語開発プレビューの操作を見る",
-  "notificationCaption": "日本語開発プレビューの通知例 · 東京国立博物館への到着を模擬",
+  "walkthrough": "日本語版アプリの操作を見る",
+  "notificationCaption": "日本語版の通知例 · 東京国立博物館への到着を模擬",
   "ogAlt": "暗い壁に描かれたホーボーコードのチョークマーク"
  },
  "zh-hans": {
@@ -519,7 +519,7 @@ const extra = {
   "place": "Ferry Building",
   "notifAlt": "应用模拟抵达旧金山 Ferry Building 后发送的真实英语 iOS 通知。默认隐藏笔记正文。",
   "screensTitle": "在应用里是这样的。",
-  "screensBody": "以下为英语版应用的真实画面。目前应用支持韩语和英语；日语开发预览正在进行代码审查，尚不支持简体中文。",
+  "screensBody": "以下为英语版应用的真实画面。目前应用支持韩语、英语和日语，尚不支持简体中文。",
   "screens": [
    [
     "home",

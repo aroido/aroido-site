@@ -5,7 +5,8 @@
   "simulator": "iPhone 17, iOS 26.5",
   "supportedAppLanguages": [
     "ko",
-    "en"
+    "en",
+    "ja"
   ],
   "webMedia": {
     "ko": "ko",
@@ -20,28 +21,28 @@
     "ko": {
       "commit": "e6d813ab376894cec556441c5d153b924f2c0532",
       "ref": "main",
-      "status": "current-main"
+      "status": "current-main",
+      "compatibleWithMain": "65767a6b44c5fba27e20f97ea48a6da21760aab5"
     },
     "en": {
       "commit": "e6d813ab376894cec556441c5d153b924f2c0532",
       "ref": "main",
       "status": "current-main",
-      "locationMode": "native simulator location API; --composer-native-location; --service-region-international"
+      "locationMode": "native simulator location API; --composer-native-location; --service-region-international",
+      "compatibleWithMain": "65767a6b44c5fba27e20f97ea48a6da21760aab5"
     },
     "ja": {
-      "commit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "ref": "PR #341",
-      "status": "development-preview-code-review",
+      "commit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
+      "ref": "main",
+      "status": "current-main",
       "locationMode": "native simulator location API; --composer-native-location; --service-region-international"
     }
   },
   "unsupportedAppLanguages": [
     "zh-Hans"
   ],
-  "pendingAppLanguages": [
-    "ja"
-  ],
-  "appCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+  "pendingAppLanguages": [],
+  "appCommit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
   "assets": [
     {
       "path": "hobocode/media/ko/notification.webp",
@@ -173,61 +174,61 @@
     {
       "path": "hobocode/media/ja/notification.webp",
       "contentLanguage": "ja",
-      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "af11fe217349e7b8539d10ba149c7ba5b49857d9ff0b15c0254eeb89b5fc0ba2",
-      "bytes": 18856,
+      "sourceCommit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
+      "sha256": "2625a588a9578d2c4c01af0bb3ef09a7ca312e03830a71e224817f8c8a41e58d",
+      "bytes": 22984,
       "placeContext": "Tokyo",
       "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-alert.webp",
       "contentLanguage": "ja",
-      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "085d193cd8e36d08fdbf792b3ca80b42a015960d72b53a9919a2597b4f64da2c",
-      "bytes": 50246,
+      "sourceCommit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
+      "sha256": "f71712cca9f7ea98a8698fd17524376405fbeaee822dc07ece5652e480c0130d",
+      "bytes": 50240,
       "placeContext": "Tokyo",
       "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-editor.webp",
       "contentLanguage": "ja",
-      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "345b6ac6dc55a9d96ea4b8dd397b7931fb892b144359d97086750cf8081ede5f",
-      "bytes": 36016,
+      "sourceCommit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
+      "sha256": "7315633eaabbf3dfbb7b6cc8c932b9c5d36f7398da4fb58fc66e2d04ea855150",
+      "bytes": 36080,
       "placeContext": "Tokyo",
       "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-home.webp",
       "contentLanguage": "ja",
-      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "16dd209fcf86b59c6c6d7ac804c6fafec6d9136a1bd5b27804fa0b1b2c08edea",
-      "bytes": 57136,
+      "sourceCommit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
+      "sha256": "84c93305e1e46cdf3a8f5efc0b5b2cb8be96040de5a409a420e8d6c94f8cca63",
+      "bytes": 57046,
       "placeContext": "Tokyo",
       "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-map.webp",
       "contentLanguage": "ja",
-      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "1c147bfbd270bb2855bf006c356b362942fbfbdbc03e3f6a735e83e6018e23d5",
-      "bytes": 98956,
+      "sourceCommit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
+      "sha256": "c347a665d775fba3089c0d465486b186ca41c992c44673b489de944bfb178345",
+      "bytes": 98872,
       "placeContext": "Tokyo",
       "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-mark.webp",
       "contentLanguage": "ja",
-      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "5697f6059e2fe48a64ddf10e960bb9d4c902bac34729f7d75b91ad5aff54e2ac",
-      "bytes": 44910,
+      "sourceCommit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
+      "sha256": "28d22c5401a350a840c36445e6a97d1959abff0d38dadec2e965c8fcf865d8ca",
+      "bytes": 44912,
       "placeContext": "Tokyo",
       "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
     {
       "path": "hobocode/media/ja/screen-onboarding.webp",
       "contentLanguage": "ja",
-      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
+      "sourceCommit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
       "sha256": "1f388614657bd4e45cc87f03c96b91fc0eb2cbb2a7d85aab090e7071425b81db",
       "bytes": 97726,
       "placeContext": "built-in-fictional-onboarding"
@@ -235,9 +236,9 @@
     {
       "path": "hobocode/media/ja/walkthrough.mp4",
       "contentLanguage": "ja",
-      "sourceCommit": "8255c2cc4247127cbe2d56fc83b9783f4a1b5f72",
-      "sha256": "158e6ec1017f2410ffe82e2bc472f3f6c61053669962861c0e6a0bdfb61e34f9",
-      "bytes": 369069,
+      "sourceCommit": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
+      "sha256": "1c0ac5769630f54eaf35c03eea49a4fe1b16a0b1a3f39307a6860dd698221b47",
+      "bytes": 355475,
       "placeContext": "Tokyo",
       "captureDataPatchSHA256": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
     },
@@ -298,5 +299,13 @@
   "captureDataPatches": {
     "en": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056",
     "ja": "5d12570b7531489fd30e21decec3b5f19933c29af4ea24444486180186766056"
+  },
+  "compatibilityAudit": {
+    "latestMain": "65767a6b44c5fba27e20f97ea48a6da21760aab5",
+    "retainedKoreanEnglishCommit": "e6d813ab376894cec556441c5d153b924f2c0532",
+    "result": "No relevant visible KO/EN changes; Japanese-only translation/font/address changes independently reviewed",
+    "japanesePR341": "merged by other work",
+    "japaneseMainPR345": "merged by other work",
+    "thisTaskMergedAppPR": false
   }
 }
