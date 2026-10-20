@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">HobocodeがこのiPhoneに保存する記録、地図検索、自動ライブアクティビティで処理する情報と、利用者の選択について説明します。</p>
         <p data-i18n="hobocode_app_scope">このページはHobocodeに適用されます。Ramgnoteは別のアプリとして維持され、既存の記録がHobocodeに自動移行されることはありません。</p>
         <p><a href="/ja/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnoteのプライバシーポリシー</a></p>
-        <p data-i18n="hobocode_privacy_updated">施行日：2026年10月19日</p>
+        <p data-i18n="hobocode_privacy_updated">施行日：2026年10月20日</p>
         <p data-i18n="hobocode_operator">運営者・個人情報のお問い合わせ担当：송희섭（Song Hui-seop）</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/ja/hobocode/" data-i18n="hobocode_public_landing_link">ホーボーコードを見る</a>
@@ -151,15 +151,15 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">保護対策と外部サービス</h2>
-          <p data-i18n="hobocode_privacy_protection_body">Hobocodeは記録をこのiPhoneのアプリ専用領域に保存し、iOSのファイル保護を使用します。これはエンドツーエンド暗号化や専用アプリパスワードを提供するという意味ではありません。アプリはAppleのSiri・APNs・地図検索、NAVERの地図検索、Cloudflare中継を使用します。広告が有効なバージョンで使用するGoogle AdMobの処理は、下の広告項目で別途説明します。Hobocodeは、広告機能の設定を取得するためにFirebase Remote Configを使用します。この設定の取得は広告の読み込みとは別に行われ、広告への同意手続きで広告リクエストが許可される前に実行される場合があります。Firebaseは、設定の提供とサービスの診断のために、アプリのインストール識別子と認証トークン、端末の国・言語・タイムゾーン、アプリの識別子・バージョン・ビルド、およびOS・SDKのバージョン情報を処理します。Hobocodeは、メモの本文、選択した写真、保存した場所の座標をRemote Configのパラメータとして送信しません。バージョン0.1.1(99)では、Firebase AnalyticsおよびPostHogによる分析を有効にしていません。このウェブサイトはVercelで配信し、Google Fontsを読み込み、訪問や一部の操作にVercel Web Analyticsを使用する構成です。ホームページなど一部のページではGoogle Analyticsも読み込む構成です。ウェブリクエストでIPアドレスやブラウザ情報が提供事業者へ送信される場合があります。アプリの処理とウェブサイトの分析は別です。</p>
+          <p data-i18n="hobocode_privacy_protection_body">Hobocodeは記録をこのiPhoneのアプリ専用領域に保存し、iOSのファイル保護を使用します。これはエンドツーエンド暗号化や専用アプリパスワードを提供するという意味ではありません。アプリはAppleのSiri・APNs・地図検索、NAVERの地図検索、Cloudflare中継を使用します。広告が有効なバージョンで使用するGoogle AdMobの処理は、下の広告項目で別途説明します。Hobocodeは、広告機能の設定を取得するためにFirebase Remote Configを使用します。この設定の取得は広告の読み込みとは別に行われ、広告への同意手続きで広告リクエストが許可される前に実行される場合があります。Firebaseは、設定の提供とサービスの診断のために、アプリのインストール識別子と認証トークン、端末の国・言語・タイムゾーン、アプリの識別子・バージョン・ビルド、およびOS・SDKのバージョン情報を処理します。Hobocodeは、メモの本文、選択した写真、保存した場所の座標をRemote Configのパラメータとして送信しません。バージョン0.1.1(101)では、Firebase AnalyticsおよびPostHogによる分析を有効にしていません。このウェブサイトはVercelで配信し、Google Fontsを読み込み、訪問や一部の操作にVercel Web Analyticsを使用する構成です。ホームページなど一部のページではGoogle Analyticsも読み込む構成です。ウェブリクエストでIPアドレスやブラウザ情報が提供事業者へ送信される場合があります。アプリの処理とウェブサイトの分析は別です。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_ads_title">アプリ内広告とプライバシーの選択</h2>
-          <p data-i18n="hobocode_privacy_ads_intro">広告が有効なバージョンでは、Google AdMobのGoogle Mobile Ads SDKと、同意管理用のUser Messaging Platform（UMP）を使用します。ホームのメモや保管庫の場所グループの間にネイティブ広告、メモ本文の下にバナーを表示する場合があります。インタースティシャル広告やLive Activity内の広告は含みません。非パーソナライズド広告をリクエストし、IDFAにアクセスするためのATT許可は求めません。</p>
+          <p data-i18n="hobocode_privacy_ads_intro">広告が有効なバージョンでは、Google AdMobのGoogle Mobile Ads SDKと、同意管理用のUser Messaging Platform（UMP）を使用します。ホームのメモや保管庫の場所グループの間にネイティブ広告、メモ本文の下にバナーを表示する場合があります。インタースティシャル広告やLive Activity内の広告は含みません。広告のために、iOSのApp Tracking Transparency（ATT）によるトラッキングの許可を求める場合があります。許可した場合に限り、Google広告SDKが広告識別子（IDFA）を使用でき、地域に応じた同意の選択も適用されます。許可しない場合、利用が制限されている場合、またはまだ選択していない場合は、IDFAを使用せずに非パーソナライズド広告をリクエストします。トラッキングを許可しなくてもアプリの主な機能を利用でき、広告が表示される場合があります。トラッキングの許可はiOSの設定から変更できます。</p>
           <p data-i18n="hobocode_privacy_ads_data">アプリはメモ本文・写真・正確な座標・住所・検索語・アプリのアカウント識別子を広告リクエストに含めません。広告SDKは広告配信・測定・診断・不正防止のために、IPアドレス、端末またはアプリの識別情報、クラッシュ・性能情報、広告表示や操作情報を処理する場合があります。IPアドレスからおおまかな位置が推定される場合があります。非パーソナライズド広告でもデータ処理がなくなるわけではありません。</p>
-          <p data-i18n="hobocode_privacy_ads_choices">同意が必要な場合、広告リクエスト前にUMPの同意情報を確認します。必要な場合はアプリ設定の広告プライバシーオプションで選択を変更できます。同意の変更や撤回によって、提供者がすでに処理した情報が自動的に削除されるわけではありません。Googleの処理・保管・共有は同社のプライバシーポリシーに従い、アプリは単一の処理国や提供者保有情報の即時削除を約束しません。</p>
+          <p data-i18n="hobocode_privacy_ads_choices">ATTの許可とUMPによる広告の同意手続きは別であり、アプリはUMPが広告リクエストを許可する場合にのみ広告をリクエストします。同意が必要な場合、広告リクエスト前にUMPの同意情報を確認します。必要な場合はアプリ設定の広告プライバシーオプションで選択を変更できます。同意の変更や撤回によって、提供者がすでに処理した情報が自動的に削除されるわけではありません。Googleの処理・保管・共有は同社のプライバシーポリシーに従い、アプリは単一の処理国や提供者保有情報の即時削除を約束しません。</p>
           <p><a href="https://policies.google.com/privacy">Google Privacy</a></p>
         </div>
       </section>
