@@ -22,3 +22,4 @@ Marketing needs one link for QR codes, ads and profiles that opens the right sto
 ## Change log
 
 - 2026-10-16: created.
+- 2026-10-24: App Store released; `STORE_URLS.ios` set to `https://apps.apple.com/kr/app/id6820969894` (app ID from the store link the user gave). Android stays empty. Campaign `ct` is not forwarded yet (needs the provider token).
