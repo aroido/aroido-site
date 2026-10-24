@@ -47,7 +47,7 @@ for (const c of Object.values(copy)) {
 // /hobocode/get: one share link (QR, ads, profile). Sends phones to their store once the
 // store URLs exist; until then everyone lands on the landing page in their language.
 // Query strings (utm_*) are kept for the landing page.
-const STORE_URLS = {ios: '', android: ''}; // e.g. https://apps.apple.com/kr/app/id..., https://play.google.com/store/apps/details?id=...
+const STORE_URLS = {ios: 'https://apps.apple.com/kr/app/id6820969894', android: ''}; // e.g. https://apps.apple.com/kr/app/id..., https://play.google.com/store/apps/details?id=...
 files.set(root + '/hobocode/get/index.html', '<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hobocode</title><meta name="robots" content="noindex"><meta name="theme-color" content="#0e0e0e"><link rel="canonical" href="https://aroido.com/hobocode/"><link rel="icon" href="' + m + 'app-icon-web.png">' +
   '<script>(function(){var S=' + JSON.stringify(STORE_URLS) + ',u=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1),and=/Android/i.test(u),ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]),p="";' +
   'for(var i=0;i<ls.length;i++){var l=String(ls[i]).toLowerCase();if(l.indexOf("ko")===0){p="/ko";break}if(l.indexOf("ja")===0){p="/ja";break}if(l.indexOf("zh")===0){p="/zh-hans";break}if(l.indexOf("en")===0)break}' +
