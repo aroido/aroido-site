@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">HobocodeがこのiPhoneに保存する記録、地図検索、自動ライブアクティビティで処理する情報と、利用者の選択について説明します。</p>
         <p data-i18n="hobocode_app_scope">このページはHobocodeに適用されます。Ramgnoteは別のアプリとして維持され、既存の記録がHobocodeに自動移行されることはありません。</p>
         <p><a href="/ja/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnoteのプライバシーポリシー</a></p>
-        <p data-i18n="hobocode_privacy_updated">施行日：2026年10月20日</p>
+        <p data-i18n="hobocode_privacy_updated">施行日：2026年10月24日</p>
         <p data-i18n="hobocode_operator">運営者・個人情報のお問い合わせ担当：송희섭（Song Hui-seop）</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/ja/hobocode/" data-i18n="hobocode_public_landing_link">ホーボーコードを見る</a>
@@ -151,7 +151,16 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">保護対策と外部サービス</h2>
-          <p data-i18n="hobocode_privacy_protection_body">Hobocodeは記録をこのiPhoneのアプリ専用領域に保存し、iOSのファイル保護を使用します。これはエンドツーエンド暗号化や専用アプリパスワードを提供するという意味ではありません。アプリはAppleのSiri・APNs・地図検索、NAVERの地図検索、Cloudflare中継を使用します。広告が有効なバージョンで使用するGoogle AdMobの処理は、下の広告項目で別途説明します。Hobocodeは、広告機能の設定を取得するためにFirebase Remote Configを使用します。この設定の取得は広告の読み込みとは別に行われ、広告への同意手続きで広告リクエストが許可される前に実行される場合があります。Firebaseは、設定の提供とサービスの診断のために、アプリのインストール識別子と認証トークン、端末の国・言語・タイムゾーン、アプリの識別子・バージョン・ビルド、およびOS・SDKのバージョン情報を処理します。Hobocodeは、メモの本文、選択した写真、保存した場所の座標をRemote Configのパラメータとして送信しません。バージョン0.1.1(101)では、Firebase AnalyticsおよびPostHogによる分析を有効にしていません。このウェブサイトはVercelで配信し、Google Fontsを読み込み、訪問や一部の操作にVercel Web Analyticsを使用する構成です。ホームページなど一部のページではGoogle Analyticsも読み込む構成です。ウェブリクエストでIPアドレスやブラウザ情報が提供事業者へ送信される場合があります。アプリの処理とウェブサイトの分析は別です。</p>
+          <p data-i18n="hobocode_privacy_protection_body">Hobocodeは記録をこのiPhoneのアプリ専用領域に保存し、iOSのファイル保護を使用します。これはエンドツーエンド暗号化や専用アプリパスワードを提供するという意味ではありません。アプリはAppleのSiri・APNs・地図検索、NAVERの地図検索、Cloudflare中継を使用します。広告が有効なバージョンで使用するGoogle AdMobの処理は、下の広告項目で別途説明します。Hobocodeは、広告機能の設定を取得するためにFirebase Remote Configを使用します。この設定の取得は広告の読み込みとは別に行われ、広告への同意手続きで広告リクエストが許可される前に実行される場合があります。Firebaseは、設定の提供とサービスの診断のために、アプリのインストール識別子と認証トークン、端末の国・言語・タイムゾーン、アプリの識別子・バージョン・ビルド、およびOS・SDKのバージョン情報を処理します。Hobocodeは、メモの本文、選択した写真、保存した場所の座標をRemote Configのパラメータとして送信しません。Firebase Analyticsは引き続き無効です。バージョン0.1.1(101)ではPostHogによる分析を送信していませんでした。以降のバージョンでの任意のPostHog分析は、下の「アプリの利用情報の分析」で説明します。このウェブサイトはVercelで配信し、Google Fontsを読み込み、訪問や一部の操作にVercel Web Analyticsを使用する構成です。ホームページなど一部のページではGoogle Analyticsも読み込む構成です。ウェブリクエストでIPアドレスやブラウザ情報が提供事業者へ送信される場合があります。アプリの処理とウェブサイトの分析は別です。</p>
+        </div>
+      </section>
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <h2 data-i18n="hobocode_privacy_analytics_title">アプリの利用情報の分析</h2>
+          <p data-i18n="hobocode_privacy_analytics_intro">Hobocodeは、アプリを改善するため、利用情報を米国のPostHogへ送信することがあります。これは任意で、初期設定はオフです。初回起動画面または設定の「アプリの改善のために使用情報を送信」で、オンとオフを切り替えられます。拒否または撤回しても、すべてのアプリ機能を利用できます。同意後にアプリを使用している間だけ送信します。</p>
+          <p data-i18n="hobocode_privacy_analytics_data">同意すると、アプリを使用している間、画面の表示、メモ作成の開始、メモ保存の成功と失敗および保存経路（エディタ、Siri、App Intent）、メモの再表示、権限の状態、通知を開いたことと通知先の表示、アプリのバージョン・ビルド・実行環境（開発または本番）、イベントごとのランダムなUUIDとイベント時刻、初回起動と初回保存の時刻、新規・既存・遅れて同意したコホートの区分と日数および同意バージョン、Apple広告経由のインストールかどうかとその広告のキャンペーン・広告グループ・キーワードの数値IDを送信します。イベントは、この端末で生成したランダムな識別子で紐づけます。アカウントには紐づけませんが、完全に匿名の情報ではありません。メモ本文、写真、座標、住所、場所名、検索語、アカウント情報は送信しません。送信の過程でIPアドレスが処理されることがあります。Firebase Analyticsは引き続き無効です。</p>
+          <p data-i18n="hobocode_privacy_analytics_withdraw">オフにすると新しい送信がすぐに止まり、送信待ちのイベントとこの端末の識別子を削除します。PostHogがすでに受け取った情報は、撤回だけでは自動的に削除されません。削除のご相談はadmin@aroido.comまでご連絡ください。撤回時に識別子を削除するため、以前のデータを特定しにくくなる場合があります。</p>
+          <p data-i18n="hobocode_privacy_analytics_retention">無料プランでの閲覧・保存期間の基準は1年です。その期間の後にすぐ削除されることは約束しません。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>

@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">호보코드가 이 iPhone에 저장하는 기록, 지도 검색과 자동 아일랜드에서 처리하는 정보 및 사용자의 선택을 안내합니다.</p>
         <p data-i18n="hobocode_app_scope">이 페이지는 호보코드에 적용됩니다. 람지노트는 별도 앱으로 유지되며 기존 기록이 호보코드로 자동 이전되지 않습니다.</p>
         <p><a href="/ko/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">람지노트 개인정보 처리방침</a></p>
-        <p data-i18n="hobocode_privacy_updated">시행일: 2026년 10월 20일</p>
+        <p data-i18n="hobocode_privacy_updated">시행일: 2026년 10월 24일</p>
         <p data-i18n="hobocode_operator">운영자·개인정보 문의 담당자: 송희섭</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/ko/hobocode/" data-i18n="hobocode_public_landing_link">호보코드 알아보기</a>
@@ -151,7 +151,16 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">보호 조치와 외부 서비스</h2>
-          <p data-i18n="hobocode_privacy_protection_body">호보코드는 기록을 이 iPhone의 앱 전용 공간에 보관하고 iOS 파일 보호를 사용합니다. 이는 종단간 암호화나 별도 앱 비밀번호를 제공한다는 뜻은 아닙니다. 앱은 Apple의 Siri·APNs·지도 및 검색, NAVER 지도·검색과 Cloudflare 중계를 사용합니다. 광고 기능이 활성화된 버전에서 사용하는 Google AdMob의 정보 처리는 아래 광고 항목에서 별도로 설명합니다. 호보코드는 광고 기능의 설정을 가져오기 위해 Firebase Remote Config를 사용합니다. 이 설정 요청은 광고 로딩과 별도로 이루어지며, 광고 동의 절차에서 광고 요청이 허용되기 전에도 실행될 수 있습니다. Firebase는 설정 제공과 서비스 진단을 위해 앱 설치 식별자와 인증 토큰, 기기의 국가·언어·시간대, 앱 식별자·버전·빌드 및 운영체제·SDK 버전 정보를 처리합니다. 호보코드는 메모 본문, 선택한 사진 또는 저장한 장소의 좌표를 Remote Config 파라미터로 전송하지 않습니다. 버전 0.1.1(101)에서는 Firebase Analytics와 PostHog 분석을 활성화하지 않습니다. 이 웹사이트는 Vercel에서 제공하고 Google Fonts를 불러오며 방문과 일부 웹 상호작용에 Vercel Web Analytics를 사용하도록 구성되어 있습니다. 홈페이지 등 일부 페이지는 Google Analytics도 불러오도록 구성되어 있습니다. 웹 요청 과정에서 IP 주소와 브라우저 정보가 서비스 제공자에게 전달될 수 있습니다. 앱의 정보 처리와 웹사이트 분석은 별개입니다.</p>
+          <p data-i18n="hobocode_privacy_protection_body">호보코드는 기록을 이 iPhone의 앱 전용 공간에 보관하고 iOS 파일 보호를 사용합니다. 이는 종단간 암호화나 별도 앱 비밀번호를 제공한다는 뜻은 아닙니다. 앱은 Apple의 Siri·APNs·지도 및 검색, NAVER 지도·검색과 Cloudflare 중계를 사용합니다. 광고 기능이 활성화된 버전에서 사용하는 Google AdMob의 정보 처리는 아래 광고 항목에서 별도로 설명합니다. 호보코드는 광고 기능의 설정을 가져오기 위해 Firebase Remote Config를 사용합니다. 이 설정 요청은 광고 로딩과 별도로 이루어지며, 광고 동의 절차에서 광고 요청이 허용되기 전에도 실행될 수 있습니다. Firebase는 설정 제공과 서비스 진단을 위해 앱 설치 식별자와 인증 토큰, 기기의 국가·언어·시간대, 앱 식별자·버전·빌드 및 운영체제·SDK 버전 정보를 처리합니다. 호보코드는 메모 본문, 선택한 사진 또는 저장한 장소의 좌표를 Remote Config 파라미터로 전송하지 않습니다. Firebase Analytics는 계속 비활성 상태입니다. 버전 0.1.1(101)은 PostHog 분석을 보내지 않았으며, 이후 버전의 선택적 PostHog 분석은 아래 앱 사용 정보 분석 항목에서 안내합니다. 이 웹사이트는 Vercel에서 제공하고 Google Fonts를 불러오며 방문과 일부 웹 상호작용에 Vercel Web Analytics를 사용하도록 구성되어 있습니다. 홈페이지 등 일부 페이지는 Google Analytics도 불러오도록 구성되어 있습니다. 웹 요청 과정에서 IP 주소와 브라우저 정보가 서비스 제공자에게 전달될 수 있습니다. 앱의 정보 처리와 웹사이트 분석은 별개입니다.</p>
+        </div>
+      </section>
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <h2 data-i18n="hobocode_privacy_analytics_title">앱 사용 정보 분석</h2>
+          <p data-i18n="hobocode_privacy_analytics_intro">호보코드는 앱 개선을 위해 사용 정보를 미국의 PostHog로 보낼 수 있습니다. 이는 선택 사항이며 기본은 꺼짐입니다. 첫 실행 화면이나 설정의 ‘앱 개선을 위한 사용 정보 보내기’에서 켜거나 끌 수 있고, 거절하거나 철회해도 모든 앱 기능을 사용할 수 있습니다. 동의한 뒤 앱을 사용하는 동안에만 전송합니다.</p>
+          <p data-i18n="hobocode_privacy_analytics_data">동의하면 앱을 사용하는 동안 화면 열기, 메모 작성 시작, 메모 저장 성공·실패와 저장 경로(편집기·Siri·앱 인텐트), 메모 재열람, 권한 상태, 알림 열기와 알림 대상 표시, 앱 버전·빌드·실행 환경(개발 또는 운영), 이벤트별 임의 UUID와 이벤트 시각, 첫 실행과 첫 저장 시각, 신규·기존·늦은 동의 코호트 분류와 일차 및 동의 버전, Apple 광고를 통한 설치 여부와 해당 광고의 캠페인·광고 그룹·키워드 숫자 ID를 보냅니다. 이 기기에서 만든 임의 식별자로 이벤트를 연결합니다. 계정과 연결하지 않지만 완전한 익명 정보는 아닙니다. 메모 본문, 사진, 좌표, 주소, 장소명, 검색어, 계정 정보는 보내지 않습니다. 전송 과정에서 IP 주소가 처리될 수 있습니다. Firebase Analytics는 계속 비활성 상태입니다.</p>
+          <p data-i18n="hobocode_privacy_analytics_withdraw">끄면 새 전송이 즉시 멈추고 대기 중인 이벤트와 이 기기의 식별자를 삭제합니다. 이미 PostHog에 도착한 정보는 철회만으로 자동 삭제되지 않습니다. 삭제 문의는 admin@aroido.com로 해 주세요. 철회 때 식별자를 제거하므로 이전 데이터를 찾기 어려울 수 있습니다.</p>
+          <p data-i18n="hobocode_privacy_analytics_retention">무료 플랜의 조회·보관 기준은 1년입니다. 이 기간이 지난 뒤 즉시 삭제된다고 약속하지 않습니다.</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>

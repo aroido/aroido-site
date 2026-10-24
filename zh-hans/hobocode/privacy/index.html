@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">本政策说明 Hobocode 保存在此 iPhone 上的记录、地图搜索和自动实时活动所处理的信息，以及您的选择。</p>
         <p data-i18n="hobocode_app_scope">本页面适用于Hobocode。Ramgnote仍是独立应用，原有记录不会自动迁移到Hobocode。</p>
         <p><a href="/zh-hans/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnote隐私政策</a></p>
-        <p data-i18n="hobocode_privacy_updated">生效日期：2026年10月16日</p>
+        <p data-i18n="hobocode_privacy_updated">生效日期：2026年10月24日</p>
         <p data-i18n="hobocode_operator">运营者及隐私联系人：송희섭（Song Hui-seop）</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/zh-hans/hobocode/" data-i18n="hobocode_public_landing_link">了解 Hobocode</a>
@@ -151,13 +151,22 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">保护措施与外部服务</h2>
-          <p data-i18n="hobocode_privacy_protection_body">Hobocode 将记录保存在此 iPhone 的应用专用存储空间中，并使用iOS文件保护。这不意味着提供端到端加密或单独的应用密码。应用使用Apple的Siri、APNs及地图搜索服务、NAVER地图搜索和Cloudflare中继。启用广告的版本使用的Google AdMob数据处理在下方广告部分单独说明。本网站由Vercel托管，加载Google Fonts，并配置Vercel Web Analytics以分析访问和部分网站操作。首页等部分页面还配置了Google Analytics。网络请求可能向服务提供商传送IP地址和浏览器信息。应用的信息处理与网站分析相互独立。</p>
+          <p data-i18n="hobocode_privacy_protection_body">Hobocode 将记录保存在此 iPhone 的应用专用存储空间中，并使用iOS文件保护。这不意味着提供端到端加密或单独的应用密码。应用使用Apple的Siri、APNs及地图搜索服务、NAVER地图搜索和Cloudflare中继。启用广告的版本使用的Google AdMob数据处理在下方广告部分单独说明。Hobocode 使用 Firebase Remote Config 获取广告功能的设置。此配置请求与加载广告相互独立，可能在广告同意流程允许广告请求之前运行。Firebase 会处理应用安装标识符及其认证令牌、设备所在国家/地区、语言和时区、应用标识符、版本和构建号，以及操作系统和 SDK 版本，用于提供配置并支持服务诊断。Hobocode 不会将笔记文本、所选照片或已保存地点的坐标作为 Remote Config 参数发送。Firebase Analytics 仍保持停用。0.1.1(101) 版本未发送 PostHog 分析；之后版本中可选的 PostHog 分析见下方“应用使用信息分析”。本网站由Vercel托管，加载Google Fonts，并配置Vercel Web Analytics以分析访问和部分网站操作。首页等部分页面还配置了Google Analytics。网络请求可能向服务提供商传送IP地址和浏览器信息。应用的信息处理与网站分析相互独立。</p>
+        </div>
+      </section>
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <h2 data-i18n="hobocode_privacy_analytics_title">应用使用信息分析</h2>
+          <p data-i18n="hobocode_privacy_analytics_intro">为改进应用，Hobocode 可能会把使用信息发送到位于美国的 PostHog。此功能为可选项，默认关闭。你可以在首次启动界面或设置中的“发送使用信息以改进应用”（应用内英文为“Send Usage Info to Improve the App”）里开启或关闭；拒绝或撤回后，所有应用功能仍可使用。仅在你同意后、使用应用期间发送。</p>
+          <p data-i18n="hobocode_privacy_analytics_data">同意后，应用在使用期间会发送：屏幕打开、开始撰写笔记、笔记保存成功与失败及保存途径（编辑器、Siri 或 App Intent）、笔记再次查看、权限状态、通知打开与通知目标显示、应用版本、构建号和运行环境（开发或生产）、每个事件的时间及事件专属的随机 UUID、首次启动和首次保存的时间、新用户、既有用户或延后同意的分组标签及其天数和同意版本，以及安装是否来自 Apple 广告和该广告的活动、广告组、关键词数字 ID。事件通过在此设备上生成的随机标识符关联。它不与账号关联，但并非完全匿名的数据。应用不会发送笔记正文、照片、坐标、地址、地点名称、搜索词或账号信息。传输过程中可能会处理 IP 地址。Firebase Analytics 仍保持停用。</p>
+          <p data-i18n="hobocode_privacy_analytics_withdraw">关闭后会立即停止新的发送，并删除待发送的事件和此设备的标识符。撤回本身不会自动删除 PostHog 已收到的信息。如需删除，请联系 admin@aroido.com；由于撤回时会移除标识符，之前的数据可能难以识别。</p>
+          <p data-i18n="hobocode_privacy_analytics_retention">免费套餐的查看和保留标准为 1 年。我们不承诺在此期限后立即删除数据。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_ads_title">应用广告与隐私选择</h2>
-          <p data-i18n="hobocode_privacy_ads_intro">启用广告的版本使用Google AdMob的Google Mobile Ads SDK，以及用于同意管理的User Messaging Platform（UMP）。首页备忘录和保管库地点分组之间可能显示原生广告，备忘录正文下方可能显示横幅广告。不提供插页广告或Live Activity内广告。应用请求非个性化广告，不会请求用于访问IDFA的ATT授权。</p>
+          <p data-i18n="hobocode_privacy_ads_intro">启用广告的版本使用Google AdMob的Google Mobile Ads SDK，以及用于同意管理的User Messaging Platform（UMP）。首页备忘录和保管库地点分组之间可能显示原生广告，备忘录正文下方可能显示横幅广告。不提供插页广告或Live Activity内广告。应用可能通过iOS应用跟踪透明度（ATT）请求广告相关授权。仅当你允许跟踪时，Google广告SDK才可能使用广告标识符（IDFA），并仍适用你所在地区的同意选择。如果你拒绝、受到限制或尚未做出选择，应用会请求非个性化广告且不使用IDFA。即使不允许跟踪，你也可以使用应用的核心功能，但仍可能显示广告。你可以在iOS设置中更改跟踪权限。</p>
           <p data-i18n="hobocode_privacy_ads_data">应用不会在广告请求中加入备忘录正文、照片、精确坐标、地址、搜索词或应用账户标识。广告SDK可能为广告提供与衡量、诊断和防欺诈处理IP地址、设备或应用标识、崩溃与性能信息，以及广告展示和互动信息。IP地址可能用于推断大致位置。非个性化请求并不意味着完全没有数据处理。</p>
           <p data-i18n="hobocode_privacy_ads_choices">需要同意时，应用会在请求广告前检查UMP同意信息。需要时，可通过应用设置中的广告隐私选项更改选择。更改或撤回同意不会自动删除服务商已处理的信息。Google的数据处理、保留和共享遵循其隐私政策；应用不承诺单一处理国家或立即删除服务商持有的信息。</p>
           <p><a href="https://policies.google.com/privacy">Google Privacy</a></p>
