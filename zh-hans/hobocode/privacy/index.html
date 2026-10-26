@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">本政策说明 Hobocode 保存在此 iPhone 上的记录、地图搜索和自动实时活动所处理的信息，以及您的选择。</p>
         <p data-i18n="hobocode_app_scope">本页面适用于Hobocode。Ramgnote仍是独立应用，原有记录不会自动迁移到Hobocode。</p>
         <p><a href="/zh-hans/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnote隐私政策</a></p>
-        <p data-i18n="hobocode_privacy_updated">生效日期：2026年10月24日</p>
+        <p data-i18n="hobocode_privacy_updated">生效日期：2026年10月26日</p>
         <p data-i18n="hobocode_operator">运营者及隐私联系人：송희섭（Song Hui-seop）</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/zh-hans/hobocode/" data-i18n="hobocode_public_landing_link">了解 Hobocode</a>
@@ -157,10 +157,11 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_analytics_title">应用使用信息分析</h2>
-          <p data-i18n="hobocode_privacy_analytics_intro">为改进应用，Hobocode 可能会把使用信息发送到位于美国的 PostHog。此功能为可选项，默认关闭。你可以在首次启动界面或设置中的“发送使用信息以改进应用”（应用内英文为“Send Usage Info to Improve the App”）里开启或关闭；拒绝或撤回后，所有应用功能仍可使用。仅在你同意后、使用应用期间发送。</p>
-          <p data-i18n="hobocode_privacy_analytics_data">同意后，应用在使用期间会发送：屏幕打开、开始撰写笔记、笔记保存成功与失败及保存途径（编辑器、Siri 或 App Intent）、笔记再次查看、权限状态、通知打开与通知目标显示、应用版本、构建号和运行环境（开发或生产）、每个事件的时间及事件专属的随机 UUID、首次启动和首次保存的时间、新用户、既有用户或延后同意的分组标签及其天数和同意版本，以及安装是否来自 Apple 广告和该广告的活动、广告组、关键词数字 ID。事件通过在此设备上生成的随机标识符关联。它不与账号关联，但并非完全匿名的数据。应用不会发送笔记正文、照片、坐标、地址、地点名称、搜索词或账号信息。传输过程中可能会处理 IP 地址。Firebase Analytics 仍保持停用。</p>
-          <p data-i18n="hobocode_privacy_analytics_withdraw">关闭后会立即停止新的发送，并删除待发送的事件和此设备的标识符。撤回本身不会自动删除 PostHog 已收到的信息。如需删除，请联系 admin@aroido.com；由于撤回时会移除标识符，之前的数据可能难以识别。</p>
-          <p data-i18n="hobocode_privacy_analytics_retention">免费套餐的查看和保留标准为 1 年。我们不承诺在此期限后立即删除数据。</p>
+          <p data-i18n="hobocode_privacy_analytics_intro">为改进应用，Hobocode 可能会把使用统计发送到位于美国的 PostHog Inc.（privacy@posthog.com）。在你做出选择之前不会发送任何内容。在应用介绍、位置和通知界面之后，最后一步会提供“Turn On Basic Statistics and Start”（开启基本统计并开始）或“Turn Off and Start”（关闭并开始）；没有预先选中的选项，无论选哪一个，所有应用功能都可使用。你可以随时在设置中选择“不发送统计”（Don’t send statistics）、“基本统计”（Basic statistics）或“详细统计”（Detailed statistics）。详细统计需要另外明确选择，选择基本统计不会开启它。开启后，仅在应用位于前台时通过 HTTPS 发送。更新应用不会更改你已经做出的统计选择。</p>
+          <p data-i18n="hobocode_privacy_analytics_data">基本统计只发送次数：应用打开、屏幕打开（首页、资料库、地图、设置）、笔记保存成功与失败的次数，以及应用版本、构建号、运行环境（开发或生产）和 UTC 日期。每个事件都有各自的随机 UUID，仅在重试同一事件时重复使用，该 UUID 同时作为事件标识，因此事件之间以及与此设备之间不会关联。基本统计不会创建持久的设备标识符，也不发送权限状态、首次启动或首次保存时间、回访或分组信息，以及 Apple 广告归因。它不会发送笔记正文、照片、坐标、地址、地点名称、搜索词或账号信息。传输过程中仍可能处理 IP 地址，因此并非完全匿名的数据。Firebase Analytics 仍保持停用。</p>
+          <p data-i18n="hobocode_privacy_analytics_detailed">选择基本统计不会开启详细统计。若要新开启详细统计，需要在设置中另外选择。如果你在早期版本中已同意使用信息分析，该选择会作为详细统计保留，你可以在设置中更改或关闭。详细统计开启时，应用在使用期间会发送：屏幕打开、开始撰写笔记、笔记保存成功与失败及保存途径（编辑器、Siri 或 App Intent）、笔记再次查看、权限状态、通知打开与通知目标显示、应用版本、构建号和运行环境（开发或生产）、每个事件的时间及事件专属的随机 UUID、首次启动和首次保存的时间、新用户、既有用户或延后同意的分组标签及其天数和同意版本，以及安装是否来自 Apple 广告和该广告的活动、广告组、关键词数字 ID。事件通过在此设备上生成的随机标识符关联。它不与账号关联，但并非完全匿名的数据。应用不会发送笔记正文、照片、坐标、地址、地点名称、搜索词或账号信息。传输过程中可能会处理 IP 地址。</p>
+          <p data-i18n="hobocode_privacy_analytics_withdraw">关闭统计后会立即停止新的发送，并删除待发送的事件以及（如果存在）此设备的标识符。从详细统计切换到基本统计时，同样会删除待发送的事件和设备标识符，并停止广告归因。更改设置本身不会自动删除 PostHog 已收到的信息。如需删除，请联系 admin@aroido.com；基本统计没有设备标识符，撤回详细统计时会移除标识符，因此之前的数据可能难以识别。</p>
+          <p data-i18n="hobocode_privacy_analytics_retention">免费套餐的查看和保留标准为 1 年。我们不承诺在此期限后立即删除数据。本说明描述的是应用的行为，并不表示数据处理协议或法律审查已经完成。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
