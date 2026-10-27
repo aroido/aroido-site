@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">HobocodeがこのiPhoneに保存する記録、地図検索、自動ライブアクティビティで処理する情報と、利用者の選択について説明します。</p>
         <p data-i18n="hobocode_app_scope">このページはHobocodeに適用されます。Ramgnoteは別のアプリとして維持され、既存の記録がHobocodeに自動移行されることはありません。</p>
         <p><a href="/ja/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnoteのプライバシーポリシー</a></p>
-        <p data-i18n="hobocode_privacy_updated">施行日：2026年10月26日</p>
+        <p data-i18n="hobocode_privacy_updated">施行日：2026年10月27日</p>
         <p data-i18n="hobocode_operator">運営者・個人情報のお問い合わせ担当：송희섭（Song Hui-seop）</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/ja/hobocode/" data-i18n="hobocode_public_landing_link">ホーボーコードを見る</a>
@@ -127,7 +127,10 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_maps_title">地図と場所検索</h2>
-          <p data-i18n="hobocode_privacy_maps_body">HobocodeはNAVERの地図・場所検索とAppleの検索・逆ジオコーディングを使用します。NAVER検索では入力した検索語をCloudflare Workersの中継経由でNAVERへ送信します。この検索リクエストの本文に含まれるのは検索語であり、メモ本文や現在の端末座標は含めません。設定・エラー・上限によりApple検索を使用する場合があります。選択した結果を保存すると、場所名、住所、座標、出典情報がこのiPhoneの記録に一緒に保存されます。Appleの場所参照には場所IDと利用者の別名を含む場合があります。 Apple検索には入力した検索語を送信します。位置から住所を取得する場合は、その座標をAppleへ送信して逆ジオコーディングします。</p>
+          <p data-i18n="hobocode_privacy_maps_body">この方式は0.1.3の次のアップデートから適用されます。新方式のiPhoneでHobocodeは、地図ごとに、その地図が表示している場所の国で地図の提供元を決めます。韓国はNAVER地図、それ以外はApple地図です。国境付近や広く縮小した画面では既存の地図を維持することがあり、韓国外の地域をNAVER地図で、またはその逆で表示する場合があります。国の判定はアプリに含まれる領域データを使って端末内で行い、そのために座標を送信することはありません。地図を描画するため、各提供元は表示中の地域の地図データを要求されます。そのため提供元は、表示中の地域、IPアドレス、端末情報を処理する場合があります。NAVER地図を利用できない場合はApple地図に切り替えます。</p>
+          <p data-i18n="hobocode_privacy_maps_search_body">新方式で場所検索は、検索を開いた地図の国に従います。韓国の地図では、入力した検索語をCloudflare Workersの中継経由でNAVER検索へ送信します。リクエスト本文に含まれるのは検索語だけで、メモ本文、現在の座標、地図の表示範囲は含めません。中継サーバーはリクエストの処理中にIPアドレスと基本的な端末情報（アプリ・OSのバージョン、言語など）を受け取る場合があり、NAVERへ渡すのは検索語だけです。端末の地域設定が海外でも、韓国の地図で検索するとNAVERへ送信されます。NAVER検索が失敗した場合や結果がない場合は、Apple検索でもう一度探します。それ以外の国の地図ではApple検索をそのまま使い、NAVERへは送信しません。地図を基準にしたApple検索には、検索語と、検索を開いた地図の表示範囲を結果の優先順位のヒントとして送信します。地図が現在地を中心に開いている場合、この範囲からおおよその現在地が分かることがあります。韓国の地図の結果にある「世界中から検索」では、表示範囲を付けずに検索語だけをAppleへ送信します。検索中に現在のGPS位置を新たに取得することはありません。選択した結果を保存すると、場所名、住所、座標、出典情報がこのiPhoneの記録に一緒に保存されます。Appleの場所参照には場所IDと利用者の別名を含む場合があります。位置から住所を取得する場合は、その座標をAppleへ送信して逆ジオコーディングします。</p>
+          <p data-i18n="hobocode_privacy_maps_legacy_body">0.1.3以前のバージョンは、端末の地域設定が韓国または未設定の場合はNAVER地図とNAVER検索（失敗・上限などの場合はApple検索）を、それ以外の地域ではApple地図とApple検索のみを使用し、この場合は検索語をNAVERへ送信しません。これらのバージョンのApple検索には検索語だけを渡します。</p>
+          <p data-i18n="hobocode_privacy_maps_android_body">Android版では、韓国の地図にNAVER地図SDK、それ以外の国の地図にGoogleマップ（Google Maps SDK for Android、Google Play開発者サービス）を使用します。国の判定は端末内で行います。GoogleとNAVERは地図を表示するため、地図リクエスト（表示中の地域）、IPアドレス、端末・アプリ情報を処理する場合があります。またGoogleは自社サービスの改善のため、Maps SDK用の仮名識別子、クラッシュ情報、地図の移動・拡大縮小などの操作情報も処理する場合があります。Googleマップを利用できない場合はNAVER地図を使用し、NAVER地図を利用できない場合は韓国でもGoogleマップを使用することがあります。場所検索では、端末の住所検索機能（Android Geocoder）へ検索語だけを送信し、現在地は一緒に送信しません。結果の国の判定は端末内で行います。Geocoderを提供するサービス（通常はGoogle）がこのリクエストを処理します。位置から住所を取得する場合は、その座標を端末のGeocoderへ送信します。Androidの記録は端末内にのみ保存され、サーバーやクラウドへのバックアップはありません。Android版には、Hobocodeが組み込んだ広告・分析SDKはありません。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
@@ -151,7 +154,7 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">保護対策と外部サービス</h2>
-          <p data-i18n="hobocode_privacy_protection_body">Hobocodeは記録をこのiPhoneのアプリ専用領域に保存し、iOSのファイル保護を使用します。これはエンドツーエンド暗号化や専用アプリパスワードを提供するという意味ではありません。アプリはAppleのSiri・APNs・地図検索、NAVERの地図検索、Cloudflare中継を使用します。広告が有効なバージョンで使用するGoogle AdMobの処理は、下の広告項目で別途説明します。Hobocodeは、広告機能の設定を取得するためにFirebase Remote Configを使用します。この設定の取得は広告の読み込みとは別に行われ、広告への同意手続きで広告リクエストが許可される前に実行される場合があります。Firebaseは、設定の提供とサービスの診断のために、アプリのインストール識別子と認証トークン、端末の国・言語・タイムゾーン、アプリの識別子・バージョン・ビルド、およびOS・SDKのバージョン情報を処理します。Hobocodeは、メモの本文、選択した写真、保存した場所の座標をRemote Configのパラメータとして送信しません。Firebase Analyticsは引き続き無効です。バージョン0.1.1(101)ではPostHogによる分析を送信していませんでした。以降のバージョンでの任意のPostHog分析は、下の「アプリの利用情報の分析」で説明します。このウェブサイトはVercelで配信し、Google Fontsを読み込み、訪問や一部の操作にVercel Web Analyticsを使用する構成です。ホームページなど一部のページではGoogle Analyticsも読み込む構成です。ウェブリクエストでIPアドレスやブラウザ情報が提供事業者へ送信される場合があります。アプリの処理とウェブサイトの分析は別です。</p>
+          <p data-i18n="hobocode_privacy_protection_body">Hobocodeは記録をこのiPhoneのアプリ専用領域に保存し、iOSのファイル保護を使用します。これはエンドツーエンド暗号化や専用アプリパスワードを提供するという意味ではありません。アプリはAppleのSiri・APNs・地図検索、NAVERの地図検索、Cloudflare中継を使用します。Android版はGoogleマップ（Google Maps SDK）と端末のGeocoderを使用します。広告が有効なバージョンで使用するGoogle AdMobの処理は、下の広告項目で別途説明します。Hobocodeは、広告機能の設定を取得するためにFirebase Remote Configを使用します。この設定の取得は広告の読み込みとは別に行われ、広告への同意手続きで広告リクエストが許可される前に実行される場合があります。Firebaseは、設定の提供とサービスの診断のために、アプリのインストール識別子と認証トークン、端末の国・言語・タイムゾーン、アプリの識別子・バージョン・ビルド、およびOS・SDKのバージョン情報を処理します。Hobocodeは、メモの本文、選択した写真、保存した場所の座標をRemote Configのパラメータとして送信しません。Firebase Analyticsは引き続き無効です。バージョン0.1.1(101)ではPostHogによる分析を送信していませんでした。以降のバージョンでの任意のPostHog分析は、下の「アプリの利用情報の分析」で説明します。このウェブサイトはVercelで配信し、Google Fontsを読み込み、訪問や一部の操作にVercel Web Analyticsを使用する構成です。ホームページなど一部のページではGoogle Analyticsも読み込む構成です。ウェブリクエストでIPアドレスやブラウザ情報が提供事業者へ送信される場合があります。アプリの処理とウェブサイトの分析は別です。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>

@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">本政策说明 Hobocode 保存在此 iPhone 上的记录、地图搜索和自动实时活动所处理的信息，以及您的选择。</p>
         <p data-i18n="hobocode_app_scope">本页面适用于Hobocode。Ramgnote仍是独立应用，原有记录不会自动迁移到Hobocode。</p>
         <p><a href="/zh-hans/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnote隐私政策</a></p>
-        <p data-i18n="hobocode_privacy_updated">生效日期：2026年10月26日</p>
+        <p data-i18n="hobocode_privacy_updated">生效日期：2026年10月27日</p>
         <p data-i18n="hobocode_operator">运营者及隐私联系人：송희섭（Song Hui-seop）</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/zh-hans/hobocode/" data-i18n="hobocode_public_landing_link">了解 Hobocode</a>
@@ -127,7 +127,10 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_maps_title">地图与地点搜索</h2>
-          <p data-i18n="hobocode_privacy_maps_body">Hobocode使用NAVER地图和地点搜索，以及Apple搜索和逆地理编码。NAVER搜索通过Cloudflare Workers中继将您输入的搜索词发送给NAVER。该搜索请求正文只包含搜索词，不含笔记正文或设备当前坐标。根据配置、错误或限额，可能使用Apple搜索。保存所选结果时，其地点名称、地址、坐标和来源信息会一并保存在此 iPhone 的记录中。Apple地点引用可能包含地点ID和您输入的别名。 Apple搜索会接收输入的搜索词。根据位置查找地址时，应用会将该坐标发送给Apple进行逆地理编码。</p>
+          <p data-i18n="hobocode_privacy_maps_body">此方式自 0.1.3 之后的更新起适用。在新方式的 iPhone 上，Hobocode 按每张地图所显示位置所在的国家来选择地图提供方：韩国使用 NAVER 地图，其他国家使用 Apple 地图。在边境附近或大幅缩小的画面中，应用可能保留原有地图，因此可能用 NAVER 地图查看韩国以外的区域，或相反。国家判断依据应用内置的区域数据，在设备上完成，不会为此发送坐标。绘制地图时，各提供方会收到可见区域的地图数据请求，因此可能处理正在显示的区域、IP 地址和设备信息。如果无法使用 NAVER 地图，则改用 Apple 地图。</p>
+          <p data-i18n="hobocode_privacy_maps_search_body">在新方式中，地点搜索遵循您打开搜索时所在地图的国家。在韩国地图中，您输入的搜索词会通过 Cloudflare Workers 中继发送给 NAVER 搜索。请求正文只包含搜索词，不含笔记正文、当前坐标或地图区域。中继服务器在处理请求时可能收到 IP 地址和基本设备信息（如应用和操作系统版本、语言），传给 NAVER 的只有搜索词。即使设备地区设置在海外，在韩国地图中搜索也会发送给 NAVER。如果 NAVER 搜索失败或没有结果，应用会再用 Apple 搜索一次。在其他国家的地图中，直接使用 Apple 搜索，不会发送给 NAVER。以地图为基准的 Apple 搜索会发送搜索词和打开搜索时地图的可见区域，作为结果排序的提示；如果地图以您的当前位置为中心，该区域可能显示您的大致位置。韩国地图结果中的“在全球搜索”只向 Apple 发送搜索词，不带区域。搜索期间应用不会重新读取当前 GPS 位置。保存所选结果时，其地点名称、地址、坐标和来源信息会一并保存在此 iPhone 的记录中。Apple 地点引用可能包含地点 ID 和您输入的别名。根据位置查找地址时，应用会将该坐标发送给 Apple 进行逆地理编码。</p>
+          <p data-i18n="hobocode_privacy_maps_legacy_body">0.1.3 及更早版本在设备地区设置为韩国或为空时使用 NAVER 地图和 NAVER 搜索（失败、限额等情况下使用 Apple 搜索），在其他地区只使用 Apple 地图和 Apple 搜索，此时不会将搜索词发送给 NAVER。这些版本的 Apple 搜索只传递搜索词。</p>
+          <p data-i18n="hobocode_privacy_maps_android_body">在 Android 版本中，韩国地图使用 NAVER 地图 SDK，其他国家的地图使用 Google 地图（Google Maps SDK for Android，通过 Google Play 服务）。国家判断在设备上完成。为显示地图，Google 和 NAVER 可能处理地图请求（可见区域）、IP 地址以及设备和应用信息；Google 还可能为改进自身服务而处理 Maps SDK 的假名标识符、崩溃信息以及地图平移、缩放等操作信息。如果无法使用 Google 地图，则使用 NAVER 地图；如果无法使用 NAVER 地图，在韩国也可能使用 Google 地图。地点搜索只将搜索词发送给设备的地址搜索功能（Android Geocoder），不附带当前位置，结果所属国家在设备上判断。提供 Geocoder 的服务（通常是 Google）会处理该请求。根据位置查找地址时，应用会将该坐标发送给设备的 Geocoder。Android 记录仅保存在设备上，没有服务器或云备份。Android 版本中没有 Hobocode 加入的广告或分析 SDK。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
@@ -151,7 +154,7 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">保护措施与外部服务</h2>
-          <p data-i18n="hobocode_privacy_protection_body">Hobocode 将记录保存在此 iPhone 的应用专用存储空间中，并使用iOS文件保护。这不意味着提供端到端加密或单独的应用密码。应用使用Apple的Siri、APNs及地图搜索服务、NAVER地图搜索和Cloudflare中继。启用广告的版本使用的Google AdMob数据处理在下方广告部分单独说明。Hobocode 使用 Firebase Remote Config 获取广告功能的设置。此配置请求与加载广告相互独立，可能在广告同意流程允许广告请求之前运行。Firebase 会处理应用安装标识符及其认证令牌、设备所在国家/地区、语言和时区、应用标识符、版本和构建号，以及操作系统和 SDK 版本，用于提供配置并支持服务诊断。Hobocode 不会将笔记文本、所选照片或已保存地点的坐标作为 Remote Config 参数发送。Firebase Analytics 仍保持停用。0.1.1(101) 版本未发送 PostHog 分析；之后版本中可选的 PostHog 分析见下方“应用使用信息分析”。本网站由Vercel托管，加载Google Fonts，并配置Vercel Web Analytics以分析访问和部分网站操作。首页等部分页面还配置了Google Analytics。网络请求可能向服务提供商传送IP地址和浏览器信息。应用的信息处理与网站分析相互独立。</p>
+          <p data-i18n="hobocode_privacy_protection_body">Hobocode 将记录保存在此 iPhone 的应用专用存储空间中，并使用iOS文件保护。这不意味着提供端到端加密或单独的应用密码。应用使用Apple的Siri、APNs及地图搜索服务、NAVER地图搜索和Cloudflare中继。Android 版本使用 Google 地图（Google Maps SDK）和设备的 Geocoder。启用广告的版本使用的Google AdMob数据处理在下方广告部分单独说明。Hobocode 使用 Firebase Remote Config 获取广告功能的设置。此配置请求与加载广告相互独立，可能在广告同意流程允许广告请求之前运行。Firebase 会处理应用安装标识符及其认证令牌、设备所在国家/地区、语言和时区、应用标识符、版本和构建号，以及操作系统和 SDK 版本，用于提供配置并支持服务诊断。Hobocode 不会将笔记文本、所选照片或已保存地点的坐标作为 Remote Config 参数发送。Firebase Analytics 仍保持停用。0.1.1(101) 版本未发送 PostHog 分析；之后版本中可选的 PostHog 分析见下方“应用使用信息分析”。本网站由Vercel托管，加载Google Fonts，并配置Vercel Web Analytics以分析访问和部分网站操作。首页等部分页面还配置了Google Analytics。网络请求可能向服务提供商传送IP地址和浏览器信息。应用的信息处理与网站分析相互独立。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
