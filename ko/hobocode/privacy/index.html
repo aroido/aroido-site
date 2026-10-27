@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">호보코드가 이 iPhone에 저장하는 기록, 지도 검색과 자동 아일랜드에서 처리하는 정보 및 사용자의 선택을 안내합니다.</p>
         <p data-i18n="hobocode_app_scope">이 페이지는 호보코드에 적용됩니다. 람지노트는 별도 앱으로 유지되며 기존 기록이 호보코드로 자동 이전되지 않습니다.</p>
         <p><a href="/ko/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">람지노트 개인정보 처리방침</a></p>
-        <p data-i18n="hobocode_privacy_updated">시행일: 2026년 10월 26일</p>
+        <p data-i18n="hobocode_privacy_updated">시행일: 2026년 10월 27일</p>
         <p data-i18n="hobocode_operator">운영자·개인정보 문의 담당자: 송희섭</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/ko/hobocode/" data-i18n="hobocode_public_landing_link">호보코드 알아보기</a>
@@ -127,7 +127,9 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_maps_title">지도와 장소 검색</h2>
-          <p data-i18n="hobocode_privacy_maps_body">호보코드는 NAVER 지도·장소 검색과 Apple 검색·역지오코딩 경로를 사용합니다. NAVER 검색은 입력한 검색어를 Cloudflare Workers 중계를 거쳐 NAVER에 전달합니다. 이 검색 요청 본문에는 검색어만 포함하며 메모 본문과 현재 기기 좌표는 넣지 않습니다. 설정·오류·한도에 따라 Apple 검색을 사용할 수 있습니다. 선택한 결과를 저장하면 장소 이름·주소·좌표·출처 정보가 이 iPhone의 기록에 함께 저장됩니다. Apple 장소 참조에는 장소 ID와 사용자가 입력한 별칭이 포함될 수 있습니다. Apple 검색에는 입력 검색어를 전달합니다. 위치로 주소를 찾을 때에는 해당 좌표를 Apple에 보내 역지오코딩합니다.</p>
+          <p data-i18n="hobocode_privacy_maps_body">iPhone에서 호보코드는 지도마다 그 지도가 보여 주는 위치의 나라로 지도 공급자를 정합니다. 한국은 NAVER 지도, 그 밖의 나라는 Apple 지도를 씁니다. 나라 판별은 앱에 들어 있는 영역 데이터로 기기 안에서 하며, 이를 위해 좌표를 보내지 않습니다. 지도를 그리려면 각 공급자가 보이는 지역의 지도 데이터를 요청받으므로, 공급자는 표시 중인 지역과 IP 주소·기기 정보를 처리할 수 있습니다. NAVER 지도를 쓸 수 없으면 Apple 지도로 대체합니다.</p>
+          <p data-i18n="hobocode_privacy_maps_search_body">장소 검색은 검색을 연 지도의 나라를 따릅니다. 한국 지도에서는 입력한 검색어를 Cloudflare Workers 중계를 거쳐 NAVER 검색에 보냅니다. 요청 본문에는 검색어만 들어 있으며 메모 본문, 현재 좌표, 지도 영역은 넣지 않습니다. 기기 지역 설정이 해외여도 한국 지도에서 검색하면 NAVER로 갑니다. NAVER 검색이 실패하거나 결과가 없으면 Apple 검색으로 한 번 더 찾습니다. 그 밖의 나라 지도에서는 Apple 검색을 바로 쓰며 NAVER로 보내지 않습니다. 지도 기준 Apple 검색에는 검색어와 검색을 연 지도의 보이는 영역을 결과 우선순위 힌트로 보냅니다. 지도가 현재 위치 중심으로 열려 있으면 이 영역으로 대략적인 현재 위치가 드러날 수 있습니다. 한국 지도 결과의 &quot;전 세계에서 검색&quot;은 영역 없이 검색어만 Apple에 보냅니다. 검색 중에는 현재 GPS 위치를 새로 읽지 않습니다. 선택한 결과를 저장하면 장소 이름·주소·좌표·출처 정보가 이 iPhone의 기록에 함께 저장됩니다. Apple 장소 참조에는 장소 ID와 사용자가 입력한 별칭이 포함될 수 있습니다. 위치로 주소를 찾을 때에는 해당 좌표를 Apple에 보내 역지오코딩합니다.</p>
+          <p data-i18n="hobocode_privacy_maps_android_body">Android 버전에서는 한국 지도에 NAVER 지도 SDK를, 그 밖의 나라 지도에 Google 지도(Google Maps SDK for Android, Google Play 서비스)를 씁니다. 나라 판별은 기기 안에서 합니다. Google은 지도 표시를 위해 지도 요청(보이는 지역), IP 주소, 기기·앱 정보를 처리할 수 있습니다. Google 지도를 쓸 수 없으면 NAVER 지도로, NAVER 지도를 쓸 수 없으면 한국에서도 Google 지도를 쓸 수 있습니다. 장소 검색은 기기의 주소 검색 기능(Android Geocoder)에 검색어만 보내며 현재 위치는 함께 보내지 않습니다. 결과의 나라 구분은 기기 안에서 합니다. Geocoder를 제공하는 서비스(보통 Google)가 이 요청을 처리합니다. 위치로 주소를 찾을 때에는 해당 좌표를 기기 Geocoder에 보냅니다. Android 기록은 기기에만 저장되며 서버나 클라우드 백업은 없습니다. Android 버전에는 광고·분석 SDK가 없습니다.</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
@@ -151,7 +153,7 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">보호 조치와 외부 서비스</h2>
-          <p data-i18n="hobocode_privacy_protection_body">호보코드는 기록을 이 iPhone의 앱 전용 공간에 보관하고 iOS 파일 보호를 사용합니다. 이는 종단간 암호화나 별도 앱 비밀번호를 제공한다는 뜻은 아닙니다. 앱은 Apple의 Siri·APNs·지도 및 검색, NAVER 지도·검색과 Cloudflare 중계를 사용합니다. 광고 기능이 활성화된 버전에서 사용하는 Google AdMob의 정보 처리는 아래 광고 항목에서 별도로 설명합니다. 호보코드는 광고 기능의 설정을 가져오기 위해 Firebase Remote Config를 사용합니다. 이 설정 요청은 광고 로딩과 별도로 이루어지며, 광고 동의 절차에서 광고 요청이 허용되기 전에도 실행될 수 있습니다. Firebase는 설정 제공과 서비스 진단을 위해 앱 설치 식별자와 인증 토큰, 기기의 국가·언어·시간대, 앱 식별자·버전·빌드 및 운영체제·SDK 버전 정보를 처리합니다. 호보코드는 메모 본문, 선택한 사진 또는 저장한 장소의 좌표를 Remote Config 파라미터로 전송하지 않습니다. Firebase Analytics는 계속 비활성 상태입니다. 버전 0.1.1(101)은 PostHog 분석을 보내지 않았으며, 이후 버전의 선택적 PostHog 분석은 아래 앱 사용 정보 분석 항목에서 안내합니다. 이 웹사이트는 Vercel에서 제공하고 Google Fonts를 불러오며 방문과 일부 웹 상호작용에 Vercel Web Analytics를 사용하도록 구성되어 있습니다. 홈페이지 등 일부 페이지는 Google Analytics도 불러오도록 구성되어 있습니다. 웹 요청 과정에서 IP 주소와 브라우저 정보가 서비스 제공자에게 전달될 수 있습니다. 앱의 정보 처리와 웹사이트 분석은 별개입니다.</p>
+          <p data-i18n="hobocode_privacy_protection_body">호보코드는 기록을 이 iPhone의 앱 전용 공간에 보관하고 iOS 파일 보호를 사용합니다. 이는 종단간 암호화나 별도 앱 비밀번호를 제공한다는 뜻은 아닙니다. 앱은 Apple의 Siri·APNs·지도 및 검색, NAVER 지도·검색과 Cloudflare 중계를 사용합니다. Android 버전은 Google 지도(Google Maps SDK)와 기기 Geocoder를 사용합니다. 광고 기능이 활성화된 버전에서 사용하는 Google AdMob의 정보 처리는 아래 광고 항목에서 별도로 설명합니다. 호보코드는 광고 기능의 설정을 가져오기 위해 Firebase Remote Config를 사용합니다. 이 설정 요청은 광고 로딩과 별도로 이루어지며, 광고 동의 절차에서 광고 요청이 허용되기 전에도 실행될 수 있습니다. Firebase는 설정 제공과 서비스 진단을 위해 앱 설치 식별자와 인증 토큰, 기기의 국가·언어·시간대, 앱 식별자·버전·빌드 및 운영체제·SDK 버전 정보를 처리합니다. 호보코드는 메모 본문, 선택한 사진 또는 저장한 장소의 좌표를 Remote Config 파라미터로 전송하지 않습니다. Firebase Analytics는 계속 비활성 상태입니다. 버전 0.1.1(101)은 PostHog 분석을 보내지 않았으며, 이후 버전의 선택적 PostHog 분석은 아래 앱 사용 정보 분석 항목에서 안내합니다. 이 웹사이트는 Vercel에서 제공하고 Google Fonts를 불러오며 방문과 일부 웹 상호작용에 Vercel Web Analytics를 사용하도록 구성되어 있습니다. 홈페이지 등 일부 페이지는 Google Analytics도 불러오도록 구성되어 있습니다. 웹 요청 과정에서 IP 주소와 브라우저 정보가 서비스 제공자에게 전달될 수 있습니다. 앱의 정보 처리와 웹사이트 분석은 별개입니다.</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
