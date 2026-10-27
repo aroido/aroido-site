@@ -4,8 +4,13 @@ import {paintPath, silhouette, townSvg, wearSvg} from './art.mjs';
 
 // Builds /hobocode/ (4 locales) as static HTML plus generated SVG art. --check compares instead of writing.
 const root = '../..', m = '/hobocode/media/';
-// Region-neutral: Apple opens the visitor's own storefront (released in KR, US, JP, CN, TW).
-const APP_STORE = 'https://apps.apple.com/app/id6820969894';
+// Match the web storefront to the landing/browser language.
+const APP_STORE = {
+  en: 'https://apps.apple.com/us/app/id6820969894',
+  ko: 'https://apps.apple.com/kr/app/id6820969894',
+  ja: 'https://apps.apple.com/jp/app/id6820969894',
+  'zh-Hans': 'https://apps.apple.com/cn/app/id6820969894',
+};
 const VIEW = '20 170 380 400', PIN = [262, 236], ROUTE = 'M120 556L120 300L262 300L262 268';
 const files = new Map();
 const tilt = [-1, 0.8, -0.6, 1.1, -1.2, 0.5];
@@ -15,14 +20,14 @@ const face = (sign, place, dist, body, date) => '<div class="face"><p class="mem
 const memos = c => c.memos.map(([sign, place, dist, body, date], i) => '<li class="memo" style="--tilt:' + tilt[i] + 'deg"><svg class="patch" viewBox="0 0 280 156" preserveAspectRatio="none" focusable="false" aria-hidden="true"><path d="' + paintPath(280, 156, i + 1) + '"/></svg>' + face(sign, place, dist, body, date) + '</li>').join('');
 
 for (const c of Object.values(copy)) {
-  const path = c.prefix + '/hobocode/', h = c.heroMemo;
+  const path = c.prefix + '/hobocode/', h = c.heroMemo, appStore = APP_STORE[c.lang];
   const media = m + c.mediaLocale + '/';
   const schema = JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':'https://aroido.com/#organization',name:'Aroido',url:'https://aroido.com' + c.prefix + '/'},{'@type':'SoftwareApplication','@id':'https://aroido.com/hobocode/#app',name:'Hobocode',url:'https://aroido.com' + path,description:c.description,applicationCategory:'ProductivityApplication',operatingSystem:'iOS 18.0 or later',inLanguage:['ko','en','ja'],author:{'@id':'https://aroido.com/#organization'}}]}).replaceAll('<','\\u003c');
   const html = '<!doctype html><html lang="' + c.lang + '"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + c.title + '</title><meta name="description" content="' + c.description + '"><meta name="theme-color" content="#0e0e0e">' +
     '<meta property="og:title" content="' + c.title + '"><meta property="og:description" content="' + c.description + '"><meta property="og:type" content="website"><meta property="og:url" content="https://aroido.com' + path + '"><meta property="og:image" content="https://aroido.com' + m + 'og.jpg"><meta property="og:image:alt" content="' + c.ogAlt + '"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image:alt" content="' + c.ogAlt + '">' +
     '<link rel="canonical" href="https://aroido.com' + path + '">' + Object.values(copy).map(l => '<link rel="alternate" hreflang="' + l.lang + '" href="https://aroido.com' + l.prefix + '/hobocode/">').join('') + '<link rel="alternate" hreflang="x-default" href="https://aroido.com/hobocode/">' +
     '<script type="application/ld+json">' + schema + '</script><link rel="icon" href="' + m + 'app-icon-web.png"><link rel="preload" as="image" href="' + m + 'intro-start.jpg"><link rel="stylesheet" href="/hobocode/landing.css"></head><body>' +
-    '<a class="skip" href="#main">' + c.skip + '</a><header><a class="brand" href="' + path + '" aria-label="Hobocode"><img class="brand-symbol" src="' + m + 'chalk-mark-web.webp" width="34" height="34" alt=""><img class="brand-wordmark" src="' + m + 'wordmark.png" width="1144" height="231" alt="hobo code"></a><nav class="toplinks" aria-label="Hobocode"><a class="about" href="#how">' + c.about + '</a><span class="badge" href="' + APP_STORE + '">' + c.soon + '</a></nav></header><main id="main">' +
+    '<a class="skip" href="#main">' + c.skip + '</a><header><a class="brand" href="' + path + '" aria-label="Hobocode"><img class="brand-symbol" src="' + m + 'chalk-mark-web.webp" width="34" height="34" alt=""><img class="brand-wordmark" src="' + m + 'wordmark.png" width="1144" height="231" alt="hobo code"></a><nav class="toplinks" aria-label="Hobocode"><a class="about" href="#how">' + c.about + '</a><a class="badge" href="' + appStore + '">' + c.soon + '</a></nav></header><main id="main">' +
     // 1. Hero: the app's onboarding intro film, stopping at the chalk mark with a painted note.
     '<section class="hero" aria-labelledby="hero-title"><div class="hero-visual" data-hero><video class="hero-video" src="' + m + 'intro.mp4" poster="' + m + 'intro-start.jpg" data-stop-poster="' + m + 'intro-end.jpg" width="720" height="1280" autoplay muted playsinline preload="auto" aria-hidden="true"></video><div class="arrive-ring" aria-hidden="true"></div>' +
     '<div class="paint-memo" aria-hidden="true"><svg class="patch" viewBox="0 0 300 150" preserveAspectRatio="none" focusable="false"><path d="' + paintPath(300, 150, 1000) + '"/></svg>' + face('', h.place, h.dist, h.body, h.date) + '</div><button class="replay" type="button" hidden>' + c.replay + '</button></div>' +
@@ -41,7 +46,7 @@ for (const c of Object.values(copy)) {
     '<section class="screens" aria-labelledby="screens-title"><div class="section-copy"><h2 id="screens-title">' + c.screensTitle + '</h2><p>' + c.screensBody + '</p></div><ul class="screen-list" tabindex="0" aria-label="' + c.screensTitle.replace(/<[^>]+>/g, '') + '">' +
     c.screens.map(([k, name, text, alt], i) => '<li class="reveal" style="--d:' + i * 120 + 'ms"><figure><div class="phone"><img src="' + media + 'screen-' + k + '.webp" width="660" height="1434" alt="' + alt + '" loading="lazy" decoding="async"></div><figcaption><b>' + name + '</b><span>' + text + '</span></figcaption></figure></li>').join('') + '</ul><p class="demo-disclosure">' + c.disclosure + '</p><div class="walkthrough"><h3>' + c.walkthrough + '</h3><video controls playsinline preload="none" poster="' + media + 'screen-home.webp" width="660" height="1434" aria-label="' + c.walkthrough + '"><source src="' + media + 'walkthrough.mp4" type="video/mp4"></video></div></section>' +
     // 5. Closing.
-    '<section class="closing"><img src="' + m + 'chalk-mark-web.webp" alt="" width="76" height="76" loading="lazy"><h2>' + c.end + '</h2><a class="store-button" href="' + APP_STORE + '">' + c.soon + '</a><p>' + c.endBody + '</p></section></main>' +
+    '<section class="closing"><img src="' + m + 'chalk-mark-web.webp" alt="" width="76" height="76" loading="lazy"><h2>' + c.end + '</h2><a class="store-button" href="' + appStore + '">' + c.soon + '</a><p>' + c.endBody + '</p></section></main>' +
     '<footer><span>© 2026 Aroido · Hobocode</span><nav aria-label="' + c.support + '"><a href="' + c.prefix + '/">' + c.studio + '</a><a href="' + c.prefix + '/projects/">' + c.products + '</a><a href="' + c.prefix + '/hobocode/privacy/">' + c.privacy + '</a><a href="' + c.prefix + '/hobocode/support/">' + c.support + '</a></nav><nav class="locale" aria-label="Language"><a href="/hobocode/" lang="en">EN</a><a href="/ko/hobocode/" lang="ko">한국어</a><a href="/ja/hobocode/" lang="ja">日本語</a><a href="/zh-hans/hobocode/" lang="zh-Hans">中文</a></nav></footer>' +
     '<script type="module" src="/hobocode/landing.js"></script></body></html>\n';
   files.set(root + path + 'index.html', html);
@@ -49,11 +54,11 @@ for (const c of Object.values(copy)) {
 // /hobocode/get: one share link (QR, ads, profile). Sends phones to their store once the
 // store URLs exist; until then everyone lands on the landing page in their language.
 // Query strings (utm_*) are kept for the landing page.
-const STORE_URLS = {ios: APP_STORE, android: ''}; // e.g. https://apps.apple.com/kr/app/id..., https://play.google.com/store/apps/details?id=...
+const STORE_URLS = {ios: APP_STORE, android: ''};
 files.set(root + '/hobocode/get/index.html', '<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hobocode</title><meta name="robots" content="noindex"><meta name="theme-color" content="#0e0e0e"><link rel="canonical" href="https://aroido.com/hobocode/"><link rel="icon" href="' + m + 'app-icon-web.png">' +
-  '<script>(function(){var S=' + JSON.stringify(STORE_URLS) + ',u=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1),and=/Android/i.test(u),ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]),p="";' +
-  'for(var i=0;i<ls.length;i++){var l=String(ls[i]).toLowerCase();if(l.indexOf("ko")===0){p="/ko";break}if(l.indexOf("ja")===0){p="/ja";break}if(l.indexOf("zh")===0){p="/zh-hans";break}if(l.indexOf("en")===0)break}' +
-  'location.replace((ios&&S.ios)||(and&&S.android)||(p+"/hobocode/"+location.search))})()</script>' +
+  '<script>(function(){var S=' + JSON.stringify(STORE_URLS) + ',u=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1),and=/Android/i.test(u),ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]),p="",lang="en";' +
+  'for(var i=0;i<ls.length;i++){var l=String(ls[i]).toLowerCase();if(l.indexOf("ko")===0){p="/ko";lang="ko";break}if(l.indexOf("ja")===0){p="/ja";lang="ja";break}if(l.indexOf("zh")===0){p="/zh-hans";lang="zh-Hans";break}if(l.indexOf("en")===0)break}' +
+  'location.replace((ios&&S.ios[lang])||(and&&S.android)||(p+"/hobocode/"+location.search))})()</script>' +
   '<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0e0e0e;color:#f2f2f2;font:15px/1.6 -apple-system,system-ui,sans-serif;text-align:center}img{width:64px;height:64px;background:#111;border:1px solid #2c2c2c;border-radius:8px;padding:10px}a{color:inherit}nav{display:flex;gap:18px;justify-content:center;margin-top:8px}nav a{min-height:44px;display:inline-flex;align-items:center}</style></head>' +
   '<body><main><img src="' + m + 'chalk-mark-web.webp" alt="" width="64" height="64"><h1 style="font-size:20px;margin:16px 0 4px"><a href="/hobocode/">hobo code</a></h1><nav aria-label="Language"><a href="/hobocode/" lang="en">EN</a><a href="/ko/hobocode/" lang="ko">한국어</a><a href="/ja/hobocode/" lang="ja">日本語</a><a href="/zh-hans/hobocode/" lang="zh-Hans">中文</a></nav></main></body></html>\n');
 files.set(root + '/hobocode/media/town.svg', townSvg(VIEW));
