@@ -45,6 +45,7 @@ for(const c of Object.values(copy)){
  assert(html.includes(`/hobocode/media/${locale}/notification.webp`));
  assert(html.includes(`<video controls playsinline preload="none"`));
  assert(html.includes(`/hobocode/media/${locale}/walkthrough.mp4`));
+ assert(html.includes(`/hobocode/media/${locale}/promo.mp4`)&&html.includes(`/hobocode/media/${locale}/promo-poster.webp`)&&html.includes('<p class="demo-disclosure">'+c.filmNote+'</p>'));
  for(const path of [c.prefix+'/',c.prefix+'/projects/',c.prefix+'/hobocode/support/',c.prefix+'/hobocode/privacy/'])assert(html.includes(`href="${path}"`));
  for(const kind of ['support','privacy']){
   const policy=fs.readFileSync(new URL((c.prefix+`/hobocode/${kind}/index.html`).slice(1),root),'utf8');
