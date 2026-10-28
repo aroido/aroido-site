@@ -191,6 +191,10 @@ const extra = {
   "studio": "제작사 아로이도",
   "products": "아로이도 제품",
   "walkthrough": "한국어 앱 둘러보기",
+  "filmTitle": "25초로 보는 호보코드",
+  "filmBody": "사람 적은 엘리베이터, 지난번에 시킨 메뉴, 그늘 좋은 자리처럼 다음에 다시 갈 때 기억할 것을 그 자리에서 한 줄 적어 두면, 다시 도착했을 때 다이내믹 아일랜드나 알림으로 먼저 보여 줘요.",
+  "filmLabel": "호보코드 소개 영상, 25초",
+  "filmNote": "영상 속 장소와 메모는 예시예요. 다이내믹 아일랜드에 메모 글이 보이게 하려면 앱 설정에서 메모 내용 표시를 켜 주세요.",
   "notificationCaption": "앱이 보낸 한국어 알림 예시 · 가상 도착 조건으로 촬영",
   "ogAlt": "어두운 벽에 그려진 호보코드의 분필 표식"
  },
@@ -315,6 +319,10 @@ const extra = {
   "studio": "Made by Aroido",
   "products": "Aroido products",
   "walkthrough": "Explore the app in English",
+  "filmTitle": "Hobocode in 25 seconds",
+  "filmBody": "The quiet elevator, last time's order, the spot with good shade. Jot it down where you are, and when you arrive again it shows up first, in the Dynamic Island or a notification.",
+  "filmLabel": "Hobocode intro video, 25 seconds",
+  "filmNote": "The places and memos in this video are examples. To see memo text in the Dynamic Island, turn on Show Memo Text in the app's settings.",
   "notificationCaption": "English notification example · simulated arrival at Ferry Building, San Francisco",
   "ogAlt": "Hobocode chalk mark on a dark wall"
  },
@@ -439,6 +447,10 @@ const extra = {
   "studio": "制作元 Aroido",
   "products": "Aroidoの製品",
   "walkthrough": "日本語版アプリの操作を見る",
+  "filmTitle": "25秒で見るHobocode",
+  "filmBody": "空いているエレベーター、前回の注文、日陰が気持ちいい場所。その場で一行メモしておけば、また着いたときにDynamic Islandや通知で先に知らせてくれます。",
+  "filmLabel": "Hobocode紹介動画（25秒）",
+  "filmNote": "動画の場所とメモは例です。Dynamic Islandにメモの内容を表示するには、アプリの設定で「メモの内容を表示」をオンにしてください。",
   "notificationCaption": "日本語版の通知例 · 東京国立博物館への到着を模擬",
   "ogAlt": "暗い壁に描かれたホーボーコードのチョークマーク"
  },
@@ -563,6 +575,10 @@ const extra = {
   "studio": "制作方 Aroido",
   "products": "Aroido 产品",
   "walkthrough": "观看英语版应用操作",
+  "filmTitle": "25 秒了解 Hobocode",
+  "filmBody": "人少的电梯、上次点的菜、阴凉的好位置。当场写下一行，再次到达时会先通过灵动岛或通知提醒你。",
+  "filmLabel": "Hobocode 介绍视频（英语版，25 秒）",
+  "filmNote": "视频为英语版。片中的地点和备忘均为示例。要在灵动岛显示备忘内容，请在应用设置中打开 Show Memo Text。",
   "notificationCaption": "英语通知示例 · 模拟抵达旧金山 Ferry Building",
   "ogAlt": "深色墙面上的 Hobocode 粉笔标记"
  }
