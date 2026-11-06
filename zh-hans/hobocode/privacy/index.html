@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">本政策说明 Hobocode 保存在此 iPhone 上的记录、地图搜索和自动实时活动所处理的信息，以及您的选择。</p>
         <p data-i18n="hobocode_app_scope">本页面适用于Hobocode。Ramgnote仍是独立应用，原有记录不会自动迁移到Hobocode。</p>
         <p><a href="/zh-hans/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnote隐私政策</a></p>
-        <p data-i18n="hobocode_privacy_updated">生效日期：2026年10月27日</p>
+        <p data-i18n="hobocode_privacy_updated">生效日期：2026年11月6日</p>
         <p data-i18n="hobocode_operator">运营者及隐私联系人：송희섭（Song Hui-seop）</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/zh-hans/hobocode/" data-i18n="hobocode_public_landing_link">了解 Hobocode</a>
@@ -154,17 +154,27 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">保护措施与外部服务</h2>
-          <p data-i18n="hobocode_privacy_protection_body">Hobocode 将记录保存在此 iPhone 的应用专用存储空间中，并使用iOS文件保护。这不意味着提供端到端加密或单独的应用密码。应用使用Apple的Siri、APNs及地图搜索服务、NAVER地图搜索和Cloudflare中继。Android 版本使用 Google 地图（Google Maps SDK）和设备的 Geocoder。启用广告的版本使用的Google AdMob数据处理在下方广告部分单独说明。Hobocode 使用 Firebase Remote Config 获取广告功能的设置。此配置请求与加载广告相互独立，可能在广告同意流程允许广告请求之前运行。Firebase 会处理应用安装标识符及其认证令牌、设备所在国家/地区、语言和时区、应用标识符、版本和构建号，以及操作系统和 SDK 版本，用于提供配置并支持服务诊断。Hobocode 不会将笔记文本、所选照片或已保存地点的坐标作为 Remote Config 参数发送。Firebase Analytics 仍保持停用。0.1.1(101) 版本未发送 PostHog 分析；之后版本中可选的 PostHog 分析见下方“应用使用信息分析”。本网站由Vercel托管，加载Google Fonts，并配置Vercel Web Analytics以分析访问和部分网站操作。首页等部分页面还配置了Google Analytics。网络请求可能向服务提供商传送IP地址和浏览器信息。应用的信息处理与网站分析相互独立。</p>
+          <p data-i18n="hobocode_privacy_protection_body">Hobocode 将记录保存在此 iPhone 的应用专用存储空间中，并使用iOS文件保护。这不意味着提供端到端加密或单独的应用密码。应用使用Apple的Siri、APNs及地图搜索服务、NAVER地图搜索和Cloudflare中继。Android 版本使用 Google 地图（Google Maps SDK）和设备的 Geocoder。启用广告的版本使用的Google AdMob数据处理在下方广告部分单独说明。Hobocode 使用 Firebase Remote Config 获取广告功能的设置。此配置请求与加载广告相互独立，可能在广告同意流程允许广告请求之前运行。Firebase 会处理应用安装标识符及其认证令牌、设备所在国家/地区、语言和时区、应用标识符、版本和构建号，以及操作系统和 SDK 版本，用于提供配置并支持服务诊断。Hobocode 不会将笔记文本、所选照片或已保存地点的坐标作为 Remote Config 参数发送。Firebase Analytics 仅用于下文所述的可选广告衡量。0.1.1(101) 版本未发送 PostHog 分析；之后版本中可选的 PostHog 分析见下方“应用使用信息分析”。本网站由Vercel托管，加载Google Fonts，并配置Vercel Web Analytics以分析访问和部分网站操作。首页等部分页面还配置了Google Analytics。网络请求可能向服务提供商传送IP地址和浏览器信息。应用的信息处理与网站分析相互独立。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_analytics_title">应用使用信息分析</h2>
           <p data-i18n="hobocode_privacy_analytics_intro">为改进应用，Hobocode 可能会把使用统计发送到位于美国的 PostHog Inc.（privacy@posthog.com）。在你做出选择之前不会发送任何内容。在应用介绍、位置和通知界面之后，最后一步会提供“Turn On Basic Statistics and Start”（开启基本统计并开始）或“Turn Off and Start”（关闭并开始）；没有预先选中的选项，无论选哪一个，所有应用功能都可使用。你可以随时在设置中选择“不发送统计”（Don’t send statistics）、“基本统计”（Basic statistics）或“详细统计”（Detailed statistics）。详细统计需要另外明确选择，选择基本统计不会开启它。开启后，仅在应用位于前台时通过 HTTPS 发送。更新应用不会更改你已经做出的统计选择。</p>
-          <p data-i18n="hobocode_privacy_analytics_data">基本统计只发送次数：应用打开、屏幕打开（首页、资料库、地图、设置）、笔记保存成功与失败的次数，以及应用版本、构建号、运行环境（开发或生产）和 UTC 日期。每个事件都有各自的随机 UUID，仅在重试同一事件时重复使用，该 UUID 同时作为事件标识，因此事件之间以及与此设备之间不会关联。基本统计不会创建持久的设备标识符，也不发送权限状态、首次启动或首次保存时间、回访或分组信息，以及 Apple 广告归因。它不会发送笔记正文、照片、坐标、地址、地点名称、搜索词或账号信息。传输过程中仍可能处理 IP 地址，因此并非完全匿名的数据。Firebase Analytics 仍保持停用。</p>
+          <p data-i18n="hobocode_privacy_analytics_data">基本统计只发送次数：应用打开、屏幕打开（首页、资料库、地图、设置）、笔记保存成功与失败的次数，以及应用版本、构建号、运行环境（开发或生产）和 UTC 日期。每个事件都有各自的随机 UUID，仅在重试同一事件时重复使用，该 UUID 同时作为事件标识，因此事件之间以及与此设备之间不会关联。基本统计不会创建持久的设备标识符，也不发送权限状态、首次启动或首次保存时间、回访或分组信息，以及 Apple 广告归因。它不会发送笔记正文、照片、坐标、地址、地点名称、搜索词或账号信息。传输过程中仍可能处理 IP 地址，因此并非完全匿名的数据。这些统计不使用 Firebase Analytics。</p>
           <p data-i18n="hobocode_privacy_analytics_detailed">选择基本统计不会开启详细统计。若要新开启详细统计，需要在设置中另外选择。如果你在早期版本中已同意使用信息分析，该选择会作为详细统计保留，你可以在设置中更改或关闭。详细统计开启时，应用在使用期间会发送：屏幕打开、开始撰写笔记、笔记保存成功与失败及保存途径（编辑器、Siri 或 App Intent）、笔记再次查看、权限状态、通知打开与通知目标显示、应用版本、构建号和运行环境（开发或生产）、每个事件的时间及事件专属的随机 UUID、首次启动和首次保存的时间、新用户、既有用户或延后同意的分组标签及其天数和同意版本，以及安装是否来自 Apple 广告和该广告的活动、广告组、关键词数字 ID。事件通过在此设备上生成的随机标识符关联。它不与账号关联，但并非完全匿名的数据。应用不会发送笔记正文、照片、坐标、地址、地点名称、搜索词或账号信息。传输过程中可能会处理 IP 地址。</p>
           <p data-i18n="hobocode_privacy_analytics_withdraw">关闭统计后会立即停止新的发送，并删除待发送的事件以及（如果存在）此设备的标识符。从详细统计切换到基本统计时，同样会删除待发送的事件和设备标识符，并停止广告归因。更改设置本身不会自动删除 PostHog 已收到的信息。如需删除，请联系 admin@aroido.com；基本统计没有设备标识符，撤回详细统计时会移除标识符，因此之前的数据可能难以识别。</p>
           <p data-i18n="hobocode_privacy_analytics_retention">免费套餐的查看和保留标准为 1 年。我们不承诺在此期限后立即删除数据。本说明描述的是应用的行为，并不表示数据处理协议或法律审查已经完成。</p>
+        </div>
+      </section>
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <h2 data-i18n="hobocode_privacy_admeasure_title">应用安装广告衡量（Meta、Google）</h2>
+          <p data-i18n="hobocode_privacy_admeasure_intro">提供广告衡量的版本可以衡量安装是否来自 Hobocode 在 Google 和 Meta 投放的广告。这是与使用统计分开的可选项目，默认关闭。只有在首次启动的最后一步选择“开启基本统计和广告衡量并开始”（英文界面为 “Turn On Basic Statistics and Ad Measurement”），或在设置中开启“允许广告衡量”（“Allow Ad Measurement”）时才会开启。没有预先选择的选项，更新应用不会为现有安装开启，不开启也可以使用全部功能。</p>
+          <p data-i18n="hobocode_privacy_admeasure_data">开启后，应用会通过 Firebase Analytics 向 Google LLC（美国）、通过 Meta SDK 向 Meta Platforms, Inc.（美国）发送：应用安装和打开、是否保存了第一条备忘（不含内容）、应用版本、设备型号、操作系统版本、语言等应用和设备信息，以及各 SDK 为本次安装生成的标识（Firebase 应用实例 ID、Meta 匿名 ID）。IP 地址会在传输过程中被处理。两个 SDK 都不收集广告标识符（IDFA），发送给 Google 时会关闭个性化广告信号。应用不会把备忘正文、照片、搜索词、地址、地点名称、坐标或账户信息交给这些 SDK。可能读取屏幕文字的 Meta 自动高级匹配和无代码事件功能已在 Meta 设置中关闭；如果应用检测到 Meta 开启了其中任一功能，该安装将停止使用 Meta SDK。Google 和 Meta 可能依照各自政策将这些信息用于衡量广告效果和改进广告投放。</p>
+          <p data-i18n="hobocode_privacy_admeasure_withdraw">您可以随时在设置中关闭广告衡量。发送给 Google 的数据会立即停止。由于 Meta SDK 无法在应用运行期间关闭，在关闭设置的那次运行中只会停止应用请求的 Meta 事件和常规发送，SDK 自身的部分发送可能继续；完全关闭并重新打开应用后，不再向 Meta 发送。已收到的信息不会因更改设置而删除，请向 Google 或 Meta 提出请求，或联系 admin@aroido.com。Firebase Analytics 事件数据按媒体资源的保留设置（2 个月）保存，Meta 按其自身政策保存。</p>
+          <p data-i18n="hobocode_privacy_admeasure_skan">无论是否作出此选择，应用都会在 Apple 的 SKAdNetwork 注册一次。如果您是通过广告安装的，Apple 可能以无法识别您或您设备的方式告知广告公司安装事实，此时应用本身不会发送任何信息。</p>
+          <p><a href="https://www.facebook.com/privacy/policy/">Meta Privacy</a> · <a href="https://policies.google.com/privacy">Google Privacy</a> · <a href="https://firebase.google.com/support/privacy">Firebase Privacy</a></p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
