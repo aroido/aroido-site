@@ -97,7 +97,7 @@
         <p class="hero-description" data-i18n="hobocode_privacy_intro">本政策说明 Hobocode 保存在此 iPhone 上的记录、地图搜索和自动实时活动所处理的信息，以及您的选择。</p>
         <p data-i18n="hobocode_app_scope">本页面适用于Hobocode。Ramgnote仍是独立应用，原有记录不会自动迁移到Hobocode。</p>
         <p><a href="/zh-hans/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnote隐私政策</a></p>
-        <p data-i18n="hobocode_privacy_updated">生效日期：2026年11月7日</p>
+        <p data-i18n="hobocode_privacy_updated">生效日期：2026年11月14日</p>
         <p data-i18n="hobocode_operator">运营者及隐私联系人：송희섭（Song Hui-seop）</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/zh-hans/hobocode/" data-i18n="hobocode_public_landing_link">了解 Hobocode</a>
@@ -154,7 +154,7 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_protection_title">保护措施与外部服务</h2>
-          <p data-i18n="hobocode_privacy_protection_body">Hobocode 将记录保存在此 iPhone 的应用专用存储空间中，并使用iOS文件保护。这不意味着提供端到端加密或单独的应用密码。应用使用Apple的Siri、APNs及地图搜索服务、NAVER地图搜索和Cloudflare中继。Android 版本使用 Google 地图（Google Maps SDK）和设备的 Geocoder。启用广告的版本使用的Google AdMob数据处理在下方广告部分单独说明。Hobocode 使用 Firebase Remote Config 获取广告功能的设置。此配置请求与加载广告相互独立，可能在广告同意流程允许广告请求之前运行。Firebase 会处理应用安装标识符及其认证令牌、设备所在国家/地区、语言和时区、应用标识符、版本和构建号，以及操作系统和 SDK 版本，用于提供配置并支持服务诊断。Hobocode 不会将笔记文本、所选照片或已保存地点的坐标作为 Remote Config 参数发送。Firebase Analytics 仅用于下文所述的可选广告衡量。0.1.1(101) 版本未发送 PostHog 分析；之后版本中可选的 PostHog 分析见下方“应用使用信息分析”。本网站由Vercel托管，加载Google Fonts，并配置Vercel Web Analytics以分析访问和部分网站操作。首页等部分页面还配置了Google Analytics。网络请求可能向服务提供商传送IP地址和浏览器信息。应用的信息处理与网站分析相互独立。</p>
+          <p data-i18n="hobocode_privacy_protection_body">Hobocode 将记录保存在此 iPhone 的应用专用存储空间中，并使用iOS文件保护。这不意味着提供端到端加密或单独的应用密码。应用使用Apple的Siri、APNs及地图搜索服务、NAVER地图搜索和Cloudflare中继。Android 版本使用 Google 地图（Google Maps SDK）和设备的 Geocoder。启用广告的版本使用的Google AdMob数据处理在下方广告部分单独说明。Hobocode 使用 Firebase Remote Config 获取广告功能的设置。此配置请求与加载广告相互独立，可能在广告同意流程允许广告请求之前运行。Firebase 会处理应用安装标识符及其认证令牌、设备所在国家/地区、语言和时区、应用标识符、版本和构建号，以及操作系统和 SDK 版本，用于提供配置并支持服务诊断。Hobocode 不会将笔记文本、所选照片或已保存地点的坐标作为 Remote Config 参数发送。Firebase Analytics 仅用于下文所述的应用安装广告衡量。0.1.1(101) 版本未发送 PostHog 分析；之后版本中可选的 PostHog 分析见下方“应用使用信息分析”。本网站由Vercel托管，加载Google Fonts，并配置Vercel Web Analytics以分析访问和部分网站操作。首页等部分页面还配置了Google Analytics。网络请求可能向服务提供商传送IP地址和浏览器信息。应用的信息处理与网站分析相互独立。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
@@ -171,8 +171,8 @@
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_admeasure_title">应用安装广告衡量（Meta、Google）</h2>
           <p data-i18n="hobocode_privacy_admeasure_intro">提供广告衡量的版本可以衡量安装是否来自 Hobocode 在 Google 和 Meta 投放的广告。这是与使用统计分开的可选项目，默认关闭。只有在首次启动的最后一步选择“开启详细统计和广告衡量并开始”（英文界面为 “Turn On Detailed Statistics and Ad Measurement”；0.1.4 版为 “Turn On Basic Statistics and Ad Measurement”），或在设置中开启“允许广告衡量”（“Allow Ad Measurement”）时才会开启。没有预先选择的选项，更新应用不会为现有安装开启，不开启也可以使用全部功能。</p>
-          <p data-i18n="hobocode_privacy_admeasure_data">开启后，应用会通过 Firebase Analytics 向 Google LLC（美国）、通过 Meta SDK 向 Meta Platforms, Inc.（美国）发送：应用安装和打开、是否保存了第一条备忘（不含内容）、应用版本、设备型号、操作系统版本、语言等应用和设备信息，以及各 SDK 为本次安装生成的标识（Firebase 应用实例 ID、Meta 匿名 ID）。IP 地址会在传输过程中被处理。两个 SDK 都不收集广告标识符（IDFA），发送给 Google 时会关闭个性化广告信号。应用不会把备忘正文、照片、搜索词、地址、地点名称、坐标或账户信息交给这些 SDK。可能读取屏幕文字的 Meta 自动高级匹配和无代码事件功能已在 Meta 设置中关闭；如果应用检测到 Meta 开启了其中任一功能，该安装将停止使用 Meta SDK。Google 和 Meta 可能依照各自政策将这些信息用于衡量广告效果和改进广告投放。</p>
-          <p data-i18n="hobocode_privacy_admeasure_withdraw">您可以随时在设置中关闭广告衡量。发送给 Google 的数据会立即停止。由于 Meta SDK 无法在应用运行期间关闭，在关闭设置的那次运行中只会停止应用请求的 Meta 事件和常规发送，SDK 自身的部分发送可能继续；完全关闭并重新打开应用后，不再向 Meta 发送。已收到的信息不会因更改设置而删除，请向 Google 或 Meta 提出请求，或联系 admin@aroido.com。Firebase Analytics 事件数据按媒体资源的保留设置（2 个月）保存，Meta 按其自身政策保存。</p>
+          <p data-i18n="hobocode_privacy_admeasure_data">开启后，应用会通过 Firebase Analytics 向 Google LLC（美国）、通过 Meta SDK 向 Meta Platforms, Inc.（美国）发送：应用安装和打开、是否保存了第一条备忘（不含内容）、应用版本、设备型号、操作系统版本、语言等应用和设备信息，以及各 SDK 为本次安装生成的标识（Firebase 应用实例 ID、Meta 匿名 ID）。IP 地址会在传输过程中被处理。两个 SDK 都不收集广告标识符（IDFA），发送给 Google 时会关闭个性化广告信号。应用不会把备忘正文、照片、搜索词、地址、地点名称、坐标或账户信息交给这些 SDK。可能读取屏幕文字的 Meta 自动高级匹配、无代码事件和推荐事件功能已在 Meta 设置中关闭；从 0.1.6 起，应用在启动 Meta SDK 之前也会在设备上关闭这些功能。如果仍检测到其中任一功能开启，该次运行将停止向 Meta 发送。Google 和 Meta 可能依照各自政策将这些信息用于衡量广告效果和改进广告投放。从 0.1.7 起，即使您从未开启或已关闭广告衡量，完成首次启动后，应用也会通过 Firebase Analytics 向 Google LLC（美国）发送用于统计广告转化的应用使用信号：应用安装、打开、使用时长、会话编号和首次打开时间、广告展示、是否保存了第一条备忘（不含内容）、同意状态，以及应用版本、操作系统版本、语言、时区、安装来源等应用和设备信息。这些信号在 Google 同意模式的存储、广告用户数据和个性化广告全部拒绝的状态下发送，因此不附带 Firebase 应用实例 ID 和 IDFA。IP 地址会在传输过程中被处理。据 Google 说明，这些信号用于估算广告转化数。这些信号不会发送给 Meta；在适用 GDPR 的地区（依据应用的广告同意信息判断，若无则依据设备的地区设置），在您开启广告衡量之前不会发送。</p>
+          <p data-i18n="hobocode_privacy_admeasure_withdraw">您可以随时在设置中关闭广告衡量。此后只向 Google 发送上文所述不含标识的信号（0.1.6 及更早版本会停止发送），并删除设备上的 Google 衡量数据。关闭前记录的事件可能会在关闭后立即连同标识一起发送。由于 Meta SDK 无法在应用运行期间关闭，在关闭设置的那次运行中只会停止应用请求的 Meta 事件和常规发送，SDK 自身的部分发送可能继续；完全关闭并重新打开应用后，不再向 Meta 发送。已收到的信息不会因更改设置而删除，请向 Google 或 Meta 提出请求，或联系 admin@aroido.com。Firebase Analytics 事件数据按媒体资源的保留设置（2 个月）保存，Meta 按其自身政策保存。</p>
           <p data-i18n="hobocode_privacy_admeasure_skan">无论是否作出此选择，应用都会在 Apple 的 SKAdNetwork 注册一次。如果您是通过广告安装的，Apple 可能以无法识别您或您设备的方式告知广告公司安装事实，此时应用本身不会发送任何信息。</p>
           <p><a href="https://www.facebook.com/privacy/policy/">Meta Privacy</a> · <a href="https://policies.google.com/privacy">Google Privacy</a> · <a href="https://firebase.google.com/support/privacy">Firebase Privacy</a></p>
         </div>
