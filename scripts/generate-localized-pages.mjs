@@ -262,6 +262,10 @@ function localizeStaticPage(sourceHtml, messages, localeCode, routePath) {
   html = replaceMetaContentByAttribute(html, "name", "twitter:description", description);
   html = replaceStructuredData(html, localeCode);
   html = replaceDataI18nText(html, messages, localeCode);
+  // Match the existing Hobocode landing's default storefront, never a campaign CPP.
+  const hobocodeStorefront = { en: "us", ko: "kr", ja: "jp", "zh-Hans": "cn" }[localeCode];
+  html = html.replace(/(<a\b(?=[^>]*\bdata-hobocode-store)[^>]*\bhref=")[^"]*(")/g,
+    `$1https://apps.apple.com/${hobocodeStorefront}/app/id6820969894$2`);
   html = replaceAriaLabels(html, messages, localeCode);
 
   if (localeCode !== DEFAULT_LOCALE) {
