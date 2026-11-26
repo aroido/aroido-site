@@ -66,6 +66,7 @@ export const STATIC_I18N_ROUTES = [
   { sourcePath: "mongle/support/index.html", routePath: "/mongle/support/" },
   { sourcePath: "hobocode/privacy/index.html", routePath: "/hobocode/privacy/" },
   { sourcePath: "hobocode/support/index.html", routePath: "/hobocode/support/" },
+  { sourcePath: "hobocode/terms/index.html", routePath: "/hobocode/terms/" },
   { sourcePath: "ramgnote/privacy/index.html", routePath: "/ramgnote/privacy/" },
   { sourcePath: "ramgnote/support/index.html", routePath: "/ramgnote/support/" },
   { sourcePath: "team/index.html", routePath: "/team/" },

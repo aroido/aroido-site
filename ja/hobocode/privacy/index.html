@@ -94,10 +94,10 @@
       <section class="page-hero contact-hero reveal" data-reveal>
         <p class="kicker" data-i18n="hobocode_name">Hobocode</p>
         <h1 data-i18n="hobocode_privacy_title">プライバシーポリシー</h1>
-        <p class="hero-description" data-i18n="hobocode_privacy_intro">HobocodeがこのiPhoneに保存する記録、地図検索、自動ライブアクティビティで処理する情報と、利用者の選択について説明します。</p>
+        <p class="hero-description" data-i18n="hobocode_privacy_intro">HobocodeがこのiPhoneに保存する記録、地図検索、自動ライブアクティビティで処理する情報、任意のログインと公開メモ・リンク共有、そして利用者の選択について説明します。</p>
         <p data-i18n="hobocode_app_scope">このページはHobocodeに適用されます。Ramgnoteは別のアプリとして維持され、既存の記録がHobocodeに自動移行されることはありません。</p>
         <p><a href="/ja/ramgnote/privacy/" data-i18n="hobocode_legacy_privacy">Ramgnoteのプライバシーポリシー</a></p>
-        <p data-i18n="hobocode_privacy_updated">施行日：2026年11月22日</p>
+        <p data-i18n="hobocode_privacy_updated">施行日：2026年11月26日</p>
         <p data-i18n="hobocode_operator">運営者・個人情報のお問い合わせ担当：송희섭（Song Hui-seop）</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="/ja/hobocode/" data-i18n="hobocode_public_landing_link">ホーボーコードを見る</a>
@@ -109,7 +109,7 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_local_title">端末に保存する記録</h2>
-          <p data-i18n="hobocode_privacy_local_body">メモ本文・分類、入力した場所名・住所、保存した座標、作成・更新日時、選択した写真のコピー、保存用の識別情報は、このiPhoneのアプリ専用領域に保存します。下書き、入力復元用データ、ごみ箱も同じ領域にあります。下書きと入力復元用データは、書きかけの内容を保護するために使います。アプリはiCloudアカウントを確認せず、アカウントごとに記録領域を分けることもありません。iPhoneのバックアップ（iCloudバックアップまたはコンピュータへのバックアップ）をオンにしている場合、Appleの設定に従ってこれらの記録もバックアップに含まれることがあります。Hobocode独自の会員登録はありません。</p>
+          <p data-i18n="hobocode_privacy_local_body">メモ本文・分類、入力した場所名・住所、保存した座標、作成・更新日時、選択した写真のコピー、保存用の識別情報は、このiPhoneのアプリ専用領域に保存します。下書き、入力復元用データ、ごみ箱も同じ領域にあります。下書きと入力復元用データは、書きかけの内容を保護するために使います。アプリはiCloudアカウントを確認せず、アカウントごとに記録領域を分けることもありません。iPhoneのバックアップ（iCloudバックアップまたはコンピュータへのバックアップ）をオンにしている場合、Appleの設定に従ってこれらの記録もバックアップに含まれることがあります。ログインは任意で、ログインしてもこれらの個人メモはサーバーにアップロードされません（下記「アカウント・公開メモ・リンク共有」を参照）。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
@@ -131,6 +131,16 @@
           <p data-i18n="hobocode_privacy_maps_search_body">新方式で場所検索は、検索を開いた地図の国に従います。韓国の地図では、入力した検索語をCloudflare Workersの中継経由でNAVER検索へ送信します。リクエスト本文に含まれるのは検索語だけで、メモ本文、現在の座標、地図の表示範囲は含めません。中継サーバーはリクエストの処理中にIPアドレスと基本的な端末情報（アプリ・OSのバージョン、言語など）を受け取る場合があり、NAVERへ渡すのは検索語だけです。端末の地域設定が海外でも、韓国の地図で検索するとNAVERへ送信されます。NAVER検索が失敗した場合や結果がない場合は、Apple検索でもう一度探します。それ以外の国の地図ではApple検索をそのまま使い、NAVERへは送信しません。地図を基準にしたApple検索には、検索語と、検索を開いた地図の表示範囲を結果の優先順位のヒントとして送信します。地図が現在地を中心に開いている場合、この範囲からおおよその現在地が分かることがあります。韓国の地図の結果にある「世界中から検索」では、表示範囲を付けずに検索語だけをAppleへ送信します。検索中に現在のGPS位置を新たに取得することはありません。選択した結果を保存すると、場所名、住所、座標、出典情報がこのiPhoneの記録に一緒に保存されます。Appleの場所参照には場所IDと利用者の別名を含む場合があります。位置から住所を取得する場合は、その座標をAppleへ送信して逆ジオコーディングします。</p>
           <p data-i18n="hobocode_privacy_maps_legacy_body">0.1.3以前のバージョンは、端末の地域設定が韓国または未設定の場合はNAVER地図とNAVER検索（失敗・上限などの場合はApple検索）を、それ以外の地域ではApple地図とApple検索のみを使用し、この場合は検索語をNAVERへ送信しません。これらのバージョンのApple検索には検索語だけを渡します。</p>
           <p data-i18n="hobocode_privacy_maps_android_body">Android版では、韓国の地図にNAVER地図SDK、それ以外の国の地図にGoogleマップ（Google Maps SDK for Android、Google Play開発者サービス）を使用します。国の判定は端末内で行います。GoogleとNAVERは地図を表示するため、地図リクエスト（表示中の地域）、IPアドレス、端末・アプリ情報を処理する場合があります。またGoogleは自社サービスの改善のため、Maps SDK用の仮名識別子、クラッシュ情報、地図の移動・拡大縮小などの操作情報も処理する場合があります。Googleマップを利用できない場合はNAVER地図を使用し、NAVER地図を利用できない場合は韓国でもGoogleマップを使用することがあります。場所検索では、端末の住所検索機能（Android Geocoder）へ検索語だけを送信し、現在地は一緒に送信しません。結果の国の判定は端末内で行います。Geocoderを提供するサービス（通常はGoogle）がこのリクエストを処理します。位置から住所を取得する場合は、その座標を端末のGeocoderへ送信します。Androidの記録は端末内にのみ保存され、サーバーやクラウドへのバックアップはありません。Android版には、Hobocodeが組み込んだ広告・分析SDKはありません。</p>
+        </div>
+      </section>
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <h2 data-i18n="hobocode_privacy_account_title">アカウント・公開メモ・リンク共有</h2>
+          <p data-i18n="hobocode_privacy_account_body">ログインは任意で、0.1.9から韓国の App Store 版で提供します。ログインしても個人メモはサーバーにアップロードされません。Apple・Google・カカオ・NAVER でログインすると、提供元の名前と提供元が Hobocode に渡す会員番号だけを受け取り、メールアドレス・氏名・プロフィール写真は要求も保存もしません。アカウントサーバーには、ニックネームとその変更日時、登録日時、同意した項目（種類・バージョン・日時）、ログインセッション（トークンはハッシュで保存）、ブロックリストを保管します。登録できるのは14歳以上の方です。</p>
+          <p data-i18n="hobocode_privacy_public_body">メモを公開すると、サーバーは本文、マーク、場所の名前と住所、利用者が確認した場所の代表座標、屋内の位置、写真（メタデータを削除）を受け取り、投稿日時と変更日時を記録します。GPS の元の座標とメモの作成日時は送信しません。他のユーザーにはニックネーム、等級、投稿日、メモの内容・写真・場所が表示され、ログインしていない人には1行目（最大40文字）と等級だけが表示されます。サーバーは、いいね・スクラップ（誰がどのメモにしたか）、等級スコア、通報（通報者・理由・対象メモ）も保管します。公開をオフにするかメモを削除すると、公開版は削除されます。公開メモの前に表示する全画面広告のリクエストには、メモの内容、座標、アカウント識別子を含めません。</p>
+          <p data-i18n="hobocode_privacy_share_body">メモや場所をリンクで共有すると、サーバーはそのリンクの内容（場所の名前・住所・座標、メモの本文・マーク・屋内の位置、写真）、作成日時と更新日時、リンクを開いたログインアカウントと日時を保管します。リンクは現在のメモに追従し、内容を見られるのはログインした人だけで、ウェブページには内容を表示しません。リンクをオフにすると開けなくなり、写真も削除されます。</p>
+          <p data-i18n="hobocode_privacy_server_body">これらの記録は Contabo GmbH（ドイツ）が運営する欧州連合内のデータセンターのサーバーに保存され、これらの機能を運営するために、ログイン・公開・共有・閲覧の際に HTTPS で送信されます。ログイン自体は Apple・Google・カカオ・NAVER のページで、各社のプライバシーポリシーに従って行われます。アプリで退会すると、アカウントとそれに付随する公開メモ・リンク・写真・いいね・スクラップ・通報・同意の記録がすぐに削除されます。退会したアカウントの提供元会員番号は、提供元との連携解除が完了するまで（最大1日程度）だけ残ります。サーバーのバックアップは14日、運営者が保管するバックアップのコピーは最大30日で削除されます。他のユーザーがスクラップしたコピーは、その人の端末に残ります。これらの記録に関するお問い合わせや権利の行使は admin@aroido.com までご連絡ください。</p>
+          <p><a href="/ja/hobocode/terms/" data-i18n="hobocode_terms_title">利用規約とコミュニティルール</a></p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
