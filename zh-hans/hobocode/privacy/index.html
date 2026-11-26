@@ -7,7 +7,7 @@
     <meta
       id="metaDescription"
       name="description"
-      content="了解 Hobocode 如何处理笔记、照片、位置、设备本地存储、地图搜索及支持请求。"
+      content="了解 Hobocode 如何处理笔记、照片、位置、设备本地存储、地图搜索、可选登录、公开备忘、分享链接及支持请求。"
     />
     <link rel="canonical" href="https://aroido.com/zh-hans/hobocode/privacy/" />
     <link rel="alternate" hreflang="en" href="https://aroido.com/hobocode/privacy/" />
@@ -21,7 +21,7 @@
     <meta property="og:title" content="Hobocode 隐私政策 | Aroido" />
     <meta
       property="og:description"
-      content="了解 Hobocode 如何处理笔记、照片、位置、设备本地存储、地图搜索及支持请求。"
+      content="了解 Hobocode 如何处理笔记、照片、位置、设备本地存储、地图搜索、可选登录、公开备忘、分享链接及支持请求。"
     />
     <meta property="og:url" content="https://aroido.com/zh-hans/hobocode/privacy/" />
     <meta property="og:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="Hobocode 隐私政策 | Aroido" />
     <meta
       name="twitter:description"
-      content="了解 Hobocode 如何处理笔记、照片、位置、设备本地存储、地图搜索及支持请求。"
+      content="了解 Hobocode 如何处理笔记、照片、位置、设备本地存储、地图搜索、可选登录、公开备忘、分享链接及支持请求。"
     />
     <meta name="twitter:image" content="https://aroido.com/assets/aroido-brand/flame-raster/aroido-flame-social-og-dark-1200x630.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/aroido-brand/flame-raster/aroido-flame-favicon-dark-32.png" />
@@ -42,7 +42,7 @@
         "name": "Hobocode Privacy",
         "url": "https://aroido.com/zh-hans/hobocode/privacy/",
         "inLanguage": "zh-Hans",
-        "description": "How Hobocode handles notes, photos, location, on-device storage, map search and support requests."
+        "description": "How Hobocode handles notes, photos, location, on-device storage, map search, optional sign-in, public memos, share links and support requests."
 }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -136,11 +136,18 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_account_title">账户、公开备忘与链接分享</h2>
-          <p data-i18n="hobocode_privacy_account_body">登录为可选项，自0.1.9起在韩国 App Store 版本中提供。登录不会上传您的个人备忘。使用 Apple、Google、Kakao 或 NAVER 登录时，Hobocode 只接收提供方名称及提供方为 Hobocode 分配的会员编号，不会请求或保存电子邮件地址、姓名或头像。账户服务器保存您的昵称及其修改时间、注册时间、您同意的项目（类型、版本和时间）、登录会话（令牌以哈希形式保存）以及屏蔽列表。仅年满14岁者可以注册。</p>
-          <p data-i18n="hobocode_privacy_public_body">将备忘设为公开时，服务器会接收其正文、标记、地点名称和地址、您确认的地点的代表坐标、室内位置以及照片（已删除元数据），并记录发布和修改时间。原始 GPS 坐标和备忘的撰写时间不会发送。其他用户可以看到您的昵称、等级、发布日期以及备忘内容、照片和地点；未登录的人只能看到第一行（最多40个字符）和等级。服务器还会保存点赞和收藏（谁对哪条备忘操作）、等级分数以及举报（举报人、理由和对象备忘）。关闭公开设置或删除备忘后，公开副本会被删除。公开备忘前显示的全屏广告请求不包含备忘内容、坐标或账户标识符。</p>
-          <p data-i18n="hobocode_privacy_share_body">通过链接分享备忘或地点时，服务器会保存该链接的内容（地点名称、地址和坐标；备忘正文、标记和室内位置；照片）、创建和更新时间，以及打开该链接的已登录账户和时间。链接会跟随您当前的备忘，只有已登录的人才能看到内容，网页上不显示内容。关闭链接后将无法再打开，照片也会被删除。</p>
-          <p data-i18n="hobocode_privacy_server_body">这些记录存储在由 Contabo GmbH（德国）运营、位于欧盟的数据中心的服务器上，为运营这些功能，在登录、公开、分享和打开时通过 HTTPS 传输。登录本身在 Apple、Google、Kakao 或 NAVER 的页面上按照各公司的隐私政策进行。在应用中注销账户后，账户及其相关的公开备忘、链接、照片、点赞、收藏、举报和同意记录会立即删除。已注销账户的提供方会员编号仅保留至与提供方解除关联为止（最长约一天）。服务器备份保留14天，运营者保管的备份副本最长保留30天后删除。其他用户收藏的副本会留在其设备上。如需咨询或行使与这些记录相关的权利，请联系 admin@aroido.com。</p>
+          <p data-i18n="hobocode_privacy_account_body">登录为可选功能，自0.1.9起在韩国App Store版本中提供。登录后个人备忘也不会上传到服务器。使用Apple、Google、Kakao或NAVER登录时，Hobocode只接收提供方名称和提供方为Hobocode提供的会员编号，不请求也不保存电子邮件地址、姓名或头像。账户服务器保存昵称及其修改时间、注册时间、您同意的事项（类型、版本和时间）、登录会话（令牌以哈希形式保存）和屏蔽列表。提供方的登录令牌不随账户保存，仅在注销账户时与服务器备份分开保存，直至与提供方解除关联（最长25小时）。只有年满14周岁的人才能注册，经确认未满14周岁的账户将被删除。如在Kakao账户设置中断开与Hobocode的关联，账户会立即关闭并在一天后删除。</p>
+          <p data-i18n="hobocode_privacy_public_body">将备忘设为公开时，服务器会接收其正文、标记、地点名称和地址、地点的代表坐标、室内位置以及照片（已删除元数据），并记录发布和修改时间。撰写备忘时的当前位置和备忘的撰写时间不会另行发送。但对于用“当前位置”创建的地点，首次保存备忘处的GPS坐标会成为该地点的代表坐标，因此公开该地点的备忘时这些坐标也会公开。已登录的其他用户可以看到您的昵称、等级、发布日期以及备忘内容、照片和地点。未登录的人也能看到昵称、等级、发布日期、第一行（最多40个字符）、标记以及地点名称、地址和坐标。地图加载公开备忘时，即使未登录，当前可见的地图范围也会发送到服务器，服务器会将该请求的IP地址用于限制请求次数。服务器还会保存点赞和收藏（谁对哪条备忘操作）、等级分数、举报（举报人、理由和对象备忘）以及因举报而隐藏的记录，这些记录会保留到相关账户被删除为止。关闭公开设置或删除备忘后，公开副本会被删除；在离线或退出登录状态下删除的备忘，其公开副本会在下次以登录状态联网时删除。公开备忘前显示的全屏广告请求不包含备忘内容、坐标或账户标识符。</p>
+          <p data-i18n="hobocode_privacy_share_body">通过链接分享备忘或地点时，服务器会保存该链接的内容（地点名称、地址和坐标；备忘正文、标记和室内位置；照片）、创建和更新时间，以及打开该链接的已登录账户和时间。链接会跟随您当前的备忘，只有已登录的人才能在应用中查看完整内容。链接的网页预览（网页和即时通讯软件预览）无需登录即会显示发送者的昵称和地点名称。关闭链接后将无法再打开，照片也会被删除。谁在何时打开了链接的记录用于了解链接的使用情况和应对滥用，关闭链接后仍会保留，发送者或打开者注销账户时删除。</p>
+          <p data-i18n="hobocode_privacy_server_body">这些记录存储在由 Contabo GmbH（德国慕尼黑 Welfenstrasse 22，info@contabo.com）提供、位于欧盟的数据中心的服务器上，这属于个人信息的跨境转移。本节所述记录在每次登录、公开、分享和打开时通过 HTTPS 传输，并为运营这些功能按下述期限保存。如不希望跨境转移，请不要登录：这样不会产生账户、公开备忘或链接记录，所有保存在设备上的备忘功能均可使用，但无法使用公开、链接分享、点赞、收藏和查看公开备忘全文。登录本身在 Apple、Google、Kakao 或 NAVER 的页面上按照各公司的隐私政策进行。在应用中注销账户后，账户及其相关的公开备忘、链接、照片、点赞、收藏、举报、屏蔽、同意和链接打开记录会立即删除。已注销账户的提供方会员编号仅保留至与提供方解除关联为止（最长约一天）。服务器备份保留14天，运营者另行保存在运营者 Mac 上的备份副本最长保留30天后删除。其他用户收藏的副本会留在其设备上。如需咨询或行使与这些记录相关的权利，请联系 admin@aroido.com。</p>
           <p><a href="/zh-hans/hobocode/terms/" data-i18n="hobocode_terms_title">使用条款与社区规则</a></p>
+        </div>
+      </section>
+      <section class="section reveal" data-reveal>
+        <div class="section-head">
+          <h2 data-i18n="hobocode_privacy_legal_title">委托处理、保护负责人与安全措施</h2>
+          <p data-i18n="hobocode_privacy_legal_body">Hobocode 将账户、公开备忘和链接服务器的运营与存储委托给 Contabo GmbH，将地点搜索中继和自动灵动岛中继委托给美国的 Cloudflare, Inc.。Google、Meta 和 PostHog 的处理见上文广告、广告效果衡量和使用情况分析部分。个人信息保护负责人为运营者송희섭（Song Hui-seop），admin@aroido.com。保存期限届满或注销账户后，服务器记录会立即删除，备份中的副本会在上述备份期限届满时删除。服务器记录通过传输加密（HTTPS）、仅以哈希形式保存登录会话令牌、将服务器访问限于运营者以及限制备份保存期限来加以保护。</p>
+          <p data-i18n="hobocode_privacy_remedy_body">如需就韩国境内的个人信息侵害寻求咨询或救济，可联系个人信息侵害举报中心（118，privacy.kisa.or.kr）、个人信息纠纷调解委员会（1833-6972，www.kopico.go.kr）、大检察厅（1301，www.spo.go.kr）或警察厅（182，ecrm.police.go.kr）。</p>
         </div>
       </section>
       <section class="section reveal" data-reveal>
@@ -190,7 +197,7 @@
       <section class="section reveal" data-reveal>
         <div class="section-head">
           <h2 data-i18n="hobocode_privacy_ads_title">应用广告与隐私选择</h2>
-          <p data-i18n="hobocode_privacy_ads_intro">启用广告的版本使用Google AdMob的Google Mobile Ads SDK，以及用于同意管理的User Messaging Platform（UMP）。首页备忘录和保管库地点分组之间可能显示原生广告，备忘录正文下方可能显示横幅广告。不提供插页广告或Live Activity内广告。应用可能通过iOS应用跟踪透明度（ATT）请求广告相关授权。仅当你允许跟踪时，Google广告SDK才可能使用广告标识符（IDFA），并仍适用你所在地区的同意选择。如果你拒绝、受到限制或尚未做出选择，应用会请求非个性化广告且不使用IDFA。即使不允许跟踪，你也可以使用应用的核心功能，但仍可能显示广告。你可以在iOS设置中更改跟踪权限。</p>
+          <p data-i18n="hobocode_privacy_ads_intro">启用广告的版本使用Google AdMob的Google Mobile Ads SDK，以及用于同意管理的User Messaging Platform（UMP）。首页备忘录和保管库地点分组之间可能显示原生广告，备忘录正文下方可能显示横幅广告。不提供Live Activity内广告。自0.1.9起，在可使用公开备忘的版本中，从地图首次完整打开他人的公开备忘时可能显示插页（全屏）广告；同一备忘不会再次显示，全屏广告之间至少间隔3分钟。应用可能通过iOS应用跟踪透明度（ATT）请求广告相关授权。仅当你允许跟踪时，Google广告SDK才可能使用广告标识符（IDFA），并仍适用你所在地区的同意选择。如果你拒绝、受到限制或尚未做出选择，应用会请求非个性化广告且不使用IDFA。即使不允许跟踪，你也可以使用应用的核心功能，但仍可能显示广告。你可以在iOS设置中更改跟踪权限。</p>
           <p data-i18n="hobocode_privacy_ads_data">应用不会在广告请求中加入备忘录正文、照片、精确坐标、地址、搜索词或应用账户标识。广告SDK可能为广告提供与衡量、诊断和防欺诈处理IP地址、设备或应用标识、崩溃与性能信息，以及广告展示和互动信息。IP地址可能用于推断大致位置。非个性化请求并不意味着完全没有数据处理。</p>
           <p data-i18n="hobocode_privacy_ads_choices">需要同意时，应用会在请求广告前检查UMP同意信息。需要时，可通过应用设置中的广告隐私选项更改选择。更改或撤回同意不会自动删除服务商已处理的信息。Google的数据处理、保留和共享遵循其隐私政策；应用不承诺单一处理国家或立即删除服务商持有的信息。</p>
           <p><a href="https://policies.google.com/privacy">Google Privacy</a></p>
